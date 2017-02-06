@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\AuthGroupPermissions" table="auth_group_permissions">
+    <indexes>
+      <index name="auth_group_permissions_8373b171" columns="permission_id"/>
+      <index name="auth_group_permissions_0e939a4f" columns="group_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="auth_group_permissions_group_id_0cd325b0_uniq" columns="group_id,permission_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="permission" target-entity="AuthPermission">
+      <join-columns>
+        <join-column name="permission_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="group" target-entity="AuthGroup">
+      <join-columns>
+        <join-column name="group_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

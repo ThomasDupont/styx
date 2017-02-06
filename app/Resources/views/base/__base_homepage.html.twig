@@ -1,0 +1,47 @@
+{#{% load staticfiles %}#}
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="{{ asset('bundles/framework/css/homepage.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/framework/css/jquery.cookiebar.css') }}">
+
+    <link rel="shortcut icon" href="/static/images/styx-logo.ico" />
+    <title>{% block pageTitle %}Styx - Profite de ce que t'as pas{% endblock %}</title>
+    <link rel="apple-touch-icon" href="{{ asset('bundles/framework/images/114x114.png') }}" />
+
+
+    <script src="{{ asset('bundles/framework/js/updateSchool.js') }}"> </script>
+    <script src="{{ asset('bundles/framework/js/homepage.js') }}"> </script>
+    <script src="{{ asset('bundles/framework/js/jquery.cookiebar.js') }}"> </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.cookie-message').cookieBar({ closeButton : '.my-close-button' });
+        });
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    {#{% include 'core/templates/social_analytics/fb_pixel_homepage.html' %}#}
+
+</head>
+
+<body>
+
+{% block main %}
+{% endblock %}
+
+</body>
+<div id="fb-root"></div>
+
+{#{% include 'core/templates/social_analytics/facebook.html' %}#}
+
+{#{% include 'core/templates/social_analytics/google_analytics.html' %}#}
+</html>

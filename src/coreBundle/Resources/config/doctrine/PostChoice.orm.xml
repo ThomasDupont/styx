@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostChoice" table="post_choice">
+    <indexes>
+      <index name="post_choice_582e9e5a" columns="poll_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="label" type="string" column="label" length="50" nullable="false"/>
+    <field name="coefficient" type="integer" column="coefficient" nullable="false"/>
+    <many-to-one field="poll" target-entity="PostPoll">
+      <join-columns>
+        <join-column name="poll_id" referenced-column-name="post_ptr_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,54 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostReward
+ *
+ * @ORM\Table(name="post_reward")
+ * @ORM\Entity
+ */
+class PostReward
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="binary_value", type="integer", nullable=false)
+     */
+    private $binaryValue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=144, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=100, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="post_reward_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\SocialAuthNonce" table="social_auth_nonce">
+    <unique-constraints>
+      <unique-constraint name="social_auth_nonce_server_url_f6284463_uniq" columns="server_url,timestamp,salt"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="serverUrl" type="string" column="server_url" length="255" nullable="false"/>
+    <field name="timestamp" type="integer" column="timestamp" nullable="false"/>
+    <field name="salt" type="string" column="salt" length="65" nullable="false"/>
+  </entity>
+</doctrine-mapping>

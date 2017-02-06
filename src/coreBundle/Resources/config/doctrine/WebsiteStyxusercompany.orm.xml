@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\WebsiteStyxusercompany" table="website_styxusercompany">
+    <id name="styxuserbasePtr" association-key="true"/>
+    <one-to-one field="styxuserbasePtr" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="styxuserbase_ptr_id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

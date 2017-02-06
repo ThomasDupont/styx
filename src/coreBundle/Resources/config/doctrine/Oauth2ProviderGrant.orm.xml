@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\Oauth2ProviderGrant" table="oauth2_provider_grant">
+    <indexes>
+      <index name="oauth2_provider_grant_code_49ab4ddf_like" columns="code"/>
+      <index name="oauth2_provider_grant_6bc0a4eb" columns="application_id"/>
+      <index name="oauth2_provider_grant_e8701ad4" columns="user_id"/>
+      <index name="oauth2_provider_grant_c1336794" columns="code"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="code" type="string" column="code" length="255" nullable="false"/>
+    <field name="expires" type="datetimetz" column="expires" nullable="false"/>
+    <field name="redirectUri" type="string" column="redirect_uri" length="255" nullable="false"/>
+    <field name="scope" type="text" column="scope" nullable="false"/>
+    <many-to-one field="user" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="application" target-entity="Oauth2ProviderApplication">
+      <join-columns>
+        <join-column name="application_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

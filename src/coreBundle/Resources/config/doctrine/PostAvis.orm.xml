@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostAvis" table="post_avis">
+    <indexes>
+      <index name="post_avis_8b938c66" columns="recipient_id"/>
+      <index name="post_avis_d52ac232" columns="conversation_id"/>
+      <index name="post_avis_4f331e2f" columns="author_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="identifier" type="string" column="identifier" length="32" nullable="false"/>
+    <field name="createdAt" type="datetimetz" column="created_at" nullable="false"/>
+    <field name="note" type="integer" column="note" nullable="true"/>
+    <field name="comment" type="string" column="comment" length="255" nullable="true"/>
+    <many-to-one field="recipient" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="recipient_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conversation" target-entity="PostConversation">
+      <join-columns>
+        <join-column name="conversation_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="author" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="author_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

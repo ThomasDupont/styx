@@ -1,0 +1,84 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostAvis
+ *
+ * @ORM\Table(name="post_avis", indexes={@ORM\Index(name="post_avis_8b938c66", columns={"recipient_id"}), @ORM\Index(name="post_avis_d52ac232", columns={"conversation_id"}), @ORM\Index(name="post_avis_4f331e2f", columns={"author_id"})})
+ * @ORM\Entity
+ */
+class PostAvis
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
+     */
+    private $identifier;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetimetz", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="post_avis_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteStyxuserbase
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="recipient_id", referencedColumnName="id")
+     * })
+     */
+    private $recipient;
+
+    /**
+     * @var \coreBundle\Entity\PostConversation
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\PostConversation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="conversation_id", referencedColumnName="id")
+     * })
+     */
+    private $conversation;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteStyxuserbase
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     * })
+     */
+    private $author;
+
+
+}

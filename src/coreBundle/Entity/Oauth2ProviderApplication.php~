@@ -1,0 +1,85 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Oauth2ProviderApplication
+ *
+ * @ORM\Table(name="oauth2_provider_application", uniqueConstraints={@ORM\UniqueConstraint(name="oauth2_provider_application_client_id_key", columns={"client_id"})}, indexes={@ORM\Index(name="oauth2_provider_application_client_secret_53133678_like", columns={"client_secret"}), @ORM\Index(name="oauth2_provider_application_client_id_03f0cc84_like", columns={"client_id"}), @ORM\Index(name="oauth2_provider_application_e8701ad4", columns={"user_id"}), @ORM\Index(name="oauth2_provider_application_9d667c2b", columns={"client_secret"})})
+ * @ORM\Entity
+ */
+class Oauth2ProviderApplication
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="client_id", type="string", length=100, nullable=false)
+     */
+    private $clientId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="redirect_uris", type="text", nullable=false)
+     */
+    private $redirectUris;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="client_type", type="string", length=32, nullable=false)
+     */
+    private $clientType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="authorization_grant_type", type="string", length=32, nullable=false)
+     */
+    private $authorizationGrantType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="client_secret", type="string", length=255, nullable=false)
+     */
+    private $clientSecret;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="skip_authorization", type="boolean", nullable=false)
+     */
+    private $skipAuthorization;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="oauth2_provider_application_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteStyxuserbase
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}

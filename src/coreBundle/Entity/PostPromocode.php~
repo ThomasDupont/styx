@@ -1,0 +1,42 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostPromocode
+ *
+ * @ORM\Table(name="post_promocode")
+ * @ORM\Entity
+ */
+class PostPromocode
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_unique", type="boolean", nullable=false)
+     */
+    private $isUnique;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=50, nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var \coreBundle\Entity\PostPost
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="coreBundle\Entity\PostPost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_ptr_id", referencedColumnName="id")
+     * })
+     */
+    private $postPtr;
+
+
+}

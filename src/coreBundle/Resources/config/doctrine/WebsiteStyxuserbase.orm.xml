@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\WebsiteStyxuserbase" table="website_styxuserbase">
+    <indexes>
+      <index name="website_styxuserbase_0e939a4f" columns="group_id"/>
+      <index name="website_styxuserbase_email_4d007222_like" columns="email"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="website_styxuserbase_email_key" columns="email"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="password" type="string" column="password" length="128" nullable="false"/>
+    <field name="lastLogin" type="datetimetz" column="last_login" nullable="true"/>
+    <field name="identifier" type="string" column="identifier" length="32" nullable="false"/>
+    <field name="createdAt" type="datetimetz" column="created_at" nullable="false"/>
+    <field name="email" type="string" column="email" length="255" nullable="false"/>
+    <field name="mobile" type="string" column="mobile" length="12" nullable="true"/>
+    <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="city" type="string" column="city" length="128" nullable="true"/>
+    <field name="zipCode" type="string" column="zip_code" length="5" nullable="true"/>
+    <field name="adress" type="string" column="adress" length="255" nullable="true"/>
+    <field name="emailConfirmed" type="boolean" column="email_confirmed" nullable="false"/>
+    <field name="isAdmin" type="boolean" column="is_admin" nullable="false"/>
+    <field name="avatar" type="string" column="avatar" length="100" nullable="true"/>
+    <many-to-one field="group" target-entity="WebsiteGroup">
+      <join-columns>
+        <join-column name="group_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="video" target-entity="WebsiteStyxuserbase" mapped-by="owner"/>
+  </entity>
+</doctrine-mapping>

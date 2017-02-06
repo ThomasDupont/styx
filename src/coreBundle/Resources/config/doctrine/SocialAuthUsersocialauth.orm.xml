@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\SocialAuthUsersocialauth" table="social_auth_usersocialauth">
+    <indexes>
+      <index name="social_auth_usersocialauth_e8701ad4" columns="user_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="social_auth_usersocialauth_provider_e6b5e668_uniq" columns="provider,uid"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="provider" type="string" column="provider" length="32" nullable="false"/>
+    <field name="uid" type="string" column="uid" length="255" nullable="false"/>
+    <field name="extraData" type="text" column="extra_data" nullable="false"/>
+    <many-to-one field="user" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

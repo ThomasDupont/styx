@@ -1,0 +1,28 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostNews
+ *
+ * @ORM\Table(name="post_news")
+ * @ORM\Entity
+ */
+class PostNews
+{
+    /**
+     * @var \coreBundle\Entity\PostPost
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="coreBundle\Entity\PostPost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_ptr_id", referencedColumnName="id")
+     * })
+     */
+    private $postPtr;
+
+
+}

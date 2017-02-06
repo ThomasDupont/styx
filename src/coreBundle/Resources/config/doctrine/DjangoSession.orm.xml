@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\DjangoSession" table="django_session">
+    <indexes>
+      <index name="django_session_session_key_c0390e0f_like" columns="session_key"/>
+      <index name="django_session_de54fa62" columns="expire_date"/>
+    </indexes>
+    <id name="sessionKey" type="string" column="session_key" length="40">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="sessionData" type="text" column="session_data" nullable="false"/>
+    <field name="expireDate" type="datetimetz" column="expire_date" nullable="false"/>
+  </entity>
+</doctrine-mapping>

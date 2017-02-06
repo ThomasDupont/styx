@@ -1,0 +1,81 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DjangoAdminLog
+ *
+ * @ORM\Table(name="django_admin_log", indexes={@ORM\Index(name="django_admin_log_e8701ad4", columns={"user_id"}), @ORM\Index(name="django_admin_log_417f1b1c", columns={"content_type_id"})})
+ * @ORM\Entity
+ */
+class DjangoAdminLog
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="action_time", type="datetimetz", nullable=false)
+     */
+    private $actionTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="object_id", type="text", nullable=true)
+     */
+    private $objectId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="object_repr", type="string", length=200, nullable=false)
+     */
+    private $objectRepr;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="action_flag", type="smallint", nullable=false)
+     */
+    private $actionFlag;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="change_message", type="text", nullable=false)
+     */
+    private $changeMessage;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="django_admin_log_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteStyxuserbase
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \coreBundle\Entity\DjangoContentType
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\DjangoContentType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="content_type_id", referencedColumnName="id")
+     * })
+     */
+    private $contentType;
+
+
+}

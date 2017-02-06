@@ -1,0 +1,109 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostPost
+ *
+ * @ORM\Table(name="post_post", indexes={@ORM\Index(name="post_post_b583a629", columns={"category_id"}), @ORM\Index(name="post_post_5e7b1936", columns={"owner_id"})})
+ * @ORM\Entity
+ */
+class PostPost
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
+     */
+    private $identifier;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=300, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetimetz", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="postponed_at", type="datetimetz", nullable=true)
+     */
+    private $postponedAt;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="deleted", type="boolean", nullable=false)
+     */
+    private $deleted;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="has_comment", type="boolean", nullable=false)
+     */
+    private $hasComment;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="moderated", type="boolean", nullable=false)
+     */
+    private $moderated;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="edited_at", type="datetimetz", nullable=true)
+     */
+    private $editedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="post_post_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteStyxuserbase
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     * })
+     */
+    private $owner;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteCategory
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+
+}

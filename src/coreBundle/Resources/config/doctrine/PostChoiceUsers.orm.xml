@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostChoiceUsers" table="post_choice_users">
+    <indexes>
+      <index name="post_choice_users_428bb064" columns="choice_id"/>
+      <index name="post_choice_users_abd26065" columns="styxuserstudent_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="post_choice_users_choice_id_826a20f6_uniq" columns="choice_id,styxuserstudent_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="styxuserstudent" target-entity="WebsiteStyxuserstudent">
+      <join-columns>
+        <join-column name="styxuserstudent_id" referenced-column-name="styxuserbase_ptr_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="choice" target-entity="PostChoice">
+      <join-columns>
+        <join-column name="choice_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

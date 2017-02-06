@@ -8,7 +8,7 @@ website:
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   admin/
 
 app:
     resource: "@AppBundle/Controller/"

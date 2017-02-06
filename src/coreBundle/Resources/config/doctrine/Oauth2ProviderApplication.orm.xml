@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\Oauth2ProviderApplication" table="oauth2_provider_application">
+    <indexes>
+      <index name="oauth2_provider_application_client_secret_53133678_like" columns="client_secret"/>
+      <index name="oauth2_provider_application_client_id_03f0cc84_like" columns="client_id"/>
+      <index name="oauth2_provider_application_e8701ad4" columns="user_id"/>
+      <index name="oauth2_provider_application_9d667c2b" columns="client_secret"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="oauth2_provider_application_client_id_key" columns="client_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="clientId" type="string" column="client_id" length="100" nullable="false"/>
+    <field name="redirectUris" type="text" column="redirect_uris" nullable="false"/>
+    <field name="clientType" type="string" column="client_type" length="32" nullable="false"/>
+    <field name="authorizationGrantType" type="string" column="authorization_grant_type" length="32" nullable="false"/>
+    <field name="clientSecret" type="string" column="client_secret" length="255" nullable="false"/>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
+    <field name="skipAuthorization" type="boolean" column="skip_authorization" nullable="false"/>
+    <many-to-one field="user" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

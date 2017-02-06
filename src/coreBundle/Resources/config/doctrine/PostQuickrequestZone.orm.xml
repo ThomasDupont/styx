@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostQuickrequestZone" table="post_quickrequest_zone">
+    <indexes>
+      <index name="post_quickrequest_zone_3396e418" columns="quickrequest_id"/>
+      <index name="post_quickrequest_zone_06342dd7" columns="zone_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="post_quickrequest_zone_quickrequest_id_192dabe5_uniq" columns="quickrequest_id,zone_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="zone" target-entity="WebsiteZone">
+      <join-columns>
+        <join-column name="zone_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="quickrequest" target-entity="PostQuickrequest">
+      <join-columns>
+        <join-column name="quickrequest_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

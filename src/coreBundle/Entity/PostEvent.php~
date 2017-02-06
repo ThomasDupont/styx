@@ -1,0 +1,56 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostEvent
+ *
+ * @ORM\Table(name="post_event")
+ * @ORM\Entity
+ */
+class PostEvent
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetimetz", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="hour", type="time", nullable=false)
+     */
+    private $hour;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="place", type="string", length=144, nullable=false)
+     */
+    private $place;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=100, nullable=true)
+     */
+    private $avatar;
+
+    /**
+     * @var \coreBundle\Entity\PostPost
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="coreBundle\Entity\PostPost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_ptr_id", referencedColumnName="id")
+     * })
+     */
+    private $postPtr;
+
+
+}

@@ -1,0 +1,42 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostRequeststudent
+ *
+ * @ORM\Table(name="post_requeststudent")
+ * @ORM\Entity
+ */
+class PostRequeststudent
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="closed", type="boolean", nullable=false)
+     */
+    private $closed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rewards", type="integer", nullable=false)
+     */
+    private $rewards;
+
+    /**
+     * @var \coreBundle\Entity\PostPost
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="coreBundle\Entity\PostPost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_ptr_id", referencedColumnName="id")
+     * })
+     */
+    private $postPtr;
+
+
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostConversationParticipant" table="post_conversation_participant">
+    <indexes>
+      <index name="post_conversation_participant_b694f505" columns="styxuserbase_id"/>
+      <index name="post_conversation_participant_d52ac232" columns="conversation_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="post_conversation_participant_conversation_id_d0f1a02f_uniq" columns="conversation_id,styxuserbase_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="styxuserbase" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="styxuserbase_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conversation" target-entity="PostConversation">
+      <join-columns>
+        <join-column name="conversation_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

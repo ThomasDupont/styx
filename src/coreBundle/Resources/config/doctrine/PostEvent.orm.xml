@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostEvent" table="post_event">
+    <id name="postPtr" association-key="true"/>
+    <field name="date" type="datetimetz" column="date" nullable="false"/>
+    <field name="hour" type="time" column="hour" nullable="false"/>
+    <field name="place" type="string" column="place" length="144" nullable="false"/>
+    <field name="avatar" type="string" column="avatar" length="100" nullable="true"/>
+    <one-to-one field="postPtr" target-entity="PostPost">
+      <join-columns>
+        <join-column name="post_ptr_id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

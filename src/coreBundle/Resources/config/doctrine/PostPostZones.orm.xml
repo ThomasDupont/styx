@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostPostZones" table="post_post_zones">
+    <indexes>
+      <index name="post_post_zones_06342dd7" columns="zone_id"/>
+      <index name="post_post_zones_f3aa1999" columns="post_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="post_post_zones_post_id_59480896_uniq" columns="post_id,zone_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="zone" target-entity="WebsiteZone">
+      <join-columns>
+        <join-column name="zone_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="post" target-entity="PostPost">
+      <join-columns>
+        <join-column name="post_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

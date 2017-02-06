@@ -1,0 +1,42 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostPoll
+ *
+ * @ORM\Table(name="post_poll")
+ * @ORM\Entity
+ */
+class PostPoll
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="question", type="string", length=300, nullable=false)
+     */
+    private $question;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="max_answer", type="integer", nullable=false)
+     */
+    private $maxAnswer;
+
+    /**
+     * @var \coreBundle\Entity\PostPost
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="coreBundle\Entity\PostPost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_ptr_id", referencedColumnName="id")
+     * })
+     */
+    private $postPtr;
+
+
+}

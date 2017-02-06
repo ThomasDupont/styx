@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\AuthPermission" table="auth_permission">
+    <indexes>
+      <index name="auth_permission_417f1b1c" columns="content_type_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="auth_permission_content_type_id_01ab375a_uniq" columns="content_type_id,codename"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
+    <field name="codename" type="string" column="codename" length="100" nullable="false"/>
+    <many-to-one field="contentType" target-entity="DjangoContentType">
+      <join-columns>
+        <join-column name="content_type_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

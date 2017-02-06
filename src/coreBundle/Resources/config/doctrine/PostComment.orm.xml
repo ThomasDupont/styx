@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostComment" table="post_comment">
+    <indexes>
+      <index name="post_comment_e8701ad4" columns="user_id"/>
+      <index name="post_comment_f3aa1999" columns="post_id"/>
+      <index name="post_comment_4138be47" columns="father_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="identifier" type="string" column="identifier" length="32" nullable="false"/>
+    <field name="comment" type="string" column="comment" length="300" nullable="false"/>
+    <field name="createdAt" type="datetimetz" column="created_at" nullable="false"/>
+    <field name="editedAt" type="datetimetz" column="edited_at" nullable="true"/>
+    <field name="deleted" type="boolean" column="deleted" nullable="false"/>
+    <field name="moderated" type="boolean" column="moderated" nullable="false"/>
+    <field name="quickAnswer" type="boolean" column="quick_answer" nullable="false"/>
+    <many-to-one field="user" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="post" target-entity="PostPost">
+      <join-columns>
+        <join-column name="post_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="father" target-entity="PostComment">
+      <join-columns>
+        <join-column name="father_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

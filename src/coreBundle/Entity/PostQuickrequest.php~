@@ -1,0 +1,71 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostQuickrequest
+ *
+ * @ORM\Table(name="post_quickrequest", indexes={@ORM\Index(name="post_quickrequest_b583a629", columns={"category_id"})})
+ * @ORM\Entity
+ */
+class PostQuickrequest
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=300, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="expiration", type="datetimetz", nullable=false)
+     */
+    private $expiration;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="deleted", type="boolean", nullable=false)
+     */
+    private $deleted;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="max_participant", type="integer", nullable=false)
+     */
+    private $maxParticipant;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="post_quickrequest_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteCategory
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+
+}

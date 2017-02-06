@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostMessage" table="post_message">
+    <indexes>
+      <index name="post_message_d52ac232" columns="conversation_id"/>
+      <index name="post_message_4f331e2f" columns="author_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="identifier" type="string" column="identifier" length="32" nullable="false"/>
+    <field name="message" type="text" column="message" nullable="false"/>
+    <field name="createdAt" type="datetimetz" column="created_at" nullable="false"/>
+    <field name="moderated" type="boolean" column="moderated" nullable="false"/>
+    <many-to-one field="conversation" target-entity="PostConversation">
+      <join-columns>
+        <join-column name="conversation_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="author" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="author_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

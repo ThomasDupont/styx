@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\WebsiteSocial" table="website_social">
+    <indexes>
+      <index name="website_social_dffc4713" columns="entity_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="website" type="string" column="website" length="200" nullable="false"/>
+    <field name="youtube" type="string" column="youtube" length="200" nullable="false"/>
+    <field name="twitter" type="string" column="twitter" length="200" nullable="false"/>
+    <field name="facebook" type="string" column="facebook" length="200" nullable="false"/>
+    <many-to-one field="entity" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="entity_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

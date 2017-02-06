@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\PostPromocode" table="post_promocode">
+    <id name="postPtr" association-key="true"/>
+    <field name="isUnique" type="boolean" column="is_unique" nullable="false"/>
+    <field name="code" type="string" column="code" length="50" nullable="false"/>
+    <one-to-one field="postPtr" target-entity="PostPost">
+      <join-columns>
+        <join-column name="post_ptr_id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,50 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostConversation
+ *
+ * @ORM\Table(name="post_conversation", indexes={@ORM\Index(name="post_conversation_f3aa1999", columns={"post_id"})})
+ * @ORM\Entity
+ */
+class PostConversation
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
+     */
+    private $identifier;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetimetz", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="post_conversation_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\PostPost
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\PostPost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * })
+     */
+    private $post;
+
+
+}

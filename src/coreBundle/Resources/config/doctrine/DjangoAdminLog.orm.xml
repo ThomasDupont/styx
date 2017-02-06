@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\DjangoAdminLog" table="django_admin_log">
+    <indexes>
+      <index name="django_admin_log_e8701ad4" columns="user_id"/>
+      <index name="django_admin_log_417f1b1c" columns="content_type_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="actionTime" type="datetimetz" column="action_time" nullable="false"/>
+    <field name="objectId" type="text" column="object_id" nullable="true"/>
+    <field name="objectRepr" type="string" column="object_repr" length="200" nullable="false"/>
+    <field name="actionFlag" type="smallint" column="action_flag" nullable="false"/>
+    <field name="changeMessage" type="text" column="change_message" nullable="false"/>
+    <many-to-one field="user" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="contentType" target-entity="DjangoContentType">
+      <join-columns>
+        <join-column name="content_type_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

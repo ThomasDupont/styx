@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\WebsiteStyxuserstudentFollowing" table="website_styxuserstudent_following">
+    <indexes>
+      <index name="website_styxuserstudent_following_abd26065" columns="styxuserstudent_id"/>
+      <index name="website_styxuserstudent_following_b694f505" columns="styxuserbase_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="website_styxuserstudent_follow_styxuserstudent_id_014cb408_uniq" columns="styxuserstudent_id,styxuserbase_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="styxuserbase" target-entity="WebsiteStyxuserbase">
+      <join-columns>
+        <join-column name="styxuserbase_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="styxuserstudent" target-entity="WebsiteStyxuserstudent">
+      <join-columns>
+        <join-column name="styxuserstudent_id" referenced-column-name="styxuserbase_ptr_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

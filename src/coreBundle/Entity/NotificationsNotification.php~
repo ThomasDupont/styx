@@ -1,0 +1,150 @@
+<?php
+
+namespace coreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * NotificationsNotification
+ *
+ * @ORM\Table(name="notifications_notification", indexes={@ORM\Index(name="notifications_notification_e4f9dcc7", columns={"target_content_type_id"}), @ORM\Index(name="notifications_notification_142874d9", columns={"action_object_content_type_id"}), @ORM\Index(name="notifications_notification_8b938c66", columns={"recipient_id"}), @ORM\Index(name="notifications_notification_53a09d9a", columns={"actor_content_type_id"})})
+ * @ORM\Entity
+ */
+class NotificationsNotification
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="level", type="string", length=20, nullable=false)
+     */
+    private $level;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="unread", type="boolean", nullable=false)
+     */
+    private $unread;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="actor_object_id", type="string", length=255, nullable=false)
+     */
+    private $actorObjectId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="verb", type="string", length=255, nullable=false)
+     */
+    private $verb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="target_object_id", type="string", length=255, nullable=true)
+     */
+    private $targetObjectId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="action_object_object_id", type="string", length=255, nullable=true)
+     */
+    private $actionObjectObjectId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="timestamp", type="datetimetz", nullable=false)
+     */
+    private $timestamp;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="public", type="boolean", nullable=false)
+     */
+    private $public;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="deleted", type="boolean", nullable=false)
+     */
+    private $deleted;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="emailed", type="boolean", nullable=false)
+     */
+    private $emailed;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="text", nullable=true)
+     */
+    private $data;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="notifications_notification_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \coreBundle\Entity\DjangoContentType
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\DjangoContentType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="target_content_type_id", referencedColumnName="id")
+     * })
+     */
+    private $targetContentType;
+
+    /**
+     * @var \coreBundle\Entity\WebsiteStyxuserbase
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="recipient_id", referencedColumnName="id")
+     * })
+     */
+    private $recipient;
+
+    /**
+     * @var \coreBundle\Entity\DjangoContentType
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\DjangoContentType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="actor_content_type_id", referencedColumnName="id")
+     * })
+     */
+    private $actorContentType;
+
+    /**
+     * @var \coreBundle\Entity\DjangoContentType
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\DjangoContentType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="action_object_content_type_id", referencedColumnName="id")
+     * })
+     */
+    private $actionObjectContentType;
+
+
+}

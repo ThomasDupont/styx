@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="coreBundle\Entity\DjangoContentType" table="django_content_type">
+    <unique-constraints>
+      <unique-constraint name="django_content_type_app_label_76bd3d3b_uniq" columns="app_label,model"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="appLabel" type="string" column="app_label" length="100" nullable="false"/>
+    <field name="model" type="string" column="model" length="100" nullable="false"/>
+  </entity>
+</doctrine-mapping>
