@@ -1,0 +1,230 @@
+body {
+    margin:0;
+    padding:0;
+    line-height:1;
+    font-family: 'Open Sans',sans-serif;
+	-webkit-font-smoothing:antialiased; 
+	font-smoothing:antialiased;
+}
+content {
+    display:block;
+    width:100%;
+    height:auto;
+    padding-bottom:70px;
+}
+form {
+    position:relative;
+    margin-top:20vh;
+    margin-left:calc(50% - 200px);
+    width:400px;
+    height:auto;
+    background:#FFF;
+    padding-top:5px;
+    padding-bottom:15px;
+    border-radius:5px;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
+    text-align:center;
+}
+form h2 {
+    padding-top:5px;
+    font-size:24px;
+    color:#5d5d5d;
+}
+input:not([type="checkbox"]) {
+    position:relative;
+    width:calc(100% - 30px);
+    height:20px;
+    padding:15px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    margin-top:10px;
+    background:#e8e8e8;
+    font-size:16px;
+    color:#555;
+    height: 50px;
+}
+input:focus {
+    outline:none;
+}
+
+#id_acceptedCGU {
+    cursor: pointer;
+    position: relative;
+    float: left;
+    margin: 15px 10px 0px 15px;
+    z-index: 9999999;
+  }
+.cgu{
+    position: relative;
+    margin-top: 16px;
+    font-size: 0.80em;
+    right: 50px;
+}
+.valid {
+    position:relative;
+    width:calc(100% - 30px);
+    margin-left:15px;
+    height:50px;
+    line-height:50px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    margin-top:10px;
+    font-size:16px;
+    color:#FFF;
+    background:#337ab7;
+    cursor:pointer;
+    transition:all .4s;
+}
+.valid:hover {
+    background:#24669f;
+}
+
+/* Haut de page */
+
+.top {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:340px;
+    background:url('/static/images/background/cover_asso.jpg');
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: x y, x y;
+}
+
+/* Basique */
+
+#form2 {
+    display:block;
+}
+.pp {
+    position:relative;
+    width:100px;
+    height:100px;
+    border-radius:4px;
+    margin-top:15px;
+    margin-bottom:5px;
+    background:#e8e8e8;
+    -webkit-appearance:none;
+    border:none;
+    object-fit: cover;
+}
+.modif_pp {
+    position:absolute;
+    top:20px;
+    left:calc(50% - 52px);
+    height:100px;
+    width:100px;
+    border-radius:4px;
+    border:none;
+    cursor: pointer;
+}
+
+/* Formulaire 2 */
+
+#form2 {
+    display:none;
+}
+.membre {
+    position:relative;
+    height:auto;
+    width:100%;
+    margin-left:12px;
+    text-align:left;
+}
+.membre input {
+    position:relative;
+    width:calc(50% - 50px);
+    padding-left:15px;
+    padding-right:15px;
+    margin-left:4px;
+    margin-right:4px;
+    display:inline-block;
+}
+.membre .membre_top {
+    width:calc(50% - 50px);
+}
+.remove {
+    position:absolute;
+    top:10px;
+    width:50px;
+    height:50px;
+    border-radius:4px;
+    margin-left:4px;
+    margin-right:4px;
+    display:inline-block;
+    cursor:pointer;
+    transition:all .4s;
+}
+.remove:hover {
+    background:#F2F2F2;
+}
+.valid {
+    position:relative;
+    width:calc(100% - 30px);
+    margin-left:15px;
+    height:50px;
+    line-height:50px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    margin-top:10px;
+    font-size:16px;
+    color:#FFF;
+    background:#337ab7;
+    cursor:pointer;
+    transition:all .4s;
+}
+.valid:hover {
+    background:#24669f;
+}
+.ajout_membre {
+    position:relative;
+    width:calc(100% - 30px);
+    height:50px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    margin-top:10px;
+    font-size:16px;
+    color:#FFF;
+    background:#e7712b;
+    cursor:pointer;
+    transition:all .4s;
+}
+.ajout_membre:hover {
+    background:#c35c1f;
+}
+
+/* Formulaire 3 */
+
+#form3 {
+    display:none;
+}
+.valid3 {
+    line-height:0;
+    margin-left:5px;
+}
+
+header{
+    opacity:0;
+}
+
+body{
+    background-color: #F4F4F4;
+}
+
+#id_avatar{
+    display:none;
+}
+
+.text-error{
+    margin: 10 40 5 40;
+}
+
+.margin-bottom-back{
+    margin-bottom: 10px;
+}
