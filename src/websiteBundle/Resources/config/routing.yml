@@ -1,12 +1,18 @@
 website_homepage:
     path:     /
     defaults: { _controller: websiteBundle:Homepage:index }
+reset_password:
+    path:     /user/password/reset/
+    defaults: { _controller: websiteBundle:Homepage:resetPassword }
+
 agenda:
     path:     /agenda/
     defaults: { _controller: websiteBundle:Agenda:index }
+
 feed:
     path:     /feed/
     defaults: { _controller: websiteBundle:Feed:index }
+
 conversation:
     path:     /conversation/
     defaults: { _controller: websiteBundle:Conversation:index }

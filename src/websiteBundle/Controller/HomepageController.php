@@ -10,4 +10,8 @@ class HomepageController extends Controller
     {
         return $this->render('websiteBundle:homepage:homepage.html.twig');
     }
+    public function resetPasswordAction()
+    {
+        return $this->render('websiteBundle:homepage:password_reset.html.twig');
+    }
 }
