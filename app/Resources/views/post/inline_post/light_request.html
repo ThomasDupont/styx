@@ -1,0 +1,26 @@
+
+{% load styxFilters %}
+<div class="request">
+    <div class="row" onclick="go_to_request('{{ request.identifier }}');">
+        <div class="col-md-1 col-xs-2">
+            <img style="height:auto; max-width:40px;" src="{{ request.category.image.url }}">
+        </div>
+        <div class="col-md-11 col-xs-10">
+            <span>{{request.title|truncatechars:44 }}</span>
+            <div class="request_description">{{request.description|truncatechars:103 }} </div>
+        </div>
+    </div>
+
+
+    <div>
+        {% if request.validated == True %}
+        <span class="label label-info label-date">Un deal a été conclu !</span>
+        {% elif request.is_past_due %}
+        <span class="label label-warning label-date">Demande expirée</span>
+        {% else %}
+        <span class="label label-default label-date">{{request.expiration|date:"D d M Y" }}</span>
+        {% endif %}
+    </div>
+</div>
+
+

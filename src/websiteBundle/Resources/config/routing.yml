@@ -1,3 +1,6 @@
 website_homepage:
     path:     /
     defaults: { _controller: websiteBundle:Homepage:index }
+feed:
+  path: /feed/
+  defaults: { _controller: websiteBundle:Feed:index }
