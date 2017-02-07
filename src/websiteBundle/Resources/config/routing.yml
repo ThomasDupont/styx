@@ -3,7 +3,10 @@ website_homepage:
     defaults: { _controller: websiteBundle:Homepage:index }
 agenda:
     path:     /agenda/
-    defaults: { _controller: websiteBundle:Agenda:agenda }
+    defaults: { _controller: websiteBundle:Agenda:index }
 feed:
     path:     /feed/
     defaults: { _controller: websiteBundle:Feed:index }
+conversation:
+    path:     /conversation/
+    defaults: { _controller: websiteBundle:Conversation:index }
