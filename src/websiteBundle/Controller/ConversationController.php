@@ -4,10 +4,10 @@ namespace websiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class AgendaController extends Controller
+class ConversationController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('websiteBundle:feed:agenda.html.twig');
+        return $this->render('websiteBundle:conversation:conversation.html.twig');
     }
 }

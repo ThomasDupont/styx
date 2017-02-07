@@ -1,9 +1,9 @@
-{% extends 'core/templates/base/__base.html' %}
+{% extends ':base:__base.html.twig' %}
 {# {% load myfilter %} #}
-{% load styxFilters %}
-{% load staticfiles %}
-{% load thumbnail %}
-{% block feedActive %} class="active" {% endblock %}
+{#% load styxFilters %#}
+{#% load staticfiles %#}
+{#% load thumbnail %#}
+{#% block feedActive %} class="active" {% endblock %#}
 
 {% block main %}
 
@@ -16,21 +16,21 @@
                     <span class="name">Messages</span>
                 </div>
                 <ul class="posts">
-                    {% for conv in conversations %}
+                    {#% for conv in conversations %}
                     <li class="post" id_conversation="{{conv.identifier}}">
                         {% if conv.post.category.image %}
                         {% thumbnail conv.post.category.image "40x40" crop="center" format="PNG" as im %}
                         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                         {% endthumbnail %}
                         {% else %}
-                        <img src="{% static 'images/user/user.jpg' %}">
+                        <img src="{{ asset('bundles/framework/images/user/user.jpg') }}">
                         {% endif %}
 
                         <span class="name">{{ conv.post.title }}</span>
                         <span class="time">{{ conv.last_message_date | date:"d M"}}</span>
                         <span class="preview">{{ conv.last_message_text }}</span>
                     </li>
-                    {% endfor %}
+                    {% endfor %#}
 
                 </ul>
             </div>
@@ -53,8 +53,8 @@
     </div>
 </div>
 <script>
-{% if identifier %}
+{#% if identifier %}
     $(document).ready(function(){  show_conversation("{{identifier}}"); });
-{% endif %}
+{% endif %#}
 </script>
 {% endblock %}
