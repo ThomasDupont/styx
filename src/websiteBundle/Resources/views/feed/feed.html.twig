@@ -1,0 +1,158 @@
+{% extends 'base/__base.html.twig' %}
+
+{# {% extends 'core/templates/base/__base.html' %} #}
+{# {% load myfilter %} #}
+{# {% load styxFilters %} #}
+{# {% load staticfiles %} #}
+{# {% load thumbnail %} #}
+{% block feedActive %} class="active" {% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/game.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-sm-8">
+
+            <!-- Localisation responsive
+
+            <div class="localisation_responsive">
+                <div class="select-box1">
+                    <label for="select-box1b" class="label select-box1 select_r">
+                        <span class="label-desc">Orléans</span>
+
+                    </label>
+                    <select id="select-box1b" class="select">
+                        <option value="Choice 1">Falkland Islands</option>
+                        <option value="Choice 2">Germany</option>
+                        <option value="Choice 3">Neverland</option>
+                    </select>
+                </div>
+            </div> -->
+
+            <!-- Nouveau post -->
+            {% include 'feed/new_post.html.twig' %}
+
+
+            <!-- Les actualités -->
+
+            <div class="blocks postlist">
+                {#{% if posts %}
+                {% for post in posts %}
+                {% if forloop.counter0 < 3 %}
+                {% print_inline_request post connectedUser%}
+                {% endif %}
+                {% endfor %}
+              {% endif %}#}
+            </div>
+            <div class="col-xs-12 text-center">
+                <span class="btn-view-more" aria-hidden="true" onclick="update_post('{#{{zone_id}}#}');"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+            </div>
+
+        </div>
+
+        <!-- Nombre Styxers + Suggestion + video youtube + liens des reseaux sociaux -->
+
+        <div class="col-md-3 col-sm-4 no_responsive">
+            <div class="nb_styxers">Déjà {#{{ nb_user_all }}#} Styxers
+                <div class="derniers_styxers">
+                    <div class="suggestions">
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                        <span class="pseudo">Mathilde Flore</span>
+                    </div>
+                    <div class="suggestions">
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                        <span class="pseudo">Ilonka Frot</span>
+                    </div>
+                    <div class="suggestions">
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                        <span class="pseudo">Manon Dubuffet</span>
+                    </div>
+                </div>
+            </div>
+            {#{% if request.user.styxuserstudent %}
+            <a href="/association/create"><div class="l_create_association">Créer mon asso</div></a>
+          {% endif %}#}
+            <a href="/jeu-concours/">
+                <div class="event_game">
+                    <div class="content">
+                        <i class="fa fa-trophy" aria-hidden="true"></i><br />
+                        Jeu Concours
+                    </div>
+                </div>
+            </a>
+            <div class="blocks">
+
+                <!-- Choix ville -->
+
+                <h4>Où es-tu ?</h4>
+
+
+                <div class="localisation">
+                    <div class="select-box2">
+                        <label for="select-box1" class="label select-box1">
+
+                            <option value="0" disabled selected>{#{{name_zone}}#}</option>
+                        </label>
+
+                        {#{{ filter_city_form.city }}#}
+
+                    </div>
+                </div>
+
+                <!-- Prochaines évènements dans cette ville -->
+
+                <h4>Prochains évènements</h4>
+                <div  class="c_events">
+                    {#{% for event in futur_event %}
+
+                    {% now "Ymd" as current_date %}
+
+                        {% if event.date|date:"Ymd" < current_date %}
+
+                        {% else %}
+                                <a href='/post/{{ event.identifier}}' class="events">
+                                    {% if event.owner.avatar %}
+                                    {% thumbnail event.owner.avatar "50x50" crop="center" format="PNG" as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                    {% endthumbnail %}
+                                    {% else %}
+                                    <img src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                                    {% endif %}
+                                    <span>{{ event.title|truncatechars:15 }}</span>
+                                    <p>En savoir plus</p>
+                                </a>
+                        {% endif %}
+                    {% endfor %}#}
+
+                </div>
+
+
+                <!-- News Styx -->
+                <h4>Bons plans</h4>
+                {#{% if name_zone == "Orléans" %}
+                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfGheAts9k1dUMr1ib50THLwF6KkpVhSU2n_zbrKXcmBXeuYw/viewform" ><img class="video_youtube" src="{{asset('bundles/framework/images/advantage/orleans_advantage.png')}}"></a>
+                {% endif %}
+                <h4>Suis les news Styx</h4>
+                {% if name_zone == "Tours" %}
+                <a href="mailto:what.asso@gmail.com" ><img class="video_youtube" src="{{asset('bundles/framework/images/advantage/event-tour.png')}}"></a>
+              {% endif %}#}
+			<iframe class="video_youtube" src="https://www.youtube.com/embed/blwI9wi19s4" frameborder="0" allowfullscreen></iframe>
+			<iframe class="video_youtube" src="https://www.youtube.com/embed/2wJDnVK07ow" frameborder="0" allowfullscreen></iframe>
+		        <iframe class="video_youtube" src="https://www.youtube.com/embed/23sSOSKbwsA" frameborder="0" allowfullscreen></iframe>
+		        <iframe class="video_youtube" src="https://www.youtube.com/embed/y23z6vEf8c0" frameborder="0" allowfullscreen></iframe>
+                <iframe class="video_youtube" src="https://www.youtube.com/embed/6Oq-ERDnWZw" frameborder="0" allowfullscreen></iframe>
+                <iframe class="video_youtube" src="https://www.youtube.com/embed/6MOyB1QpmCk" frameborder="0" allowfullscreen></iframe>
+                <iframe class="video_youtube" src="https://www.youtube.com/embed/kFAa5OL7L5w" frameborder="0" allowfullscreen></iframe>
+                <iframe class="video_youtube" src="https://www.youtube.com/embed/mdXB4cTQOpQ" frameborder="0" allowfullscreen></iframe>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'post/post/modal_post.html.twig' %}
+{% endblock %}

@@ -1,7 +1,9 @@
 website_homepage:
     path:     /
     defaults: { _controller: websiteBundle:Homepage:index }
-
 agenda:
-    path:     /agenda
+    path:     /agenda/
     defaults: { _controller: websiteBundle:Agenda:agenda }
+feed:
+    path:     /feed/
+    defaults: { _controller: websiteBundle:Feed:index }

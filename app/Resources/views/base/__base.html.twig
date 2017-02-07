@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <title></title>
 
-    {#% if not "conversation" in request.resolver_match.url_name %}
+    {% if not "conversation" in app.request.getUri %}
     <link rel="stylesheet" href="{{ asset('bundles/framework/css/bootstrap.min.css') }}" />
-    {% endif %#}
+    {% endif %}
 
     <link href='https://fonts.googleapis.com/css?family=Catamaran:600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
@@ -57,29 +57,28 @@
 
     {% endblock %}
 
-    {#% include 'core/templates/social_analytics/fb_pixel_base.html' %#}
+    {% include 'social_analytics/fb_pixel_base.html' %}
 </head>
 <body>
-{#% include 'core/templates/social_analytics/facebook.html' %#}
+{% include 'social_analytics/facebook.html' %}
 
-{#% include 'core/templates/social_analytics/twitter.html' %#}
+{% include 'social_analytics/twitter.html' %}
 
 
 <header>
-    <a href="/feed"><img class="logo" src="{{ asset('bundles/framework/images/homepage/styx-logo.png') }}"></a>
+    <a href="/feed"><img class="logo" src="{{ asset('bundles/framework/images/logo/styx-logo.png') }}"></a>
     <div class="recherche no_r_header">
         <form action="/search/" method="post">
-            {#% csrf_token %#}
             <input class="search-field" type="search" placeholder="Trouvez des étudiants..." name="result">
             <input class="search-submit" type="submit">
         </form>
     </div>
     </div>
     <a href="http://www.styx-students.com/blog/" class="l_blog icons_header text_header no_r_header" target="_blank">Blog</a>
-    <a href="/conversation"><img class="l_conversation icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/message.png') }}"></a>
-    <a href="/agenda"><img class="l_calendar icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/calendar.png') }}"></a>
+    <a href="/conversation"><img class="l_conversation icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/message.png')}}"></a>
+    <a href="/agenda"><img class="l_calendar icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/calendar.png')}}"></a>
     <a id="header_notif" href="#">
-        <img class="l_notif icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/notifs.png') }}">
+        <img class="l_notif icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/notifs.png')}}">
     </a>
     <div id="notif_dropdown">
 

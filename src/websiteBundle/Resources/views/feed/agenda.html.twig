@@ -34,7 +34,7 @@
                 <div id="datepicker"></div>
             </div>
             {#% if request.user.styxuserassociation %}
-            {% include '@website/feed/new_post.html.twig' %}
+            {% include 'feed/new_post.html.twig' %}
             {% endif %#}
             <!-- Block une année -->
             <div class="event">
@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>
-    {#% include 'post/templates/post/modal_post.html' %#}
+    {% include 'post/post/modal_post.html.twig' %}
 </div>
 <script>
 //$(document).ready(function(){
