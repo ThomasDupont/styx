@@ -1,0 +1,60 @@
+{% extends 'core/templates/base/__base.html' %}
+{# {% load myfilter %} #}
+{% load styxFilters %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% block feedActive %} class="active" {% endblock %}
+
+{% block main %}
+
+<div class="container">
+
+    <div class="wrapper">
+        <div class="container-message">
+            <div class="left">
+                <div class="top">
+                    <span class="name">Messages</span>
+                </div>
+                <ul class="posts">
+                    {% for conv in conversations %}
+                    <li class="post" id_conversation="{{conv.identifier}}">
+                        {% if conv.post.category.image %}
+                        {% thumbnail conv.post.category.image "40x40" crop="center" format="PNG" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                        {% endthumbnail %}
+                        {% else %}
+                        <img src="{% static 'images/user/user.jpg' %}">
+                        {% endif %}
+
+                        <span class="name">{{ conv.post.title }}</span>
+                        <span class="time">{{ conv.last_message_date | date:"d M"}}</span>
+                        <span class="preview">{{ conv.last_message_text }}</span>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="right">
+                <div class="top">
+
+
+                </div>
+
+                <div class="chat">
+
+                </div>
+
+                <div class="write">
+                    <input type="text" />
+                    <a href="#" class="write-link send"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+{% if identifier %}
+    $(document).ready(function(){  show_conversation("{{identifier}}"); });
+{% endif %}
+</script>
+{% endblock %}

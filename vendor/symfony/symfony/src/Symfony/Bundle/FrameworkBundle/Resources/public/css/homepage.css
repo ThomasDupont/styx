@@ -124,7 +124,7 @@ body {
     z-index:-1;
 }
 .parallax1 {
-    background: url('../images/homepage/1.jpg')no-repeat;
+    background: url(/bundles/framework/images/homepage/1.jpg)no-repeat;
     background-position: 50% 50%;
     background-size: cover;
     background-attachment: fixed;
@@ -133,7 +133,7 @@ body {
     margin-top:0px;
 }
 .parallax2 {
-    background: url('../images/homepage/2.jpg')no-repeat;
+    background: url(/bundles/framework/images/homepage/2.jpg)no-repeat;
     background-position: 50% 50%;
     background-size: cover;
     background-attachment: fixed;
@@ -141,7 +141,7 @@ body {
     height:450px;
 }
 .parallax3 {
-    background: url('../images/homepage/3.jpg')no-repeat;
+    background: url(/bundles/framework/images/homepage/3.jpg)no-repeat;
     background-position: 50% 50%;
     background-size: cover;
     background-attachment: fixed;

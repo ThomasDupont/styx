@@ -1,0 +1,109 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title
+
+    <link rel="stylesheet" href="{{ asset('bundles/framework/css/bootstrap.min.css') }}" />
+
+    <link href='https://fonts.googleapis.com/css?family=Catamaran:600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/header.css') }}"/>
+
+    {% block stylesheet %}
+
+    {% endblock %}
+
+    {% include 'social_analytics/fb_pixel_base.html' %}
+</head>
+<body>
+{% include 'social_analytics/facebook.html' %}
+
+{% include 'social_analytics/twitter.html' %}
+
+
+<header>
+    <a href="/feed"><img class="logo" src="{{ asset('bundles/framework/images/logo/styx-logo.png') }}"></a>
+    <div class="recherche no_r_header">
+        <form action="/search/" method="post">
+            <input class="search-field" type="search" placeholder="Trouvez des étudiants..." name="result">
+            <input class="search-submit" type="submit">
+        </form>
+    </div>
+    </div>
+    <a href="http://www.styx-students.com/blog/" class="l_blog icons_header text_header no_r_header" target="_blank">Blog</a>
+    <a href="/conversation"><img class="l_conversation icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/message.png')}}"></a>
+    <a href="/agenda"><img class="l_calendar icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/calendar.png')}}"></a>
+    <a id="header_notif" href="#">
+        <img class="l_notif icons_header no_r_header" src="{{ asset('bundles/framework/images/icons/notifs.png')}}">
+    </a>
+    <div id="notif_dropdown">
+
+
+    </div>
+    <a href="/profil"><div class="l_profil no_r_header">
+        {# {% thumbnail request.user.avatar "32x32" crop="center" format="PNG" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+        {% endthumbnail %} #}
+    </div></a>
+
+    <img src="{{ asset('bundles/framework/images/icons/menu.png')}}" class="l_menu lx_menu">
+    <img src="{{ asset('bundles/framework/images/icons/close_menu.png')}}" class="x_menu lx_menu">
+    <div class="recherche recherche2">
+        <input type="search" placeholder="Trouvez des étudiants...">
+        <a href="recherche.php"><div>
+            <img src="{{ asset('bundles/framework/images/icons/search.png')}}">
+        </div></a>
+    </div>
+    <div class="c_header_responsive">
+        <ul>
+            <a href="/conversation"><li>Message</li></a>
+            <a href="/agenda"><li>Calendrier</li></a>
+            <a href="/notif"><li class="l_notif2">Notifications</li></a>
+            <a href="/profil"><li>Profil</li></a>
+        </ul>
+    </div>
+</header>
+{% block main %}
+{% endblock %}
+{% include 'social_analytics/google_analytics.html' %}
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script src="{{ asset('bundles/framework/js/main.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/header.js') }}"></script>
+
+    {% if "update_profil" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/update_profil.css') }}" />
+    <script src="{{ asset('bundles/framework/js/profil.js') }}' %}"></script>
+    {% elseif "feed" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/feed.css') }}" />
+    <script src="{{ asset('bundles/framework/js/feed.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/zoom.js') }}"></script>
+    {% elseif "profil" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/profil.css') }}" />
+    <script src="{{ asset('bundles/framework/js/profil.js') }}"></script>
+    {% elseif "show_post_detail" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/feed.css') }}" />
+    <script src="{{ asset('bundles/framework/js/feed.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/zoom.js') }}"></script>
+    {% elseif "agenda" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/feed.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/agenda.css') }}" />
+    <script src="{{ asset('bundles/framework/js/zoom.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/agenda.js') }}"></script>
+    {% elseif "association" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/association.css') }}" />
+    <script src="{{ asset('bundles/framework/js/association.js') }}"></script>
+    {% elseif "conversation" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/messages.css') }}" />
+    <script src="{{ asset('bundles/framework/js/conversation.js') }}"></script>
+    {% elseif "search" in app.request.getUri %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/search.css') }}" />
+    <script src="{{ asset('bundles/framework/js/search.js') }}"></script>
+    {% endif %}
+
+</body>
+</html>
