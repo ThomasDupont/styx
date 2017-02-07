@@ -1,0 +1,127 @@
+<div class="new_post blocks">
+    <ul>
+        {% for type in types %}
+        {% if forloop.first %}
+        <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>
+        {% else %}
+        <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% for type in types %}
+
+    <form id="type_{{type.id}}" class="new_post_form" method="post" action="{{form_url}}" name="newRequest">
+
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+
+        {% if type.form.name == "RequestForm" %}
+        {% if type.form.title.errors %}
+        <div class="text-error">{{ type.form.title.errors.0}}</div>
+        {% elif type.form.category.errors %}
+        <div class="text-error">{{ type.form.category.errors.0}}</div>
+        {% elif type.form.description.errors %}
+        <div class="text-error">{{ type.form.description.errors.0}}</div>
+        {% elif type.form.rewards.errors %}
+        <div class="text-error">{{ type.form.rewards.errors.0}}</div>
+        {% endif %}
+        {{ type.form.title }}
+
+        <div class="select-box categories">
+            <label for="select-box1-cate" class="label select-box1">
+                <span class="label-desc">Catégories</span>
+            </label>
+            {{ type.form.category }}
+        </div>
+        {{ type.form.description }}
+        <p class="title-rewards">Récompenses:</p>
+        <div class="rewards">
+
+            {% for label in type.form.rewards %}
+            {{ label }}
+            {% endfor %}
+        </div>
+
+
+        {% elif type.form.name == "NewsForm" %}
+
+        {% if type.form.title.errors %}
+        <div class="text-error">{{ type.form.title.errors.0}}</div>
+        {% elif type.form.description.errors %}
+        <div class="text-error">{{ type.form.description.errors.0}}</div>
+        {% endif %}
+
+        {{ type.form.title }}
+
+        {{ type.form.description }}
+
+        {% elif type.form.name == "EventForm" %}
+
+        {% if type.form.title.errors %}
+        <div class="text-error">{{ type.form.title.errors.0}}</div>
+        {% elif type.form.category.errors %}
+        <div class="text-error">{{ type.form.category.errors.0}}</div>
+        {% elif type.form.description.errors %}
+        <div class="text-error">{{ type.form.description.errors.0}}</div>
+        {% elif type.form.date.errors %}
+        <div class="text-error">{{ type.form.date.errors.0}}</div>
+        {% elif type.form.hour.errors %}
+        <div class="text-error">{{ type.form.hour.errors.0}}</div>
+        {% elif type.form.place.errors %}
+        <div class="text-error">{{ type.form.place.errors.0}}</div>
+        {% elif type.form.avatar.errors %}
+        <div class="text-error">{{ type.form.avatar.errors.0}}</div>
+        {% endif %}
+
+        {{ type.form.title }}
+
+        <div class="select-box categories">
+            <label for="select-box1-cate" class="label select-box1">
+                <span class="label-desc">Catégories</span>
+            </label>
+            {{ type.form.category }}
+        </div>
+
+        {{ type.form.description }}
+        {{ type.form.date }}
+        {{ type.form.hour }}
+        {{ type.form.place }}
+
+        {% else %}
+        <p>Pas encore disponible !</p>
+        {% endif %}
+
+        <button class="valider_post" name="action" type="submit" value="{{type.form.name}}"> Poster </button>
+
+
+        <div class="clearfix"></div>
+    </form>
+    {% endfor %}
+
+
+</div>
+<!--
+<form>
+    <input class="titre" type="text" placeholder="Titre">
+    <div class="select-box categories">
+        <label for="select-box1a" class="label select-box1">
+            <span class="label-desc">Catégories</span>
+        </label>
+        <select id="select-box1a" class="select">
+            <option value="Choice 1">Falkland Islands</option>
+            <option value="Choice 2">Germany</option>
+            <option value="Choice 3">Neverland</option>
+        </select>
+    </div>
+    <textarea class="description" placeholder="Description"></textarea>
+    <div class="c_echange">
+        En échange de :
+        <img style="margin-left:20px" src="Images/Icons/smile.png">
+        <img src="Images/Icons/cash.png">
+        <img src="Images/Icons/beer.png">
+    </div>
+    <input class="valider_post" type="submit" value="POSTER">
+</form>
+-->
