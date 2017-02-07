@@ -87,7 +87,7 @@ header {
     border-left:1px solid #CCC;
 }
 .search-submit {
-    background: url(/static/images/icons/search.png) no-repeat;
+    background: url('../images/icons/search.png') no-repeat;
     position: absolute;
     float: right;
     top: 7px;
