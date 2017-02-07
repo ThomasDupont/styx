@@ -1,14 +1,14 @@
 <div class="new_post blocks">
     <ul>
-        {% for type in types %}
+        {#{% for type in types %}
         {% if forloop.first %}
         <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>
         {% else %}
         <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>
         {% endif %}
-        {% endfor %}
+        {% endfor %}#}
     </ul>
-    {% for type in types %}
+    {#{% for type in types %}
 
     <form id="type_{{type.id}}" class="new_post_form" method="post" action="{{form_url}}" name="newRequest">
 
@@ -99,7 +99,7 @@
         <div class="clearfix"></div>
     </form>
     {% endfor %}
-
+#}
 
 </div>
 <!--
