@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title></title>
 
-    {% if not "conversation" in app.request.getUri %}
+    {% if "conversation" not in app.request.getUri %}
     <link rel="stylesheet" href="{{ asset('bundles/framework/css/bootstrap.min.css') }}" />
     {% endif %}
 
@@ -25,7 +25,7 @@
 
     {% if "update_profil" in app.request.getUri %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/update_profil.css') }}" />
-    <script src="{{ asset('bundles/framework/js/profil.js') }}' %}"></script>
+    <script src="{{ asset('bundles/framework/js/profil.js') }}"></script>
     {% elseif "feed" in app.request.getUri %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/feed.css') }}" />
     <script src="{{ asset('bundles/framework/js/feed.js') }}"></script>
@@ -90,8 +90,8 @@
         {% endthumbnail %#}
     </div></a>
 
-    <img src="{{ asset('bundles/framework/images/icons/menu.png') }}" class="l_menu lx_menu">
-    <img src="{{ asset('bundles/framework/images/icons/close_menu.png') }}" class="x_menu lx_menu">
+    <!--<img src="{#{ asset('bundles/framework/images/icons/menu.png') }#}" class="l_menu lx_menu">
+    <img src="{#{ asset('bundles/framework/images/icons/close_menu.png') }#}" class="x_menu lx_menu">-->
     <div class="recherche recherche2">
         <input type="search" placeholder="Trouvez des étudiants...">
         <a href="recherche.php"><div>
@@ -109,6 +109,6 @@
 </header>
 {% block main %}
 {% endblock %}
-{#% include 'core/templates/social_analytics/google_analytics.html' %#}
+{% include 'social_analytics/google_analytics.html' %}
 </body>
 </html>

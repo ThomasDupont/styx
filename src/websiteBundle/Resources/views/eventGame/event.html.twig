@@ -1,0 +1,53 @@
+{% extends 'base/__base.html.twig' %}
+{# {% load myfilter %} #}
+{#% load styxFilters %#}
+{#% load staticfiles %#}
+{#% load thumbnail %#}
+{% block feedActive %} class="active" {% endblock %}
+
+    {% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/game.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    {% endblock %}
+
+{% block main %}
+{#% if user.is_authenticated %#}
+<div class="container">
+    <div class="row margin-top-event">
+        <h1>Jeu-Concours - CDF IAE Lyon 2017</h1>
+        <p>Session de votes terminée</p>
+        {#% if erreur %}
+            <div class="alert alert-warning text-center" role="alert">{{ erreur }}</div>
+        {% endif %}
+        {% for video in videos %}
+        {%if video.activated %#}
+                <div class="col-xs-12 col-md-4" style="margin-top:5px">
+                    <h2 class="text-center">{#{video.title}#}</h2>
+            <iframe class="video_youtube" src="https://{#{ video.video }#}" frameborder="0" allowfullscreen></iframe>
+                    <div class="">
+                        <form action="/jeu-concours/" method="post">
+                            {#% csrf_token %#}
+                            <input id="idVideo" type="hidden" name="idVideo" value="{#{ video.id }#}">
+                            {#% if erreur %#}
+                            <button type="submit" class="btn_orange_like relative-position" disabled value="j'aime" ><span class="text-center absolute-position like">J'aime</span><span class="absolute-position right_pull "><i class="fa fa-heart-o" aria-hidden="true"></i> {#{ video.vote }#}</span></button>
+                            {#% else %#}
+                            <button type="submit" class="btn_orange_like relative-position" disabled value="j'aime"><span class="text-center absolute-position like">J'aime</span><span class="absolute-position right_pull"><i class="fa fa-heart-o" aria-hidden="true"></i> {#{ video.vote }#}</span></button>
+
+                            {#% endif %#}
+                        </form>
+                    </div>
+        </div>
+        {#% endif %}
+        {% endfor %#}
+    </div>
+</div>
+{#% else %#}
+<div class="container">
+    <div class="row margin-top-event">
+        Veuillez vous inscrire !
+    </div>
+</div>
+{#% endif %#}
+
+{% endblock %}

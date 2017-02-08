@@ -256,6 +256,11 @@ h3 {
 .valider_post:hover {
     background:#24669f;;
 }
+.actus .pt1 img {
+    margin-top:20px;
+    width:100px;
+    height:100px;
+}
 
 /* Responsive */
 

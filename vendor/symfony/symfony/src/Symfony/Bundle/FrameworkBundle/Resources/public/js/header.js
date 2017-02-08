@@ -136,7 +136,7 @@ $(document).ready(function () {
                         avatar = notif['actor']['avatar'];
                     }
                     else{
-                        avatar = '/static/images/user/user.jpg';
+                        avatar = '/bundles/framework/images/user/user.jpg';
                     }
                     notif_resume.children('img').attr('src', avatar);
                     if(notif['actor']['styxuserstudent']['firstname']){

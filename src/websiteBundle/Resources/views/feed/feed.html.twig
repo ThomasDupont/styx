@@ -1,6 +1,5 @@
 {% extends 'base/__base.html.twig' %}
 
-{# {% extends 'core/templates/base/__base.html' %} #}
 {# {% load myfilter %} #}
 {# {% load styxFilters %} #}
 {# {% load staticfiles %} #}
@@ -134,13 +133,12 @@
 
                 <!-- News Styx -->
                 <h4>Bons plans</h4>
-                {#{% if name_zone == "Orléans" %}
+                {#% if name_zone == "Orléans" %}
                 <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfGheAts9k1dUMr1ib50THLwF6KkpVhSU2n_zbrKXcmBXeuYw/viewform" ><img class="video_youtube" src="{{asset('bundles/framework/images/advantage/orleans_advantage.png')}}"></a>
-                {% endif %}
-                <h4>Suis les news Styx</h4>
-                {% if name_zone == "Tours" %}
+                {% elseif name_zone == "Tours" %}
                 <a href="mailto:what.asso@gmail.com" ><img class="video_youtube" src="{{asset('bundles/framework/images/advantage/event-tour.png')}}"></a>
-              {% endif %}#}
+                {% endif %#}
+                <h4>Suis les news Styx</h4>
 			<iframe class="video_youtube" src="https://www.youtube.com/embed/blwI9wi19s4" frameborder="0" allowfullscreen></iframe>
 			<iframe class="video_youtube" src="https://www.youtube.com/embed/2wJDnVK07ow" frameborder="0" allowfullscreen></iframe>
 		        <iframe class="video_youtube" src="https://www.youtube.com/embed/23sSOSKbwsA" frameborder="0" allowfullscreen></iframe>

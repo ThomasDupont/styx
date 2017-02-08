@@ -155,7 +155,7 @@ function update_followers(identifier, way){
                             html += '<img class="pp" src="' + user['avatar'] + '">';
                         }
                         else{
-                            html += '<img class="pp" src="/static/images/user/user.jpg">';
+                            html += '<img class="pp" src="/bundles/framework/images/user/user.jpg">';
                         }
 
                         html += '<span class="pseudo">';

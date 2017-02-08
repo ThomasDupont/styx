@@ -1,0 +1,192 @@
+{% extends 'base/__base.html.twig' %}
+{#% load staticfiles %}
+{% load thumbnail %}
+{% load styxFilters %#}
+
+{% block main %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-sm-6">
+            <div class="blocks">
+                <div class="left">
+                    {#% if user.avatar %}
+                    {% thumbnail user.avatar "230x230" crop="center" format="PNG" as im %#}
+                    <img class="pp" src="{#{ im.url }}" width="{{ im.width }}" height="{{ im.height }#}">
+                    {#% endthumbnail %}
+                    {% else %#}
+                    <img class="pp" style="height:auto; width:auto; max-width:230px; max-height:230px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                    {#% endif %#}
+                    <div class="c_reseaux">
+                        <h4>Nous contacter</h4>
+                        <div class="reseaux">
+                            <div class="num">
+                                <img src="{{ asset('bundles/framework/images/icons/phone.png') }}">
+                            </div>
+
+                            {#% if user.mobile %}
+                            <span>{{user.mobile}}</span>
+                            {% else %#}
+                            <span>Non renseigné</span>
+                            {#% endif %#}
+                        </div>
+                        <div class="reseaux">
+                            <div class="mail">
+                                <img src="{{ asset('bundles/framework/images/icons/mail.png') }}">
+                            </div>
+                            <span>{#{user.email}#}</span>
+                        </div>
+                        <div class="reseaux">
+
+                            <div class="fb">
+                                <img src="{{ asset('bundles/framework/images/icons/facebook.png') }}">
+                            </div>
+                            {#% if social.facebook %}
+                            <a href="{{social.facebook}}"><span>Page Facebook</span></a>
+                            {% else %#}
+                            <span>Non renseigné</span>
+                            {#% endif %#}
+                        </div>
+                        <div class="reseaux">
+                            <div class="twitter">
+                                <img src="{{ asset('bundles/framework/images/icons/twitter.png') }}">
+                            </div>
+                            {#% if social.twitter %}
+                            <a href="{{social.twitter}}"><span>Compte Twitter</span></a>
+                            {% else %#}
+                            <span>Non renseigné</span>
+                            {#% endif %#}
+                        </div>
+                        <div class="reseaux" style="border:none">
+                            <div class="youtube">
+                                <img src="{{ asset('bundles/framework/images/icons/youtube.png') }}">
+                            </div>
+                            {#% if social.youtube %}
+                            <a href="{{social.youtube}}">
+                                <span>Chaîne Youtube</span></a>
+                            {% else %#}
+                            <span>Non renseigné</span>
+                            {#% endif %#}
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <h2 class="pseudo">{#{ user.name }#}</h2>
+                        <span class="date">Styxer depuis le {#{user.created_at}#}</span>
+                            <span class="local sous_titres">
+                                <img class="local" src="{{ asset('bundles/framework/images/icons/local.png') }}">
+                                {#% for zone in user.zones.all %}
+                                {{zone.name}}
+                                {% endfor %#}
+                            </span>
+                        {#% if permissions.update_profil %}
+                        <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>
+                        <a href="/update_profil"><div class="modif_profil">Modifier</div></a>
+                        {% elif permissions.follow %}
+                        {% if not datas.is_following %}
+                        <div class="modif_profil unfollow">Suivre</div>
+                        {% else %}
+                        <div class="modif_profil follow">Ne plus suivre</div>
+                        {% endif %}
+                        {% endif %#}
+
+                        <div class="rating sous_titres">
+                            {#% if user_mark == 4 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 5 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            {% elif user_mark == 3 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 2 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 1 %}
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 0 %}
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% endif %#}
+                        </div>
+                        <ul class="c_actions">
+                            <li style="border:none" class="l_c_coms">Commentaires</li>
+                            <li class="l_c_demandes">Demandes</li>
+                            <li class="l_c_services">Services rendus</li>
+                        </ul>
+                    </div>
+                    <div class="bottom">
+                        <content class="coms">
+                            <div class="actions">
+                                {#% for a in avis %}
+                                {% print_inline_avis a%}
+                                {% endfor %#}
+                            </div>
+                        </content>
+
+                        <content class="demandes">
+                            <div class="actions">
+                                {#% for request in requests %}
+                                {% print_light_request request %}
+                                {% endfor %#}
+                            </div>
+                        </content>
+
+                        <content class="services">
+                            <div class="actions">
+                                {#% for avis in request_savior_service %}
+                                {% print_light_request avis.request %}
+                                {% endfor %#}
+                            </div>
+                        </content>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="c_membres blocks">
+                <h4>Membres</h4>
+                {#% for member in user.member_entity.all %}
+                <div class="followers">
+                    {% if member.user.avatar %}
+                    {% thumbnail member.user.avatar "50x50" crop="center" format="PNG" as im %}
+                    <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                    {% endthumbnail %}
+                    {% else %}
+                    <img class="pp" style="height:auto; width:auto; max-width:50px; max-height:50px;" src="{% static 'images/user/user.jpg' %}">
+                    {% endif %}
+
+                    {% if member.user_name %}
+                    <span class="pseudo">{{ member.user_name }} - {{ member.role }}</span>
+                    {% endif %}
+
+                </div>
+                {% endfor %#}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -52,7 +52,7 @@ function update_categories(id_type){
 
 function change_styxers(){
 
-    var suggestions = '<div class="suggestions"><a href="/profil/"><img class="pp" src="/static/images/user/user.jpg"><span class="pseudo">' + loader_svg + '</span></a></div>';
+    var suggestions = '<div class="suggestions"><a href="/profil/"><img class="pp" src="/bundles/framework/images/user/user.jpg"><span class="pseudo">' + loader_svg + '</span></a></div>';
     suggestions += suggestions;
     suggestions += suggestions;
     $(".derniers_styxers").html(suggestions);
@@ -74,7 +74,7 @@ function change_styxers(){
                          suggestions += '<img class="pp" src="' + user['avatar'] + '">';
                      }
                      else{
-                         suggestions += '<img class="pp" src="/static/images/user/user.jpg">';
+                         suggestions += '<img class="pp" src="/bundles/framework/images/user/user.jpg">';
             }
 
             suggestions += '<span class="pseudo">' + user['styxuserstudent']['firstname'] + ' ' + user['name'] + '</span>';
@@ -171,7 +171,7 @@ function update_post(idZone){
                         if (post['category']['image']){
                             html +='<img class="category" src="'+ post['category']['image'] +'" width="100" height="100">'
                         }else{
-                            html +='<img class="category" src="/static/images/user/user.jpg">'
+                            html +='<img class="category" src="/bundles/framework/images/user/user.jpg">'
                         }
 
 
@@ -189,16 +189,16 @@ function update_post(idZone){
                         html +='<div class="pt2">'
                             html +='<div class="left">'
                                 html +='<div class="coms action">'
-                                    html +='<img src="static/images/icons/coms.png">'
+                                    html +='<img src="/bundles/framework/images/icons/coms.png">'
                                     html +='<span class="cpt">'+post['count_comment']+'</span>'
                                 html +='</div>'
                                 html +='<div class="vues action">'
-                                    html +='<img src="static/images/icons/vues.png">'
+                                    html +='<img src="/bundles/framework/images/icons/vues.png">'
                                     html +='<span class="cpt">'+post['post_interest']+'</span>'
                                 html +='</div>'
                                 if(post['comment']){
                                     html +='<div class="partages action">'
-                                        html +='<img src="static/images/icons/partages.png">'
+                                        html +='<img src="/bundles/framework/images/icons/partages.png">'
                                         html +='<span class="cpt">12</span>'
                                     html +='</div>'
 
@@ -209,7 +209,7 @@ function update_post(idZone){
                                     if(post['owner']['avatar']){
                                         html +='<img class="category img'+post['owner']['identifier']+'" src="'+post['category']['image']+'" width="'+post['category']['image']['width']+'" height="'+post['category']['image']['height']+'">'
                                     }else{
-                                        html +='<img class="pp img'+post['owner']['identifier']+'" src="static/images/user/user.jpg">'
+                                        html +='<img class="pp img'+post['owner']['identifier']+'" src="/bundles/framework/images/user/user.jpg">'
                                     }
                                     html +='<span class="pseudo ' +post['owner']['identifier']+'"></span>'
                                 html +='</a>'

@@ -89,7 +89,7 @@ input:focus {
     left:0;
     width:100%;
     height:340px;
-    background:url('/static/images/background/cover_asso.jpg');
+    background: url(/bundles/framework/images/background/cover_asso.jpg);
     -webkit-background-size: cover;
     background-size: cover;
     background-position: x y, x y;

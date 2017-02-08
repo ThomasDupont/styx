@@ -62,7 +62,7 @@ function show_conversation(id_conversation){
                         info += '<a href="/profil/' + user['identifier']+ '"><img src="' + user['avatar'] + '" title="' + user['name'] + '"></a>';
                     }
                     else{
-                        info += '<a href="/profil/' + user['identifier']+ '"><img src="/static/user/user.jpg" title="' + user['name'] + '"></a>';
+                        info += '<a href="/profil/' + user['identifier']+ '"><img src="/bundles/framework/images/user/user.jpg" title="' + user['name'] + '"></a>';
                     }
                 }
              });

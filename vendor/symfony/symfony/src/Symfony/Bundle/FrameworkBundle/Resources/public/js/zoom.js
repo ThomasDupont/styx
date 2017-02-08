@@ -63,7 +63,7 @@ function set_user_info(id){
                 $( ".zoom").find( ".pt2 .right img" ).attr('src', data['avatar']);
             }
             else {
-                $( ".zoom").find( ".pt2 .right img" ).attr('src', '/static/images/user/user.jpg');
+                $( ".zoom").find( ".pt2 .right img" ).attr('src', '/bundles/framework/images/user/user.jpg');
             }
             $( ".zoom").find( ".pt2 .right a" ).attr('href', '/profil/' + data['identifier']);
         },
@@ -94,7 +94,7 @@ function get_comment(id){
                             comments += '<img class="pp" src="' + comment['user']['avatar'] + '">';
                         }
                         else{
-                            comments += '<img class="pp" src="/static/images/user/user.jpg">';
+                            comments += '<img class="pp" src="/bundles/framework/images/user/user.jpg">';
                         }
                         comments += '<a href="/profil/' +  comment['user']['identifier'] + '">';
                         comments += '<span class=pseudo>';
@@ -137,7 +137,7 @@ function reset_modal(){
     $( ".zoom").find( ".pt2 .left .vues.action .cpt" ).text('');
     $( ".zoom").find( ".pt2 .right .pseudo" ).text('');
     $('.pt3').remove();
-    $( ".zoom").find( ".pt2 .right img" ).attr('src', '/static/images/user/user.jpg');
+    $( ".zoom").find( ".pt2 .right img" ).attr('src', '/bundles/framework/images/user/user.jpg');
     $('.un_com').remove();
     $('.zoom .pt1').html($('.zoom .pt1').html() + loader_svg);
 }
@@ -228,7 +228,7 @@ function show_comment_children(div_clicked){
                          children += '<img class="pp" src="' + comment['user']['avatar'] + '">';
                      }
                      else{
-                         children += '<img class="pp" src="/static/images/user/user.jpg">';
+                         children += '<img class="pp" src="/bundles/framework/images/user/user.jpg">';
                      }
 
 

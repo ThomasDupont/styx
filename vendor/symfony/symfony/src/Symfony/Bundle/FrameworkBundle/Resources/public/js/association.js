@@ -17,7 +17,7 @@ $(document).ready(function() {
             var div = '<div class="membre">';
             div += '<input type="text" id="id_form-' + (x - 1) + '-user_name" name="form-' + (x - 1) + '-user_name" placeholder="Nom du membre">';
             div += '<input class="poste_membre"  type="text" id="id_form-' + (x - 1) + '-role" name="form-' + (x - 1) + '-role" placeholder="Poste du membre">';
-            div += '<div class="remove"><img src="/static/images/icons/trash.png"></div></div>';
+            div += '<div class="remove"><img src="/bundles/framework/images/icons/trash.png"></div></div>';
             $("#id_form-TOTAL_FORMS").attr('value', x);
             $(wrapper).append(div);
         }

@@ -59,15 +59,15 @@ function html_event(event){
     html += '<div class="pt2">';
     html += '<div class="left">';
     html += '<div class="coms action">';
-    html += '<img src="/static/images/icons/coms.png">';
+    html += '<img src="/bundles/framework/images/icons/coms.png">';
     html += '<span class="cpt">' + event['count_comment'] + '</span>';
     html += '</div>';
     html += '<div class="vues action">';
-    html += '<img src="/static/images/icons/vues.png">';
+    html += '<img src="/bundles/framework/images/icons/vues.png">';
     html += '<span class="cpt">' + event['post_interest'] + '</span>';
     html += '</div>';
     html += '<div class="partages action">';
-    html += '<img src="/static/images/icons/partages.png">';
+    html += '<img src="/bundles/framework/images/icons/partages.png">';
     html += '<span class="cpt">0</span>';
     html += '</div>';
     html += '</div>';
@@ -76,7 +76,7 @@ function html_event(event){
         html += '<img class="pp" src="' + event['owner']['avatar'] + '">';
     }
     else{
-        html += '<img class="pp" src="/static/images/user/user.jpg">';
+        html += '<img class="pp" src="/bundles/framework/images/user/user.jpg">';
     }
 
     html += '<span class="pseudo">' + event['owner']['name'] + '</span>';

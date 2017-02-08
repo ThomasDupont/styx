@@ -21,12 +21,12 @@ function update_following( follow_div, status){
             if (data['status'] == 'removed'){
                 follow_div.removeClass('deja_follow');
                 follow_div.children('p').text('Suivre');
-                follow_div.children('img').attr('src', '/static/images/icons/follow.png');
+                follow_div.children('img').attr('src', '/bundles/framework/images/icons/follow.png');
             }
             else{
                follow_div.addClass('deja_follow')
                follow_div.children('p').text('Suivi');
-               follow_div.children('img').attr('src', '/static/images/icons/check.png');
+               follow_div.children('img').attr('src', '/bundles/framework/images/icons/check.png');
             }
         },
         // Si la requête est incorrect, on affiche le message du problème
@@ -47,11 +47,11 @@ $(document).ready(function(){
 
     $(document).on("mouseover", ".deja_follow", function () {
         $(this).children('p').text("Ne plus suivre");
-        $(this).children('img').attr('src', '/static/images/icons/cross.png');
+        $(this).children('img').attr('src', '/bundles/framework/images/icons/follow.png');
     });
 
     $(document).on("mouseout", ".deja_follow", function () {
         $(this).children('p').text("Suivi");
-        $(this).children('img').attr('src', '/static/images/icons/check.png');
+        $(this).children('img').attr('src', '/bundles/framework/images/icons/check.png');
     });
 });

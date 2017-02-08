@@ -1,0 +1,188 @@
+{% extends 'base/__base.html.twig' %}
+{#% load staticfiles %}
+{% load thumbnail %}
+{% load styxFilters %#}
+
+{% block main %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-sm-6">
+            <div class="blocks">
+                <div class="left">
+                    {#% if user.avatar %}
+                    {% thumbnail user.avatar "230x230" crop="center" format="PNG" as im %}
+                    <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                    {% endthumbnail %}
+                    {% else %#}
+                    <img style="height:auto; width:auto; max-width:230px; max-height:230px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                    {#% endif %#}
+                    <div class="savoir">
+                        <h4>Ce que je sais faire</h4>
+                        {#% if categoryService %}
+                        {% for c in categoryService %#}
+                                <span class="space-1">
+
+                                    {#% if c.image %}
+                                    <img src="{{c.image.url}}" class="profil-icone" title="{{c.nameSkill}}" alt="{{c.nameSkill}}">
+                                    {% else %}
+                                        [{{c.nameSkill}}]
+                                    {% endif %#}
+
+                                </span>
+
+                        {#% endfor %}
+
+                        {% else %#}
+                        <div class="text"> “Ne sait rien faire. Assisté(e) !”</div>
+                        {#% endif %#}
+                    </div>
+                    <div class="avoir">
+
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <h2 class="pseudo"> {#{user.styxuserstudent.firstname }} {{ user.name }#} </h2>
+                        <span class="date">Styxer depuis le {#{user.styxuserstudent.created_at}#}</span>
+                            <span class="school sous_titres">
+                                <img class="school" src="{{ asset('bundles/framework/images/icons/school.png') }}">
+                                {#{user.styxuserstudent.school.name}#}
+                            </span>
+                            <span class="local sous_titres">
+                                <img class="local" src="{{ asset('bundles/framework/images/icons/local.png') }}">
+                                {#{user.styxuserstudent.school.zone.name}#}
+                            </span>
+                        {#% if permissions.update_profil %#}
+                            <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>
+                            <a href="/update_profil"><div class="modif_profil">Modifier</div></a>
+                        {#% elif permissions.follow %}
+                        {% if not datas.is_following %}
+                            <div class="modif_profil unfollow">Suivre</div>
+                        {#% else %}
+                            <div class="modif_profil follow">Ne plus suivre</div>
+                        {% endif %}
+                        {% endif %#}
+                        <img>
+                        <div class="rating sous_titres">
+                            {#% if user_mark == 4 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 5 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            {% elif user_mark == 3 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 2 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 1 %}
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user_mark == 0 %}
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% endif %#}
+                        </div>
+                        <ul class="c_actions">
+                            <li style="border:none" class="l_c_coms">Commentaires</li>
+                            <li class="l_c_demandes">Demandes</li>
+                            <li class="l_c_services">Services rendus</li>
+                        </ul>
+                    </div>
+                    <div class="bottom">
+                        <content class="coms">
+
+                            {#% for a in avis %}
+                            {% print_inline_avis a %}
+                            {% endfor %#}
+
+                        </content>
+
+                        <content class="demandes">
+                            <div class="actions">
+                                {#% for request in requests %}
+                                {% print_light_request request %}
+                                {% endfor %#}
+                            </div>
+                        </content>
+
+                        <content class="services">
+                            <div class="actions">
+                                {#% for request in request_savior %}
+                                {% print_light_request request %}
+                                {% endfor %#}
+                            </div>
+                        </content>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            {#% if permissions.update_profil %#}
+            <div class="blocks parrainages">
+                <h4>Invite tes amis étudiants</h4>
+                <div class="p_fb partages" onclick="share_on_facebook_go('{#{user.identifier}#}', '', '', '', '{#{user.get_tiny_url_sponsorship}#}', 'sponsorship');">
+                    <img>
+                    Partager via Facebook
+                </div>
+
+                <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.styx-students.com%2F{#{user.get_tiny_url_sponsorship}#}&ref_src=twsrc%5Etfw&text=%23BonPlan%20%E2%96%B6%EF%B8%8E%20Rejoins-moi%20sur%20Styx%2C%20le%20site%20de%20partage%20g%C3%A9olocalis%C3%A9%20entre%20%23%C3%A9tudiants%20!%20%23EnPlusCestGratuit&tw_p=tweetbutton&url=http%3A%2F%2Fwww.styx-students.com%2F{#{user.get_tiny_url_sponsorship}#}&via=styx_fr">
+                    <div class="p_tw partages" >Partager via Twitter</div>
+
+                </a>
+                <div class="p_lien partages">
+                    http://www.styx-students.com
+                </div>
+            </div>
+            {#% endif %#}
+            <div class="c_followers blocks">
+                <h4>Followers</h4>
+                <div class="following_list">
+                    {#% for user in user.styxuserstudent.following.all %}
+                    {% if forloop.counter0 < 3 %}
+                    <a class="followers" href="/profil/{{user.identifier}}">
+                        {% if user.avatar %}
+                        {% thumbnail user.avatar "50x50" crop="center" format="PNG" as im %}
+                        <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                        {% endthumbnail %}
+                        {% else %}
+                        <img class="pp" src="{% static 'images/user/user.jpg' %}">
+                        {% endif %}
+                        <span class="pseudo">{{ user.styxuserstudent.firstname}} {{ user.name }}</span>
+                    </a>
+                    {% endif %}
+                    {% endfor %#}
+                </div>
+                <nav>
+                    <ul class="pager">
+                        <li class="previous"><span class="glyphicon glyphicon-menu-left" aria-hidden="true" onclick="update_followers('{#{user.identifier}#}', 'previous');"></span></li>
+                        <li class="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true" onclick="update_followers('{#{user.identifier}#}', 'next');"></span></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

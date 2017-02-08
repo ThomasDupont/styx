@@ -1,0 +1,80 @@
+{% extends 'base/__base.html.twig' %}
+{#% load staticfiles %#}
+{% block main %}
+
+<content>
+    <div class="top">
+        <header></header>
+        <img src="">
+    </div>
+    <form role="form" action="{#{request.get_full_path}#}" method="post" enctype="multipart/form-data">
+        {#% csrf_token %}
+        {% for hidden in create_association.hidden_fields %}
+        {{ hidden }}
+        {% endfor %#}
+
+        <!-- Inscription Basique -->
+
+        <div class="form" id="form1">
+            <img class="pp" src="">
+            <img class="modif_pp" src="{{ asset('bundles/framework/images/icons/modif_pp.png') }}" />
+            {#% if create_association_form.email.errors %}
+                <div class="text-error">{{ create_association_form.email.errors.0}}</div>
+            {% endif %}
+            {{ create_association_form.avatar }}
+            {{ create_association_form.name }}
+            {{ create_association_form.email }}
+            {{ create_association_form.adress }}
+            {{ create_association_form.mobile }}
+            {{ create_association_form.password }}
+            {{ create_association_form.password2 }}
+            {{ create_association_form.acceptedCGU }#}
+            <div class="cgu">J'accepte <a target="_blank" href="/private_policy">les conditions générales d'utilisations.</a> </div>
+            <div class="valid valid1 margin-bottom-back">Étape suivante</div>
+            <a href="/">< Retour sur le site</a>
+        </div>
+
+        <!-- Membres -->
+
+        <div class="form" id="form2">
+            <h2>Membre(s) de l'association</h2>
+            {#{ member_form_set.management_form }}
+            {% for member_form in member_form_set %#}
+            <div class="membre">
+                {#{ member_form.user_name }}
+                {{ member_form.role #}
+                <div class="remove"><img src="{{ asset('bundles/framework/images/icons/trash.png') }}"></div>
+            </div>
+
+            {#% endfor %#}
+
+            <div class="input_fields_wrap"></div>
+            <button class="ajout_membre">Ajouter un membre</button>
+            <div class="valid valid2 margin-bottom-back">Étape suivante</div>
+            <a href="/">< Retour sur le site</a>
+        </div>
+
+        <!-- Réseaux sociaux -->
+
+        <div class="form" id="form3">
+            <h2>Autres contacts</h2>
+            <div class="reseaux">
+                <div id="facebook">
+                    <img src="{{ asset('bundles/framework/images/icons/facebook.png') }}">
+                    {#{ social_form.facebook }#}
+                </div>
+                <div id="twitter">
+                    <img src="">
+                    {#{ social_form.twitter }#}
+                </div>
+                <div id="instagram">
+                    <img src="">
+                    {#{ social_form.youtube }#}
+                </div>
+            </div>
+            <input class="valid valid3 margin-bottom-back" type="submit" value="Terminer l'inscription">
+            <a href="/">< Retour sur le site</a>
+        </div>
+    </form>
+</content>
+{% endblock %}

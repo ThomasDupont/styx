@@ -1239,7 +1239,7 @@ $(document).ready(function(){
                                     strline += '<a href="/profil/' + data.requests[i].owner_identifier + '"> <img src="/media/' + data.requests[i].owner_picture_url + '" style="height:70px; width:70px;"></a>';
                                 }
                                 else{
-                                    strline += '<a href="/profil/' + data.requests[i].owner_identifier + '"> <img src="/static/images/user.jpg" style="height:70px; width:70px;"></a>';
+                                    strline += '<a href="/profil/' + data.requests[i].owner_identifier + '"> <img src="/bundles/framework/images/user.jpg" style="height:70px; width:70px;"></a>';
                                 }
 
                                 strline += '</div><!-- --><div class="col-md-1 cursor-pointer vcenter-not">';
@@ -1911,7 +1911,7 @@ function set_comment_children(val){
         text += '<img class="request-owner-picture" src="' + val['user']['avatar'] + '" width="30" height="32">';
     }
     else{
-        text += '<img class="request-owner-picture" src="/static/images/user/user.jpg" style="height:30px; width:32px;">';
+        text += '<img class="request-owner-picture" src="/bundles/framework/images/user/user.jpg" style="height:30px; width:32px;">';
     }
     text += '</a>';
     text += '</div>';
@@ -1957,7 +1957,7 @@ function set_comment_answer_form(id_comment){
     text += '<div id="answer-form-' + id_comment + '" class="row">';
 
     text += '<div class="col-md-1">';
-    text += '<img class="request-owner-picture" src="/static/images/user/user.jpg" style="height:30px; width:32px;">';
+    text += '<img class="request-owner-picture" src="/bundles/framework/images/user/user.jpg" style="height:30px; width:32px;">';
     text += '</div>'; // end col div
 
     text += '<div class="col-md-5">';
