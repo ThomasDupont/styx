@@ -29,6 +29,5 @@
         <join-column name="group_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="video" target-entity="WebsiteStyxuserbase" mapped-by="owner"/>
   </entity>
 </doctrine-mapping>

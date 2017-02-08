@@ -123,19 +123,4 @@ class WebsiteStyxuserbase
      */
     private $group;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="coreBundle\Entity\WebsiteStyxuserbase", mappedBy="owner")
-     */
-    private $video;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->video = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 }
