@@ -118,20 +118,20 @@
             {#<div class="text-error">Votre adresse mail et votre mot de passe ne correspondent pas.</div>#}
             {#{% endif %}#}
 
-            <form method="post" action="/connexion/">
+            <form method="post" action="{{ path('fos_user_security_check') }}">
                 {#{% csrf_token %}#}
                 {#{{loginForm.non_field_errors }}#}
                 {#{% for hidden in loginForm.hidden_fields %}#}
                 {#{{ hidden }}#}
                 {#{% endfor %}#}
 
-                {#{{ loginForm.email }}#}
-                {#{{ loginForm.password}}#}
+                <input type="email" name="_email" placeholder="Email">
+                <input type="text" name="_password" placeholder="Mot de passe">
 
                 {#<a id="facebook-login" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/connexion_with_facebook&method=login"></a>#}
 
                 <div class="facebook-login">Connexion via Facebook</div>
-                <input class="valid" type="submit" value="Se connecter">
+                <input class="valid" type="submit" value="Se connecter" name="_submite">
 
                 {#<input type="hidden" name="next" value="{{ next }}" />#}
                 <a href="user/password/reset"><span>Mot de passe oublié ?</span></a>
@@ -164,6 +164,9 @@
                         <label for="select-box1" class="label select-box1">
                             <span class="label-desc">Département</span>
                         </label>
+                        {{ form_start(formEmail) }}
+                        {{ form_widget(formEmail) }}
+                        {{ form_end(formEmail) }}
                         {#{{ signUpForm.department }}#}
                     </div>
 
