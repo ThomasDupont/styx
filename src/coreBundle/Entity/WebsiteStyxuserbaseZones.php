@@ -3,6 +3,7 @@
 namespace coreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use coreBundle\Entity\WebsiteZone;
 
 /**
  * WebsiteStyxuserbaseZones
@@ -12,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WebsiteStyxuserbaseZones
 {
+
+  public function __construct($styxuserbase) {
+    $this->id = 1;
+    $this->zone = new WebsiteZone();
+    $this->styxuserbase = $styxuserbase;
+  }
     /**
      * @var integer
      *
@@ -42,5 +49,15 @@ class WebsiteStyxuserbaseZones
      */
     private $styxuserbase;
 
+    public function getStyxuserbase() {
+      return $this->styxuserbase;
+    }
 
+    public function getZone() {
+      return $this->zone;
+    }
+
+    public function getId() {
+      return $this->id;
+    }
 }

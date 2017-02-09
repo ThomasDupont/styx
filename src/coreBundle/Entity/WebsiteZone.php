@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WebsiteZone
 {
+  public function __construct() {
+    $this->id = 1;
+    $this->name = "Tours";
+    $this->zipCode = "37000";
+    $this->activated = true;
+  }
     /**
      * @var string
      *
@@ -43,5 +49,7 @@ class WebsiteZone
      */
     private $id;
 
-
+    public function getName() {
+      return $this->name;
+    }
 }

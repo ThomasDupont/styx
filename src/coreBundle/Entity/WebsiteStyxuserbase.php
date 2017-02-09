@@ -3,6 +3,7 @@
 namespace coreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use coreBundle\Entity\WebsiteGroup;
 
 /**
  * WebsiteStyxuserbase
@@ -12,6 +13,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WebsiteStyxuserbase
 {
+
+  public function __construct($group) {
+    $this->id = 1;
+    $this->password = "password";
+    $this->identifier = "identifier1";
+    $this->createdAt = "2016-02-15 15:15:15+02";
+    $this->email = "jeanjjj@daz.fr";
+    $this->name = "yay";
+    $this->emailConfirmed = true;
+    $this->isAdmin = true;
+    $this->group = $group;
+  }
+
     /**
      * @var string
      *
@@ -123,19 +137,12 @@ class WebsiteStyxuserbase
      */
     private $group;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="coreBundle\Entity\WebsiteStyxuserbase", mappedBy="owner")
-     */
-    private $video;
+    public function getGroup() {
+      return $this->group;
+    }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->video = new \Doctrine\Common\Collections\ArrayCollection();
+    public function getId() {
+      return $this->id;
     }
 
 }
