@@ -125,8 +125,8 @@
                 {#{{ hidden }}#}
                 {#{% endfor %}#}
 
-                <input type="email" name="_email" placeholder="Email">
-                <input type="text" name="_password" placeholder="Mot de passe">
+                <input type="email" name="_email" placeholder="Email" class="form_b_text">
+                <input type="text" name="_password" placeholder="Mot de passe" class="form_b_text">
 
                 {#<a id="facebook-login" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/connexion_with_facebook&method=login"></a>#}
 
@@ -164,9 +164,6 @@
                         <label for="select-box1" class="label select-box1">
                             <span class="label-desc">Département</span>
                         </label>
-                        {{ form_start(formEmail) }}
-                        {{ form_widget(formEmail) }}
-                        {{ form_end(formEmail) }}
                         {#{{ signUpForm.department }}#}
                     </div>
 
@@ -177,8 +174,8 @@
                         {#{{ signUpForm.city }}#}
                     </div>
 
-                    {#{{ signUpForm.school }}#}
-                    {#{{ signUpForm.acceptedCGU }}#}
+                    {{ form_widget(formEmail.school, {'attr': {'class': 'form_b_text ui-autocomplete-input', 'placeholder': 'Ton école'}}) }}
+                    <label for="id_acceptedCGU"></label><input type="checkbox" name="fos_user_registration_cgu" id="id_acceptedCGU"/>
                     <div class="cgu">J'accepte <a target="_blank" href="/private_policy" >les conditions générales d'utilisations.</a> </div>
                     <div class="valid"> Suite </div>
 
@@ -190,13 +187,11 @@
 
                     <div class="facebook-sign-up">Inscription via Facebook</div>
                     <p>OU</p>
-                    {#{{ signUpForm.firstname }}#}
-                    {#{{ signUpForm.name }}#}
-                    {#{{ signUpForm.email }}#}
-                    {#{{ signUpForm.password }}#}
-                    {#{{ signUpForm.password2 }}#}
-
-
+                    {{ form_widget(formEmail.firstname, {'attr': {'class': 'form_b_text form_g_text', 'placeholder': 'Prénom'}}) }}
+                    {{ form_widget(formEmail.name, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Nom'}}) }}
+                    {{ form_widget(formEmail.email, {'attr': {'class': 'form_b_text', 'placeholder': 'Email'}}) }}
+                    {{ form_widget(formEmail.password, {'attr': {'class': 'form_b_text form_g_text', 'placeholder': 'Mot de passe'}}) }}
+                    <input class="form_b_text form_d_text" placeholder="Confirmation du mot de passe" name="fos_user_registration_confirm_password">
 
                     <div class="valid retour"> ◄ </div>
                     <input class="valid" type="submit" value="M'inscrire">

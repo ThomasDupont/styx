@@ -4,6 +4,10 @@ namespace websiteBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,16 +17,16 @@ class RegistrationFormType extends AbstractType
     {
         parent::buildForm($builder, $options);
         $builder
-            ->add('city', 'text',array('label'=>'Prénom'))
-            ->add('school', 'text',array('label'=>'École'))
-            ->add('firstname', 'text',array('label'=>'Prénom'))
-            ->add('name', 'text',array('label'=>'Nom'))
-            ->add('email', 'text',array('label'=>'Email'))
-            ->add('password', 'password',array('label'=>'Mot de passe'))
-            ->add('password', 'password',array('label'=>'Confirmation du mot de passe'))
-            ->add('valider', 'submit', array('label'=>'s\'inscrire'));
+//            ->add('city', 'text',array('label'=>'Prénom'))
+            ->add('school', TextType::class,array('label'=>'École'))
+//            ->add('cgu', CheckboxType::class,array('label'=>'CGU'))
+            ->add('firstname', TextType::class,array('label'=>'Prénom'))
+            ->add('name', TextType::class,array('label'=>'Nom'))
+            ->add('email', TextType::class,array('label'=>'Email'))
+            ->add('password', PasswordType::class,array('label'=>'Mot de passe'))
+            ->add('valider', SubmitType::class, array('label'=>'s\'inscrire'));
     }
-    
+
 
     public function getName()
     {
