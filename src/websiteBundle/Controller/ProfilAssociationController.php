@@ -4,10 +4,10 @@ namespace websiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class QuickRegistrationController extends Controller
+class ProfilAssociationController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('websiteBundle:quick_registration:quick_registration.html.twig');
+        return $this->render('websiteBundle:profil/association:profil.html.twig');
     }
 }
