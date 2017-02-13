@@ -151,18 +151,17 @@
 
                 <!-- Localisation -->
 
-                <!--<h4>Où es tu ?</h4>
+                <h4>Où es tu ?</h4>
                 <div class="localisation">
                     <div class="select-box2">
                         <label for="select-box1" class="label select-box1">
 
-                            <option value="0" disabled selected>{#{zone.name}#}</option>
                         </label>
-
+                        {{ form_widget(cityForm.name, {'attr': {'class': 'select'}}) }}
                         {#{ filter_city_form.city }#}
 
                     </div>
-                </div>-->
+                </div>
 
                 <!-- Datepicker encore innactif -->
 

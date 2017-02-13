@@ -3,7 +3,10 @@
 namespace websiteBundle\Form;
 
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,10 +22,9 @@ class RegistrationFormType extends AbstractType
             ->add('school', TextType::class,array('label'=>'École'))
 //            ->add('cgu', CheckboxType::class,array('label'=>'CGU'))
             ->add('firstname', TextType::class,array('label'=>'Prénom'))
-            ->add('name', TextType::class,array('label'=>'Nom'))
-            ->add('email', TextType::class,array('label'=>'Email'))
-            ->add('password', PasswordType::class,array('label'=>'Mot de passe'))
-            ->add('valider', SubmitType::class, array('label'=>'s\'inscrire'));
+            ->add('name', TextType::class,array('label'=>'Nom', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', TextType::class,array('label'=>'Email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('password', PasswordType::class,array('label'=>'Mot de passe', 'translation_domain' => 'FOSUserBundle'));
     }
 
 

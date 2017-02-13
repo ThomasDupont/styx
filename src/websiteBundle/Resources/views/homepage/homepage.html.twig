@@ -119,6 +119,7 @@
             {#{% endif %}#}
 
             <form method="post" action="{{ path('fos_user_security_check') }}">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 {#{% csrf_token %}#}
                 {#{{loginForm.non_field_errors }}#}
                 {#{% for hidden in loginForm.hidden_fields %}#}
@@ -131,10 +132,10 @@
                 {#<a id="facebook-login" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/connexion_with_facebook&method=login"></a>#}
 
                 <div class="facebook-login">Connexion via Facebook</div>
-                <input class="valid" type="submit" value="Se connecter" name="_submite">
+                <input class="valid" type="submit" value="Se connecter" name="_submit">
 
                 {#<input type="hidden" name="next" value="{{ next }}" />#}
-                <a href="user/password/reset"><span>Mot de passe oublié ?</span></a>
+                <a href="{{ path('reset_password') }}"><span>Mot de passe oublié ?</span></a>
             </form>
 
         </div>
@@ -152,7 +153,7 @@
             {#<div class="text-error">{{ signUpForm.password2.errors.0}}</div>#}
             {#{% endif %}#}
 
-            <form action="/signup/" method="post" name="signUp">
+            <form action="{{ path('fos_user_registration_register') }}" method="post" name="signUp">
                 <div class="pt1">
                     {#{% csrf_token %}#}
                     {#{{ signUpForm.non_field_errors }}#}
@@ -172,6 +173,7 @@
                             <span class="label-desc">Ville</span>
                         </label>
                         {#{{ signUpForm.city }}#}
+                        {{ form_widget(formEmail.name, {'attr': {'class': 'select'}}) }}
                     </div>
 
                     {{ form_widget(formEmail.school, {'attr': {'class': 'form_b_text ui-autocomplete-input', 'placeholder': 'Ton école'}}) }}
@@ -197,7 +199,7 @@
                     <input class="valid" type="submit" value="M'inscrire">
                 </div>
 
-
+                {{ form_end(formEmail) }}
             </form>
 
         </div>

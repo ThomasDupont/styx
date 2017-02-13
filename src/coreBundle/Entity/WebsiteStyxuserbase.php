@@ -2,6 +2,7 @@
 
 namespace coreBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 
@@ -9,7 +10,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
  * WebsiteStyxuserbase
  *
  * @ORM\Table(name="website_styxuserbase", uniqueConstraints={@ORM\UniqueConstraint(name="website_styxuserbase_email_key", columns={"email"})}, indexes={@ORM\Index(name="website_styxuserbase_0e939a4f", columns={"group_id"}), @ORM\Index(name="website_styxuserbase_email_4d007222_like", columns={"email"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="WebsiteStyxuserbaseRepository")
  */
 class WebsiteStyxuserbase extends BaseUser
 {
@@ -18,7 +19,7 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
      */
-    private $identifier;
+    private $identifier = "test";
 
     /**
      * @var \DateTime
@@ -39,14 +40,14 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
-    private $name;
+    private $name = "test";
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
      */
-    private $firstname;
+    private $firstname = "test";
 
     /**
      * @var \DateTime
@@ -66,11 +67,18 @@ class WebsiteStyxuserbase extends BaseUser
     private $school;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    protected $email;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="email_notification", type="boolean", nullable=false)
      */
-    private $emailNotification;
+    private $emailNotification = true;
 
     /**
      * @var string
@@ -98,14 +106,14 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\Column(name="email_confirmed", type="boolean", nullable=false)
      */
-    private $emailConfirmed;
+    private $emailConfirmed = true;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_admin", type="boolean", nullable=false)
      */
-    private $isAdmin;
+    private $isAdmin = false;
 
     /**
      * @var string
@@ -141,6 +149,7 @@ class WebsiteStyxuserbase extends BaseUser
     {
         parent::__construct();
         $this->video = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     /**
@@ -197,6 +206,70 @@ class WebsiteStyxuserbase extends BaseUser
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZipCode()
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @param string $identifier
+     */
+    public function setIdentifier(string $identifier)
+    {
+        $this->identifier = $identifier;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 
 }
