@@ -185,27 +185,11 @@ class WebsiteStyxuserbase extends BaseUser
     }
 
     /**
-     * @return WebsiteSchool
-     */
-    public function getSchool()
-    {
-        return $this->school;
-    }
-
-    /**
      * @return string
      */
     public function getFirstname()
     {
         return $this->firstname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -270,6 +254,54 @@ class WebsiteStyxuserbase extends BaseUser
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return WebsiteSchool
+     */
+    public function getSchool()
+    {
+        return $this->school;
+    }
+
+    /**
+     * @param WebsiteSchool $school
+     */
+    public function setSchool(WebsiteSchool $school)
+    {
+        $this->school = $school;
     }
 
 }
