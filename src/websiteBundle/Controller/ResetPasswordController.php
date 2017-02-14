@@ -4,10 +4,10 @@ namespace websiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class QuickRegistrationController extends Controller
+class ResetPasswordController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('websiteBundle:quick_registration:quick_registration.html.twig');
+        return $this->render('websiteBundle:homepage:password_reset.html.twig');
     }
 }

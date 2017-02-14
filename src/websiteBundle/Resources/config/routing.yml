@@ -1,9 +1,10 @@
 website_homepage:
     path:     /
     defaults: { _controller: websiteBundle:Homepage:index }
+
 reset_password:
     path:     /user/password/reset/
-    defaults: { _controller: websiteBundle:Homepage:resetPassword }
+    defaults: { _controller: websiteBundle:ResetPassword:index }
 
 agenda:
     path:     /agenda/
@@ -19,14 +20,15 @@ conversation:
 
 privacy_policy:
     path:     /privacy_policy/
-    defaults: { _controller: websiteBundle:Legal:privacyPolicy }
+    defaults: { _controller: websiteBundle:Legal:index }
 
 quick_registration:
     path:     /quick_registration/
     defaults: { _controller: websiteBundle:QuickRegistration:index }
+
 complete_registration:
     path:     /complete_registration/
-    defaults: { _controller: websiteBundle:QuickRegistration:completed }
+    defaults: { _controller: websiteBundle:QuickRegistrationCompleted:index }
 
 create_association:
     path:     /create_association/
@@ -42,12 +44,12 @@ search:
 
 profil_student:
     path:     /profila/
-    defaults: { _controller: websiteBundle:Profil:student }
+    defaults: { _controller: websiteBundle:ProfilEtudiant:index }
 
 profil_association:
     path:     /profilb/
-    defaults: { _controller: websiteBundle:Profil:association }
+    defaults: { _controller: websiteBundle:ProfilAssociation:index }
 
 update_profil:
     path:     /update_profil/
-    defaults: { _controller: websiteBundle:Profil:update }
+    defaults: { _controller: websiteBundle:UpdateProfil:index }

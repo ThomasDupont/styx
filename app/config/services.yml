@@ -7,3 +7,17 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+#services:
+#    fos_user.registration.form.type:
+#        class: websiteBundle\Form\RegistrationFormType
+#        arguments: [%fos_user.model.user.class%]
+#        tags:
+#            - { name: form.type, alias: fos_user_registration }
+
+#services:
+#    fos_user.form.handler.registration:
+#        class: websiteBundle\Form\RegistrationFormType
+#        arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
+#        scope: request
+#        public: false

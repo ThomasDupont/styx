@@ -140,7 +140,7 @@ function get_event(id_zone){
 
 $(document).ready(function(){
 
-    $("#select-box1").change(function(){
+    $("#city_name").change(function(){
             window.location='/agenda?zone=' + $(this).val();
     });
 

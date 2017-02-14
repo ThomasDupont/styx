@@ -55,7 +55,7 @@ class WebsiteCategory
      *
      * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteType")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parentType_id, referencedColumnName="id")
+     *   @ORM\JoinColumn(name="parentType_id", referencedColumnName="id")
      * })
      */
     private $parenttype;

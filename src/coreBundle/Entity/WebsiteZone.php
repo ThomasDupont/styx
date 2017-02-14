@@ -49,9 +49,14 @@ class WebsiteZone
      */
     private $id;
 
-    public function getName() {
-      return $this->name;
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
+
 
     public function getId() {
       return $this->id;
