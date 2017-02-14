@@ -11,3 +11,4 @@
 /bin/
 /composer.phar
 !vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/public/
+.idea/*

@@ -48,7 +48,7 @@ profil_student:
 
 profil_association:
     path:     /profilb/
-    defaults: { _controller: websiteBundle:CreateAssociation:index }
+    defaults: { _controller: websiteBundle:ProfilAssociation:index }
 
 update_profil:
     path:     /update_profil/
