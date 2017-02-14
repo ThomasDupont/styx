@@ -4,6 +4,7 @@ namespace coreBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use coreBundle\Entity\WebsiteGroup;
 use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
@@ -14,6 +15,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
  */
 class WebsiteStyxuserbase extends BaseUser
 {
+
     /**
      * @var string
      *
@@ -148,7 +150,6 @@ class WebsiteStyxuserbase extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->video = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new DateTime();
     }
 
@@ -303,5 +304,4 @@ class WebsiteStyxuserbase extends BaseUser
     {
         $this->school = $school;
     }
-
 }

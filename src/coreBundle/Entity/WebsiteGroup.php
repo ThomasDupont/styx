@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WebsiteGroup
 {
+
+  // public function __construct() {
+  //   $this->id = 2;
+  //   $this->name = "student";
+  //   $this->binaryValue = 2;
+  // }
     /**
      * @var string
      *
@@ -36,5 +42,11 @@ class WebsiteGroup
      */
     private $id;
 
+    public function getId() {
+      return $this->id;
+    }
 
+    public function getName() {
+      return $this->name;
+    }
 }

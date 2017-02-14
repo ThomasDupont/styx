@@ -15,7 +15,7 @@ window.onfocus = function () {
 
 window.onblur = function () {
   IS_ACTIVE = false;
-  TIME_MAJ = TIME_MAJ_ACTIVE; //
+  TIME_MAJ = TIME_MAJ_NOACTIVE; //
   clearInterval(ID_MAJ);
   ID_MAJ = setTimeout(get_notification_count, TIME_MAJ);
 };
@@ -178,5 +178,5 @@ $(document).ready(function () {
     });
 
     // Notification check after page load
-    get_notification_count();
+    // get_notification_count();
 });
