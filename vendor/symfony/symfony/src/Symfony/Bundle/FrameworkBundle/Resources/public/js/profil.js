@@ -255,7 +255,7 @@ $(document).ready(function(){
 
 
         $('.c_pp').click(function(){
-            $('#id_avatar').click();
+            $('#update_profil_avatar').click();
 
         });
 

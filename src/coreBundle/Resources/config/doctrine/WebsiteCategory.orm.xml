@@ -12,9 +12,9 @@
     <field name="nameskill" type="string" column="nameSkill" length="45" nullable="false"/>
     <field name="image" type="string" column="image" length="100" nullable="true"/>
     <field name="parenttypeId" type="integer" column="parentType_id" nullable="false"/>
-    <many-to-one field="&quot;parenttype&quot;" target-entity="WebsiteType">
+    <many-to-one field="parenttype" target-entity="WebsiteType">
       <join-columns>
-        <join-column name="&quot;parentType_id&quot;" referenced-column-name="id"/>
+        <join-column name="parentType_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="parent" target-entity="WebsiteCategory">

@@ -147,7 +147,7 @@ $(document).ready(function () {
 
     $(document).on("click", ".inscription .pt1 .valid", function () {
 
-        if ($('#select-box1').val() == "0"){
+        /*if ($('#select-box1').val() == "0"){
             $('.select-box1').css('background-color', '#D8A5A5');
         }
         else if($('#select-box2').val() == "0") {
@@ -160,7 +160,7 @@ $(document).ready(function () {
             $('.select-box2').css('background-color', '#e8e8e8');
             $('#id_school').css('background-color', '#D8A5A5');
         }
-        else{
+        else{*/
             $('.select-box1').css('background-color', '#e8e8e8');
             $('.select-box2').css('background-color', '#e8e8e8');
             $('#id_school').css('background-color', '#e8e8e8');
@@ -207,7 +207,7 @@ $(document).ready(function () {
                 eraseCookie('department');
             }
 
-        }
+        //}
 
     });
 

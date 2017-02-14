@@ -16,7 +16,7 @@
                         <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                         {% endthumbnail %}
                         {% else %#}
-                        <img style="height:auto; width:auto; max-width:230px; max-height:230px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                        <img style="height:auto; width:auto; max-width:150px; max-height:150px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
                         {#% endif %#}
                         <img src="{{ asset('bundles/framework/images/icons/modif_pp.png') }}" class="pp cache">
                     </div>
@@ -26,47 +26,55 @@
                 </div>
 
                 <form action="/update_profil/" method="post" enctype="multipart/form-data" name="profil">
-                    {#% csrf_token %}
-                    {% for err in form.avatar.errors %}<br/>
-                    <span class="label label-danger">{{ err }}</span>
-                    {% endfor %}
-                    {{ form.avatar }}
+                    {#{% csrf_token %}#}
+                    {#{% for err in form.avatar.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.avatar }}#}
+                    {{ form_widget(updateProfilForm.avatar) }}
 
-                    {% if user.group_id == 2 %}
-                        {% for err in form.name.errors %}<br/>
-                        <span class="label label-danger">{{ err }}</span>
-                        {% endfor %}
-                        {{ form.name }}
-                        {% for err in form.email.errors %}<br/>
-                        <span class="label label-danger">{{ err }}</span>
-                        {% endfor %}
-                        {{ form.email }}
-                    {% endif %}
+                    {#{% if user.group_id == 2 %}#}
+                        {#{% for err in form.name.errors %}<br/>#}
+                        {#<span class="label label-danger">{{ err }}</span>#}
+                        {#{% endfor %}#}
+                        {#{{ form.name }}#}
+                        {{ form_widget(updateProfilForm.name, {'attr': {'class': 'input', 'placeholder': 'Nom'}}) }}
+                        {#{% for err in form.email.errors %}<br/>#}
+                        {#<span class="label label-danger">{{ err }}</span>#}
+                        {#{% endfor %}#}
+                        {#{{ form.email }}#}
+                        {{ form_widget(updateProfilForm.email, {'attr': {'class': 'input', 'placeholder': 'Email'}}) }}
+                    {#{% endif %}#}
 
-                    {% for err in form.birthday.errors %}<br/>
-                    <span class="label label-danger">{{ err }}</span>
-                    {% endfor %}
-                    {{ form.birthday }}
+                    {#{% for err in form.birthday.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.birthday }}#}
+                    {{ form_widget(updateProfilForm.birthday, {'attr': {'class': 'input hasDatepicker', 'placeholder': 'Date de naissance'}}) }}
 
-                    {% for err in form.mobile.errors %}<br/>
-                    <span class="label label-danger">{{ err }}</span>
-                    {% endfor %}
-                    {{ form.mobile }}
+                    {#{% for err in form.mobile.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.mobile }}#}
+                    {{ form_widget(updateProfilForm.mobile, {'attr': {'class': 'input', 'placeholder': 'Mobile', 'maxlength': '10'}}) }}
 
-                    {% for err in form.adress.errors %}<br/>
-                    <span class="label label-danger">{{ err }}</span>
-                    {% endfor %}
-                    {{ form.adress }}
+                    {#{% for err in form.adress.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.adress }}#}
+                    {{ form_widget(updateProfilForm.adress, {'attr': {'class': 'input', 'placeholder': 'Adresse'}}) }}
 
-                    {% for err in form.zip_code.errors %}<br/>
-                    <span class="label label-danger">{{ err }}</span>
-                    {% endfor %}
-                    {{ form.zip_code }}
+                    {#{% for err in form.zip_code.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.zip_code }}#}
+                    {{ form_widget(updateProfilForm.zipCode, {'attr': {'class': 'input', 'placeholder': 'Code postal'}}) }}
 
-                    {% for err in form.city.errors %}<br/>
-                    <span class="label label-danger">{{ err }}</span>
-                    {% endfor %}
-                    {{ form.city }#}
+                    {#{% for err in form.city.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.city }}#}
+                    {{ form_widget(updateProfilForm.city, {'attr': {'class': 'input', 'placeholder': 'Ville'}}) }}
 
                     <button  type="submit" name="action" value="profil" class="valider"> Valider </button>
                 </form>

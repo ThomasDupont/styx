@@ -7,31 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WebsiteStyxuserstudent
  *
- * @ORM\Table(name="website_styxuserstudent", indexes={@ORM\Index(name="website_styxuserstudent_28883a1b", columns={"sponsorship_id"}), @ORM\Index(name="website_styxuserstudent_5fc7164b", columns={"school_id"})})
+ * @ORM\Table(name="website_styxuserstudent", indexes={@ORM\Index(name="website_styxuserstudent_28883a1b", columns={"sponsorship_id"}), @ORM\Index(name="website_styxuserstudent_5fc7164b")})
  * @ORM\Entity
  */
-class WebsiteStyxuserstudent
-{
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
-     */
-    private $firstname;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="birthday", type="date", nullable=true)
-     */
-    private $birthday;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="email_notification", type="boolean", nullable=false)
-     */
-    private $emailNotification;
+class WebsiteStyxuserstudent {
 
     /**
      * @var \coreBundle\Entity\WebsiteStyxuserbase
@@ -55,15 +34,6 @@ class WebsiteStyxuserstudent
      */
     private $sponsorship;
 
-    /**
-     * @var \coreBundle\Entity\WebsiteSchool
-     *
-     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteSchool")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="school_id", referencedColumnName="id")
-     * })
-     */
-    private $school;
 
 
 }

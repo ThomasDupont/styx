@@ -25,6 +25,7 @@ privacy_policy:
 quick_registration:
     path:     /quick_registration/
     defaults: { _controller: websiteBundle:QuickRegistration:index }
+
 complete_registration:
     path:     /complete_registration/
     defaults: { _controller: websiteBundle:QuickRegistrationCompleted:index }
