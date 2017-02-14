@@ -50,7 +50,8 @@ class FeedController extends Controller
       $j++;
     }
 
-    $user = $repositoryStyxuserbase->findById(1)[0];
+    $idUser = $this->getUser()->getId();
+    $user = $repositoryStyxuserbase->findById($idUser)[0];
     $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
 
     if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'student') {
@@ -86,7 +87,7 @@ class FeedController extends Controller
     if($user_zone->getZone() != NULL) {
       $zone = $user_zone->getZone();
     } else {
-      $zone = $repositoryZone->findById(1)[0];
+      // $zone = $repositoryZone->findById(1)[0];
     }
 
     // var_dump($zone);
