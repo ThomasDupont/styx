@@ -13,11 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class WebsiteGroup
 {
 
-  public function __construct() {
-    $this->id = 2;
-    $this->name = "student";
-    $this->binaryValue = 2;
-  }
+  // public function __construct() {
+  //   $this->id = 2;
+  //   $this->name = "student";
+  //   $this->binaryValue = 2;
+  // }
     /**
      * @var string
      *

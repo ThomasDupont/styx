@@ -14,11 +14,11 @@ use coreBundle\Entity\WebsiteZone;
 class WebsiteStyxuserbaseZones
 {
 
-  public function __construct($styxuserbase) {
-    $this->id = 1;
-    $this->zone = new WebsiteZone();
-    $this->styxuserbase = $styxuserbase;
-  }
+  // public function __construct($styxuserbase) {
+  //   $this->id = 1;
+  //   $this->zone = new WebsiteZone();
+  //   $this->styxuserbase = $styxuserbase;
+  // }
     /**
      * @var integer
      *

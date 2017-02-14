@@ -123,7 +123,7 @@ class PostPost
     /**
      * Get identifier
      *
-     * @return string 
+     * @return string
      */
     public function getIdentifier()
     {
@@ -146,7 +146,7 @@ class PostPost
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -169,7 +169,7 @@ class PostPost
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -192,7 +192,7 @@ class PostPost
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -215,7 +215,7 @@ class PostPost
     /**
      * Get postponedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPostponedAt()
     {
@@ -238,7 +238,7 @@ class PostPost
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -261,7 +261,7 @@ class PostPost
     /**
      * Get hasComment
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasComment()
     {
@@ -284,7 +284,7 @@ class PostPost
     /**
      * Get moderated
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getModerated()
     {
@@ -307,7 +307,7 @@ class PostPost
     /**
      * Get editedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEditedAt()
     {
@@ -317,7 +317,7 @@ class PostPost
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -340,7 +340,7 @@ class PostPost
     /**
      * Get owner
      *
-     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     * @return \coreBundle\Entity\WebsiteStyxuserbase
      */
     public function getOwner()
     {
@@ -363,7 +363,7 @@ class PostPost
     /**
      * Get category
      *
-     * @return \coreBundle\Entity\WebsiteCategory 
+     * @return \coreBundle\Entity\WebsiteCategory
      */
     public function getCategory()
     {

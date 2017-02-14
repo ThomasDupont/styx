@@ -14,17 +14,17 @@ use coreBundle\Entity\WebsiteGroup;
 class WebsiteStyxuserbase
 {
 
-  public function __construct($group) {
-    $this->id = 1;
-    $this->password = "password";
-    $this->identifier = "identifier1";
-    $this->createdAt = "2016-02-15 15:15:15+02";
-    $this->email = "jeanjjj@daz.fr";
-    $this->name = "yay";
-    $this->emailConfirmed = true;
-    $this->isAdmin = true;
-    $this->group = $group;
-  }
+  // public function __construct($group) {
+  //   $this->id = 1;
+  //   $this->password = "password";
+  //   $this->identifier = "identifier1";
+  //   $this->createdAt = "2016-02-15 15:15:15+02";
+  //   $this->email = "jeanjjj@daz.fr";
+  //   $this->name = "yay";
+  //   $this->emailConfirmed = true;
+  //   $this->isAdmin = true;
+  //   $this->group = $group;
+  // }
 
     /**
      * @var string
@@ -145,4 +145,7 @@ class WebsiteStyxuserbase
       return $this->id;
     }
 
+    public function getName() {
+      return $this->name;
+    }
 }
