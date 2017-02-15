@@ -100,7 +100,7 @@ $(document).ready(function(){
         $(this).css({"color":"#E67830"});
     });
 
-    $("#select-box1").change(function(){
+    $("#city_name").change(function(){
             window.location='/feed?filter=2&zone=' + $(this).val();
     });
 

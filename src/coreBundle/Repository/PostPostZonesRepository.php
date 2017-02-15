@@ -16,7 +16,7 @@ class PostPostZonesRepository extends EntityRepository
     $repository = $this->getEntityManager()->getRepository('coreBundle:PostPostZones');
 
     $query = $repository->createQueryBuilder('c')
-      ->where('c.id = $id')
+      ->where('c.id = $id');
 
     $result = $query->getQuery()->getResult();
     return $result;
@@ -26,7 +26,7 @@ class PostPostZonesRepository extends EntityRepository
     $repository = $this->getEntityManager()->getRepository('coreBundle:PostPostZones');
 
     $query = $repository->createQueryBuilder('c')
-      ->where('c.zone = $zoneId')
+      ->where('c.zone = $zoneId');
 
     $result = $query->getQuery()->getResult();
     return $result;

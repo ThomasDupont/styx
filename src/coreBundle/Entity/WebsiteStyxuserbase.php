@@ -6,6 +6,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use coreBundle\Entity\WebsiteGroup;
 use FOS\UserBundle\Entity\User as BaseUser;
+use Ramsey\Uuid\Uuid;
 
 /**
  * WebsiteStyxuserbase
@@ -21,7 +22,7 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
      */
-    private $identifier = "test";
+    private $identifier;
 
     /**
      * @var \DateTime
@@ -58,15 +59,20 @@ class WebsiteStyxuserbase extends BaseUser
      */
     private $birthday;
 
+//    /**
+//     * @var \coreBundle\Entity\WebsiteSchool
+//     *
+//     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteSchool")
+//     * @ORM\JoinColumns({
+//     *   @ORM\JoinColumn(name="school_id", referencedColumnName="id")
+//     * })
+//     */
     /**
-     * @var \coreBundle\Entity\WebsiteSchool
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteSchool")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="school_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="school", type="string", length=255, nullable=false)
      */
-    private $school;
+    private $school = "test";
 
     /**
      * @var string
@@ -83,9 +89,12 @@ class WebsiteStyxuserbase extends BaseUser
     private $emailNotification = true;
 
     /**
-     * @var string
+     * @var \coreBundle\Entity\WebsiteZone
      *
-     * @ORM\Column(name="city", type="string", length=128, nullable=true)
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteZone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
+     * })
      */
     private $city;
 
@@ -151,6 +160,10 @@ class WebsiteStyxuserbase extends BaseUser
     {
         parent::__construct();
         $this->createdAt = new DateTime();
+        $string = str_split(Uuid::uuid4()->toString());
+        foreach($string as &$char)
+            $char = "".dechex(ord($char));
+        $this->identifier = substr(implode('',$string), 0, 32);
     }
 
     /**
@@ -162,7 +175,7 @@ class WebsiteStyxuserbase extends BaseUser
     }
 
     /**
-     * @return string
+     * @return \coreBundle\Entity\WebsiteZone
      */
     public function getCity()
     {
@@ -282,15 +295,19 @@ class WebsiteStyxuserbase extends BaseUser
     }
 
     /**
-     * @param string $city
+     * Set city
+     *
+     * @param WebsiteZone|string $city
+     * @return WebsiteZone
+     * @internal param WebsiteZone $id
      */
-    public function setCity(string $city)
+    public function setCity(\coreBundle\Entity\WebsiteZone $city)
     {
         $this->city = $city;
     }
 
     /**
-     * @return WebsiteSchool
+     * @return string
      */
     public function getSchool()
     {
@@ -298,9 +315,9 @@ class WebsiteStyxuserbase extends BaseUser
     }
 
     /**
-     * @param WebsiteSchool $school
+     * @param string $school
      */
-    public function setSchool(WebsiteSchool $school)
+    public function setSchool(string $school)
     {
         $this->school = $school;
     }

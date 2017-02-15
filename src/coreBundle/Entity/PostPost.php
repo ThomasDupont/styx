@@ -2,13 +2,17 @@
 
 namespace coreBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use websiteBundle\Controller\FeedController;
 
 /**
  * PostPost
  *
  * @ORM\Table(name="post_post", indexes={@ORM\Index(name="post_post_b583a629", columns={"category_id"}), @ORM\Index(name="post_post_5e7b1936", columns={"owner_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PostPostRepository")
  */
 class PostPost
 {
@@ -52,21 +56,21 @@ class PostPost
      *
      * @ORM\Column(name="deleted", type="boolean", nullable=false)
      */
-    private $deleted;
+    private $deleted = false;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="has_comment", type="boolean", nullable=false)
      */
-    private $hasComment;
+    private $hasComment = false;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="moderated", type="boolean", nullable=false)
      */
-    private $moderated;
+    private $moderated = false;
 
     /**
      * @var \DateTime
@@ -106,6 +110,14 @@ class PostPost
     private $category;
 
 
+    public function __construct()
+    {
+        $string = str_split(Uuid::uuid4()->toString());
+        foreach($string as &$char)
+            $char = "".dechex(ord($char));
+        $this->identifier = substr(implode('',$string), 0, 32);
+        $this->createdAt = new DateTime();
+    }
 
     /**
      * Set identifier

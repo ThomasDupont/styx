@@ -2,6 +2,8 @@
 
 namespace websiteBundle\Form;
 
+use coreBundle\Entity\WebsiteZone;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,6 +25,10 @@ class RegistrationFormType extends AbstractType
 //                'choice_label' => 'name',
 //            ))
 //            ->add('city', 'text',array('label'=>'Prénom'))
+            ->add('city', EntityType::class, array(
+                'class' => WebsiteZone::class,
+                'property' => 'name'
+            ))
             ->add('school', TextType::class,array('label'=>'École'))
 //            ->add('cgu', CheckboxType::class,array('label'=>'CGU'))
             ->add('firstname', TextType::class,array('label'=>'Prénom'))

@@ -17,7 +17,7 @@ class WebsiteStyxuserbaseZonesRepository extends EntityRepository
     $repository = $this->getEntityManager()->getRepository('coreBundle:WebsiteStyxuserbaseZones');
 
     $query = $repository->createQueryBuilder('c')
-      ->where('c.id = $id')
+      ->where('c.id = $id');
 
     $result = $query->getQuery()->getResult();
     return $result;
@@ -28,7 +28,7 @@ class WebsiteStyxuserbaseZonesRepository extends EntityRepository
     $repository = $this->getEntityManager()->getRepository('coreBundle:WebsiteStyxuserbaseZones');
 
     $query = $repository->createQueryBuilder('c')
-      ->where('c.styxuserbase = $user->getId()')
+      ->where('c.styxuserbase = $user->getId()');
 
     $result = $query->getQuery()->getResult();
     return $result;
