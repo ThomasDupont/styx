@@ -82,4 +82,198 @@ class Oauth2ProviderApplication
     private $user;
 
 
+
+    /**
+     * Set clientId
+     *
+     * @param string $clientId
+     * @return Oauth2ProviderApplication
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+
+        return $this;
+    }
+
+    /**
+     * Get clientId
+     *
+     * @return string 
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * Set redirectUris
+     *
+     * @param string $redirectUris
+     * @return Oauth2ProviderApplication
+     */
+    public function setRedirectUris($redirectUris)
+    {
+        $this->redirectUris = $redirectUris;
+
+        return $this;
+    }
+
+    /**
+     * Get redirectUris
+     *
+     * @return string 
+     */
+    public function getRedirectUris()
+    {
+        return $this->redirectUris;
+    }
+
+    /**
+     * Set clientType
+     *
+     * @param string $clientType
+     * @return Oauth2ProviderApplication
+     */
+    public function setClientType($clientType)
+    {
+        $this->clientType = $clientType;
+
+        return $this;
+    }
+
+    /**
+     * Get clientType
+     *
+     * @return string 
+     */
+    public function getClientType()
+    {
+        return $this->clientType;
+    }
+
+    /**
+     * Set authorizationGrantType
+     *
+     * @param string $authorizationGrantType
+     * @return Oauth2ProviderApplication
+     */
+    public function setAuthorizationGrantType($authorizationGrantType)
+    {
+        $this->authorizationGrantType = $authorizationGrantType;
+
+        return $this;
+    }
+
+    /**
+     * Get authorizationGrantType
+     *
+     * @return string 
+     */
+    public function getAuthorizationGrantType()
+    {
+        return $this->authorizationGrantType;
+    }
+
+    /**
+     * Set clientSecret
+     *
+     * @param string $clientSecret
+     * @return Oauth2ProviderApplication
+     */
+    public function setClientSecret($clientSecret)
+    {
+        $this->clientSecret = $clientSecret;
+
+        return $this;
+    }
+
+    /**
+     * Get clientSecret
+     *
+     * @return string 
+     */
+    public function getClientSecret()
+    {
+        return $this->clientSecret;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Oauth2ProviderApplication
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set skipAuthorization
+     *
+     * @param boolean $skipAuthorization
+     * @return Oauth2ProviderApplication
+     */
+    public function setSkipAuthorization($skipAuthorization)
+    {
+        $this->skipAuthorization = $skipAuthorization;
+
+        return $this;
+    }
+
+    /**
+     * Get skipAuthorization
+     *
+     * @return boolean 
+     */
+    public function getSkipAuthorization()
+    {
+        return $this->skipAuthorization;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $user
+     * @return Oauth2ProviderApplication
+     */
+    public function setUser(\coreBundle\Entity\WebsiteStyxuserbase $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

@@ -40,4 +40,60 @@ class WebsiteSchool
     private $zone;
 
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return WebsiteSchool
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set zone
+     *
+     * @param \coreBundle\Entity\WebsiteZone $zone
+     * @return WebsiteSchool
+     */
+    public function setZone(\coreBundle\Entity\WebsiteZone $zone = null)
+    {
+        $this->zone = $zone;
+    
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \coreBundle\Entity\WebsiteZone 
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
 }

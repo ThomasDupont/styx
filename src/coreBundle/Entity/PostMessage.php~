@@ -71,4 +71,152 @@ class PostMessage
     private $author;
 
 
+
+    /**
+     * Set identifier
+     *
+     * @param string $identifier
+     * @return PostMessage
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+
+        return $this;
+    }
+
+    /**
+     * Get identifier
+     *
+     * @return string 
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return PostMessage
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return PostMessage
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set moderated
+     *
+     * @param boolean $moderated
+     * @return PostMessage
+     */
+    public function setModerated($moderated)
+    {
+        $this->moderated = $moderated;
+
+        return $this;
+    }
+
+    /**
+     * Get moderated
+     *
+     * @return boolean 
+     */
+    public function getModerated()
+    {
+        return $this->moderated;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set conversation
+     *
+     * @param \coreBundle\Entity\PostConversation $conversation
+     * @return PostMessage
+     */
+    public function setConversation(\coreBundle\Entity\PostConversation $conversation = null)
+    {
+        $this->conversation = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Get conversation
+     *
+     * @return \coreBundle\Entity\PostConversation 
+     */
+    public function getConversation()
+    {
+        return $this->conversation;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $author
+     * @return PostMessage
+     */
+    public function setAuthor(\coreBundle\Entity\WebsiteStyxuserbase $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 }

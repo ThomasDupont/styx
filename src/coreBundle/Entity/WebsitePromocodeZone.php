@@ -43,4 +43,60 @@ class WebsitePromocodeZone
     private $promocode;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set zone
+     *
+     * @param \coreBundle\Entity\WebsiteZone $zone
+     * @return WebsitePromocodeZone
+     */
+    public function setZone(\coreBundle\Entity\WebsiteZone $zone = null)
+    {
+        $this->zone = $zone;
+    
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \coreBundle\Entity\WebsiteZone 
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
+
+    /**
+     * Set promocode
+     *
+     * @param \coreBundle\Entity\WebsitePromocode $promocode
+     * @return WebsitePromocodeZone
+     */
+    public function setPromocode(\coreBundle\Entity\WebsitePromocode $promocode = null)
+    {
+        $this->promocode = $promocode;
+    
+        return $this;
+    }
+
+    /**
+     * Get promocode
+     *
+     * @return \coreBundle\Entity\WebsitePromocode 
+     */
+    public function getPromocode()
+    {
+        return $this->promocode;
+    }
 }

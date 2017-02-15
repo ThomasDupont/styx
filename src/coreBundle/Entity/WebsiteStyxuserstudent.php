@@ -36,4 +36,50 @@ class WebsiteStyxuserstudent {
 
 
 
+
+    /**
+     * Set styxuserbasePtr
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbasePtr
+     * @return WebsiteStyxuserstudent
+     */
+    public function setStyxuserbasePtr(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbasePtr)
+    {
+        $this->styxuserbasePtr = $styxuserbasePtr;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserbasePtr
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbasePtr()
+    {
+        return $this->styxuserbasePtr;
+    }
+
+    /**
+     * Set sponsorship
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserstudent $sponsorship
+     * @return WebsiteStyxuserstudent
+     */
+    public function setSponsorship(\coreBundle\Entity\WebsiteStyxuserstudent $sponsorship = null)
+    {
+        $this->sponsorship = $sponsorship;
+    
+        return $this;
+    }
+
+    /**
+     * Get sponsorship
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserstudent 
+     */
+    public function getSponsorship()
+    {
+        return $this->sponsorship;
+    }
 }

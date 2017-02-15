@@ -69,4 +69,43 @@ class WebsiteZone
     public function getActivated() {
       return $this->activated;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return WebsiteZone
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Set zipCode
+     *
+     * @param string $zipCode
+     * @return WebsiteZone
+     */
+    public function setZipCode($zipCode)
+    {
+        $this->zipCode = $zipCode;
+    
+        return $this;
+    }
+
+    /**
+     * Set activated
+     *
+     * @param boolean $activated
+     * @return WebsiteZone
+     */
+    public function setActivated($activated)
+    {
+        $this->activated = $activated;
+    
+        return $this;
+    }
 }

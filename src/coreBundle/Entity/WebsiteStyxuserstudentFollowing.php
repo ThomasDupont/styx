@@ -43,4 +43,60 @@ class WebsiteStyxuserstudentFollowing
     private $styxuserstudent;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set styxuserbase
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbase
+     * @return WebsiteStyxuserstudentFollowing
+     */
+    public function setStyxuserbase(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbase = null)
+    {
+        $this->styxuserbase = $styxuserbase;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserbase
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbase()
+    {
+        return $this->styxuserbase;
+    }
+
+    /**
+     * Set styxuserstudent
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserstudent $styxuserstudent
+     * @return WebsiteStyxuserstudentFollowing
+     */
+    public function setStyxuserstudent(\coreBundle\Entity\WebsiteStyxuserstudent $styxuserstudent = null)
+    {
+        $this->styxuserstudent = $styxuserstudent;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserstudent
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserstudent 
+     */
+    public function getStyxuserstudent()
+    {
+        return $this->styxuserstudent;
+    }
 }

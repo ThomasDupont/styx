@@ -43,4 +43,60 @@ class WebsitePromocodeUsers
     private $promocode;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set styxuserbase
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbase
+     * @return WebsitePromocodeUsers
+     */
+    public function setStyxuserbase(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbase = null)
+    {
+        $this->styxuserbase = $styxuserbase;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserbase
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbase()
+    {
+        return $this->styxuserbase;
+    }
+
+    /**
+     * Set promocode
+     *
+     * @param \coreBundle\Entity\WebsitePromocode $promocode
+     * @return WebsitePromocodeUsers
+     */
+    public function setPromocode(\coreBundle\Entity\WebsitePromocode $promocode = null)
+    {
+        $this->promocode = $promocode;
+    
+        return $this;
+    }
+
+    /**
+     * Get promocode
+     *
+     * @return \coreBundle\Entity\WebsitePromocode 
+     */
+    public function getPromocode()
+    {
+        return $this->promocode;
+    }
 }

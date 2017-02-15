@@ -37,4 +37,60 @@ class DjangoSession
     private $sessionKey;
 
 
+
+    /**
+     * Set sessionData
+     *
+     * @param string $sessionData
+     * @return DjangoSession
+     */
+    public function setSessionData($sessionData)
+    {
+        $this->sessionData = $sessionData;
+
+        return $this;
+    }
+
+    /**
+     * Get sessionData
+     *
+     * @return string 
+     */
+    public function getSessionData()
+    {
+        return $this->sessionData;
+    }
+
+    /**
+     * Set expireDate
+     *
+     * @param \DateTime $expireDate
+     * @return DjangoSession
+     */
+    public function setExpireDate($expireDate)
+    {
+        $this->expireDate = $expireDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expireDate
+     *
+     * @return \DateTime 
+     */
+    public function getExpireDate()
+    {
+        return $this->expireDate;
+    }
+
+    /**
+     * Get sessionKey
+     *
+     * @return string 
+     */
+    public function getSessionKey()
+    {
+        return $this->sessionKey;
+    }
 }

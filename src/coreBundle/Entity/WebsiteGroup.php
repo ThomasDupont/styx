@@ -49,4 +49,40 @@ class WebsiteGroup
     public function getName() {
       return $this->name;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return WebsiteGroup
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Set binaryValue
+     *
+     * @param integer $binaryValue
+     * @return WebsiteGroup
+     */
+    public function setBinaryValue($binaryValue)
+    {
+        $this->binaryValue = $binaryValue;
+    
+        return $this;
+    }
+
+    /**
+     * Get binaryValue
+     *
+     * @return integer 
+     */
+    public function getBinaryValue()
+    {
+        return $this->binaryValue;
+    }
 }

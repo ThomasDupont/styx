@@ -57,4 +57,106 @@ class WebsiteMember
     private $entity;
 
 
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     * @return WebsiteMember
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set userName
+     *
+     * @param string $userName
+     * @return WebsiteMember
+     */
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
+    
+        return $this;
+    }
+
+    /**
+     * Get userName
+     *
+     * @return string 
+     */
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $user
+     * @return WebsiteMember
+     */
+    public function setUser(\coreBundle\Entity\WebsiteStyxuserbase $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set entity
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $entity
+     * @return WebsiteMember
+     */
+    public function setEntity(\coreBundle\Entity\WebsiteStyxuserbase $entity = null)
+    {
+        $this->entity = $entity;
+    
+        return $this;
+    }
+
+    /**
+     * Get entity
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getEntity()
+    {
+        return $this->entity;
+    }
 }

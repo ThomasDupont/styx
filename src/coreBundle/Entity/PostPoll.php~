@@ -39,4 +39,73 @@ class PostPoll
     private $postPtr;
 
 
+
+    /**
+     * Set question
+     *
+     * @param string $question
+     * @return PostPoll
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return string 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set maxAnswer
+     *
+     * @param integer $maxAnswer
+     * @return PostPoll
+     */
+    public function setMaxAnswer($maxAnswer)
+    {
+        $this->maxAnswer = $maxAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get maxAnswer
+     *
+     * @return integer 
+     */
+    public function getMaxAnswer()
+    {
+        return $this->maxAnswer;
+    }
+
+    /**
+     * Set postPtr
+     *
+     * @param \coreBundle\Entity\PostPost $postPtr
+     * @return PostPoll
+     */
+    public function setPostPtr(\coreBundle\Entity\PostPost $postPtr)
+    {
+        $this->postPtr = $postPtr;
+
+        return $this;
+    }
+
+    /**
+     * Get postPtr
+     *
+     * @return \coreBundle\Entity\PostPost 
+     */
+    public function getPostPtr()
+    {
+        return $this->postPtr;
+    }
 }

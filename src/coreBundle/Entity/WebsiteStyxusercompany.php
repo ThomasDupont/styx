@@ -25,4 +25,27 @@ class WebsiteStyxusercompany
     private $styxuserbasePtr;
 
 
+
+    /**
+     * Set styxuserbasePtr
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbasePtr
+     * @return WebsiteStyxusercompany
+     */
+    public function setStyxuserbasePtr(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbasePtr)
+    {
+        $this->styxuserbasePtr = $styxuserbasePtr;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserbasePtr
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbasePtr()
+    {
+        return $this->styxuserbasePtr;
+    }
 }

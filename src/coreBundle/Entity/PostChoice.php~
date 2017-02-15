@@ -47,4 +47,83 @@ class PostChoice
     private $poll;
 
 
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return PostChoice
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set coefficient
+     *
+     * @param integer $coefficient
+     * @return PostChoice
+     */
+    public function setCoefficient($coefficient)
+    {
+        $this->coefficient = $coefficient;
+
+        return $this;
+    }
+
+    /**
+     * Get coefficient
+     *
+     * @return integer 
+     */
+    public function getCoefficient()
+    {
+        return $this->coefficient;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set poll
+     *
+     * @param \coreBundle\Entity\PostPoll $poll
+     * @return PostChoice
+     */
+    public function setPoll(\coreBundle\Entity\PostPoll $poll = null)
+    {
+        $this->poll = $poll;
+
+        return $this;
+    }
+
+    /**
+     * Get poll
+     *
+     * @return \coreBundle\Entity\PostPoll 
+     */
+    public function getPoll()
+    {
+        return $this->poll;
+    }
 }

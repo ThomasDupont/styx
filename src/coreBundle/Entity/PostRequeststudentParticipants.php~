@@ -43,4 +43,60 @@ class PostRequeststudentParticipants
     private $requeststudent;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set styxuserbase
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbase
+     * @return PostRequeststudentParticipants
+     */
+    public function setStyxuserbase(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbase = null)
+    {
+        $this->styxuserbase = $styxuserbase;
+
+        return $this;
+    }
+
+    /**
+     * Get styxuserbase
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbase()
+    {
+        return $this->styxuserbase;
+    }
+
+    /**
+     * Set requeststudent
+     *
+     * @param \coreBundle\Entity\PostRequeststudent $requeststudent
+     * @return PostRequeststudentParticipants
+     */
+    public function setRequeststudent(\coreBundle\Entity\PostRequeststudent $requeststudent = null)
+    {
+        $this->requeststudent = $requeststudent;
+
+        return $this;
+    }
+
+    /**
+     * Get requeststudent
+     *
+     * @return \coreBundle\Entity\PostRequeststudent 
+     */
+    public function getRequeststudent()
+    {
+        return $this->requeststudent;
+    }
 }

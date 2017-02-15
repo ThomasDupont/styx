@@ -47,4 +47,83 @@ class WebsiteCodeconfirmmail
     private $user;
 
 
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return WebsiteCodeconfirmmail
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return WebsiteCodeconfirmmail
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $user
+     * @return WebsiteCodeconfirmmail
+     */
+    public function setUser(\coreBundle\Entity\WebsiteStyxuserbase $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

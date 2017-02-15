@@ -51,4 +51,106 @@ class WebsiteGame
     private $id;
 
 
+
+    /**
+     * Set video
+     *
+     * @param string $video
+     * @return WebsiteGame
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return string 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set activated
+     *
+     * @param boolean $activated
+     * @return WebsiteGame
+     */
+    public function setActivated($activated)
+    {
+        $this->activated = $activated;
+    
+        return $this;
+    }
+
+    /**
+     * Get activated
+     *
+     * @return boolean 
+     */
+    public function getActivated()
+    {
+        return $this->activated;
+    }
+
+    /**
+     * Set vote
+     *
+     * @param integer $vote
+     * @return WebsiteGame
+     */
+    public function setVote($vote)
+    {
+        $this->vote = $vote;
+    
+        return $this;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return integer 
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return WebsiteGame
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
