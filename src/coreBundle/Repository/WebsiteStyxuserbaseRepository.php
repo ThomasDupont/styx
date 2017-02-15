@@ -23,14 +23,4 @@ class WebsiteStyxuserbaseRepository extends EntityRepository
     return $result;
   }
 
-  public function findCOUCOUByName(String $name) {
-    $repository = $this->getEntityManager()->getRepository('coreBundle:WebsiteStyxuserbase');
-
-    $query = $repository->createQueryBuilder('c')
-      ->where('c.name IN $name'.'%')
-    echo "<script>console.log('".$query."');</script>";
-    $result = $query;
-    $result = $query->getQuery()->getResult();
-    return $result;
-  }
 }
