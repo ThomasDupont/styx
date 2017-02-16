@@ -46,68 +46,6 @@ class FeedController extends Controller
     $types = $repositoryType->findAll();
     $rewards = $repositoryReward->findAll();
 
-    // var_dump($repositoryZone->findById(1)[0]);
-
-    $i = 1;
-    while($repositoryPostPost->findById($i) != null) {
-      $i++;
-    }
-
-    $j = 1;
-    while($j < $i) {
-      //      var_dump($repositoryPostPost->findById($j)[0]->getTitle());
-      //      echo "<br/>";
-      //      var_dump($repositoryPostPost->findById($j)[0]->getDescription());
-      //      echo "<br/>";
-      //      var_dump($repositoryPostPost->findById($j)[0]->getCreatedAt()->format('d/m/Y à H:i'));
-      //      echo "<br/><br/>";
-      $j++;
-    }
-
-
-
-
-    $param = $request->request->get("result");
-    $em = $this->getDoctrine()->getManager();
-    $query = $em->createQuery('
-      SELECT wsub
-      FROM coreBundle:WebsiteStyxuserbase wsub, coreBundle:WebsiteStyxuserbaseZones wsubz, coreBundle:WebsiteZone wz, coreBundle:PostPost pp
-      WHERE wsub.name LIKE :coucou
-      ')
-      ->setParameter('coucou', $param."%");
-    $res = $query->getResult();
-
-    // for ($i=0; $i < sizeof($res); $i++) {
-    //   var_dump($res[$i]->getName());
-    // }
-
-    // exit;
-    // $user = $repositoryStyxuserbase->findCOUCOUByName()[0];
-
-    // if($user) {
-    //   var_dump($user->getName());
-    // } else {
-    //   var_dump(null);
-    // }
-    // var_dump(@$user->getName());
-    // var_dump($request->request->get("result"));
-    // exit;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $idUser = $this->getUser()->getId();
     $user = $repositoryStyxuserbase->findById($idUser)[0];
     $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
@@ -141,24 +79,51 @@ class FeedController extends Controller
       header("Location: /feed");
       exit;
     }
-    
-    var_dump($zone);
-    if($user_zone->getZone() != NULL) {
-      $zone = $user_zone->getZone();
-    } else {
-      $zone = $repositoryZone->findById(1)[0];
+
+    $filtre = $session->get('newsfeed_filter');
+    if(!$filtre) {
+      $filtre = 0;
     }
-    var_dump($zone);
+    $zone = $session->get('zone_filter');
+    if(!$zone) {
+      $zone = 1;
+    }
+    $zone = $repositoryZone->findById($zone)[0];
 
-    // var_dump($zone);
-    // var_dump($session->get('newsfeed_filter'));
 
-    // var_dump($filtre);
-    exit;
+
+    $i = 1;
+    while($repositoryPostPost->findById($i) != null) {
+      $i++;
+    }
+
+    $j = 1;
+    while($j < $i) {
+      //      var_dump($repositoryPostPost->findById($j)[0]->getTitle());
+      //      echo "<br/>";
+      //      var_dump($repositoryPostPost->findById($j)[0]->getDescription());
+      //      echo "<br/>";
+      //      var_dump($repositoryPostPost->findById($j)[0]->getCreatedAt()->format('d/m/Y à H:i'));
+      //      echo "<br/><br/>";
+      $j++;
+    }
+
+
+    var_dump($zone->getId());
+
+    $param = $request->request->get("result");
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery('
+    SELECT pp
+    FROM coreBundle:WebsiteStyxuserbase wsub, coreBundle:PostPost pp
+    WHERE pp.zone = :zone
+    ')
+    ->setParameter('zone', $zone);
     $posts = null;
+    $posts = $query->getResult();
 
     if($filtre == 0) {
-      $posts = $repositoryPostPostZones->findByZone($zone->getId());
+      // $posts = $repositoryPostPostZones->findByZone($zone->getId());
       if($session->get('zone_filter') != NULL) {
         $zone_filter = $session->get('zone_filter');
       } else {
@@ -172,7 +137,7 @@ class FeedController extends Controller
       } else {
         $zone_filter = 0;
       }
-      $posts = $repositoryPostPostZones->findByZone($zone_filter);
+      // $posts = $repositoryPostPostZones->findByZone($zone_filter);
       if($repositoryZone->findById($zone_filter)[0] != NULL) {
         $zone = $repositoryZone->findById($zone_filter)[0];
       } else {
@@ -232,13 +197,13 @@ class FeedController extends Controller
       $postid = $post->getId();
     }
 
-    $postzones = new PostPostZones();
-
 
     // exit;
     return $this->render('@website/feed/feed.html.twig', array(
       'cityForm' => $cityForm->createView(),
       'postForm' => $postForm->createView(),
+      'posts' => $posts,
+      'futur_event' => $futur_event,
       'types' => $types,
       'rewards' => $rewards,
       'selected' => strval($zone->getId()),
@@ -250,215 +215,3 @@ class FeedController extends Controller
   //       $since_day.strftime('%m%d%y');
   //       return len(StyxUserBase.objects.filter(last_login__gt=since_day));
 }
-
-//   try {
-//     $zone = request.user.styxuserstudent.school.zone};
-//     catch{
-//       $zone = request.user.zones.all()[0];
-//     }
-//     $posts = null;
-//
-//     if ($filtre == 0){
-//       $posts = Post.objects.get_by_zone($zone);  # [0:10]
-//       $zone_filter = request.session.get('zone_filter', 1);
-//
-//       if ($filtre == 1){
-//         $zone_filter = request.session.get('zone_filter', 0);
-//         $posts = Post.objects.get_by_id_zone(zone_filter);
-//         try{
-//           $zone = Zone.objects.get(id=zone_filter);
-//           catch Zone.DoesNotExist {
-//             $zone = Zone.objects.filter(id=1)[0];
-//           }
-//           $name_zone = zone.name;
-//
-//           futur_event = Event.objects.filter(zones=zone, deleted=False)\
-//           .annotate(current_date=Coalesce('postponed_at', 'created_at'))\
-//           .order_by('-current_date')[0:5]
-//
-//           # FORMULAIRES
-//           form_filter_city = FilterCityForm(city_selected=name_zone)
-//           form_tuto_perso_info = TutoPersonalInfo()
-//           form_tuto_category = TutoCategory()
-//           form_contact_admin = ContactAdminForm()
-//           form_confirm_email = ConfirmEmailForm()
-//
-//           news_form = NewsForm()
-//           request_form = RequestForm()
-//           event_form = EventForm()
-//
-//           if (request.method == "POST"){
-//
-//             if (request.POST['action'] == 'RequestForm'){
-//
-//               try{
-//                 selected_category = Category.objects.get(id=int(request.POST.get('category')))
-//                 except ObjectDoesNotExist:
-//                 pass
-//
-//                 request_form = RequestForm(request.POST, user=request.user)
-//                 if (request_form.is_valid()){
-//                   my_request = request_form.save(commit=False)
-//                   my_request.owner = request.user
-//                   my_request.has_comment = True
-//
-//                   rewards = request_form.cleaned_data["rewards"]
-//                   rewards = Reward.objects.filter(id__in=rewards).aggregate(Sum('binary_value'))
-//                   my_request.rewards = rewards['binary_value__sum']
-//
-//                   my_request.save()
-//                   my_request.zones = [zone]
-//                   my_request.save()
-//
-//                   Thread(target=notification.new_post(my_request)).start()
-//
-//                   elif (request.POST['action'] == 'NewsForm'){
-//                     news_form = NewsForm(request.POST)
-//                     if (request.user.email_confirmed){
-//                       my_news_form = news_form.save(commit=False)
-//                       my_news_form.owner = request.user
-//                       my_news_form.category = Category.objects.get(nameCategory='News')
-//                       my_news_form.has_comment = True
-//                       my_news_form.save()
-//                       my_news_form.zones = [zone]
-//                       my_news_form.save()
-//
-//                       elif (request.POST['action'] == 'EventForm'){
-//                         event_form = EventForm(request.POST)
-//                         if (request.user.email_confirmed){
-//                           my_event_form = event_form.save(commit=False)
-//                           my_event_form.owner = request.user
-//                           my_event_form.has_comment = True
-//                           my_event_form.save()
-//                           my_event_form.zones = [zone]
-//                           my_event_form.save()
-//
-//                           elif (request.POST['action'] == 'TutoPersonalInfo'){
-//                             form = TutoPersonalInfo(request.POST, request.FILES, instance=request.user)
-//
-//                             if (form.is_valid()){
-//                               user = form.save(commit=True)
-//                               user.save()
-//
-//                               elif (request.POST['action'] == 'TutoCategory'){
-//                                 form = TutoCategory(request.POST,  instance=request.user)
-//                                 if (form.is_valid()){
-//                                   user = form.save(commit=True)
-//                                   user.categories = (form.cleaned_data['objects'] + form.cleaned_data['services'])
-//                                   user.save()
-//
-//                                   nb_user_all = StyxUserStudent.objects.all().count() + TemporaryUser.objects.filter(convert=False).count()
-//
-//                                   types = get_available_type(user=request.user,
-//                                   news_form=news_form,
-//                                   request_form=request_form,
-//                                   event_form=event_form)
-//
-//                                   return TemplateResponse(request, 'website/templates/feed/feed.html',
-//                                   {'posts': posts,
-//                                     'filtres': filtres,
-//                                     'filtre': filtre+1,
-//                                     'types': types,
-//                                     'selectedCategory': selected_category,
-//                                     'force_show_form': force_show_form,
-//                                     'message': message,
-//                                     'connectedUser': request.user,
-//                                     'formTutoPersoInfo': form_tuto_perso_info,
-//                                     'formTutoCategory': form_tuto_category,
-//                                     'contactAdminForm': form_contact_admin,
-//                                     'confirmEmailForm': form_confirm_email,
-//                                     'filter_city_form': form_filter_city,
-//                                     'nb_user_all': nb_user_all,
-//                                     'name_zone': name_zone,
-//                                     'futur_event': futur_event,
-//                                     'form_url': form_url,
-//                                     'zone_id': zone_filter
-//                                   })
-//                                 }
-//                               }
-//                             }
-//                           }
-//                         }
-//                       }
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-//
-// def get_available_type(user, news_form=NewsForm(), request_form=RequestForm(), event_form=EventForm()):
-//   regex = "'[0-1]*1"
-//   for i in str(user.group.binary_value)[::-1]:
-//     if i == '0':
-//       regex += "[0-1]"
-//     else:
-//       break
-//
-//       regex += "'"
-//
-//       types = Type.objects.extra(where=['binary_value SIMILAR TO ' + regex])
-//
-//       for t in types:
-//         if 'News' in t.name:
-//           t.form = news_form
-//           elif 'Services' in t.name or 'Loisirs' in t.name:
-//             t.form = request_form
-//             elif 'Événement' in t.name:
-//               t.form = event_form
-//               return types
-//
-//
-//               def agenda(request):
-//
-//               zone_id = request.GET.get('zone', None)  # On récupére le filtre sélectionné
-//
-//               if zone_id:
-//                 try:
-//                 zone = Zone.objects.get(pk=zone_id)
-//                 except Zone.DoesNotExist:
-//                 zone = request.user.zones.all()[0]
-//                 elif request.user.group.name == 'student':
-//                   zone = request.user.styxuserstudent.school.zone
-//                 else:
-//                   zone = request.user.zones.all()[0]
-//
-//                   event_form = EventForm()
-//                   form_filter_city = FilterCityForm(city_selected=zone.name)
-//
-//                   if request.method == "POST":
-//                     if request.user.group.name == 'association':
-//                       event_form = EventForm(request.POST)
-//                       if event_form.is_valid():
-//                         my_event_form = event_form.save(commit=False)
-//                         my_event_form.owner = request.user
-//                         my_event_form.has_comment = True
-//                         my_event_form.save()
-//                         my_event_form.zones = [zone]
-//                         my_event_form.save()
-//
-//                         # Bien que l'on sache que l'on a qu'un seul type, on utilise le même pattern que pour la page feed afin d'utiliser
-//                         # le même code pour "new_post.html"
-//                         types = Type.objects.filter(name='Événement')
-//                         id_type = types[0].id
-//
-//                         for t in types:
-//                           t.form = event_form
-//
-//                           form_url = request.get_full_path()
-//
-//                           context = {'zone': zone,
-//                             'connectedUser': request.user,
-//                             'event_form': event_form,
-//                             'filter_city_form': form_filter_city,
-//                             'types': types,
-//                             'id_type': id_type,
-//                             'form_url': form_url,
-//                           }
-//
-//                           return render(request, 'website/templates/feed/agenda.html', context=context)

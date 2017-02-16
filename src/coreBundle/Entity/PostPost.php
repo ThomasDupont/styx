@@ -100,6 +100,16 @@ class PostPost
     private $owner;
 
     /**
+     * @var \coreBundle\Entity\WebsiteZone
+     *
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteZone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id" nullable=false)
+     * })
+     */
+    private $zone;
+
+    /**
      * @var \coreBundle\Entity\WebsiteCategory
      *
      * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteCategory")
