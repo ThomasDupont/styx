@@ -146,7 +146,7 @@ class WebsiteStyxuserbase extends BaseUser
      *   @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=false)
      * })
      */
-    private $group = 1;
+    private $group;
 
     /**
      * Constructor

@@ -96,13 +96,15 @@ class FeedController extends Controller
       header("Location: /feed");
       exit;
     }
-    var_dump($filtre);
-    // exit;
+    // var_dump($filtre);
+    var_dump($zone);
+    exit;
     if($user_zone->getZone() != NULL) {
       $zone = $user_zone->getZone();
     } else {
       // $zone = $repositoryZone->findById(1)[0];
     }
+    var_dump($zone);
 
     // var_dump($zone);
     // var_dump($session->get('newsfeed_filter'));
@@ -135,9 +137,10 @@ class FeedController extends Controller
       $name_zone = $zone->getName();
     }
 
-    var_dump($zone_filter);
-    var_dump($posts);
-    exit;
+    var_dump($zone);
+    // var_dump($zone_filter);
+    // var_dump($posts);
+    // exit;
 
     $futur_event = $repositoryPostPostZones->findBy(array('zone'=>$zone));
     $def_posts = [];
