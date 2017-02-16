@@ -4,7 +4,6 @@ namespace coreBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use coreBundle\Entity\WebsiteGroup;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Ramsey\Uuid\Uuid;
 
@@ -160,6 +159,7 @@ class WebsiteStyxuserbase extends BaseUser
     {
         parent::__construct();
         $this->createdAt = new DateTime();
+        $this->birthday = new DateTime();
         $string = str_split(Uuid::uuid4()->toString());
         foreach($string as &$char)
             $char = "".dechex(ord($char));
@@ -320,5 +320,13 @@ class WebsiteStyxuserbase extends BaseUser
     public function setSchool(string $school)
     {
         $this->school = $school;
+    }
+
+    /**
+     * @param DateTime $birthday
+     */
+    public function setBirthday(DateTime $birthday)
+    {
+        $this->birthday = $birthday;
     }
 }

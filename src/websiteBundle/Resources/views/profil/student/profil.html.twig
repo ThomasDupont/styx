@@ -44,15 +44,15 @@
                 </div>
                 <div class="right">
                     <div class="top">
-                        <h2 class="pseudo"> {#{user.styxuserstudent.firstname }} {{ user.name }#} </h2>
-                        <span class="date">Styxer depuis le {#{user.styxuserstudent.created_at}#}</span>
+                        <h2 class="pseudo"> {{ user.firstname }} {{ user.name }} </h2>
+                        <span class="date">Styxer depuis le {{ user.createdat|date('d F Y') }}</span>
                             <span class="school sous_titres">
                                 <img class="school" src="{{ asset('bundles/framework/images/icons/school.png') }}">
-                                {#{user.styxuserstudent.school.name}#}
+                                {{ user.school }}
                             </span>
                             <span class="local sous_titres">
                                 <img class="local" src="{{ asset('bundles/framework/images/icons/local.png') }}">
-                                {#{user.styxuserstudent.school.zone.name}#}
+                                {{ user.name }}
                             </span>
                         {#% if permissions.update_profil %#}
                             <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>

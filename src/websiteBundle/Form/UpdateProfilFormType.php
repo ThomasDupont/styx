@@ -19,11 +19,11 @@ class UpdateProfilFormType extends AbstractType
             ->add('avatar', FileType::class,array('label'=>'Avatar'))
             ->add('name', TextType::class,array('label'=>'Nom'))
             ->add('email', TextType::class,array('label'=>'Email'))
-            ->add('birthday', TextType::class,array('label'=>'Date de naissance'))
+//            ->add('birthday', TextType::class,array('label'=>'Date de naissance'))
             ->add('mobile', TextType::class,array('label'=>'Email', 'max_length'=>'10'))
             ->add('adress', TextType::class,array('label'=>'Adresse'))
-            ->add('zipCode', TextType::class,array('label'=>'Code Postal'))
-            ->add('city', TextType::class,array('label'=>'Ville'));
+            ->add('zipCode', TextType::class,array('label'=>'Code Postal'));
+//            ->add('city', TextType::class,array('label'=>'Ville'));
     }
 
 
