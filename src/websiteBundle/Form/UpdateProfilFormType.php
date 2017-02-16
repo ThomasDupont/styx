@@ -21,7 +21,7 @@ class UpdateProfilFormType extends AbstractType
             ->add('email', TextType::class,array('label'=>'Email'))
 //            ->add('birthday', TextType::class,array('label'=>'Date de naissance'))
             ->add('mobile', TextType::class,array('label'=>'Email', 'max_length'=>'10'))
-            ->add('adress', TextType::class,array('label'=>'Adresse'))
+            ->add('address', TextType::class,array('label'=>'Adresse'))
             ->add('zipCode', TextType::class,array('label'=>'Code Postal'));
 //            ->add('city', TextType::class,array('label'=>'Ville'));
     }
