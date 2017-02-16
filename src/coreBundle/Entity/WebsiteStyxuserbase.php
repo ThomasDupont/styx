@@ -67,6 +67,13 @@ class WebsiteStyxuserbase extends BaseUser
     protected $email;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", nullable=false)
+     */
+    protected $password;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="email_notification", type="boolean", nullable=false)
@@ -504,5 +511,21 @@ class WebsiteStyxuserbase extends BaseUser
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

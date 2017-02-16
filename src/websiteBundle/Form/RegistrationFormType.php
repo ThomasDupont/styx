@@ -29,7 +29,7 @@ class RegistrationFormType extends AbstractType
                 'class' => WebsiteZone::class,
                 'property' => 'name'
             ))
-            ->add('school', TextType::class,array('label'=>'École'))
+//            ->add('school', TextType::class,array('label'=>'École'))
 //            ->add('cgu', CheckboxType::class,array('label'=>'CGU'))
             ->add('firstname', TextType::class,array('label'=>'Prénom'))
             ->add('name', TextType::class,array('label'=>'Nom'))
@@ -44,7 +44,7 @@ class RegistrationFormType extends AbstractType
 
     public function getName()
     {
-        return 'fos_user_registration';
+        return 'app_user_registration';
     }
 
     public function configureOptions(OptionsResolver $resolver)
