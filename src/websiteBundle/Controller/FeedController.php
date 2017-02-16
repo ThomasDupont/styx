@@ -3,6 +3,7 @@
 namespace websiteBundle\Controller;
 
 use coreBundle\Entity\PostPost;
+use coreBundle\Entity\PostPostZones;
 use coreBundle\Entity\WebsiteZone;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -63,6 +64,50 @@ class FeedController extends Controller
       $j++;
     }
 
+
+
+
+    $param = $request->request->get("result");
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery('
+      SELECT wsub
+      FROM coreBundle:WebsiteStyxuserbase wsub, coreBundle:WebsiteStyxuserbaseZones wsubz, coreBundle:WebsiteZone wz, coreBundle:PostPost pp
+      WHERE wsub.name LIKE :coucou
+      ')
+      ->setParameter('coucou', $param."%");
+    $res = $query->getResult();
+
+    // for ($i=0; $i < sizeof($res); $i++) {
+    //   var_dump($res[$i]->getName());
+    // }
+
+    // exit;
+    // $user = $repositoryStyxuserbase->findCOUCOUByName()[0];
+
+    // if($user) {
+    //   var_dump($user->getName());
+    // } else {
+    //   var_dump(null);
+    // }
+    // var_dump(@$user->getName());
+    // var_dump($request->request->get("result"));
+    // exit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $idUser = $this->getUser()->getId();
     $user = $repositoryStyxuserbase->findById($idUser)[0];
     $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
@@ -96,19 +141,20 @@ class FeedController extends Controller
       header("Location: /feed");
       exit;
     }
-    // exit;
+    
+    var_dump($zone);
     if($user_zone->getZone() != NULL) {
       $zone = $user_zone->getZone();
     } else {
-      // $zone = $repositoryZone->findById(1)[0];
+      $zone = $repositoryZone->findById(1)[0];
     }
-    // var_dump($zone);
+    var_dump($zone);
 
     // var_dump($zone);
     // var_dump($session->get('newsfeed_filter'));
 
     // var_dump($filtre);
-
+    exit;
     $posts = null;
 
     if($filtre == 0) {
@@ -183,8 +229,10 @@ class FeedController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->persist($post);
       $em->flush();
+      $postid = $post->getId();
     }
 
+    $postzones = new PostPostZones();
 
 
     // exit;
