@@ -97,7 +97,7 @@
 
                             <option value="0" disabled selected>{#{{name_zone}}#}</option>
                         </label>
-                        {{ form_widget(cityForm.name, {'attr': {'class': 'select'}}) }}
+                        {{ form_widget(cityForm.name, {'attr': {'class': 'select'}, value: selected}) }}
                         {#{{ filter_city_form.city }}#}
 
                     </div>

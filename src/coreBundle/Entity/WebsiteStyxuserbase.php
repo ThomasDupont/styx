@@ -43,14 +43,14 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
-    private $name = "test";
+    private $name = "default_name";
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
      */
-    private $firstname = "test";
+    private $firstname = "default_firstname";
 
     /**
      * @var \DateTime
@@ -78,7 +78,7 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteZone")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id", nullable=false)
      * })
      */
     private $city;
@@ -88,7 +88,7 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteSchool")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="school_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="school_id", referencedColumnName="id", nullable=false)
      * })
      */
     private $school;
@@ -143,10 +143,10 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteGroup")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=false)
      * })
      */
-    private $group;
+    private $group = 1;
 
     /**
      * Constructor
@@ -170,14 +170,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setIdentifier($identifier)
     {
         $this->identifier = $identifier;
-    
+
         return $this;
     }
 
     /**
      * Get identifier
      *
-     * @return string 
+     * @return string
      */
     public function getIdentifier()
     {
@@ -193,14 +193,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -216,14 +216,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
-    
+
         return $this;
     }
 
     /**
      * Get birthday
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthday()
     {
@@ -239,14 +239,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setEmailNotification($emailNotification)
     {
         $this->emailNotification = $emailNotification;
-    
+
         return $this;
     }
 
     /**
      * Get emailNotification
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEmailNotification()
     {
@@ -262,14 +262,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -285,14 +285,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
-    
+
         return $this;
     }
 
     /**
      * Get mobile
      *
-     * @return string 
+     * @return string
      */
     public function getMobile()
     {
@@ -308,14 +308,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -331,14 +331,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setZipCode($zipCode)
     {
         $this->zipCode = $zipCode;
-    
+
         return $this;
     }
 
     /**
      * Get zipCode
      *
-     * @return string 
+     * @return string
      */
     public function getZipCode()
     {
@@ -354,14 +354,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setAddress($address)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -377,14 +377,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setEmailConfirmed($emailConfirmed)
     {
         $this->emailConfirmed = $emailConfirmed;
-    
+
         return $this;
     }
 
     /**
      * Get emailConfirmed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEmailConfirmed()
     {
@@ -400,14 +400,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setIsAdmin($isAdmin)
     {
         $this->isAdmin = $isAdmin;
-    
+
         return $this;
     }
 
     /**
      * Get isAdmin
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsAdmin()
     {
@@ -423,14 +423,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
-    
+
         return $this;
     }
 
     /**
      * Get avatar
      *
-     * @return string 
+     * @return string
      */
     public function getAvatar()
     {
@@ -446,14 +446,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setGroup(\coreBundle\Entity\WebsiteGroup $group = null)
     {
         $this->group = $group;
-    
+
         return $this;
     }
 
     /**
      * Get group
      *
-     * @return \coreBundle\Entity\WebsiteGroup 
+     * @return \coreBundle\Entity\WebsiteGroup
      */
     public function getGroup()
     {
@@ -469,14 +469,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setSchool(\coreBundle\Entity\WebsiteSchool $school = null)
     {
         $this->school = $school;
-    
+
         return $this;
     }
 
     /**
      * Get school
      *
-     * @return \coreBundle\Entity\WebsiteSchool 
+     * @return \coreBundle\Entity\WebsiteSchool
      */
     public function getSchool()
     {
@@ -492,14 +492,14 @@ class WebsiteStyxuserbase extends BaseUser
     public function setCity(\coreBundle\Entity\WebsiteZone $city = null)
     {
         $this->city = $city;
-    
+
         return $this;
     }
 
     /**
      * Get city
      *
-     * @return \coreBundle\Entity\WebsiteZone 
+     * @return \coreBundle\Entity\WebsiteZone
      */
     public function getCity()
     {

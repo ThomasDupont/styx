@@ -28,17 +28,17 @@
     <field name="avatar" type="string" column="avatar" length="100" nullable="true"/>
     <many-to-one field="group" target-entity="WebsiteGroup">
       <join-columns>
-        <join-column name="group_id" referenced-column-name="id"/>
+        <join-column name="group_id" referenced-column-name="id" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="school" target-entity="WebsiteSchool">
       <join-columns>
-        <join-column name="school_id" referenced-column-name="id"/>
+        <join-column name="school_id" referenced-column-name="id" nullable="false"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="city" target-entity="coreBundle\Entity\WebsiteZone">
       <join-columns>
-        <join-column name="city_id" referenced-column-name="id"/>
+        <join-column name="city_id" referenced-column-name="id" nullable="false"/>
       </join-columns>
     </many-to-one>
   </entity>
