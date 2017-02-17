@@ -65,4 +65,152 @@ class SocialAuthAssociation
     private $id;
 
 
+
+    /**
+     * Set serverUrl
+     *
+     * @param string $serverUrl
+     * @return SocialAuthAssociation
+     */
+    public function setServerUrl($serverUrl)
+    {
+        $this->serverUrl = $serverUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get serverUrl
+     *
+     * @return string 
+     */
+    public function getServerUrl()
+    {
+        return $this->serverUrl;
+    }
+
+    /**
+     * Set handle
+     *
+     * @param string $handle
+     * @return SocialAuthAssociation
+     */
+    public function setHandle($handle)
+    {
+        $this->handle = $handle;
+
+        return $this;
+    }
+
+    /**
+     * Get handle
+     *
+     * @return string 
+     */
+    public function getHandle()
+    {
+        return $this->handle;
+    }
+
+    /**
+     * Set secret
+     *
+     * @param string $secret
+     * @return SocialAuthAssociation
+     */
+    public function setSecret($secret)
+    {
+        $this->secret = $secret;
+
+        return $this;
+    }
+
+    /**
+     * Get secret
+     *
+     * @return string 
+     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    /**
+     * Set issued
+     *
+     * @param integer $issued
+     * @return SocialAuthAssociation
+     */
+    public function setIssued($issued)
+    {
+        $this->issued = $issued;
+
+        return $this;
+    }
+
+    /**
+     * Get issued
+     *
+     * @return integer 
+     */
+    public function getIssued()
+    {
+        return $this->issued;
+    }
+
+    /**
+     * Set lifetime
+     *
+     * @param integer $lifetime
+     * @return SocialAuthAssociation
+     */
+    public function setLifetime($lifetime)
+    {
+        $this->lifetime = $lifetime;
+
+        return $this;
+    }
+
+    /**
+     * Get lifetime
+     *
+     * @return integer 
+     */
+    public function getLifetime()
+    {
+        return $this->lifetime;
+    }
+
+    /**
+     * Set assocType
+     *
+     * @param string $assocType
+     * @return SocialAuthAssociation
+     */
+    public function setAssocType($assocType)
+    {
+        $this->assocType = $assocType;
+
+        return $this;
+    }
+
+    /**
+     * Get assocType
+     *
+     * @return string 
+     */
+    public function getAssocType()
+    {
+        return $this->assocType;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

@@ -43,4 +43,60 @@ class PostPromocodeUsers
     private $promocode;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set styxuserstudent
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserstudent $styxuserstudent
+     * @return PostPromocodeUsers
+     */
+    public function setStyxuserstudent(\coreBundle\Entity\WebsiteStyxuserstudent $styxuserstudent = null)
+    {
+        $this->styxuserstudent = $styxuserstudent;
+
+        return $this;
+    }
+
+    /**
+     * Get styxuserstudent
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserstudent 
+     */
+    public function getStyxuserstudent()
+    {
+        return $this->styxuserstudent;
+    }
+
+    /**
+     * Set promocode
+     *
+     * @param \coreBundle\Entity\PostPromocode $promocode
+     * @return PostPromocodeUsers
+     */
+    public function setPromocode(\coreBundle\Entity\PostPromocode $promocode = null)
+    {
+        $this->promocode = $promocode;
+
+        return $this;
+    }
+
+    /**
+     * Get promocode
+     *
+     * @return \coreBundle\Entity\PostPromocode 
+     */
+    public function getPromocode()
+    {
+        return $this->promocode;
+    }
 }

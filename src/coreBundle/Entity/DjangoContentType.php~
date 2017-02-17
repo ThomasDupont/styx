@@ -37,4 +37,60 @@ class DjangoContentType
     private $id;
 
 
+
+    /**
+     * Set appLabel
+     *
+     * @param string $appLabel
+     * @return DjangoContentType
+     */
+    public function setAppLabel($appLabel)
+    {
+        $this->appLabel = $appLabel;
+
+        return $this;
+    }
+
+    /**
+     * Get appLabel
+     *
+     * @return string 
+     */
+    public function getAppLabel()
+    {
+        return $this->appLabel;
+    }
+
+    /**
+     * Set model
+     *
+     * @param string $model
+     * @return DjangoContentType
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * Get model
+     *
+     * @return string 
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

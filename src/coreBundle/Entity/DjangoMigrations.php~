@@ -44,4 +44,83 @@ class DjangoMigrations
     private $id;
 
 
+
+    /**
+     * Set app
+     *
+     * @param string $app
+     * @return DjangoMigrations
+     */
+    public function setApp($app)
+    {
+        $this->app = $app;
+
+        return $this;
+    }
+
+    /**
+     * Get app
+     *
+     * @return string 
+     */
+    public function getApp()
+    {
+        return $this->app;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return DjangoMigrations
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set applied
+     *
+     * @param \DateTime $applied
+     * @return DjangoMigrations
+     */
+    public function setApplied($applied)
+    {
+        $this->applied = $applied;
+
+        return $this;
+    }
+
+    /**
+     * Get applied
+     *
+     * @return \DateTime 
+     */
+    public function getApplied()
+    {
+        return $this->applied;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

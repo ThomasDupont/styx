@@ -40,13 +40,15 @@
             <!-- Les actualités -->
 
             <div class="blocks postlist">
-                {#{% if posts %}
+              {% if posts %}
+                {% set counter0 = 0 %}
                 {% for post in posts %}
-                {% if forloop.counter0 < 3 %}
-                {% print_inline_request post connectedUser%}
-                {% endif %}
+                  {% if counter0 < 99999999999999 %}
+                    {% include 'post/inline_post/inline_request.html.twig' with post %}
+                  {% endif %}
+                  {% set counter0 = counter0 + 1 %}
                 {% endfor %}
-              {% endif %}#}
+              {% endif %}
             </div>
             <div class="col-xs-12 text-center">
                 <span class="btn-view-more" aria-hidden="true" onclick="update_post('{#{{zone_id}}#}');"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
@@ -97,7 +99,7 @@
 
                             <option value="0" disabled selected>{#{{name_zone}}#}</option>
                         </label>
-                        {{ form_widget(cityForm.name, {'attr': {'class': 'select'}}) }}
+                        {{ form_widget(cityForm.name, {'attr': {'class': 'select'}, value: selected}) }}
                         {#{{ filter_city_form.city }}#}
 
                     </div>

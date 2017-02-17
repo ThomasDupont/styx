@@ -43,4 +43,60 @@ class PostConversationParticipant
     private $conversation;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set styxuserbase
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbase
+     * @return PostConversationParticipant
+     */
+    public function setStyxuserbase(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbase = null)
+    {
+        $this->styxuserbase = $styxuserbase;
+
+        return $this;
+    }
+
+    /**
+     * Get styxuserbase
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbase()
+    {
+        return $this->styxuserbase;
+    }
+
+    /**
+     * Set conversation
+     *
+     * @param \coreBundle\Entity\PostConversation $conversation
+     * @return PostConversationParticipant
+     */
+    public function setConversation(\coreBundle\Entity\PostConversation $conversation = null)
+    {
+        $this->conversation = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Get conversation
+     *
+     * @return \coreBundle\Entity\PostConversation 
+     */
+    public function getConversation()
+    {
+        return $this->conversation;
+    }
 }

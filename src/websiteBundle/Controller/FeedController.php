@@ -3,6 +3,7 @@
 namespace websiteBundle\Controller;
 
 use coreBundle\Entity\PostPost;
+use coreBundle\Entity\PostPostZones;
 use coreBundle\Entity\WebsiteZone;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -45,24 +46,6 @@ class FeedController extends Controller
     $types = $repositoryType->findAll();
     $rewards = $repositoryReward->findAll();
 
-    // var_dump($repositoryZone->findById(1)[0]);
-
-    $i = 1;
-    while($repositoryPostPost->findById($i) != null) {
-      $i++;
-    }
-
-    $j = 1;
-    while($j < $i) {
-      //      var_dump($repositoryPostPost->findById($j)[0]->getTitle());
-      //      echo "<br/>";
-      //      var_dump($repositoryPostPost->findById($j)[0]->getDescription());
-      //      echo "<br/>";
-      //      var_dump($repositoryPostPost->findById($j)[0]->getCreatedAt()->format('d/m/Y à H:i'));
-      //      echo "<br/><br/>";
-      $j++;
-    }
-
     $idUser = $this->getUser()->getId();
     $user = $repositoryStyxuserbase->findById($idUser)[0];
     $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
@@ -77,18 +60,12 @@ class FeedController extends Controller
       $name_zone = 'Orléans';
     }
     $filtres = [$name_zone];
-    
-    if($session->get('newsfeed_filter') != NULL) {
-      $filtre = $session->get('newsfeed_filter');
-    } else {
-      $filtre = 0;
-    }
 
     if(array_key_exists('filter', $request->query->all())) {
       $filtre = $request->query->get('filter');
       $session->set('newsfeed_filter', (Integer)$filtre-1);
       if(array_key_exists('zone', $request->query->all())) {
-        $zone = $request->query->get('filter');
+        $zone = $request->query->get('zone');
         $session->set('zone_filter', $zone);
       }
       header("Location: /feed");
@@ -100,11 +77,6 @@ class FeedController extends Controller
     } else {
       // $zone = $repositoryZone->findById(1)[0];
     }
-
-    // var_dump($zone);
-    // var_dump($session->get('newsfeed_filter'));
-
-    // var_dump($filtre);
 
     $posts = null;
 
@@ -132,6 +104,44 @@ class FeedController extends Controller
       $name_zone = $zone->getName();
     }
 
+    $filtre = $session->get('newsfeed_filter');
+    if(!$filtre) {
+      $filtre = 0;
+    }
+    $zone = $session->get('zone_filter');
+    if(!$zone) {
+      $zone = 1;
+    }
+    $zone = $repositoryZone->findById($zone)[0];
+
+
+
+    $i = 1;
+    while($repositoryPostPost->findById($i) != null) {
+      $i++;
+    }
+
+    $j = 1;
+    while($j < $i) {
+      $j++;
+    }
+
+    var_dump($zone->getId());
+
+    $param = $request->request->get("result");
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery('
+    SELECT pp
+    FROM coreBundle:WebsiteStyxuserbase wsub, coreBundle:PostPost pp
+    WHERE pp.zone = :zone
+    ')
+    ->setParameter('zone', $zone);
+    $posts = null;
+    $posts = $query->getResult();
+    for ($i=0; $i < sizeof($posts); $i++) {
+      $posts[$i] = array('post' => $posts[$i]);
+      // var_dump($posts[$i]);
+    }
 
     $futur_event = $repositoryPostPostZones->findBy(array('zone'=>$zone));
     $def_posts = [];
@@ -161,7 +171,7 @@ class FeedController extends Controller
 
     //var_dump($futur_event);
 
-
+    // var_dump($posts);
 
     $ville = new WebsiteZone();
     $cityForm = $this->createForm(new CityFormType(), $ville);
@@ -171,23 +181,33 @@ class FeedController extends Controller
       $em->flush();
     }
 
-    $post = new PostPost();
-    $postForm = $this->createForm(new CreatePostFormType(), $post);
+    $postpost = new PostPost();
+    $postForm = $this->createForm(new CreatePostFormType(), $postpost);
     if ($postForm->handleRequest($request)->isValid()) {
-      $post->setOwner($this->getUser());
+      $postpost->setOwner($this->getUser());
+      $postpost->setZone($zone);
       $em = $this->getDoctrine()->getManager();
-      $em->persist($post);
+      $em->persist($postpost);
       $em->flush();
+      $postid = $postpost->getId();
     }
 
 
-
-    //exit;
+    // exit;
     return $this->render('@website/feed/feed.html.twig', array(
       'cityForm' => $cityForm->createView(),
       'postForm' => $postForm->createView(),
+      'posts' => $posts,
+      'futur_event' => $futur_event,
       'types' => $types,
       'rewards' => $rewards,
+      'selected' => strval($zone->getId()),
     ));
   }
+
+  //     public function connected_user_count() {
+  //       $since_day = timezone.now() - timedelta(days=3);
+  //       $since_day.strftime('%m%d%y');
+  //       return len(StyxUserBase.objects.filter(last_login__gt=since_day));
+
 }
