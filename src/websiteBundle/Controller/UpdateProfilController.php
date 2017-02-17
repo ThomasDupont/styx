@@ -4,8 +4,10 @@ namespace websiteBundle\Controller;
 
 use coreBundle\Entity\WebsiteStyxuserbase;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\HttpFoundation\Request;
 use websiteBundle\Form\UpdateProfilFormType;
+use websiteBundle\Form\EmailNotificationFormType;
 
 class UpdateProfilController extends Controller
 {
@@ -16,6 +18,7 @@ class UpdateProfilController extends Controller
         $user = $repositoryStyxuserbase->findById($idUser)[0];
 
         $updateProfilForm = $this->createForm(new UpdateProfilFormType(), $user);
+        $emailNotificationForm = $this->createForm(new EmailNotificationFormType(), $user);
 
         if ($updateProfilForm->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -23,8 +26,24 @@ class UpdateProfilController extends Controller
             $em->flush();
         }
 
+        if ($emailNotificationForm->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+        }
+
         return $this->render('websiteBundle:profil:update_profil.html.twig', array(
-            'updateProfilForm' => $updateProfilForm->createView()
+            'updateProfilForm' => $updateProfilForm->createView(),
+            'emailNotificationForm' => $emailNotificationForm->createView()
         ));
+    }
+
+    public function onPreSubmit(FormEvent $event)
+    {
+        $params = $event->getData();
+
+        if (!isset($params['email'])) {
+            $event->getForm()->remove('email');
+        }
     }
 }
