@@ -177,6 +177,8 @@ $(document).ready(function () {
         return false;
     });
 
+    // $(document).on("click", "")
+
     // Notification check after page load
     // get_notification_count();
 });

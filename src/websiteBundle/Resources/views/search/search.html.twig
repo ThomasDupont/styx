@@ -13,7 +13,7 @@
             <div class="c_resultats blocks">
 
                 <!-- Un resultat -->
-                {#% for user in users %#}
+                {% for user in search_result %}
                 <div class="resultats">
                     <div class="pt1">
                         {#% if user.avatar %}
@@ -23,7 +23,7 @@
                         {% else %#}
                         <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
                         {#% endif %#}
-                        <a href="/profil/{#{user.identifier}#}"><span class="pseudo">{#{ user.styxuserstudent.firstname }} {{ user.styxuserstudent.name }#}</span>
+                        <a href="/profil/{{user.identifier}}"><span class="pseudo">{{ user.firstname }} {{ user.name }}</span>
                             <span class="ville">
                                 <img src="{{ asset('bundles/framework/images/icons/map.png') }}">
                                 {#{ user.styxuserstudent.school.zone.name }#}
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                {#% endfor %#}
+                {% endfor %}
 
             </div>
         </div>
@@ -94,7 +94,7 @@
         <!-- Block Nombre de recherches & Suggestions -->
 
         <div class="col-md-3 col-sm-4">
-            <div class="nb_resus">{#{ users.count }#} étudiants trouvés</div>
+            <div class="nb_resus">{{ search_result|length }} étudiants trouvés</div>
             <div class="c_suggestions blocks">
                 <h4>Tu connais peut-être ?</h4>
                 {#% for user in random_user %#}
