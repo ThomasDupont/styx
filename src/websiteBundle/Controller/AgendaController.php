@@ -34,7 +34,6 @@ class AgendaController extends Controller
       $zone = $zone[0];
     } else if($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'student') {
       $zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0]->getZone();
-      $zone = $zone[0];
     } else {
       $zone = $repositoryZone->findById(1);
       $zone = $zone[0];
