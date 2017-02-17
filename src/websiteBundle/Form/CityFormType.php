@@ -28,13 +28,13 @@ class CityFormType extends AbstractType
     return 'city';
   }
 
-  //    /**
-  //     * @param OptionsResolver $resolver
-  //     */
-  //    public function configureOptions(OptionsResolver $resolver)
-  //    {
-  //        $resolver->setDefaults(array(
-  //            'data_class' => 'websiteBundle\Entity\Styxuserbase'
-  //        ));
-  //    }
+//    /**
+//     * @param OptionsResolver $resolver
+//     */
+//    public function configureOptions(OptionsResolver $resolver)
+//    {
+//        $resolver->setDefaults(array(
+//            'data_class' => 'websiteBundle\Entity\Styxuserbase'
+//        ));
+//    }
 }

@@ -72,7 +72,7 @@ class FeedController extends Controller
     }
 
     $request->query->set('coucou', 'xouxou');
-
+    
     if(array_key_exists('filter', $request->query->all())) {
       $filtre = $request->query->get('filter');
       $session->set('newsfeed_filter', (Integer)$filtre-1);

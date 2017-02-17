@@ -22,7 +22,9 @@
 
     <script src="{{ asset('bundles/framework/js/main.js') }}"></script>
     <script src="{{ asset('bundles/framework/js/header.js') }}"></script>
-
+    <!-- <script>
+      console.log("{{ app.request.getUri }}");
+    </script> -->
     {% if "update_profil" in app.request.getUri %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/update_profil.css') }}" />
     <script src="{{ asset('bundles/framework/js/profil.js') }}"></script>
@@ -68,6 +70,7 @@
 <header>
     <a href="/feed"><img class="logo" src="{{ asset('bundles/framework/images/logo/styx-logo.png') }}"></a>
     <div class="recherche no_r_header">
+      {#{ form_widget(searchForm, {'attr': {'class': 'search'}}) }#}
         <form action="/search/" method="post">
             <input class="search-field" type="search" placeholder="Trouvez des étudiants..." name="result">
             <input class="search-submit" type="submit">
@@ -93,10 +96,16 @@
     <!--<img src="{#{ asset('bundles/framework/images/icons/menu.png') }#}" class="l_menu lx_menu">
     <img src="{#{ asset('bundles/framework/images/icons/close_menu.png') }#}" class="x_menu lx_menu">-->
     <div class="recherche recherche2">
-        <input type="search" placeholder="Trouvez des étudiants...">
-        <a href="recherche.php"><div>
+      <form action="/search/" method="post">
+          <input class="search-field" type="search" placeholder="Trouvez des étudiants..." name="result">
+          <input class="search-submit" type="submit">
+      </form>
+      <!-- <form action="/search/" method="post">
+        <input name="a" id="search" type="search" value="coucou" placeholder="Trouvez des étudiants...">
+        <input type="submit" class="hidden"/><a onclick="console.log('acoucou')"><div>
             <img src="{{ asset('bundles/framework/images/icons/search.png') }}">
         </div></a>
+      </form> -->
     </div>
     <div class="c_header_responsive">
         <ul>
