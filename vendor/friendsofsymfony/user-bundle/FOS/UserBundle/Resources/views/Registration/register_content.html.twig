@@ -1,51 +1,51 @@
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
-    {#<div class="pt1">#}
+    <div class="pt1">
         {#{% csrf_token %}#}
         {#{{ signUpForm.non_field_errors }}#}
         {#{% for hidden in signUpForm.hidden_fields %}#}
         {#{{ hidden }}#}
         {#{% endfor %}#}
 
-        {#<div class="select-box">#}
-            {#<label for="select-box1" class="label select-box1">#}
-                {#<span class="label-desc">Département</span>#}
-            {#</label>#}
+        <div class="select-box">
+            <label for="select-box1" class="label select-box1">
+                <span class="label-desc">Département</span>
+            </label>
             {#{{ signUpForm.department }}#}
-        {#</div>#}
+        </div>
 
 
-        {#<div class="select-box">#}
-            {#<label for="select-box2" class="label select-box2">#}
-                {#<span class="label-desc">Ville</span>#}
-            {#</label>#}
+        <div class="select-box">
+            <label for="select-box2" class="label select-box2">
+                <span class="label-desc">Ville</span>
+            </label>
             {#{{ signUpForm.city }}#}
             {#{{ form_widget(form.city, {'attr': {'class': 'select'}}) }}#}
-        {#</div>#}
+        </div>
         {#{{ form_widget(form.school, {'attr': {'class': 'form_b_text ui-autocomplete-input', 'placeholder': 'Ton école'}}) }}#}
-        {#<label for="id_acceptedCGU"></label><input type="checkbox" name="fos_user_registration_cgu" id="id_acceptedCGU"/>#}
-        {#<div class="cgu">J'accepte <a target="_blank" href="/private_policy" >les conditions générales d'utilisations.</a> </div>#}
-        {#<div class="valid"> Suite </div>#}
+        <label for="id_acceptedCGU"></label><input type="checkbox" name="fos_user_registration_cgu" id="id_acceptedCGU"/>
+        <div class="cgu">J'accepte <a target="_blank" href="/private_policy" >les conditions générales d'utilisations.</a> </div>
+        <div class="valid"> Suite </div>
 
-        {#<div class="message"></div>#}
-    {#</div>#}
+        <div class="message"></div>
+    </div>
 
-    {#<div class="pt2">#}
+    <div class="pt2">
         {#<a id="facebook-sign-up" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/set_school_facebook_signup&method=signup"></a>#}
 
-        {#<div class="facebook-sign-up">Inscription via Facebook</div>#}
-        {#<p>OU</p>#}
-        {#{{ form_widget(form.firstname, {'attr': {'class': 'form_b_text form_g_text', 'placeholder': 'Prénom'}}) }}#}
-        {#{{ form_widget(form.name, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Nom'}}) }}#}
-        {#{{ form_widget(form.email, {'attr': {'class': 'form_b_text', 'placeholder': 'Email'}}) }}#}
-        {#{{ form_widget(form.password, {'attr':  {'class': 'form_b_text form_g_text', 'placeholder': 'Mot de passe'}}) }}#}
-        {#{{ form_widget(form.password, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Mot de passe'}}) }}#}
-        {#<input class="form_b_text form_d_text" placeholder="Confirmation du mot de passe" name="fos_user_registration_confirm_password">#}
+        <div class="facebook-sign-up">Inscription via Facebook</div>
+        <p>OU</p>
+        {{ form_widget(form.firstname, {'attr': {'class': 'form_b_text form_g_text', 'placeholder': 'Prénom'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Nom'}}) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form_b_text', 'placeholder': 'Email'}}) }}
+        {{ form_widget(form.password, {'attr':  {'class': 'form_b_text form_g_text', 'placeholder': 'Mot de passe'}}) }}
+        {{ form_widget(form.password, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Mot de passe'}}) }}
+        <input class="form_b_text form_d_text" placeholder="Confirmation du mot de passe" name="fos_user_registration_confirm_password">
 
-        {#<div class="valid retour"> ◄ </div>#}
+        <div class="valid retour"> ◄ </div>
         <input class="valid" type="submit" value="M'inscrire">
-    {#</div>#}
+    </div>
 
-    {#<div>#}
-    {#</div>#}
+    <div>
+    </div>
 </form>

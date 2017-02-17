@@ -28,7 +28,7 @@ class UpdateProfilController extends Controller
 
         if ($emailNotificationForm->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
+//            $em->persist($user);
             $em->flush();
         }
 
@@ -36,14 +36,5 @@ class UpdateProfilController extends Controller
             'updateProfilForm' => $updateProfilForm->createView(),
             'emailNotificationForm' => $emailNotificationForm->createView()
         ));
-    }
-
-    public function onPreSubmit(FormEvent $event)
-    {
-        $params = $event->getData();
-
-        if (!isset($params['email'])) {
-            $event->getForm()->remove('email');
-        }
     }
 }
