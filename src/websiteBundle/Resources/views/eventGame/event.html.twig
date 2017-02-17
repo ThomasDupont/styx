@@ -26,7 +26,7 @@
                     <h2 class="text-center">{#{video.title}#}</h2>
             <iframe class="video_youtube" src="https://{#{ video.video }#}" frameborder="0" allowfullscreen></iframe>
                     <div class="">
-                        <form action="/jeu-concours/" method="post">
+                        <form action="/jeu-concours" method="post">
                             {#% csrf_token %#}
                             <input id="idVideo" type="hidden" name="idVideo" value="{#{ video.id }#}">
                             {#% if erreur %#}

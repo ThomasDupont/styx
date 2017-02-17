@@ -30,7 +30,7 @@
             <div class="text-error">{{ form.password2.errors.0}}</div>
             {% endif %#}
 
-            <form action="/complete_registration/" method="post">
+            <form action="/complete_registration" method="post">
                 {#% csrf_token %#}
                 <div class="form1">
                     {#{ form.non_field_errors }}

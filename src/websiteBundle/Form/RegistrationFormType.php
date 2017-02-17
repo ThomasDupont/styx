@@ -44,7 +44,8 @@ class RegistrationFormType extends AbstractType
 
     public function getName()
     {
-        return 'app_user_registration';
+//        return 'app_user_registration';
+        return 'fos_user_registration';
     }
 
     public function configureOptions(OptionsResolver $resolver)
