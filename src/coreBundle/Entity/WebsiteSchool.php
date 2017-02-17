@@ -39,66 +39,59 @@ class WebsiteSchool
   */
   private $zone;
 
-<<<<<<< HEAD
-  public function getName() {
+  /**
+  * Set name
+  *
+  * @param string $name
+  * @return WebsiteSchool
+  */
+  public function setName($name)
+  {
+    $this->name = $name;
+
+    return $this;
+  }
+
+  /**
+  * Get name
+  *
+  * @return string
+  */
+  public function getName()
+  {
     return $this->name;
   }
-=======
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return WebsiteSchool
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
+  /**
+  * Get id
+  *
+  * @return integer
+  */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+  /**
+  * Set zone
+  *
+  * @param \coreBundle\Entity\WebsiteZone $zone
+  * @return WebsiteSchool
+  */
+  public function setZone(\coreBundle\Entity\WebsiteZone $zone = null)
+  {
+    $this->zone = $zone;
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    return $this;
+  }
 
-    /**
-     * Set zone
-     *
-     * @param \coreBundle\Entity\WebsiteZone $zone
-     * @return WebsiteSchool
-     */
-    public function setZone(\coreBundle\Entity\WebsiteZone $zone = null)
-    {
-        $this->zone = $zone;
-    
-        return $this;
-    }
-
-    /**
-     * Get zone
-     *
-     * @return \coreBundle\Entity\WebsiteZone 
-     */
-    public function getZone()
-    {
-        return $this->zone;
-    }
->>>>>>> feed
+  /**
+  * Get zone
+  *
+  * @return \coreBundle\Entity\WebsiteZone
+  */
+  public function getZone()
+  {
+    return $this->zone;
+  }
 }

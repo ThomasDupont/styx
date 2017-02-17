@@ -25,7 +25,7 @@
                     <img src="" class="pp">
                 </div>
 
-                <form action="/update_profil/" method="post" enctype="multipart/form-data" name="profil">
+                <form action="/update_profil" method="post" enctype="multipart/form-data" name="profil">
                     {#{% csrf_token %}#}
                     {#{% for err in form.avatar.errors %}<br/>#}
                     {#<span class="label label-danger">{{ err }}</span>#}
@@ -87,7 +87,7 @@
                  <div class="social social blocks">
                     <h3>Réseaux sociaux</h3>
                      <span>
-                    <form action="/update_profil/" method="post" enctype="multipart/form-data" name="social">
+                    <form action="/update_profil" method="post" enctype="multipart/form-data" name="social">
                         {#% csrf_token %#}
 
                         <!--{#{ update_member.management_form }#}-->
@@ -114,7 +114,7 @@
             <div class="notifs notifs1 blocks">
                 <h3>Autres modifications</h3>
                     <span>
-                        <form action="/update_profil/" method="post" name="profil">
+                        <form action="/update_profil" method="post" name="profil">
                             {{ form_widget(emailNotificationForm._token) }}
                             {{ form_widget(emailNotificationForm.emailNotification, {'attr': {'class': ''}}) }}
                             {{ form_rest(emailNotificationForm) }}
@@ -135,7 +135,7 @@
                 <ul>
                     <li class="o_faire">Ce que je sais faire</li>
                 </ul>
-                <form action="/update_profil/" method="post" enctype="multipart/form-data" name="service">
+                <form action="/update_profil" method="post" enctype="multipart/form-data" name="service">
                     {#% csrf_token %#}
                     <content>
                         {#% for err in service_form.categories.errors %}<br/>

@@ -31,29 +31,12 @@ class AgendaController extends Controller
 
     if(array_key_exists('zone', $request->query->all())) {
       $zone = $repositoryZone->findById($request->query->get('zone'));
+      $zone = $zone[0];
     } else if($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'student') {
       $zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0]->getZone();
     } else {
       $zone = $repositoryZone->findById(1);
     }
-    $zone = $zone[0];
-    // var_dump($zone->getName());
-    // exit;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     $ville = new WebsiteZone();

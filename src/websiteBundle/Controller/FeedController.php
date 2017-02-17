@@ -61,6 +61,13 @@ class FeedController extends Controller
     }
     $filtres = [$name_zone];
 
+
+    if($session->get('newsfeed_filter') != NULL) {
+      $filtre = $session->get('newsfeed_filter');
+    } else {
+      $filtre = 0;
+    }
+
     if(array_key_exists('filter', $request->query->all())) {
       $filtre = $request->query->get('filter');
       $session->set('newsfeed_filter', (Integer)$filtre-1);

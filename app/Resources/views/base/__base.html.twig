@@ -71,7 +71,7 @@
     <a href="/feed"><img class="logo" src="{{ asset('bundles/framework/images/logo/styx-logo.png') }}"></a>
     <div class="recherche no_r_header">
       {#{ form_widget(searchForm, {'attr': {'class': 'search'}}) }#}
-        <form action="/search/" method="post">
+        <form action="/search" method="post">
             <input class="search-field" type="search" placeholder="Trouvez des étudiants..." name="result">
             <input class="search-submit" type="submit">
         </form>
