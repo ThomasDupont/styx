@@ -6,8 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProfilEtudiantController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render('websiteBundle:profil/student:profil.html.twig');
-    }
+  public function indexAction()
+  {
+    $repositoryUser = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
+    $idUser = $this->getUser()->getId();
+    $user = $repositoryUser->findById($idUser)[0];
+
+    // var_dump($user->getSchool()->getName());
+
+    // exit;
+    return $this->render('@website/profil/student/profil.html.twig', array(
+      'user' => $user,
+    ));
+  }
 }

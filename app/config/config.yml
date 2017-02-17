@@ -75,4 +75,4 @@ fos_user:
     user_class: coreBundle\Entity\WebsiteStyxuserbase
     registration:
         form:
-            type: fos_user_registration
+            type: app_user_registration

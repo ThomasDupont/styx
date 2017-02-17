@@ -70,5 +70,13 @@ class WebsiteCategory
      */
     private $parent;
 
+    /**
+     * @return string
+     */
+    public function getNamecategory()
+    {
+        return $this->namecategory;
+    }
+
 
 }

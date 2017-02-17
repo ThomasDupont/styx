@@ -1,5 +1,8 @@
 <div class="new_post blocks">
     <ul>
+        {% for type in types %}
+            <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
+        {% endfor %}
         {#{% for type in types %}
         {% if forloop.first %}
         <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>
@@ -8,6 +11,31 @@
         {% endif %}
         {% endfor %}#}
     </ul>
+
+    {% for type in types %}
+        <form id="type_{{ type.id }}" class="new_post_form" method="post" action="" name="newRequest">
+            {{ form_widget(postForm._token) }}
+            {{ form_widget(postForm.title, {'attr': {'class': 'titre', 'placeholder': 'Titre', 'maxlength': '300'}}) }}
+            <div class="select-box categories">
+                <label for="select-box1-cate" class="label select-box1">
+                    <span class="label-desc">Catégories</span>
+                    {{ form_widget(postForm.category, {'attr': {'class': 'select'}}) }}
+                </label>
+            </div>
+            {{ form_widget(postForm.description, {'attr': {'class': 'description', 'placeholder': 'Description', 'cols': '40', 'rows': '10'}}) }}
+
+            <p class="title-rewards">Récompenses:</p>
+            <div class="rewards">
+                {% for reward in rewards %}
+
+                {% endfor %}
+            </div>
+
+            <button class="valider_post" name="action" type="submit" value=""> Poster </button>
+
+            <div class="clearfix"></div>
+        </form>
+    {% endfor %}
     {#{% for type in types %}
 
     <form id="type_{{type.id}}" class="new_post_form" method="post" action="{{form_url}}" name="newRequest">

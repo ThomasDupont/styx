@@ -31,6 +31,8 @@
                     {#<span class="label label-danger">{{ err }}</span>#}
                     {#{% endfor %}#}
                     {#{{ form.avatar }}#}
+                    {{ form_widget(updateProfilForm._token) }}
+
                     {{ form_widget(updateProfilForm.avatar) }}
 
                     {#{% if user.group_id == 2 %}#}
@@ -50,7 +52,7 @@
                     {#<span class="label label-danger">{{ err }}</span>#}
                     {#{% endfor %}#}
                     {#{{ form.birthday }}#}
-                    {{ form_widget(updateProfilForm.birthday, {'attr': {'class': 'input hasDatepicker', 'placeholder': 'Date de naissance'}}) }}
+                    {#{{ form_widget(updateProfilForm.birthday, {'attr': {'class': 'input hasDatepicker', 'placeholder': 'Date de naissance'}}) }}#}
 
                     {#{% for err in form.mobile.errors %}<br/>#}
                     {#<span class="label label-danger">{{ err }}</span>#}
@@ -58,11 +60,11 @@
                     {#{{ form.mobile }}#}
                     {{ form_widget(updateProfilForm.mobile, {'attr': {'class': 'input', 'placeholder': 'Mobile', 'maxlength': '10'}}) }}
 
-                    {#{% for err in form.adress.errors %}<br/>#}
+                    {#{% for err in form.address.errors %}<br/>#}
                     {#<span class="label label-danger">{{ err }}</span>#}
                     {#{% endfor %}#}
-                    {#{{ form.adress }}#}
-                    {{ form_widget(updateProfilForm.adress, {'attr': {'class': 'input', 'placeholder': 'Adresse'}}) }}
+                    {#{{ form.address }}#}
+                    {{ form_widget(updateProfilForm.address, {'attr': {'class': 'input', 'placeholder': 'addresse'}}) }}
 
                     {#{% for err in form.zip_code.errors %}<br/>#}
                     {#<span class="label label-danger">{{ err }}</span>#}
@@ -74,7 +76,7 @@
                     {#<span class="label label-danger">{{ err }}</span>#}
                     {#{% endfor %}#}
                     {#{{ form.city }}#}
-                    {{ form_widget(updateProfilForm.city, {'attr': {'class': 'input', 'placeholder': 'Ville'}}) }}
+                    {#{{ form_widget(updateProfilForm.city, {'attr': {'class': 'input', 'placeholder': 'Ville'}}) }}#}
 
                     <button  type="submit" name="action" value="profil" class="valider"> Valider </button>
                 </form>

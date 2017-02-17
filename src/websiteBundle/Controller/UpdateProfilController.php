@@ -11,7 +11,10 @@ class UpdateProfilController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $user = new WebsiteStyxuserbase();
+        $repositoryStyxuserbase = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
+        $idUser = $this->getUser()->getId();
+        $user = $repositoryStyxuserbase->findById($idUser)[0];
+
         $updateProfilForm = $this->createForm(new UpdateProfilFormType(), $user);
 
         if ($updateProfilForm->handleRequest($request)->isValid()) {

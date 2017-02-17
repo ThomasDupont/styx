@@ -119,20 +119,17 @@
             {#{% endif %}#}
 
             <form method="post" action="{{ path('fos_user_security_check') }}">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 {#{% csrf_token %}#}
                 {#{{loginForm.non_field_errors }}#}
                 {#{% for hidden in loginForm.hidden_fields %}#}
                 {#{{ hidden }}#}
                 {#{% endfor %}#}
 
-                <input type="email" name="_email" placeholder="Email" class="form_b_text">
-                <input type="text" name="_password" placeholder="Mot de passe" class="form_b_text">
+                {% render url('fos_user_security_login') %}
 
                 {#<a id="facebook-login" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/connexion_with_facebook&method=login"></a>#}
 
                 <div class="facebook-login">Connexion via Facebook</div>
-                <input class="valid" type="submit" value="Se connecter" name="_submit">
 
                 {#<input type="hidden" name="next" value="{{ next }}" />#}
                 <a href="{{ path('reset_password') }}"><span>Mot de passe oublié ?</span></a>
@@ -154,6 +151,8 @@
             {#{% endif %}#}
 
             <form action="{{ path('fos_user_registration_register') }}" method="post" name="signUp">
+                {% render url('fos_user_registration_register') %}
+
                 <div class="pt1">
                     {#{% csrf_token %}#}
                     {#{{ signUpForm.non_field_errors }}#}
@@ -161,28 +160,28 @@
                     {#{{ hidden }}#}
                     {#{% endfor %}#}
 
-                    <div class="select-box">
-                        <label for="select-box1" class="label select-box1">
-                            <span class="label-desc">Département</span>
-                        </label>
+                    {#<div class="select-box">#}
+                        {#<label for="select-box1" class="label select-box1">#}
+                            {#<span class="label-desc">Département</span>#}
+                        {#</label>#}
                         {#{{ signUpForm.department }}#}
-                    </div>
+                    {#</div>#}
 
-                    <div class="select-box">
-                        <label for="select-box2" class="label select-box2">
-                            <span class="label-desc">Ville</span>
-                        </label>
+                    {#<div class="select-box">#}
+                        {#<label for="select-box2" class="label select-box2">#}
+                            {#<span class="label-desc">Ville</span>#}
+                        {#</label>#}
                         {#{{ signUpForm.city }}#}
                         {#{{ form_widget(formEmail.city, {'attr': {'class': 'select'}}) }}#}
-                    </div>
+                    {#</div>#}
 
-                    {{ form_widget(formEmail.school, {'attr': {'class': 'form_b_text ui-autocomplete-input', 'placeholder': 'Ton école'}}) }}
-                    <label for="id_acceptedCGU"></label><input type="checkbox" name="fos_user_registration_cgu" id="id_acceptedCGU"/>
-                    <div class="cgu">J'accepte <a target="_blank" href="/private_policy" >les conditions générales d'utilisations.</a> </div>
-                    <div class="valid"> Suite </div>
+                    {#{{ form_widget(formEmail.school, {'attr': {'class': 'form_b_text ui-autocomplete-input', 'placeholder': 'Ton école'}}) }}#}
+                    {#<label for="id_acceptedCGU"></label><input type="checkbox" name="fos_user_registration_cgu" id="id_acceptedCGU"/>#}
+                    {#<div class="cgu">J'accepte <a target="_blank" href="/private_policy" >les conditions générales d'utilisations.</a> </div>#}
+                    {#<div class="valid"> Suite </div>#}
 
-                    <div class="message"></div>
-                </div>
+                    {#<div class="message"></div>#}
+                {#</div>#}
 
                 <div class="pt2">
                     {#<a id="facebook-sign-up" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/set_school_facebook_signup&method=signup"></a>#}
@@ -199,7 +198,6 @@
                     <input class="valid" type="submit" value="M'inscrire">
                 </div>
 
-                {{ form_end(formEmail) }}
             </form>
 
         </div>

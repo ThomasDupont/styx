@@ -17,7 +17,7 @@ class WebsiteStyxuserbaseRepository extends EntityRepository
     $repository = $this->getEntityManager()->getRepository('coreBundle:WebsiteStyxuserbase');
 
     $query = $repository->createQueryBuilder('c')
-      ->where('c.id = $id')
+      ->where('c.id = $id');
 
     $result = $query->getQuery()->getResult();
     return $result;
