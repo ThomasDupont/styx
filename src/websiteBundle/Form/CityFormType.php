@@ -9,31 +9,32 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class CityFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('name', EntityType::class, array(
-            'class' => 'coreBundle\Entity\WebsiteZone',
-            'query_builder' => function (EntityRepository $er) {
-                return $er->createQueryBuilder('u')
-                    ->orderBy('u.name', 'ASC');
-            },
-            'choice_label' => 'name',
-        ));
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options)
+  {
+    $builder->add('name', EntityType::class, array(
+      'class' => 'coreBundle\Entity\WebsiteZone',
+      'query_builder' => function (EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+        ->where('u.activated = true')
+        ->orderBy('u.name', 'ASC');
+      },
+      'choice_label' => 'name',
+    ));
+  }
 
 
-    public function getName()
-    {
-        return 'city';
-    }
+  public function getName()
+  {
+    return 'city';
+  }
 
-//    /**
-//     * @param OptionsResolver $resolver
-//     */
-//    public function configureOptions(OptionsResolver $resolver)
-//    {
-//        $resolver->setDefaults(array(
-//            'data_class' => 'websiteBundle\Entity\Styxuserbase'
-//        ));
-//    }
+  //    /**
+  //     * @param OptionsResolver $resolver
+  //     */
+  //    public function configureOptions(OptionsResolver $resolver)
+  //    {
+  //        $resolver->setDefaults(array(
+  //            'data_class' => 'websiteBundle\Entity\Styxuserbase'
+  //        ));
+  //    }
 }
