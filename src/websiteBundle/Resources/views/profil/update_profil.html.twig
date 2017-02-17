@@ -52,7 +52,7 @@
                     {#<span class="label label-danger">{{ err }}</span>#}
                     {#{% endfor %}#}
                     {#{{ form.birthday }}#}
-                    {#{{ form_widget(updateProfilForm.birthday, {'attr': {'class': 'input hasDatepicker', 'placeholder': 'Date de naissance'}}) }}#}
+                    {{ form_widget(updateProfilForm.birthday, {'attr': {'class': 'input hasDatepicker', 'placeholder': 'Date de naissance'}}) }}
 
                     {#{% for err in form.mobile.errors %}<br/>#}
                     {#<span class="label label-danger">{{ err }}</span>#}
@@ -115,6 +115,9 @@
                 <h3>Autres modifications</h3>
                     <span>
                         <form action="/update_profil/" method="post" name="profil">
+                            {{ form_widget(emailNotificationForm._token) }}
+                            {{ form_widget(emailNotificationForm.emailNotification, {'attr': {'class': ''}}) }}
+                            {{ form_rest(emailNotificationForm) }}
                             {#% csrf_token %#}
                             {#{updateNotifForm.email_notification}#}
                             Être notifié(e) si quelqu'un de ma ville fait une demande
@@ -194,7 +197,6 @@
                 <h3>Autres modifications</h3>
                     <span>
                         Être notifié(e) par mail si quelqu'un de ma ville fait une demande
-                        <input type="checkbox">
                     </span>
                 {#% comment %}
                 <span class="l_modifs_av"><font>Changement avancés</font></span>

@@ -265,12 +265,12 @@ $(document).ready(function(){
         jQuery(function($){ //on document.ready
 
 
-            $('#id_birthday').datepicker({
+            $('#update_profil_birthday').datepicker({
                 dateFormat: 'yy-mm-dd',
                 dayNames:[ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ],
                 dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
                 firstDay:1,
-                maxDate:'1998/01/01',
+                maxDate:'1998/01/01'
             });
         });
     }

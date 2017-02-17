@@ -7,27 +7,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UpdateProfilFormType extends AbstractType
+class EmailNotificationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('avatar', FileType::class,array('label'=>'Avatar', 'data_class' => null))
-            ->add('name', TextType::class,array('label'=>'Nom'))
-            ->add('email', TextType::class,array('label'=>'Email'))
-            ->add('birthday', DateType::class,array('label'=>'Date de naissance'))
-            ->add('mobile', TextType::class,array('label'=>'Email', 'max_length'=>'10'))
-            ->add('address', TextType::class,array('label'=>'Adresse'))
-            ->add('zipCode', TextType::class,array('label'=>'Code Postal'));
-//            ->add('city', TextType::class,array('label'=>'Ville'));
+            ->add('email', HiddenType::class,array('label'=>'Email'))
+            ->add('name', HiddenType::class,array('label'=>'Nom'))
+            ->add('emailNotification', CheckboxType::class);
+
     }
-
-
 
     public function getName()
     {
