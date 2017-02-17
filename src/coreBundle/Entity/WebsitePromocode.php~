@@ -72,4 +72,175 @@ class WebsitePromocode
     private $id;
 
 
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return WebsitePromocode
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return WebsitePromocode
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set point
+     *
+     * @param integer $point
+     * @return WebsitePromocode
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+    
+        return $this;
+    }
+
+    /**
+     * Get point
+     *
+     * @return integer 
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * Set activated
+     *
+     * @param boolean $activated
+     * @return WebsitePromocode
+     */
+    public function setActivated($activated)
+    {
+        $this->activated = $activated;
+    
+        return $this;
+    }
+
+    /**
+     * Get activated
+     *
+     * @return boolean 
+     */
+    public function getActivated()
+    {
+        return $this->activated;
+    }
+
+    /**
+     * Set dateBegin
+     *
+     * @param \DateTime $dateBegin
+     * @return WebsitePromocode
+     */
+    public function setDateBegin($dateBegin)
+    {
+        $this->dateBegin = $dateBegin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateBegin
+     *
+     * @return \DateTime 
+     */
+    public function getDateBegin()
+    {
+        return $this->dateBegin;
+    }
+
+    /**
+     * Set dateEnd
+     *
+     * @param \DateTime $dateEnd
+     * @return WebsitePromocode
+     */
+    public function setDateEnd($dateEnd)
+    {
+        $this->dateEnd = $dateEnd;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateEnd
+     *
+     * @return \DateTime 
+     */
+    public function getDateEnd()
+    {
+        return $this->dateEnd;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return WebsitePromocode
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

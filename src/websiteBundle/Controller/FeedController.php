@@ -121,6 +121,10 @@ class FeedController extends Controller
     ->setParameter('zone', $zone);
     $posts = null;
     $posts = $query->getResult();
+    for ($i=0; $i < sizeof($posts); $i++) {
+      $posts[$i] = array('post' => $posts[$i]);
+      // var_dump($posts[$i]);
+    }
 
     if($filtre == 0) {
       // $posts = $repositoryPostPostZones->findByZone($zone->getId());
@@ -138,12 +142,12 @@ class FeedController extends Controller
         $zone_filter = 0;
       }
       // $posts = $repositoryPostPostZones->findByZone($zone_filter);
-      if($repositoryZone->findById($zone_filter)[0] != NULL) {
-        $zone = $repositoryZone->findById($zone_filter)[0];
-      } else {
-        $zone = $repositoryZone->findById(1)[0];
-      }
-      $name_zone = $zone->getName();
+      // if($repositoryZone->findById($zone_filter)[0] != NULL) {
+      //   $zone = $repositoryZone->findById($zone_filter)[0];
+      // } else {
+      //   $zone = $repositoryZone->findById(1)[0];
+      // }
+      // $name_zone = $zone->getName();
     }
 
     // var_dump($zone);
@@ -187,14 +191,15 @@ class FeedController extends Controller
       $em->flush();
     }
 
-    $post = new PostPost();
-    $postForm = $this->createForm(new CreatePostFormType(), $post);
+    $postpost = new PostPost();
+    $postForm = $this->createForm(new CreatePostFormType(), $postpost);
     if ($postForm->handleRequest($request)->isValid()) {
-      $post->setOwner($this->getUser());
+      $postpost->setOwner($this->getUser());
+      $postpost->setZone($zone);
       $em = $this->getDoctrine()->getManager();
-      $em->persist($post);
+      $em->persist($postpost);
       $em->flush();
-      $postid = $post->getId();
+      $postid = $postpost->getId();
     }
 
 

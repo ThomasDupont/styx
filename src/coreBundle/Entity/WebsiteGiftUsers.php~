@@ -43,4 +43,60 @@ class WebsiteGiftUsers
     private $gift;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set styxuserbase
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbase
+     * @return WebsiteGiftUsers
+     */
+    public function setStyxuserbase(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbase = null)
+    {
+        $this->styxuserbase = $styxuserbase;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserbase
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getStyxuserbase()
+    {
+        return $this->styxuserbase;
+    }
+
+    /**
+     * Set gift
+     *
+     * @param \coreBundle\Entity\WebsiteGift $gift
+     * @return WebsiteGiftUsers
+     */
+    public function setGift(\coreBundle\Entity\WebsiteGift $gift = null)
+    {
+        $this->gift = $gift;
+    
+        return $this;
+    }
+
+    /**
+     * Get gift
+     *
+     * @return \coreBundle\Entity\WebsiteGift 
+     */
+    public function getGift()
+    {
+        return $this->gift;
+    }
 }

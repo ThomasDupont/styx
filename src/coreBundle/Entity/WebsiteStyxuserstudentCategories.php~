@@ -43,4 +43,60 @@ class WebsiteStyxuserstudentCategories
     private $styxuserstudent;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \coreBundle\Entity\WebsiteCategory $category
+     * @return WebsiteStyxuserstudentCategories
+     */
+    public function setCategory(\coreBundle\Entity\WebsiteCategory $category = null)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \coreBundle\Entity\WebsiteCategory 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set styxuserstudent
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserstudent $styxuserstudent
+     * @return WebsiteStyxuserstudentCategories
+     */
+    public function setStyxuserstudent(\coreBundle\Entity\WebsiteStyxuserstudent $styxuserstudent = null)
+    {
+        $this->styxuserstudent = $styxuserstudent;
+    
+        return $this;
+    }
+
+    /**
+     * Get styxuserstudent
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserstudent 
+     */
+    public function getStyxuserstudent()
+    {
+        return $this->styxuserstudent;
+    }
 }

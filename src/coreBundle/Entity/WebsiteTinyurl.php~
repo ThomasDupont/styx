@@ -37,4 +37,60 @@ class WebsiteTinyurl
     private $id;
 
 
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return WebsiteTinyurl
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set hits
+     *
+     * @param integer $hits
+     * @return WebsiteTinyurl
+     */
+    public function setHits($hits)
+    {
+        $this->hits = $hits;
+    
+        return $this;
+    }
+
+    /**
+     * Get hits
+     *
+     * @return integer 
+     */
+    public function getHits()
+    {
+        return $this->hits;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

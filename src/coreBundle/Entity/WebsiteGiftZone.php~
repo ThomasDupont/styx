@@ -43,4 +43,60 @@ class WebsiteGiftZone
     private $gift;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set zone
+     *
+     * @param \coreBundle\Entity\WebsiteZone $zone
+     * @return WebsiteGiftZone
+     */
+    public function setZone(\coreBundle\Entity\WebsiteZone $zone = null)
+    {
+        $this->zone = $zone;
+    
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \coreBundle\Entity\WebsiteZone 
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
+
+    /**
+     * Set gift
+     *
+     * @param \coreBundle\Entity\WebsiteGift $gift
+     * @return WebsiteGiftZone
+     */
+    public function setGift(\coreBundle\Entity\WebsiteGift $gift = null)
+    {
+        $this->gift = $gift;
+    
+        return $this;
+    }
+
+    /**
+     * Get gift
+     *
+     * @return \coreBundle\Entity\WebsiteGift 
+     */
+    public function getGift()
+    {
+        return $this->gift;
+    }
 }

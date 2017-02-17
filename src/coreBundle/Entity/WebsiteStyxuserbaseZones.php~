@@ -60,4 +60,30 @@ class WebsiteStyxuserbaseZones
     public function getId() {
       return $this->id;
     }
+
+    /**
+     * Set zone
+     *
+     * @param \coreBundle\Entity\WebsiteZone $zone
+     * @return WebsiteStyxuserbaseZones
+     */
+    public function setZone(\coreBundle\Entity\WebsiteZone $zone = null)
+    {
+        $this->zone = $zone;
+    
+        return $this;
+    }
+
+    /**
+     * Set styxuserbase
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $styxuserbase
+     * @return WebsiteStyxuserbaseZones
+     */
+    public function setStyxuserbase(\coreBundle\Entity\WebsiteStyxuserbase $styxuserbase = null)
+    {
+        $this->styxuserbase = $styxuserbase;
+    
+        return $this;
+    }
 }

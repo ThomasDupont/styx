@@ -60,4 +60,63 @@ class WebsiteType
     }
 
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return WebsiteType
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return WebsiteType
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+    
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set binaryValue
+     *
+     * @param string $binaryValue
+     * @return WebsiteType
+     */
+    public function setBinaryValue($binaryValue)
+    {
+        $this->binaryValue = $binaryValue;
+    
+        return $this;
+    }
+
+    /**
+     * Get binaryValue
+     *
+     * @return string 
+     */
+    public function getBinaryValue()
+    {
+        return $this->binaryValue;
+    }
 }

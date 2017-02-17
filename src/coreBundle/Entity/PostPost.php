@@ -9,386 +9,454 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use websiteBundle\Controller\FeedController;
 
 /**
- * PostPost
- *
- * @ORM\Table(name="post_post", indexes={@ORM\Index(name="post_post_b583a629", columns={"category_id"}), @ORM\Index(name="post_post_5e7b1936", columns={"owner_id"})})
- * @ORM\Entity(repositoryClass="PostPostRepository")
- */
+* PostPost
+*
+* @ORM\Table(name="post_post", indexes={@ORM\Index(name="post_post_b583a629", columns={"category_id"}), @ORM\Index(name="post_post_5e7b1936", columns={"owner_id"})})
+* @ORM\Entity(repositoryClass="PostPostRepository")
+*/
 class PostPost
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
-     */
-    private $identifier;
+  /**
+  * @var string
+  *
+  * @ORM\Column(name="identifier", type="string", length=32, nullable=false)
+  */
+  private $identifier;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=300, nullable=false)
-     */
-    private $title;
+  /**
+  * @var string
+  *
+  * @ORM\Column(name="title", type="string", length=300, nullable=false)
+  */
+  private $title;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=false)
-     */
-    private $description;
+  /**
+  * @var string
+  *
+  * @ORM\Column(name="description", type="text", nullable=false)
+  */
+  private $description;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetimetz", nullable=false)
-     */
-    private $createdAt;
+  /**
+  * @var \DateTime
+  *
+  * @ORM\Column(name="created_at", type="datetimetz", nullable=false)
+  */
+  private $createdAt;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="postponed_at", type="datetimetz", nullable=true)
-     */
-    private $postponedAt;
+  /**
+  * @var \DateTime
+  *
+  * @ORM\Column(name="postponed_at", type="datetimetz", nullable=true)
+  */
+  private $postponedAt;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="deleted", type="boolean", nullable=false)
-     */
-    private $deleted = false;
+  /**
+  * @var boolean
+  *
+  * @ORM\Column(name="deleted", type="boolean", nullable=false)
+  */
+  private $deleted = false;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="has_comment", type="boolean", nullable=false)
-     */
-    private $hasComment = false;
+  /**
+  * @var boolean
+  *
+  * @ORM\Column(name="has_comment", type="boolean", nullable=false)
+  */
+  private $hasComment = false;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="moderated", type="boolean", nullable=false)
-     */
-    private $moderated = false;
+  /**
+  * @var boolean
+  *
+  * @ORM\Column(name="moderated", type="boolean", nullable=false)
+  */
+  private $moderated = false;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="edited_at", type="datetimetz", nullable=true)
-     */
-    private $editedAt;
+  /**
+  * @var \DateTime
+  *
+  * @ORM\Column(name="edited_at", type="datetimetz", nullable=true)
+  */
+  private $editedAt;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="post_post_id_seq", allocationSize=1, initialValue=1)
-     */
-    private $id;
+  /**
+  * @var integer
+  *
+  * @ORM\Column(name="id", type="integer")
+  * @ORM\Id
+  * @ORM\GeneratedValue(strategy="SEQUENCE")
+  * @ORM\SequenceGenerator(sequenceName="post_post_id_seq", allocationSize=1, initialValue=1)
+  */
+  private $id;
 
-    /**
-     * @var \coreBundle\Entity\WebsiteStyxuserbase
-     *
-     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
-     * })
-     */
-    private $owner;
+  /**
+  * @var \coreBundle\Entity\WebsiteStyxuserbase
+  *
+  * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteStyxuserbase")
+  * @ORM\JoinColumns({
+  *   @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+  * })
+  */
+  private $owner;
 
-    /**
-     * @var \coreBundle\Entity\WebsiteZone
-     *
-     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteZone")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id" nullable=false)
-     * })
-     */
-    private $zone;
+  /**
+  * @var \coreBundle\Entity\WebsiteZone
+  *
+  * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteZone")
+  * @ORM\JoinColumns({
+  *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id", nullable=false)
+  * })
+  */
+  private $zone;
 
-    /**
-     * @var \coreBundle\Entity\WebsiteCategory
-     *
-     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteCategory")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
-     */
-    private $category;
+  /**
+  * @var \coreBundle\Entity\WebsiteCategory
+  *
+  * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteCategory")
+  * @ORM\JoinColumns({
+  *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+  * })
+  */
+  private $category;
+
+  /**
+  * @var \coreBundle\Entity\PostReward
+  *
+  * @ORM\ManyToMany(targetEntity="coreBundle\Entity\PostReward")
+  * @ORM\JoinColumns({
+  *   @ORM\JoinColumn(name="reward_id", referencedColumnName="id")
+  * })
+  */
+  private $reward;
 
 
-    public function __construct()
-    {
-        $string = str_split(Uuid::uuid4()->toString());
-        foreach($string as &$char)
-            $char = "".dechex(ord($char));
-        $this->identifier = substr(implode('',$string), 0, 32);
-        $this->createdAt = new DateTime();
-    }
+  public function __construct()
+  {
+    $string = str_split(Uuid::uuid4()->toString());
+    foreach($string as &$char)
+    $char = "".dechex(ord($char));
+    $this->identifier = substr(implode('',$string), 0, 32);
+    $this->createdAt = new DateTime();
+  }
 
-    /**
-     * Set identifier
-     *
-     * @param string $identifier
-     * @return PostPost
-     */
-    public function setIdentifier($identifier)
-    {
-        $this->identifier = $identifier;
+  /**
+  * Set identifier
+  *
+  * @param string $identifier
+  * @return PostPost
+  */
+  public function setIdentifier($identifier)
+  {
+    $this->identifier = $identifier;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get identifier
-     *
-     * @return string
-     */
-    public function getIdentifier()
-    {
-        return $this->identifier;
-    }
+  /**
+  * Get identifier
+  *
+  * @return string
+  */
+  public function getIdentifier()
+  {
+    return $this->identifier;
+  }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return PostPost
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
+  /**
+  * Set title
+  *
+  * @param string $title
+  * @return PostPost
+  */
+  public function setTitle($title)
+  {
+    $this->title = $title;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
+  /**
+  * Get title
+  *
+  * @return string
+  */
+  public function getTitle()
+  {
+    return $this->title;
+  }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return PostPost
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+  /**
+  * Set description
+  *
+  * @param string $description
+  * @return PostPost
+  */
+  public function setDescription($description)
+  {
+    $this->description = $description;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+  /**
+  * Get description
+  *
+  * @return string
+  */
+  public function getDescription()
+  {
+    return $this->description;
+  }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return PostPost
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
+  /**
+  * Set createdAt
+  *
+  * @param \DateTime $createdAt
+  * @return PostPost
+  */
+  public function setCreatedAt($createdAt)
+  {
+    $this->createdAt = $createdAt;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
+  /**
+  * Get createdAt
+  *
+  * @return \DateTime
+  */
+  public function getCreatedAt()
+  {
+    return $this->createdAt;
+  }
 
-    /**
-     * Set postponedAt
-     *
-     * @param \DateTime $postponedAt
-     * @return PostPost
-     */
-    public function setPostponedAt($postponedAt)
-    {
-        $this->postponedAt = $postponedAt;
+  /**
+  * Set postponedAt
+  *
+  * @param \DateTime $postponedAt
+  * @return PostPost
+  */
+  public function setPostponedAt($postponedAt)
+  {
+    $this->postponedAt = $postponedAt;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get postponedAt
-     *
-     * @return \DateTime
-     */
-    public function getPostponedAt()
-    {
-        return $this->postponedAt;
-    }
+  /**
+  * Get postponedAt
+  *
+  * @return \DateTime
+  */
+  public function getPostponedAt()
+  {
+    return $this->postponedAt;
+  }
 
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return PostPost
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
+  /**
+  * Set deleted
+  *
+  * @param boolean $deleted
+  * @return PostPost
+  */
+  public function setDeleted($deleted)
+  {
+    $this->deleted = $deleted;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get deleted
-     *
-     * @return boolean
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
+  /**
+  * Get deleted
+  *
+  * @return boolean
+  */
+  public function getDeleted()
+  {
+    return $this->deleted;
+  }
 
-    /**
-     * Set hasComment
-     *
-     * @param boolean $hasComment
-     * @return PostPost
-     */
-    public function setHasComment($hasComment)
-    {
-        $this->hasComment = $hasComment;
+  /**
+  * Set hasComment
+  *
+  * @param boolean $hasComment
+  * @return PostPost
+  */
+  public function setHasComment($hasComment)
+  {
+    $this->hasComment = $hasComment;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get hasComment
-     *
-     * @return boolean
-     */
-    public function getHasComment()
-    {
-        return $this->hasComment;
-    }
+  /**
+  * Get hasComment
+  *
+  * @return boolean
+  */
+  public function getHasComment()
+  {
+    return $this->hasComment;
+  }
 
-    /**
-     * Set moderated
-     *
-     * @param boolean $moderated
-     * @return PostPost
-     */
-    public function setModerated($moderated)
-    {
-        $this->moderated = $moderated;
+  /**
+  * Set moderated
+  *
+  * @param boolean $moderated
+  * @return PostPost
+  */
+  public function setModerated($moderated)
+  {
+    $this->moderated = $moderated;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get moderated
-     *
-     * @return boolean
-     */
-    public function getModerated()
-    {
-        return $this->moderated;
-    }
+  /**
+  * Get moderated
+  *
+  * @return boolean
+  */
+  public function getModerated()
+  {
+    return $this->moderated;
+  }
 
-    /**
-     * Set editedAt
-     *
-     * @param \DateTime $editedAt
-     * @return PostPost
-     */
-    public function setEditedAt($editedAt)
-    {
-        $this->editedAt = $editedAt;
+  /**
+  * Set editedAt
+  *
+  * @param \DateTime $editedAt
+  * @return PostPost
+  */
+  public function setEditedAt($editedAt)
+  {
+    $this->editedAt = $editedAt;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get editedAt
-     *
-     * @return \DateTime
-     */
-    public function getEditedAt()
-    {
-        return $this->editedAt;
-    }
+  /**
+  * Get editedAt
+  *
+  * @return \DateTime
+  */
+  public function getEditedAt()
+  {
+    return $this->editedAt;
+  }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+  * Get id
+  *
+  * @return integer
+  */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set owner
-     *
-     * @param \coreBundle\Entity\WebsiteStyxuserbase $owner
-     * @return PostPost
-     */
-    public function setOwner(\coreBundle\Entity\WebsiteStyxuserbase $owner = null)
-    {
-        $this->owner = $owner;
+  /**
+  * Set owner
+  *
+  * @param \coreBundle\Entity\WebsiteStyxuserbase $owner
+  * @return PostPost
+  */
+  public function setOwner(\coreBundle\Entity\WebsiteStyxuserbase $owner = null)
+  {
+    $this->owner = $owner;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get owner
-     *
-     * @return \coreBundle\Entity\WebsiteStyxuserbase
-     */
-    public function getOwner()
-    {
-        return $this->owner;
-    }
+  /**
+  * Get owner
+  *
+  * @return \coreBundle\Entity\WebsiteStyxuserbase
+  */
+  public function getOwner()
+  {
+    return $this->owner;
+  }
 
-    /**
-     * Set category
-     *
-     * @param \coreBundle\Entity\WebsiteCategory $category
-     * @return PostPost
-     */
-    public function setCategory(\coreBundle\Entity\WebsiteCategory $category = null)
-    {
-        $this->category = $category;
+  /**
+  * Set category
+  *
+  * @param \coreBundle\Entity\WebsiteCategory $category
+  * @return PostPost
+  */
+  public function setCategory(\coreBundle\Entity\WebsiteCategory $category = null)
+  {
+    $this->category = $category;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get category
-     *
-     * @return \coreBundle\Entity\WebsiteCategory
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
+  /**
+  * Get category
+  *
+  * @return \coreBundle\Entity\WebsiteCategory
+  */
+  public function getCategory()
+  {
+    return $this->category;
+  }
+
+
+
+  /**
+  * Set zone
+  *
+  * @param \coreBundle\Entity\WebsiteZone $zone
+  * @return PostPost
+  */
+  public function setZone(\coreBundle\Entity\WebsiteZone $zone)
+  {
+    $this->zone = $zone;
+
+    return $this;
+  }
+
+  /**
+  * Get zone
+  *
+  * @return \coreBundle\Entity\WebsiteZone
+  */
+  public function getZone()
+  {
+    return $this->zone;
+  }
+
+  /**
+  * Add reward
+  *
+  * @param \coreBundle\Entity\PostReward $reward
+  * @return PostPost
+  */
+  public function addReward(\coreBundle\Entity\PostReward $reward)
+  {
+    $this->reward[] = $reward;
+
+    return $this;
+  }
+
+  /**
+  * Remove reward
+  *
+  * @param \coreBundle\Entity\PostReward $reward
+  */
+  public function removeReward(\coreBundle\Entity\PostReward $reward)
+  {
+    $this->reward->removeElement($reward);
+  }
+
+  /**
+  * Get reward
+  *
+  * @return \Doctrine\Common\Collections\Collection
+  */
+  public function getReward()
+  {
+    return $this->reward;
+  }
 }

@@ -79,4 +79,142 @@ class WebsiteCategory
     }
 
 
+
+    /**
+     * Set namecategory
+     *
+     * @param string $namecategory
+     * @return WebsiteCategory
+     */
+    public function setNamecategory($namecategory)
+    {
+        $this->namecategory = $namecategory;
+    
+        return $this;
+    }
+
+    /**
+     * Set nameskill
+     *
+     * @param string $nameskill
+     * @return WebsiteCategory
+     */
+    public function setNameskill($nameskill)
+    {
+        $this->nameskill = $nameskill;
+    
+        return $this;
+    }
+
+    /**
+     * Get nameskill
+     *
+     * @return string 
+     */
+    public function getNameskill()
+    {
+        return $this->nameskill;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return WebsiteCategory
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set parenttypeId
+     *
+     * @param integer $parenttypeId
+     * @return WebsiteCategory
+     */
+    public function setParenttypeId($parenttypeId)
+    {
+        $this->parenttypeId = $parenttypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get parenttypeId
+     *
+     * @return integer 
+     */
+    public function getParenttypeId()
+    {
+        return $this->parenttypeId;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set parenttype
+     *
+     * @param \coreBundle\Entity\WebsiteType $parenttype
+     * @return WebsiteCategory
+     */
+    public function setParenttype(\coreBundle\Entity\WebsiteType $parenttype = null)
+    {
+        $this->parenttype = $parenttype;
+    
+        return $this;
+    }
+
+    /**
+     * Get parenttype
+     *
+     * @return \coreBundle\Entity\WebsiteType 
+     */
+    public function getParenttype()
+    {
+        return $this->parenttype;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \coreBundle\Entity\WebsiteCategory $parent
+     * @return WebsiteCategory
+     */
+    public function setParent(\coreBundle\Entity\WebsiteCategory $parent = null)
+    {
+        $this->parent = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \coreBundle\Entity\WebsiteCategory 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
 }

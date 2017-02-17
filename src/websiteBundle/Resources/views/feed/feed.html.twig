@@ -41,13 +41,13 @@
 
             <div class="blocks postlist">
               {% if posts %}
-              {% set counter0 = 0 %}
-              {% for post in posts %}
-              {% if counter0 < 3 %}
-              {#% print_inline_request post connectedUser%#}
-              <div>COOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</div>
-              {% endif %}
-              {% endfor %}
+                {% set counter0 = 0 %}
+                {% for post in posts %}
+                  {% if counter0 < 99999999999999 %}
+                    {% include 'post/inline_post/inline_request.html.twig' with post %}
+                  {% endif %}
+                  {% set counter0 = counter0 + 1 %}
+                {% endfor %}
               {% endif %}
             </div>
             <div class="col-xs-12 text-center">
