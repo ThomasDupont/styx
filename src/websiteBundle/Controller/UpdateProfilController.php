@@ -45,7 +45,7 @@ class UpdateProfilController extends Controller
         $websiteSocial = new WebsiteSocial();
         $socialForm = $this->createForm(new SocialFormType(), $websiteSocial);
         if ($socialForm->handleRequest($request)->isValid()) {
-            $websiteSocial->setId($idUser);
+            $websiteSocial->setEntity($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($websiteSocial);
             $em->flush();
