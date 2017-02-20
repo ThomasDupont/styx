@@ -23,9 +23,6 @@ class CreatePostFormType extends AbstractType
 {
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
-
-    // var_dump($options);
-    // exit;
     $builder
     ->add('title', TextType::class, array('label'=>'Titre'))
     ->add('category', EntityType::class, array(
@@ -39,14 +36,12 @@ class CreatePostFormType extends AbstractType
         return $er->createQueryBuilder('u')
         ->orderBy('u.id', 'ASC');
       },
-      'empty_value' => 'Choose an option',
-      // 'property' => 'indentedName',
       'expanded' => true,
       'multiple' => true,
-      'choice_label' => 'name',
+      // 'choice_label' => 'name',
+      'required' => false,
+      'label' => false,
     ));
-    // var_dump($builder);
-    // exit;
   }
 
 
@@ -57,19 +52,8 @@ class CreatePostFormType extends AbstractType
 
   public function configureOptions(OptionsResolver $resolver)
   {
-    // var_dump($resolver);
-    // exit;
     $resolver->setDefaults(array(
       'data_class' => PostPost::class,
     ));
   }
-  //    /**
-  //     * @param OptionsResolver $resolver
-  //     */
-  //    public function configureOptions(OptionsResolver $resolver)
-  //    {
-  //        $resolver->setDefaults(array(
-  //            'data_class' => 'websiteBundle\Entity\Styxuserbase'
-  //        ));
-  //    }
 }

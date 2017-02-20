@@ -26,10 +26,10 @@
 
             <p class="title-rewards">Récompenses:</p>
             <div class="rewards">
-              {{ form_widget(postForm.rewards )}}
-                {% for reward in rewards %}
-
-                {% endfor %}
+              {{ form_widget(postForm.rewards)}}
+              {% for reward in rewards %}
+                <img src="{{ asset('/bundles/framework/images/icons/' ~ reward.image)}}"/>
+              {% endfor %}
             </div>
 
             <button class="valider_post" name="action" type="submit" value=""> Poster </button>

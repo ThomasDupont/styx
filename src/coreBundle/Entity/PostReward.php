@@ -68,7 +68,7 @@ class PostReward
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -91,7 +91,7 @@ class PostReward
     /**
      * Get binaryValue
      *
-     * @return integer 
+     * @return integer
      */
     public function getBinaryValue()
     {
@@ -114,7 +114,7 @@ class PostReward
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -137,7 +137,7 @@ class PostReward
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -147,10 +147,14 @@ class PostReward
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __toString() {
+      return "\r";
     }
 }
