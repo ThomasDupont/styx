@@ -13,7 +13,7 @@
                 <div class="left">
                     {#% if user.avatar %}
                     {% thumbnail user.avatar "230x230" crop="center" format="PNG" as im %#}
-                    <img class="pp" src="{#{ im.url }}" width="{{ im.width }}" height="{{ im.height }#}">
+                    {#<img class="pp" src="#}{#{ im.url }}" width="{{ im.width }}" height="{{ im.height }#}{#">#}
                     {#% endthumbnail %}
                     {% else %#}
                     <img class="pp" style="height:auto; width:auto; max-width:230px; max-height:230px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
@@ -25,17 +25,17 @@
                                 <img src="{{ asset('bundles/framework/images/icons/phone.png') }}">
                             </div>
 
-                            {#% if user.mobile %}
+                            {% if user.mobile %}
                             <span>{{user.mobile}}</span>
-                            {% else %#}
+                            {% else %}
                             <span>Non renseigné</span>
-                            {#% endif %#}
+                            {% endif %}
                         </div>
                         <div class="reseaux">
                             <div class="mail">
                                 <img src="{{ asset('bundles/framework/images/icons/mail.png') }}">
                             </div>
-                            <span>{#{user.email}#}</span>
+                            <span>{{ user.email }}</span>
                         </div>
                         <div class="reseaux">
 
@@ -73,24 +73,25 @@
                 </div>
                 <div class="right">
                     <div class="top">
-                        <h2 class="pseudo">{#{ user.name }#}</h2>
-                        <span class="date">Styxer depuis le {#{user.created_at}#}</span>
+                        <h2 class="pseudo">{{ user.name }}</h2>
+                        <span class="date">Styxer depuis le {{ user.createdat|date('d F Y') }}</span>
                             <span class="local sous_titres">
                                 <img class="local" src="{{ asset('bundles/framework/images/icons/local.png') }}">
-                                {#% for zone in user.zones.all %}
-                                {{zone.name}}
-                                {% endfor %#}
+                                {#{% for zone in user.zones.all %}#}
+                                {#{{zone.name}}#}
+                                {#{% endfor %}#}
+                                {{ user.city.name }}
                             </span>
-                        {#% if permissions.update_profil %}
+                        {#{% if permissions.update_profil %}#}
                         <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>
                         <a href="/update_profil"><div class="modif_profil">Modifier</div></a>
-                        {% elif permissions.follow %}
-                        {% if not datas.is_following %}
-                        <div class="modif_profil unfollow">Suivre</div>
-                        {% else %}
-                        <div class="modif_profil follow">Ne plus suivre</div>
-                        {% endif %}
-                        {% endif %#}
+                        {#{% elif permissions.follow %}#}
+                        {#{% if not datas.is_following %}#}
+                        {#<div class="modif_profil unfollow">Suivre</div>#}
+                        {#{% else %}#}
+                        {#<div class="modif_profil follow">Ne plus suivre</div>#}
+                        {#{% endif %}#}
+                        {#{% endif %}#}
 
                         <div class="rating sous_titres">
                             {#% if user_mark == 4 %}

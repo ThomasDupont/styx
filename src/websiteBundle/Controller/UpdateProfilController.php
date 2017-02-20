@@ -34,7 +34,8 @@ class UpdateProfilController extends Controller
 
         return $this->render('websiteBundle:profil:update_profil.html.twig', array(
             'updateProfilForm' => $updateProfilForm->createView(),
-            'emailNotificationForm' => $emailNotificationForm->createView()
+            'emailNotificationForm' => $emailNotificationForm->createView(),
+            'user' => $user
         ));
     }
 
