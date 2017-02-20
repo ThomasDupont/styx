@@ -89,21 +89,25 @@
                      <span>
                     <form action="/update_profil" method="post" enctype="multipart/form-data" name="social">
                         {#{{ form_widget(socialNetwork._token) }}#}
+                        {{ form_widget(updateSocial._token) }}
 
                         <!--{#{ update_member.management_form }#}-->
                             <div class="membre">
-                                {#% for err in update_social.facebook.errors %}<br/>
-                                <span class="label label-danger">{{ err }}</span>
-                                {% endfor %}
-                                {{ update_social.facebook }}
-                                {% for err in update_social.youtube.errors %}<br/>
-                                <span class="label label-danger">{{ err }}</span>
-                                {% endfor %}
-                                {{ update_social.youtube }}
-                                {% for err in update_social.twitter.errors %}<br/>
-                                <span class="label label-danger">{{ err }}</span>
-                                {% endfor %}
-                                {{ update_social.twitter }#}
+                                {#{% for err in update_social.facebook.errors %}<br/>#}
+                                {#<span class="label label-danger">{{ err }}</span>#}
+                                {#{% endfor %}#}
+                                {#{{ update_social.facebook }}#}
+                                {{ form_widget(updateSocial.facebook, {'attr': {'class': 'input', 'placeholder': 'Facebook'}}) }}
+                                {#{% for err in update_social.youtube.errors %}<br/>#}
+                                {#<span class="label label-danger">{{ err }}</span>#}
+                                {#{% endfor %}#}
+                                {#{{ update_social.youtube }}#}
+                                {{ form_widget(updateSocial.youtube, {'attr': {'class': 'input', 'placeholder': 'YouTube'}}) }}
+                                {#{% for err in update_social.twitter.errors %}<br/>#}
+                                {#<span class="label label-danger">{{ err }}</span>#}
+                                {#{% endfor %}#}
+                                {#{{ update_social.twitter }}#}
+                                {{ form_widget(updateSocial.twitter, {'attr': {'class': 'input', 'placeholder': 'Twitter'}}) }}
                             </div>
                         <div class="input_fields_wrap"></div>
                         <button type="submit" name="action" value="social" class="valider"> Valider </button>
@@ -279,7 +283,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 

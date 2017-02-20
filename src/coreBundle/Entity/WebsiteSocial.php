@@ -186,4 +186,12 @@ class WebsiteSocial
     {
         return $this->entity;
     }
+
+    /**
+     * @param integer $id
+     */
+    public function setId(integer $id)
+    {
+        $this->id = $id;
+    }
 }
