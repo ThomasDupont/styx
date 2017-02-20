@@ -428,7 +428,7 @@ class PostPost
   }
 
   /**
-  * Add reward
+  * Add rewards
   *
   * @param \coreBundle\Entity\PostReward $reward
   * @return PostPost
@@ -441,7 +441,7 @@ class PostPost
   }
 
   /**
-  * Remove reward
+  * Remove rewards
   *
   * @param \coreBundle\Entity\PostReward $reward
   */
@@ -451,11 +451,11 @@ class PostPost
   }
 
   /**
-  * Get reward
+  * Get rewards
   *
   * @return \Doctrine\Common\Collections\Collection
   */
-  public function getReward()
+  public function getRewards()
   {
     return $this->reward;
   }

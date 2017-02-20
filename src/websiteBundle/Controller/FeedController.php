@@ -26,14 +26,7 @@ class FeedController extends Controller
     if(!$sessionStarted) {
       $session->start();
     }
-    // $request = new Request();
 
-    // $user = $this->container->get('security.context')->getToken()->getUser();
-    // var_dump($user);
-    // $selected_category = null;  # si un utilisateur se trompe dans son formulaire, on doit garder sa sélection
-    // $message = null;            # Message d'erreur pour l'utilisateur
-    // $force_show_form = False;   # Doit-on réafficher le formulaire de nouvelle demande ?
-    // $form_url = request.get_full_path();
     $repositoryGroup = $this->getDoctrine()->getRepository('coreBundle:WebsiteGroup');
     $repositoryPostPost = $this->getDoctrine()->getRepository('coreBundle:PostPost');
     $repositoryStyxuserbase = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
@@ -128,18 +121,12 @@ class FeedController extends Controller
       $i++;
     }
 
-    $j = 1;
-    while($j < $i) {
-      $j++;
-    }
+    // var_dump($zone->getId());
 
-    var_dump($zone->getId());
-
-    $param = $request->request->get("result");
     $em = $this->getDoctrine()->getManager();
     $query = $em->createQuery('
     SELECT pp
-    FROM coreBundle:WebsiteStyxuserbase wsub, coreBundle:PostPost pp
+    FROM coreBundle:PostPost pp
     WHERE pp.zone = :zone
     ')
     ->setParameter('zone', $zone);
@@ -147,7 +134,6 @@ class FeedController extends Controller
     $posts = $query->getResult();
     for ($i=0; $i < sizeof($posts); $i++) {
       $posts[$i] = array('post' => $posts[$i]);
-      // var_dump($posts[$i]);
     }
 
     $futur_event = $repositoryPostPostZones->findBy(array('zone'=>$zone));
@@ -188,6 +174,12 @@ class FeedController extends Controller
       $em->flush();
     }
 
+    $repositoryReward = $this->getDoctrine()->getRepository('coreBundle:PostReward');
+    $rewards = $repositoryReward->findAll();
+    // $rewards = ['rewardsss' => $rewards];
+    // var_dump($rewards);
+    // exit;
+
     $postpost = new PostPost();
     $postForm = $this->createForm(new CreatePostFormType(), $postpost);
     if ($postForm->handleRequest($request)->isValid()) {
@@ -198,7 +190,6 @@ class FeedController extends Controller
       $em->flush();
       $postid = $postpost->getId();
     }
-
 
     // exit;
     return $this->render('@website/feed/feed.html.twig', array(

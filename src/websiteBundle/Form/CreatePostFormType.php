@@ -21,36 +21,55 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CreatePostFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title', TextType::class,array('label'=>'Titre'))
-            ->add('category', EntityType::class, array(
-                'class' => WebsiteCategory::class,
-                'property' => 'nameCategory'
-            ))
-            ->add('description', TextareaType::class,array('label'=>'Description'));
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options)
+  {
+
+    // var_dump($options);
+    // exit;
+    $builder
+    ->add('title', TextType::class, array('label'=>'Titre'))
+    ->add('category', EntityType::class, array(
+      'class' => WebsiteCategory::class,
+      'property' => 'nameCategory'
+    ))
+    ->add('description', TextareaType::class, array('label'=>'Description'))
+    ->add('rewards', 'entity', array(
+      'class' => PostReward::class,
+      'query_builder' => function(EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+        ->orderBy('u.id', 'ASC');
+      },
+      'empty_value' => 'Choose an option',
+      // 'property' => 'indentedName',
+      'expanded' => true,
+      'multiple' => true,
+      'choice_label' => 'name',
+    ));
+    // var_dump($builder);
+    // exit;
+  }
 
 
-    public function getName()
-    {
-        return 'create_post';
-    }
+  public function getName()
+  {
+    return 'create_post';
+  }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => PostPost::class,
-        ));
-    }
-//    /**
-//     * @param OptionsResolver $resolver
-//     */
-//    public function configureOptions(OptionsResolver $resolver)
-//    {
-//        $resolver->setDefaults(array(
-//            'data_class' => 'websiteBundle\Entity\Styxuserbase'
-//        ));
-//    }
+  public function configureOptions(OptionsResolver $resolver)
+  {
+    // var_dump($resolver);
+    // exit;
+    $resolver->setDefaults(array(
+      'data_class' => PostPost::class,
+    ));
+  }
+  //    /**
+  //     * @param OptionsResolver $resolver
+  //     */
+  //    public function configureOptions(OptionsResolver $resolver)
+  //    {
+  //        $resolver->setDefaults(array(
+  //            'data_class' => 'websiteBundle\Entity\Styxuserbase'
+  //        ));
+  //    }
 }
