@@ -76,7 +76,7 @@
                     {#<span class="label label-danger">{{ err }}</span>#}
                     {#{% endfor %}#}
                     {#{{ form.city }}#}
-                    {#{{ form_widget(updateProfilForm.city, {'attr': {'class': 'input', 'placeholder': 'Ville'}}) }}#}
+                    {{ form_widget(updateProfilForm.city, {'attr': {'class': 'input', 'placeholder': 'Ville'}}) }}
 
                     <button  type="submit" name="action" value="profil" class="valider"> Valider </button>
                 </form>

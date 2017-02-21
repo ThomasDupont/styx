@@ -15,28 +15,28 @@ class WebsiteSocial
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=200, nullable=false)
+     * @ORM\Column(name="website", type="string", length=200, nullable=true)
      */
     private $website;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="youtube", type="string", length=200, nullable=false)
+     * @ORM\Column(name="youtube", type="string", length=200, nullable=true)
      */
     private $youtube;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="twitter", type="string", length=200, nullable=false)
+     * @ORM\Column(name="twitter", type="string", length=200, nullable=true)
      */
     private $twitter;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook", type="string", length=200, nullable=false)
+     * @ORM\Column(name="facebook", type="string", length=200, nullable=true)
      */
     private $facebook;
 
@@ -188,9 +188,9 @@ class WebsiteSocial
     }
 
     /**
-     * @param integer $id
+     * @param int $id
      */
-    public function setId(integer $id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }

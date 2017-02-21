@@ -16,10 +16,9 @@ class UpdateProfilController extends Controller
     public function indexAction(Request $request)
     {
         $repositoryStyxuserbase = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
-//        $repositorySocial = $this->getDoctrine()->getRepository('coreBundle:WebsiteSocial');
+        $repositorySocial = $this->getDoctrine()->getRepository('coreBundle:WebsiteSocial');
         $idUser = $this->getUser()->getId();
         $user = $repositoryStyxuserbase->findById($idUser)[0];
-//        $social = $repositorySocial->findBy(array('entity' => $idUser));
 
         $updateProfilForm = $this->createForm(new UpdateProfilFormType(), $user);
         $emailNotificationForm = $this->createForm(new EmailNotificationFormType(), $user);
@@ -36,19 +35,23 @@ class UpdateProfilController extends Controller
             $em->flush();
         }
 
-//        if ($updateSocialForm->handleRequest($request)->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($social);
-//            $em->flush();
-//        }
-
-        $websiteSocial = new WebsiteSocial();
-        $socialForm = $this->createForm(new SocialFormType(), $websiteSocial);
-        if ($socialForm->handleRequest($request)->isValid()) {
-            $websiteSocial->setEntity($user);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($websiteSocial);
-            $em->flush();
+        $group = $repositorySocial->findOneBy(array('entity' => $idUser));
+        if (empty($group)) {
+            $websiteSocial = new WebsiteSocial();
+            $socialForm = $this->createForm(new SocialFormType(), $websiteSocial);
+            if ($socialForm->handleRequest($request)->isValid()) {
+                $websiteSocial->setEntity($user);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($websiteSocial);
+                $em->flush();
+            }
+        } else {
+            $socialForm = $this->createForm(new SocialFormType(), $group);
+            if ($socialForm->handleRequest($request)->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($group);
+                $em->flush();
+            }
         }
 
         return $this->render('websiteBundle:profil:update_profil.html.twig', array(
@@ -57,14 +60,5 @@ class UpdateProfilController extends Controller
             'updateSocial' => $socialForm->createView(),
             'user' => $user
         ));
-    }
-
-    public function onPreSubmit(FormEvent $event)
-    {
-        $params = $event->getData();
-
-        if (!isset($params['email'])) {
-            $event->getForm()->remove('email');
-        }
     }
 }

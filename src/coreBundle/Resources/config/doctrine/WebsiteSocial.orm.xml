@@ -7,10 +7,10 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="website" type="string" column="website" length="200" nullable="false"/>
-    <field name="youtube" type="string" column="youtube" length="200" nullable="false"/>
-    <field name="twitter" type="string" column="twitter" length="200" nullable="false"/>
-    <field name="facebook" type="string" column="facebook" length="200" nullable="false"/>
+    <field name="website" type="string" column="website" length="200" nullable="true"/>
+    <field name="youtube" type="string" column="youtube" length="200" nullable="true"/>
+    <field name="twitter" type="string" column="twitter" length="200" nullable="true"/>
+    <field name="facebook" type="string" column="facebook" length="200" nullable="true"/>
     <many-to-one field="entity" target-entity="WebsiteStyxuserbase">
       <join-columns>
         <join-column name="entity_id" referenced-column-name="id"/>
