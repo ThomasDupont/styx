@@ -55,8 +55,4 @@ class HomepageController extends Controller
             'formEmail' => $registrationForm->createView()
         ));
     }
-    /*public function resetPasswordAction()
-    {
-        return $this->render('websiteBundle:homepage:password_reset.html.twig');
-    }*/
 }

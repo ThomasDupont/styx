@@ -3,6 +3,7 @@
 namespace websiteBundle\Form;
 
 
+use coreBundle\Entity\PostEvent;
 use coreBundle\Entity\PostPost;
 use coreBundle\Entity\PostReward;
 use coreBundle\Entity\WebsiteCategory;
@@ -19,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CreatePostFormType extends AbstractType
+class CreateEventFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,13 +30,13 @@ class CreatePostFormType extends AbstractType
                 'class' => WebsiteCategory::class,
                 'property' => 'nameCategory'
             ))
-            ->add('description', TextareaType::class,array('label'=>'Description'));
+            ->add('description', TextareaType::class,array('label'=>'Description'))
+            ->add('description', new CreateEventDetailsFormType());
     }
-
 
     public function getName()
     {
-        return 'create_post';
+        return 'create_event';
     }
 
     public function configureOptions(OptionsResolver $resolver)

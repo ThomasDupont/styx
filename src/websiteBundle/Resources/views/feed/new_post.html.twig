@@ -1,8 +1,18 @@
 <div class="new_post blocks">
     <ul>
-        {% for type in types %}
-            <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
-        {% endfor %}
+        {% if "feed" in app.request.getUri %}
+            {% for type in types %}
+                {% if type.name == "Sorties & Loisirs" or type.name == "Services" %}
+                    <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
+                {% endif %}
+            {% endfor %}
+        {% elseif "agenda" in app.request.getUri %}
+            {% for type in types %}
+                {% if type.name == "Evénements" %}
+                    <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         {#{% for type in types %}
         {% if forloop.first %}
         <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>
@@ -12,30 +22,55 @@
         {% endfor %}#}
     </ul>
 
-    {% for type in types %}
-        <form id="type_{{ type.id }}" class="new_post_form" method="post" action="" name="newRequest">
-            {{ form_widget(postForm._token) }}
-            {{ form_widget(postForm.title, {'attr': {'class': 'titre', 'placeholder': 'Titre', 'maxlength': '300'}}) }}
-            <div class="select-box categories">
-                <label for="select-box1-cate" class="label select-box1">
-                    <span class="label-desc">Catégories</span>
-                    {{ form_widget(postForm.category, {'attr': {'class': 'select'}}) }}
-                </label>
-            </div>
-            {{ form_widget(postForm.description, {'attr': {'class': 'description', 'placeholder': 'Description', 'cols': '40', 'rows': '10'}}) }}
+    {% if "feed" in app.request.getUri %}
+        {% for type in types %}
+            {% if type.name == "Sorties & Loisirs" or type.name == "Services" %}
+            <form id="type_{{ type.id }}" class="new_post_form" method="post" action="" name="newRequest">
+                {{ form_widget(postForm._token) }}
+                {{ form_widget(postForm.title, {'attr': {'class': 'titre', 'placeholder': 'Titre', 'maxlength': '300'}}) }}
+                <div class="select-box categories">
+                    <label for="select-box1-cate" class="label select-box1">
+                        <span class="label-desc">Catégories</span>
+                        {{ form_widget(postForm.category, {'attr': {'class': 'select'}}) }}
+                    </label>
+                </div>
+                {{ form_widget(postForm.description, {'attr': {'class': 'description', 'placeholder': 'Description', 'cols': '40', 'rows': '10'}}) }}
 
-            <p class="title-rewards">Récompenses:</p>
-            <div class="rewards">
-                {% for reward in rewards %}
+                <p class="title-rewards">Récompenses:</p>
+                <div class="rewards">
+                    {#{% for reward in rewards %}#}
 
-                {% endfor %}
-            </div>
+                    {#{% endfor %}#}
+                </div>
 
-            <button class="valider_post" name="action" type="submit" value=""> Poster </button>
+                <button class="valider_post" name="action" type="submit" value=""> Poster </button>
 
-            <div class="clearfix"></div>
-        </form>
-    {% endfor %}
+                <div class="clearfix"></div>
+            </form>
+            {% endif %}
+        {% endfor %}
+    {% elseif "agenda" in app.request.getUri %}
+        {% for type in types %}
+            {% if type.name == "Evénements" %}
+                <form id="type_{{ type.id }}" class="new_post_form" method="post" action="" name="newRequest">
+                    {{ form_widget(eventForm._token) }}
+                    {{ form_widget(eventForm.title, {'attr': {'class': 'titre', 'placeholder': 'Titre', 'maxlength': '300'}}) }}
+                    <div class="select-box categories">
+                        <label for="select-box1-cate" class="label select-box1">
+                            <span class="label-desc">Catégories</span>
+                            {{ form_widget(eventForm.category, {'attr': {'class': 'select'}}) }}
+                        </label>
+                    </div>
+                    {{ form_widget(eventForm.description, {'attr': {'class': 'description', 'placeholder': 'Description', 'cols': '40', 'rows': '10'}}) }}
+
+                    <button class="valider_post" name="action" type="submit" value=""> Poster </button>
+
+                    <div class="clearfix"></div>
+                </form>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     {#{% for type in types %}
 
     <form id="type_{{type.id}}" class="new_post_form" method="post" action="{{form_url}}" name="newRequest">
