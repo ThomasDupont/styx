@@ -104,7 +104,7 @@ class PostPost
   *
   * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteZone")
   * @ORM\JoinColumns({
-  *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id" nullable=false)
+  *   @ORM\JoinColumn(name="zone_id", referencedColumnName="id", nullable=false)
   * })
   */
   private $zone;
@@ -403,4 +403,60 @@ class PostPost
   }
 
 
+
+  /**
+  * Set zone
+  *
+  * @param \coreBundle\Entity\WebsiteZone $zone
+  * @return PostPost
+  */
+  public function setZone(\coreBundle\Entity\WebsiteZone $zone)
+  {
+    $this->zone = $zone;
+
+    return $this;
+  }
+
+  /**
+  * Get zone
+  *
+  * @return \coreBundle\Entity\WebsiteZone
+  */
+  public function getZone()
+  {
+    return $this->zone;
+  }
+
+  /**
+  * Add reward
+  *
+  * @param \coreBundle\Entity\PostReward $reward
+  * @return PostPost
+  */
+  public function addReward(\coreBundle\Entity\PostReward $reward)
+  {
+    $this->reward[] = $reward;
+
+    return $this;
+  }
+
+  /**
+  * Remove reward
+  *
+  * @param \coreBundle\Entity\PostReward $reward
+  */
+  public function removeReward(\coreBundle\Entity\PostReward $reward)
+  {
+    $this->reward->removeElement($reward);
+  }
+
+  /**
+  * Get reward
+  *
+  * @return \Doctrine\Common\Collections\Collection
+  */
+  public function getReward()
+  {
+    return $this->reward;
+  }
 }

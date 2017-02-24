@@ -96,14 +96,11 @@ $(document).ready(function(){
     });
 
     // Initialize the autocomplete for school
-    $( "#id_school" ).autocomplete({
-        source: availableSchool,
-        minLength:2
-        });
+    // $( "#id_school" ).autocomplete({
+    //     source: availableSchool,
+    //     minLength:2
+    //     });
 
     var select = $('#select-box2').empty();
 
 });
-
-
-
