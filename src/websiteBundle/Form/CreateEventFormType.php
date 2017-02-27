@@ -31,7 +31,15 @@ class CreateEventFormType extends AbstractType
                 'property' => 'nameCategory'
             ))
             ->add('description', TextareaType::class,array('label'=>'Description'))
-            ->add('description', new CreateEventDetailsFormType());
+            ->add('date', DateType::class, array(
+                "mapped" => false,
+            ))
+            ->add('hour', TextType::class, array(
+                "mapped" => false,
+            ))
+            ->add('place', TextType::class, array(
+                "mapped" => false,
+            ));
     }
 
     public function getName()

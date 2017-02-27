@@ -62,6 +62,9 @@
                         </label>
                     </div>
                     {{ form_widget(eventForm.description, {'attr': {'class': 'description', 'placeholder': 'Description', 'cols': '40', 'rows': '10'}}) }}
+                    {{ form_widget(eventForm.date, {'attr': {'class': 'place date hasDatepicker', 'placeholder': 'Date'}}) }}
+                    {{ form_widget(eventForm.hour, {'attr': {'class': 'time', 'placeholder': 'Heure'}}) }}
+                    {{ form_widget(eventForm.place, {'attr': {'class': 'place', 'placeholder': 'Lieu'}}) }}
 
                     <button class="valider_post" name="action" type="submit" value=""> Poster </button>
 

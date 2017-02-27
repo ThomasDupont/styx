@@ -30,7 +30,7 @@
                             {#% csrf_token %#}
                             <input id="idVideo" type="hidden" name="idVideo" value="{#{ video.id }#}">
                             {#% if erreur %#}
-                            <button type="submit" class="btn_orange_like relative-position" disabled value="j'aime" ><span class="text-center absolute-position like">J'aime</span><span class="absolute-position right_pull "><i class="fa fa-heart-o" aria-hidden="true"></i> {#{ video.vote }#}</span></button>
+                            <button type="submit" class="btn_orange_like relative-position" disabled value="j'aime"><span class="text-center absolute-position like">J'aime</span><span class="absolute-position right_pull"><i class="fa fa-heart-o" aria-hidden="true"></i> {#{ video.vote }#}</span></button>
                             {#% else %#}
                             <button type="submit" class="btn_orange_like relative-position" disabled value="j'aime"><span class="text-center absolute-position like">J'aime</span><span class="absolute-position right_pull"><i class="fa fa-heart-o" aria-hidden="true"></i> {#{ video.vote }#}</span></button>
 

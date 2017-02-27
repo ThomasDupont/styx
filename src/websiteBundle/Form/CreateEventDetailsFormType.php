@@ -25,8 +25,10 @@ class CreateEventDetailsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('postPtr', CollectionType::class, array(
+                'type' => new CreatePostFormType()))
             ->add('date', TextType::class,array('label'=>'Titre'))
-            ->add('time', TextType::class,array('label'=>'Titre'))
+            ->add('hour', TextType::class,array('label'=>'Titre'))
             ->add('place', TextType::class,array('label'=>'Description'));
     }
 

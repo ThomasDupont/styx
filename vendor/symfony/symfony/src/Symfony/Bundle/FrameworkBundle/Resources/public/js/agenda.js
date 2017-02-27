@@ -33,7 +33,7 @@ function update_categories(id_type){
 
 function new_year(year){
     html = '<div class="blocks annee">';
-    html += '<h2>Évènements de '+ year +'</h2>';
+    html += '<h2>Événements de '+ year +'</h2>';
     return html;
 }
 
