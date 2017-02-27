@@ -261,6 +261,55 @@ class WebsiteStyxuserbase extends BaseUser
   }
 
   /**
+  * Set email
+  *
+  * @param string $email
+  * @return WebsiteStyxuserbase
+  */
+  public function setEmail($email)
+  {
+    // $email = is_null($email) ? '' : $email;
+    // parent::setEmail($email);
+    $this->setUsername($email);
+    $this->email = $email;
+
+    return $this;
+  }
+
+  /**
+  * Get email
+  *
+  * @return string
+  */
+  public function getEmail()
+  {
+    return $this->email;
+  }
+
+  /**
+  * Set username
+  *
+  * @param string $username
+  * @return WebsiteStyxuserbase
+  */
+  public function setUsername($username)
+  {
+    $this->username = $username;
+
+    return $this;
+  }
+
+  /**
+  * Get username
+  *
+  * @return string
+  */
+  public function getUsername()
+  {
+    return $this->username;
+  }
+
+  /**
   * Set firstname
   *
   * @param string $firstname
@@ -512,5 +561,5 @@ class WebsiteStyxuserbase extends BaseUser
   {
     return $this->city;
   }
-  
+
 }

@@ -31,7 +31,7 @@ class UpdateProfilController extends Controller
 
         if ($emailNotificationForm->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
+//            $em->persist($user);
             $em->flush();
         }
 

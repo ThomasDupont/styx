@@ -9,15 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="website_zone")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="coreBundle\Repository\WebsiteZoneRepository")
  */
 class WebsiteZone
 {
-  // public function __construct() {
-  //   $this->id = 1;
-  //   $this->name = "Tours";
-  //   $this->zipCode = "37000";
-  //   $this->activated = true;
-  // }
     /**
      * @var string
      *
@@ -31,6 +26,16 @@ class WebsiteZone
      * @ORM\Column(name="zip_code", type="string", length=5, nullable=false)
      */
     private $zipCode;
+
+    /**
+    * @var \coreBundle\Entity\WebsiteDepartment
+    *
+    * @ORM\ManyToOne(targetEntity="coreBundle\Entity\WebsiteDepartment")
+    * @ORM\JoinColumns({
+    *   @ORM\JoinColumn(name="department_id", referencedColumnName="id", nullable=false)
+    * })
+    */
+    private $department;
 
     /**
      * @var boolean
@@ -79,7 +84,7 @@ class WebsiteZone
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -92,7 +97,7 @@ class WebsiteZone
     public function setZipCode($zipCode)
     {
         $this->zipCode = $zipCode;
-    
+
         return $this;
     }
 
@@ -105,7 +110,39 @@ class WebsiteZone
     public function setActivated($activated)
     {
         $this->activated = $activated;
-    
+
         return $this;
+    }
+
+    /**
+     * Set department
+     *
+     * @param \coreBundle\Entity\WebsiteDepartment $department
+     * @return WebsiteZone
+     */
+    public function setDepartment(\coreBundle\Entity\WebsiteDepartment $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \coreBundle\Entity\WebsiteDepartment
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+    * Get zipcodename
+    *
+    * @return string
+    */
+    public function getZipCodeName() {
+      return sprintf('%s, %s', $this->zipCode, $this->name);
     }
 }

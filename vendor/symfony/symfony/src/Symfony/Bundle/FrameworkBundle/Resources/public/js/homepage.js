@@ -147,20 +147,24 @@ $(document).ready(function () {
 
     $(document).on("click", ".inscription .pt1 .valid", function () {
 
-        /*if ($('#select-box1').val() == "0"){
-            $('.select-box1').css('background-color', '#D8A5A5');
-        }
-        else if($('#select-box2').val() == "0") {
-            $('.select-box1').css('background-color', '#e8e8e8');
-            $('.select-box2').css('background-color', '#D8A5A5');
-
-        }
-        else if(!$('#id_school').val()){
-            $('.select-box1').css('background-color', '#e8e8e8');
-            $('.select-box2').css('background-color', '#e8e8e8');
-            $('#id_school').css('background-color', '#D8A5A5');
-        }
-        else{*/
+        // if (!$('#department').val()){
+        //   console.log("1");
+        //     $('#department').css('background-color', '#D8A5A5');
+        // }
+        // else if($('#select-box2').val() == "0") {
+        //   console.log("2");
+        //     $('#department').css('background-color', '#e8e8e8');
+        //     $('.select-box2').css('background-color', '#D8A5A5');
+        //
+        // }
+        // else if(!$('#id_school').val()){
+        //   console.log("3");
+        //     $('.select-box1').css('background-color', '#e8e8e8');
+        //     $('.select-box2').css('background-color', '#e8e8e8');
+        //     $('#id_school').css('background-color', '#D8A5A5');
+        // }
+        // else{
+          console.log("4");
             $('.select-box1').css('background-color', '#e8e8e8');
             $('.select-box2').css('background-color', '#e8e8e8');
             $('#id_school').css('background-color', '#e8e8e8');
@@ -207,7 +211,7 @@ $(document).ready(function () {
                 eraseCookie('department');
             }
 
-        //}
+        // }
 
     });
 
