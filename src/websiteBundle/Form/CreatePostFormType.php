@@ -21,36 +21,39 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CreatePostFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title', TextType::class,array('label'=>'Titre'))
-            ->add('category', EntityType::class, array(
-                'class' => WebsiteCategory::class,
-                'property' => 'nameCategory'
-            ))
-            ->add('description', TextareaType::class,array('label'=>'Description'));
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options)
+  {
+    $builder
+    ->add('title', TextType::class, array('label'=>'Titre'))
+    ->add('category', EntityType::class, array(
+      'class' => WebsiteCategory::class,
+      'property' => 'nameCategory'
+    ))
+    ->add('description', TextareaType::class, array('label'=>'Description'))
+    ->add('rewards', 'entity', array(
+      'class' => PostReward::class,
+      'query_builder' => function(EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+        ->orderBy('u.id', 'ASC');
+      },
+      'expanded' => true,
+      'multiple' => true,
+      // 'choice_label' => 'name',
+      'required' => false,
+      'label' => false,
+    ));
+  }
 
 
-    public function getName()
-    {
-        return 'create_post';
-    }
+  public function getName()
+  {
+    return 'create_post';
+  }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => PostPost::class,
-        ));
-    }
-//    /**
-//     * @param OptionsResolver $resolver
-//     */
-//    public function configureOptions(OptionsResolver $resolver)
-//    {
-//        $resolver->setDefaults(array(
-//            'data_class' => 'websiteBundle\Entity\Styxuserbase'
-//        ));
-//    }
+  public function configureOptions(OptionsResolver $resolver)
+  {
+    $resolver->setDefaults(array(
+      'data_class' => PostPost::class,
+    ));
+  }
 }

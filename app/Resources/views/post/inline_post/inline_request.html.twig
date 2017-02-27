@@ -12,8 +12,9 @@
     <img class="category" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
     {% endif %}
     <span class="titre">{{post.title}}</span>
-    {% for reward in post.getreward %}
-    <img class="reward" src="/media/{{ reward.image }}">
+    {% for reward in post.getrewards %}
+    <!-- <div>{{reward.name}}</div> -->
+    <img class="reward" src="{{ asset('bundles/framework/images/icons/' ~ reward.image)}}">
     {% endfor %}
     <span class="date_responsive">{{post.createdat | date("D d M Y") }}</span>
     <span class="text">
