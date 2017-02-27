@@ -17,7 +17,7 @@ class HomepageController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $session = new Session();
+        $session = $this->container->get('session');
         $sessionStarted = $this->container->get('session')->isStarted();
         if(!$sessionStarted) {
             $session->start();
@@ -35,15 +35,15 @@ class HomepageController extends Controller
         ));*/
 
         $user = new WebsiteStyxuserbase();
-        $connexionForm = $this->createForm(new ConnexionFormType(), $user);
-        $registrationForm = $this->createForm(new RegistrationFormType(), $user);
 
+        $connexionForm = $this->createForm(new ConnexionFormType(), $user);
         if ($connexionForm->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
         }
 
+        $registrationForm = $this->createForm(new RegistrationFormType(), $user);
         if ($registrationForm->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

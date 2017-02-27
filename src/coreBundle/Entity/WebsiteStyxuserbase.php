@@ -43,7 +43,7 @@ class WebsiteStyxuserbase extends BaseUser
   *
   * @ORM\Column(name="name", type="string", length=45, nullable=false)
   */
-  private $name = "default_name";
+  private $name;
 
   /**
   * @var string
@@ -450,7 +450,7 @@ class WebsiteStyxuserbase extends BaseUser
   * @param \coreBundle\Entity\WebsiteGroup $group
   * @return WebsiteStyxuserbase
   */
-  public function setGroup(\coreBundle\Entity\WebsiteGroup $group = null)
+  public function setGroup($group)
   {
     $this->group = $group;
 

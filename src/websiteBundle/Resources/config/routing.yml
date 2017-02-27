@@ -42,13 +42,9 @@ search:
     path:     /search
     defaults: { _controller: websiteBundle:Search:index }
 
-profil_student:
-    path:     /profila
-    defaults: { _controller: websiteBundle:ProfilEtudiant:index }
-
-profil_association:
-    path:     /profilb
-    defaults: { _controller: websiteBundle:ProfilAssociation:index }
+profil:
+    path:     /profil
+    defaults: { _controller: websiteBundle:Profil:index }
 
 update_profil:
     path:     /update_profil
