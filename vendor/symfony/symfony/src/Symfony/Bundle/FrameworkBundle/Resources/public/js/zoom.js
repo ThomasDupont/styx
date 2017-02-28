@@ -143,57 +143,57 @@ function reset_modal(){
 }
 
 function show_modale(id){
-        var url = "/api/post/" + id;
-        reset_modal();
-        $(".zoom").css({"display":"block"});
-        $(".effet_zoom").css({"display":"block"});
-        $(".c_zoom_commentaires").css({"display":"block"});
-        $.ajax({
-                type: "GET",
-                url: url,
-                dataType: "JSON",
-                success: function(data) {
-                    // set data for the first part
-                    $( ".zoom").find( ".pt1 span.titre" ).text(data['title']);
-                    $( ".zoom").find( ".pt1 span.text" ).html(data['description'].replace(new RegExp('\r?\n','g'), '<br />'));
-                    $( ".zoom").find( ".pt1 img" ).attr('src', data['category']['image']);
-                    $( ".zoom").find( ".pt2 .left .coms.action .cpt" ).text(data['count_comment']);
-                    $( ".zoom").find( ".pt2 .left .vues.action .cpt" ).text(data['post_interest']);
-                    // set data for the second part
-                    var d = new Date(data['created_at']);
-                    var created_at = 'Posté le ' + d.getDate() + '/' + monthNumber[d.getMonth()] + '/' + d.getFullYear();
-                    $( ".zoom").find( ".pt2 .right .date_post" ).text(created_at);
-                    set_user_info(data['owner']['identifier']);
+    var url = "/api/post/" + id;
+    reset_modal();
+    $(".zoom").css({"display":"block"});
+    $(".effet_zoom").css({"display":"block"});
+    $(".c_zoom_commentaires").css({"display":"block"});
+    $(".close_zoom_commentaires").css({"display":"block"});
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "JSON",
+        success: function(data) {
+            // set data for the first part
+            $( ".zoom").find( ".pt1 span.titre" ).text(data['title']);
+            $( ".zoom").find( ".pt1 span.text" ).html(data['description'].replace(new RegExp('\r?\n','g'), '<br />'));
+            $( ".zoom").find( ".pt1 img" ).attr('src', data['category']['image']);
+            $( ".zoom").find( ".pt2 .left .coms.action .cpt" ).text(data['count_comment']);
+            $( ".zoom").find( ".pt2 .left .vues.action .cpt" ).text(data['post_interest']);
+            // set data for the second part
+            var d = new Date(data['created_at']);
+            var created_at = 'Posté le ' + d.getDate() + '/' + monthNumber[d.getMonth()] + '/' + d.getFullYear();
+            $( ".zoom").find( ".pt2 .right .date_post" ).text(created_at);
+            set_user_info(data['owner']['identifier']);
 
-                    if (data['event']){
-                        d = new Date(data['event']['date']);
-                        var div_pt3 = '';
-                        div_pt3 += '<div class="pt3">';
-                        div_pt3 += '<img src="' + data['event']['avatar'] + '">';
-                        div_pt3 += '<span class="text">';
-                        div_pt3 += 'Rendez vous le ' + d.getDate() + '/' + monthNumber[d.getMonth()] + '/' + d.getFullYear() + ' à ' + data['event']['hour'] + ' à ' + data['event']['place'] + ' !';
-                        div_pt3 += '</span>';
-                        div_pt3 += '</div>';
+            if (data['event']){
+                d = new Date(data['event']['date']);
+                var div_pt3 = '';
+                div_pt3 += '<div class="pt3">';
+                div_pt3 += '<img src="' + data['event']['avatar'] + '">';
+                div_pt3 += '<span class="text">';
+                div_pt3 += 'Rendez vous le ' + d.getDate() + '/' + monthNumber[d.getMonth()] + '/' + d.getFullYear() + ' à ' + data['event']['hour'] + ' à ' + data['event']['place'] + ' !';
+                div_pt3 += '</span>';
+                div_pt3 += '</div>';
 
-                        $(div_pt3 ).insertAfter( '.zoom .pt1' );
-
-
-                    }
-
-                    // show the modal
+                $(div_pt3 ).insertAfter( '.zoom .pt1' );
 
 
-
-                    $(".close_zoom_commentaires").css({"display":"block"});
-                    get_comment(id);
-                },
-                error : function(resultat, statut, erreur){
-                console.log("error :" + resultat + " " + statut+ " " + erreur);
-            },
-            complete : function(){
-                $('.pt1 .spinner').remove();
             }
-            });
+
+            // show the modal
+
+
+
+            get_comment(id);
+        },
+        error : function(resultat, statut, erreur){
+            console.log("error :" + resultat + " " + statut+ " " + erreur);
+        },
+        complete : function(){
+            $('.pt1 .spinner').remove();
+        }
+    });
 }
 
 // Permet de voir les réponses à un commentaire

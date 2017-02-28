@@ -2,11 +2,17 @@
 
 namespace websiteBundle\Controller;
 
+use coreBundle\Entity\PostEvent;
+use coreBundle\Entity\PostPost;
 use coreBundle\Entity\WebsiteZone;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use websiteBundle\Form\CityFormType;
+use websiteBundle\Form\CreateEventDetailsFormType;
+use websiteBundle\Form\CreateEventFormType;
+use websiteBundle\Form\CreatePostFormType;
 
 class AgendaController extends Controller
 {
@@ -29,6 +35,17 @@ class AgendaController extends Controller
     // var_dump($repositoryStyxuserbaseZones->findByStyxuserbase($user->getId()));
     // var_dump($user_zone);
 
+    $repositoryType = $this->getDoctrine()->getRepository('coreBundle:WebsiteType');
+    $repositoryPostPostZones = $this->getDoctrine()->getRepository('coreBundle:PostPostZones');
+
+    $types = $repositoryType->findAll();
+
+    $idUser = $this->getUser()->getId();
+    $user = $repositoryStyxuserbase->findById($idUser)[0];
+    $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
+    // var_dump($repositoryStyxuserbaseZones->findByStyxuserbase($user->getId()));
+    // var_dump($user_zone);
+
     if(array_key_exists('zone', $request->query->all())) {
       $zone = $repositoryZone->findById($request->query->get('zone'));
       $zone = $zone[0];
@@ -39,6 +56,35 @@ class AgendaController extends Controller
       $zone = $zone[0];
     }
 
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery('
+    SELECT pe
+    FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
+    WHERE pe.postPtr = pp.id
+    AND pp.zone = :zone
+    ORDER BY pe.date
+    ')
+    ->setParameter('zone', $zone);
+    $posts = $query->getResult();
+
+
+    $query = $em->createQuery('
+    SELECT pe.date
+    FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
+    WHERE pe.postPtr = pp.id
+    AND pp.zone = :zone
+    ORDER BY pe.date DESC
+    ')
+    ->setParameter('zone', $zone);
+    $dateResult = $query->getResult();
+    $date = array();
+    $years = array();
+    for ($i=0; $i < sizeof($dateResult); $i++) {
+      $date[$i] = $dateResult[$i]["date"]->format('F Y');
+      $years[$i] = $dateResult[$i]["date"]->format('Y');
+    }
+    $date = array_unique($date);
+    $years = array_unique($years);
 
     $ville = new WebsiteZone();
     $cityForm = $this->createForm(new CityFormType(), $ville);
@@ -48,11 +94,43 @@ class AgendaController extends Controller
       $em->flush();
     }
 
-    // var_dump($cityForm);
-    // exit;
+    $postpost = new PostPost();
+    $postForm = $this->createForm(new CreateEventFormType(), $postpost);
+    if ($postForm->handleRequest($request)->isValid()) {
+      $postpost->setOwner($this->getUser());
+      $postpost->setZone($zone);
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($postpost);
+      $em->flush();
+      $postid = $postpost->getId();
+    }
+
+    if ($request->getMethod() == 'POST') {
+      $date = $postForm->get('date')->getData();
+      $hour = $postForm->get('hour')->getData();
+      $place = $postForm->get('place')->getData();
+      $postEvent = new PostEvent();
+      $postEvent->setPostPtr($postpost);
+      $postEvent->setDate($date);
+      $hour = DateTime::createFromFormat("G:i", $hour);
+      $postEvent->setHour($hour);
+      $postEvent->setPlace($place);
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($postEvent);
+      $em->flush();
+    }
+
+    $userGroup = $this->getUser()->getGroup()->getName();
+
     return $this->render('websiteBundle:feed:agenda.html.twig', array(
       'cityForm' => $cityForm->createView(),
+      'eventForm' => $postForm->createView(),
       'selected' => strval($zone->getId()),
+      'types' => $types,
+      'userGroup' => $userGroup,
+      'posts' => $posts,
+      'dates' => $date,
+      'years' => $years,
     ));
   }
 }

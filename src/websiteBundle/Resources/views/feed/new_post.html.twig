@@ -1,8 +1,18 @@
 <div class="new_post blocks">
     <ul>
-        {% for type in types %}
-            <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
-        {% endfor %}
+        {% if "feed" in app.request.getUri %}
+            {% for type in types %}
+                {% if type.name == "Sorties & Loisirs" or type.name == "Services" %}
+                    <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
+                {% endif %}
+            {% endfor %}
+        {% elseif "agenda" in app.request.getUri %}
+            {% for type in types %}
+                {% if type.name == "Evénements" %}
+                    <li onclick="update_categories('{{ type.id }}');" class="new_post_head">{{ type.name }}</li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         {#{% for type in types %}
         {% if forloop.first %}
         <li onclick="update_categories('{{type.id}}');" class="new_post_head">{{ type.name }}</li>

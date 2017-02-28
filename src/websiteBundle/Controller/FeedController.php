@@ -41,7 +41,7 @@ class FeedController extends Controller
 
     $idUser = $this->getUser()->getId();
     $user = $repositoryStyxuserbase->findById($idUser)[0];
-    $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
+    $user_zoneAZ = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
 
     if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'student') {
       if($user_zone->getZone() != NULL) {
