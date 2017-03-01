@@ -2,6 +2,7 @@
 
 namespace websiteBundle\Form;
 
+use coreBundle\Entity\WebsiteSchool;
 use coreBundle\Entity\WebsiteZone;
 use coreBundle\Entity\WebsiteDepartment;
 use Doctrine\ORM\EntityRepository;
@@ -17,69 +18,83 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationFormType extends AbstractType
 {
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
-    parent::buildForm($builder, $options);
-    $builder
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+        $builder
 
-    // ->add('name', EntityType::class, array(
-    //    'class' => 'coreBundle\Entity\WebsiteZone',
-    //    'query_builder' => function (EntityRepository $er) {
-    //        return $er->createQueryBuilder('u')
-    //            ->orderBy('u.name', 'ASC');
-    //    },
-    //    'choice_label' => 'name',
-    // ))
-    // ->add('city', 'text',array('label'=>'Prénom'))
-    // ->add('city', EntityType::class, array(
-    //    'class' => WebsiteZone::class,
-    //    'property' => 'name'
-    // ))
-    // ->add('school', TextType::class,array('label'=>'École'))
-    // ->add('cgu', CheckboxType::class,array('label'=>'CGU'))
+            // ->add('name', EntityType::class, array(
+            //    'class' => 'coreBundle\Entity\WebsiteZone',
+            //    'query_builder' => function (EntityRepository $er) {
+            //        return $er->createQueryBuilder('u')
+            //            ->orderBy('u.name', 'ASC');
+            //    },
+            //    'choice_label' => 'name',
+            // ))
+            // ->add('city', 'text',array('label'=>'Prénom'))
+            // ->add('city', EntityType::class, array(
+            //    'class' => WebsiteZone::class,
+            //    'property' => 'name'
+            // ))
+            // ->add('school', TextType::class,array('label'=>'École'))
+            // ->add('cgu', CheckboxType::class,array('label'=>'CGU'))
 
-    // ->add('city', 'entity', array(
-    //   'class' => WebsiteDepartment::class,
-    //   'property' => 'department',
-    //   'required' => true,
-    // ))
+            // ->add('city', 'entity', array(
+            //   'class' => WebsiteDepartment::class,
+            //   'property' => 'department',
+            //   'required' => true,
+            // ))
 
-      ->remove('username')
-      ->add('department', 'entity', array(
-        'mapped' => false,
-        'class' => WebsiteDepartment::class,
-        'query_builder' => function(EntityRepository $er) {
-          return $er->createQueryBuilder('u')
-          ->from('coreBundle:WebsiteDepartment', 'wd')
-          ->orderBy('wd.id', 'ASC');
-        },
-        'expanded' => false,
-        'multiple' => false,
-        'choice_label' => 'name',
-        'required' => true,
-        'label' => false,
-      ))
-      ->add('firstname', TextType::class, array('label'=>'Prénom'))
-      ->add('name', TextType::class, array('label'=>'Nom'))
-      ->add('email', TextType::class, array('label'=>'Email'))
-      ->add('plainPassword', PasswordType::class, array('label'=>'Mot de passe'))
-      ->add('submit', SubmitType::class, array('label'=>'M\'inscrire'))
+            ->remove('username')
+            ->add('department', EntityType::class, array(
+                'mapped' => false,
+                'class' => WebsiteDepartment::class,
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->from('coreBundle:WebsiteDepartment', 'wd')
+                        ->orderBy('wd.id', 'ASC');
+                },
+                'expanded' => false,
+                'multiple' => false,
+                'choice_label' => 'name',
+                'required' => true,
+                'label' => false,
+            ))
+            ->add('school', EntityType::class, array(
+                'mapped' => false,
+                'class' => WebsiteSchool::class,
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->from('coreBundle:WebsiteSchool', 'ws')
+                        ->orderBy('ws.id', 'ASC');
+                },
+                'expanded' => false,
+                'multiple' => false,
+                'choice_label' => 'name',
+                'required' => true,
+                'label' => false,
+            ))
+            ->add('firstname', TextType::class, array('label'=>'Prénom'))
+            ->add('name', TextType::class, array('label'=>'Nom'))
+            ->add('email', TextType::class, array('label'=>'Email'))
+            ->add('plainPassword', PasswordType::class, array('label'=>'Mot de passe'))
+            ->add('submit', SubmitType::class, array('label'=>'M\'inscrire'))
 
-      ->add('city', 'entity', array(
-        'class'         => WebsiteZone::class,
-        // 'query_builder' => function(EntityRepository $er) {
-        //   return $er->createQueryBuilder('u')
-        //   ->from('coreBundle:WebsiteDepartment', 'wd')
-        //   ->where('u.department = :dep')
-        //   ->orderBy('wd.id', 'ASC')
-        //   ->setParameter('dep', '45');
-        // },
-        'expanded' => false,
-        'multiple' => false,
-        'choice_label' => 'zipcodename',
-        'required' => true,
-        'label' => false,
-      ));
+            ->add('city', EntityType::class, array(
+                'class'         => WebsiteZone::class,
+                // 'query_builder' => function(EntityRepository $er) {
+                //   return $er->createQueryBuilder('u')
+                //   ->from('coreBundle:WebsiteDepartment', 'wd')
+                //   ->where('u.department = :dep')
+                //   ->orderBy('wd.id', 'ASC')
+                //   ->setParameter('dep', '45');
+                // },
+                'expanded' => false,
+                'multiple' => false,
+                'choice_label' => 'zipcodename',
+                'required' => true,
+                'label' => false,
+            ));
     }
 
     // protected function addElements(FormInterface $form, $department = null) {
@@ -124,21 +139,21 @@ class RegistrationFormType extends AbstractType
     // $this->addElements($form, $data);
     // }
 
-     public function getParent()
-     {
-         return 'fos_user_registration';
-     }
+    public function getParent()
+    {
+        return 'fos_user_registration';
+    }
 
-      public function getName()
-      {
+    public function getName()
+    {
         return 'app_user_registration';
         //        return 'fos_user_registration';
-      }
-
-      public function configureOptions(OptionsResolver $resolver)
-      {
-        $resolver->setDefaults(array(
-          'data_class' => 'coreBundle\Entity\WebsiteStyxuserbase',
-        ));
-      }
     }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'coreBundle\Entity\WebsiteStyxuserbase',
+        ));
+    }
+}

@@ -1,5 +1,6 @@
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
 
+    {{ form_errors(form) }}
 
   <div class="pt1">
     {#{% csrf_token %}#}
@@ -35,21 +36,28 @@
 
 
     <div class="select-box">
-      <!-- <label for="select-box1" class="label select-box1">
+      <label for="select-box1" class="label select-box1">
         <span class="label-desc">Département</span>
-      </label> -->
-      {{ form_widget(form.department, {'attr': {'class': 'form_b_text form_d_text change_city_by_dep', 'placeholder': 'Departement'}}) }}
+      </label>
+      {{ form_widget(form.department, {'attr': {'class': 'select change_city_by_dep', 'placeholder': 'Département'}}) }}
     </div>
 
     <div class="select-box">
-      <!-- <label for="select-box2" class="label select-box2">
+      <label for="select-box2" class="label select-box2">
         <span class="label-desc">Ville</span>
-      </label> -->
-      {{ form_widget(form.city, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Ville'}}) }}
+      </label>
+        {{ form_widget(form.city, {'attr': {'class': 'select', 'placeholder': 'Ville'}}) }}
+    </div>
+
+    <div class="select-box">
+      {#<label for="select-box2" class="label select-box2">#}
+        {#<span class="label-desc">Ville</span>#}
+      {#</label>#}
+        {{ form_widget(form.school, {'attr': {'class': 'form_b_text ui-autocomplete-input', 'placeholder': 'Ecole'}}) }}
     </div>
 
 
-    {{ form_widget(form) }}
+    {#{{ form_widget(form) }}#}
 
 
 
@@ -74,16 +82,15 @@
     {#{ form_widget(form._token) }#}
 
     {#{ form_widget(form.username, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Username'}}) }#}
-    {{ form_widget(form.firstname, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Prénom'}}) }}
+    {{ form_widget(form.firstname, {'attr': {'class': 'form_b_text form_g_text', 'placeholder': 'Prénom'}}) }}
     {{ form_widget(form.name, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Nom'}}) }}
     {{ form_widget(form.email, {'attr': {'class': 'form_b_text', 'placeholder': 'Email'}}) }}
-    {{ form_widget(form.plainPassword, {'attr':  {'class': 'form_b_text form_g_text', 'placeholder': 'Mot de passe'}}) }}
+    {{ form_widget(form.plainPassword, {'attr':  {'class': 'form_b_text', 'placeholder': 'Mot de passe'}}) }}
     {#{ form_widget(form.password_confirmation, {'attr': {'class': 'form_b_text form_d_text', 'placeholder': 'Confirmation de mot de passe'}}) }#}
-    {{ form_widget(form.submit) }}
-    <!-- <input class="form_b_text form_d_text" placeholder="Confirmation du mot de passe" name="fos_user_registration_confirm_password"> -->
+    {{ form_widget(form.submit, {'attr':  {'class': 'valid', 'value': 'inscrire'}}) }}
+    <!--<input class="form_b_text form_d_text" placeholder="Confirmation du mot de passe" name="fos_user_registration_confirm_password"> -->
 
     <div class="valid retour"> ◄ </div>
-    <!-- <input class="valid" type="submit" value="M'inscrire"> -->
   </div>
 
   <div>
