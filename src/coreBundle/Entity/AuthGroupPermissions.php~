@@ -43,4 +43,60 @@ class AuthGroupPermissions
     private $group;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set permission
+     *
+     * @param \coreBundle\Entity\AuthPermission $permission
+     * @return AuthGroupPermissions
+     */
+    public function setPermission(\coreBundle\Entity\AuthPermission $permission = null)
+    {
+        $this->permission = $permission;
+
+        return $this;
+    }
+
+    /**
+     * Get permission
+     *
+     * @return \coreBundle\Entity\AuthPermission 
+     */
+    public function getPermission()
+    {
+        return $this->permission;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \coreBundle\Entity\AuthGroup $group
+     * @return AuthGroupPermissions
+     */
+    public function setGroup(\coreBundle\Entity\AuthGroup $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \coreBundle\Entity\AuthGroup 
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
 }

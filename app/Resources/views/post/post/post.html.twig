@@ -1,0 +1,19 @@
+{% extends 'base/__base.html.twig' %}
+{# {% load myfilter %} #}
+{# {% load styxFilters %} #}
+{# {% load staticfiles %} #}
+{# {% load thumbnail %} #}
+{% block feedActive %} class="active" {% endblock %}
+
+{% block main %}
+
+{% include 'post/post/modal_post.html' %}
+
+<script>
+$(document).ready(function(){
+    var lastPart = window.location.href.split("/").pop();
+    show_modale(lastPart);
+});
+
+</script>
+{% endblock %}

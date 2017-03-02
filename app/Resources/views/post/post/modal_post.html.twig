@@ -1,0 +1,144 @@
+{# {% load thumbnail %} #}
+{# {% load staticfiles %} #}
+
+    <div class="effet_zoom"></div>
+    <div class="zoom">
+
+        <!-- Création évènement (Calendrier) -->
+
+        <div class="close_zoom_commentaires"></div>
+        <div class="new_evenements" style="display:none;">
+            <ul>
+                <li class="o_services2">Services</li>
+                <li class="o_news2">News</li>
+                <li class="o_evenement2" style="color:#E67830">Évènements</li>
+            </ul>
+            <form>
+                <input class="titre" type="text" placeholder="Titre">
+                <div class="select-box categories">
+                    <label for="select-box1" class="label select-box1">
+                        <span class="label-desc">Catégories</span>
+                    </label>
+                    <select id="select-box1" class="select">
+                        <option value="Choice 1">Falkland Islands</option>
+                        <option value="Choice 2">Germany</option>
+                        <option value="Choice 3">Neverland</option>
+                    </select>
+                </div>
+                <textarea class="description" placeholder="Description"></textarea>
+                <input class="villes" type="text" placeholder="Orléans">
+                <input class="valider_post" type="submit" value="POSTER">
+            </form>
+        </div>
+
+        <!-- Commentaires Actualités et autres... -->
+
+        <div class="close_zoom_commentaires feed"></div>
+        <div class="c_zoom_commentaires">
+            <div class="actus">
+                <div class="pt1">
+                    <img class="category" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                    <span class="titre">Smoking pour Gala</span>
+                    <span class="text">
+                        Bonjour, une âme charitable pour me prêter un smoking pour la soirée Gala du 18 svp ?
+                    </span>
+                </div>
+                <div class="pt3">
+                    <img src="https://www.placeminute.com/images/upload/photos/2012/05/20/gala_staps_2012-4310.jpg">
+                    <span class="text">
+                        Rendez vous le 25/09/2019 à 21h30 à Orléans !
+                    </span>
+                </div>
+                <div class="pt2">
+                    <div class="left">
+                        <div class="coms action">
+                            <img src="{{ asset('bundles/framework/images/icons/coms.png')}}">
+                            <span class="cpt">4</span>
+                        </div>
+                        <div class="vues action">
+                            <img src="{{ asset('bundles/framework/images/icons/vues.png')}}">
+                            <span class="cpt">58</span>
+                        </div>
+                        <div class="partages action">
+
+                        </div>
+                    </div>
+                    <div class="right">
+                        <a href="">
+                        <img src="{{ asset('bundles/framework/images/user/user.jpg')}}" class="pp">
+                        <span class="pseudo">Jack Dupont</span>
+                        </a>
+                        <!--<span class="date_post">Posté le 9 Avril</span>-->
+                    </div>
+                </div>
+            </div>
+            <div class="c_coms" id="c_coms">
+                <div class="new_com principal_com">
+                    <textarea placeholder="Commenter..."></textarea>
+                    <input type="submit" value="Envoyer">
+                </div>
+
+                <!-- Un commentaire -->
+
+                <div class="un_com">
+                    <div class="principal">
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                        <span class=pseudo>Kévin Mercier</span>
+                        <span class=text>Moi je peux te dépanner !</span>
+                        <span class="nb_reponses">3 réponses pour ce commentaire</span>
+                    </div>
+                    <div class="reponses">
+                        <div class="principal">
+                            <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                            <span class=pseudo>Jack Dupont</span>
+                            <span class=text>Ah super on peut se voir où et quand ?</span>
+                        </div>
+                        <div class="principal">
+                            <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                            <span class=pseudo>Kévin Mercier</span>
+                            <span class=text>Hum demain à la cafet de l'université à 9h ?</span>
+                        </div>
+                        <div class="principal">
+                            <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                            <span class=pseudo>Jack Dupont</span>
+                            <span class=text>Niquel ça me va, à demain !</span>
+                        </div>
+                        <div class="new_com">
+                            <textarea placeholder="Ecrire un commentaire..."></textarea>
+                            <input type="submit" value="Envoyer">
+                        </div>
+                    </div>
+                </div>
+                <div class="un_com">
+                    <div class="principal">
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                        <span class=pseudo>Kévin Mercier</span>
+                        <span class=text>Moi je peux te dépanner !</span>
+                        <span class="nb_reponses">3 réponses pour ce commentaire</span>
+                    </div>
+                    <div class="reponses">
+                        <div class="principal">
+                            <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                            <span class=pseudo>Jack Dupont</span>
+                            <span class=text>Ah super on peut se voir où et quand ?</span>
+                        </div>
+                        <div class="principal">
+                            <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                            <span class=pseudo>Kévin Mercier</span>
+                            <span class=text>Hum demain à la cafet de l'université à 9h ?</span>
+                        </div>
+                        <div class="principal">
+                            <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                            <span class=pseudo>Jack Dupont</span>
+                            <span class=text>Niquel ça me va, à demain !</span>
+                        </div>
+                        <div class="new_com">
+                            <textarea placeholder="Ecrire un commentaire..."></textarea>
+                            <input type="submit" value="Envoyer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="espace_pensement"></div>
+        </div>
+    </div>

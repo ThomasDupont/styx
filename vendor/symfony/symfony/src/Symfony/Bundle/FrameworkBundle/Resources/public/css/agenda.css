@@ -1,0 +1,311 @@
+
+body {
+    margin: 0;
+    padding: 0;
+	font-family: 'Open Sans',sans-serif;
+	-webkit-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	line-height:1;
+    background-color:#F4F4F4;
+}
+
+/* Générales */
+
+h2 {
+    padding:20px;
+    margin:0;
+    font-size:25px;
+    font-weight:bold;
+    color:#666;
+}
+
+h3 {
+    padding:15px;
+    padding-left:20px;
+    margin:0;
+    font-size:18px;
+    background:#f2f2f2;
+    color:#555;
+}
+
+/* Nouveau post */
+
+.local1 {
+    display:none;
+}
+.espace {
+    margin-bottom:20px;
+}
+.l_post_evenement {
+    position:relative;
+    margin-bottom:20px;
+    width:calc(100% - 6px);
+    margin-left:3px;
+    height:60px;
+    line-height:60px;
+    color:#FFF;
+    font-size:18px;
+    background:#337ab7;
+    text-align:center;
+    border-radius:4px;
+    transition:all .4s;
+    cursor:pointer;
+    -moz-box-shadow: 0px 0px 7px 0px #cfcfcf;
+    -webkit-box-shadow: 0px 0px 7px 0px #cfcfcf;
+    -o-box-shadow: 0px 0px 7px 0px #cfcfcf;
+    box-shadow: 0px 0px 7px 0px #cfcfcf;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=7)
+}
+.l_post_evenement:hover {
+    background:#24669f;
+}
+
+/* Select Ville
+
+.select-box {
+    padding-bottom:10px;
+    cursor:pointer;
+    position:relative;
+    width:calc(100% - 15px);
+}*/
+.select,
+.label {
+    color:#666;
+    display:block;
+    /* margin-top:15px; */
+    height:50px;
+    margin-left:15px;
+    line-height:40px;
+    border-radius:4px;
+    text-align:left;
+    font-size:16px;
+    cursor:pointer;
+}
+.select {
+    width:100%;
+    position:absolute;
+    top:0;
+    padding:5px 0;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    background:none transparent;
+    border:0 none;
+}
+.select-box1 {
+    background:#ececec;
+}
+.label {
+    position:relative;
+    padding:5px 15px;
+    height:50px;
+    cursor:pointer;
+}
+.label::after {
+    content: "▼";
+    font-size: 12px;
+    position:absolute;
+    right:0;
+    top:0;
+    padding:5px 15px;
+    border-left:5px solid #fff;
+    background:#337ab7;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    color:#FFF;
+}
+
+/* Années */
+
+.annee {
+    margin-bottom:40px;
+}
+
+/* Nouveau post évènement */
+
+.new_evenements {
+    position:absolute;
+    top:100px;
+    left:calc(50% - 325px);
+    width:650px;
+    height:auto;
+    background:#FFF;
+    border-radius:2px;
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=rgba(0, 0, 0, 0.3), Direction=NaN, Strength=7);
+    display:none;
+}
+
+/* Nouveau post User Normal */
+
+.new_evenements form {
+    position:relative;
+    margin-top:28px;
+    display:inherit;
+    padding-bottom:15px;
+}
+.new_evenements ul {
+    position:relative;
+    display:block;
+    top:10px;
+    margin:0;
+    margin-left:20px;
+    padding:0;
+    width:calc(100% - 40px);
+    height:55px;
+    text-align:center;
+    border-bottom:1px solid #dedcdc;
+}
+.new_evenements li {
+    display:inline-block;
+    margin-top:8px;
+    width:calc(32% - 1px);
+    height:28px;
+    line-height:28px;
+    font-size:18px;
+    cursor:pointer;
+}
+.new_evenements li:hover {
+    opacity:0.8;
+}
+.o_services2 {
+    color:#555;
+    border-right:1px solid #CCC;
+}
+.o_news2 {
+    color:#555;
+    border-right:1px solid #CCC;
+}
+.new_evenements form .titre {
+    position:relative;
+    display:inline-block;
+    width:calc(50% + 30px);
+    height:48px;
+    padding:15px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    margin-left:18px;
+    background:#ececec;
+    font-size:16px;
+    color:#555;
+}
+.new_evenements form .villes {
+    position:absolute;
+    width:calc(50% - 130px);
+    height:48px;
+    padding:15px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    top:80px;
+    right:20px;
+    margin-left:10px;
+    background:#ececec;
+    font-size:16px;
+    color:#555;
+}
+::-webkit-input-placeholder {
+   color:#666;
+}
+:-moz-placeholder {
+   color:#666;
+}
+::-moz-placeholder {
+   color:#666;
+}
+:-ms-input-placeholder {
+   color:#666;
+}
+.new_evenements form .description {
+    position:relative;
+    display:inline-block;
+    width:calc(50% + 30px);
+    height:160px;
+    padding:15px;
+    -webkit-appearance:none;
+    border:none;
+    border-radius:4px;
+    margin-left:18px;
+    background:#ececec;
+    font-size:16px;
+    color:#555;
+    resize:none;
+}
+.new_evenements form .description:focus {
+    outline:none;
+}
+.valider_post {
+    position:relative;
+    width:150px;
+    margin-top:15px;
+    height:46px;
+    line-height:44px;
+    color:#FFF;
+    font-size:16px;
+    background:#337AB7;
+    text-align:center;
+    border-radius:4px;
+    transition:all .4s;
+    cursor:pointer;
+    border:none;
+    padding:none;
+}
+.valider_post:hover {
+    background:#24669f;;
+}
+.actus .pt1 img {
+    margin-top:20px;
+    width:100px;
+    height:100px;
+}
+
+/* Responsive */
+
+@media (max-width:990px) {
+    .actus .pt1 img {
+        top:17px;
+        width:40px;
+        height:40px;
+    }
+    .actus .pt1 .titre {
+        font-size:22px;
+        top:25px;
+        left:55px;
+    }
+    .actus .pt1 .text {
+        margin-left:7px;
+        width: calc(100% - 14px);
+    }
+    .actus .pt2 .right {
+        width:40px;
+    }
+    .actus .pt2 .right .pp {
+        top:10px;
+        width:40px;
+        height:40px;
+    }
+    .actus .pt2 .right .pseudo {
+        display:none;
+    }
+    .actus .pt2 .right .date_post {
+        display:none;
+    }
+}
+@media (max-width: 768px) {
+    .local2 {
+        display:none;
+    }
+    .local1 {
+        display:block;
+    }
+}
+@media (max-width:510px) {
+    .container  {
+        width:100%;
+        left:0;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,290 @@
+{% extends 'base/__base.html.twig' %}
+{#% load staticfiles %}
+{% load thumbnail %}
+{% load styxFilters %#}
+
+{% block main %}
+<div class="container container1">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="c_infos blocks">
+
+                <div class="c_pp">
+                    <div class="effet_pp">
+                        {#% if user.avatar %}
+                        {% thumbnail user.avatar "230x230" crop="center" format="PNG" as im %}
+                        <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                        {% endthumbnail %}
+                        {% else %#}
+                        <img style="height:auto; width:auto; max-width:150px; max-height:150px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                        {#% endif %#}
+                        <img src="{{ asset('bundles/framework/images/icons/modif_pp.png') }}" class="pp cache">
+                    </div>
+
+
+                    <img src="" class="pp">
+                </div>
+
+                <form action="/update_profil" method="post" enctype="multipart/form-data" name="profil">
+                    {#{% csrf_token %}#}
+                    {#{% for err in form.avatar.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.avatar }}#}
+                    {{ form_widget(updateProfilForm._token) }}
+
+                    {{ form_widget(updateProfilForm.avatar) }}
+
+                    {% if user.group.id == 2 %}
+                        {#{% for err in form.name.errors %}<br/>#}
+                        {#<span class="label label-danger">{{ err }}</span>#}
+                        {#{% endfor %}#}
+                        {#{{ form.name }}#}
+                        {{ form_widget(updateProfilForm.name, {'attr': {'class': 'input', 'placeholder': 'Nom'}}) }}
+                        {#{% for err in form.email.errors %}<br/>#}
+                        {#<span class="label label-danger">{{ err }}</span>#}
+                        {#{% endfor %}#}
+                        {#{{ form.email }}#}
+                        {{ form_widget(updateProfilForm.email, {'attr': {'class': 'input', 'placeholder': 'Email'}}) }}
+                    {% endif %}
+
+                    {#{% for err in form.birthday.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.birthday }}#}
+                    {{ form_widget(updateProfilForm.birthday, {'attr': {'class': 'input hasDatepicker', 'placeholder': 'Date de naissance'}}) }}
+
+                    {#{% for err in form.mobile.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.mobile }}#}
+                    {{ form_widget(updateProfilForm.mobile, {'attr': {'class': 'input', 'placeholder': 'Mobile', 'maxlength': '10'}}) }}
+
+                    {#{% for err in form.address.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.address }}#}
+                    {{ form_widget(updateProfilForm.address, {'attr': {'class': 'input', 'placeholder': 'addresse'}}) }}
+
+                    {#{% for err in form.zip_code.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.zip_code }}#}
+                    {{ form_widget(updateProfilForm.zipCode, {'attr': {'class': 'input', 'placeholder': 'Code postal'}}) }}
+
+                    {#{% for err in form.city.errors %}<br/>#}
+                    {#<span class="label label-danger">{{ err }}</span>#}
+                    {#{% endfor %}#}
+                    {#{{ form.city }}#}
+                    {{ form_widget(updateProfilForm.city, {'attr': {'class': 'input', 'placeholder': 'Ville'}}) }}
+
+                    <button  type="submit" name="action" value="profil" class="valider"> Valider </button>
+                </form>
+
+
+            </div>
+            {% if user.group.id == 2 %}
+                 <div class="social social blocks">
+                    <h3>Réseaux sociaux</h3>
+                     <span>
+                    <form action="/update_profil" method="post" enctype="multipart/form-data" name="social">
+                        {#{{ form_widget(socialNetwork._token) }}#}
+                        {{ form_widget(updateSocial._token) }}
+
+                        <!--{#{ update_member.management_form }#}-->
+                            <div class="membre">
+                                {#{% for err in update_social.facebook.errors %}<br/>#}
+                                {#<span class="label label-danger">{{ err }}</span>#}
+                                {#{% endfor %}#}
+                                {#{{ update_social.facebook }}#}
+                                {{ form_widget(updateSocial.facebook, {'attr': {'class': 'input', 'placeholder': 'Facebook'}}) }}
+                                {#{% for err in update_social.youtube.errors %}<br/>#}
+                                {#<span class="label label-danger">{{ err }}</span>#}
+                                {#{% endfor %}#}
+                                {#{{ update_social.youtube }}#}
+                                {{ form_widget(updateSocial.youtube, {'attr': {'class': 'input', 'placeholder': 'YouTube'}}) }}
+                                {#{% for err in update_social.twitter.errors %}<br/>#}
+                                {#<span class="label label-danger">{{ err }}</span>#}
+                                {#{% endfor %}#}
+                                {#{{ update_social.twitter }}#}
+                                {{ form_widget(updateSocial.twitter, {'attr': {'class': 'input', 'placeholder': 'Twitter'}}) }}
+                            </div>
+                        <div class="input_fields_wrap"></div>
+                        <button type="submit" name="action" value="social" class="valider"> Valider </button>
+                    </form>
+                     </span>
+                </div>
+            {% endif %}
+            <div class="notifs notifs1 blocks">
+                <h3>Autres modifications</h3>
+                    <span>
+                        <form action="/update_profil" method="post" name="profil">
+                            {{ form_widget(emailNotificationForm._token) }}
+                            {{ form_widget(emailNotificationForm.emailNotification, {'attr': {'class': ''}}) }}
+                            {{ form_rest(emailNotificationForm) }}
+                            {#% csrf_token %#}
+                            {#{updateNotifForm.email_notification}#}
+                            Être notifié(e) si quelqu'un de ma ville fait une demande
+                            <button  type="submit" name="action" value="notif" class="valider"> Valider </button>
+                        </form>
+                    </span>
+                {#% comment %}
+                <span class="l_modifs_av"><font>Changement avancés</font></span>
+                {% endcomment %#}
+            </div>
+        </div>
+        {% if user.group.id == 1 %}
+        <div class="col-md-6 col-sm-6">
+            <div class="blocks right">
+                <ul>
+                    <li class="o_faire">Ce que je sais faire</li>
+                </ul>
+                <form action="/update_profil" method="post" enctype="multipart/form-data" name="service">
+                    {#% csrf_token %#}
+                    <content>
+                        {#% for err in service_form.categories.errors %}<br/>
+                        <span class="label label-danger">{{ err }}</span>
+                        {% endfor %}
+                        {% for label in service_form.categories %}
+                        <div class="elements">
+                            {{ label }}
+                        </div>
+                        {% endfor %#}
+
+                    </content>
+                    <button  type="submit" name="action" value="service" class="valider"> Valider </button>
+                </form>
+            </div>
+            {% else %}
+            <div class="col-md-6 col-sm-6">
+            <div class="blocks right notifs notifs1" style="margin-bottom: 20px; margin-top: 0px;;">
+                    <h4>Ajouter un membre</h4>
+                <span>
+                <form action="/update_profil" method="post" enctype="multipart/form-data" name="member">
+                    {#% csrf_token %}
+                    {% for hidden in create_association.hidden_fields %}
+                    {{ hidden }}
+                    {% endfor %#}
+                    <!--{#{ update_member.management_form }#}-->
+                        <div class="membre">
+                            {#{ update_member.user_name }}
+                            {{ update_member.role }#}
+                        </div>
+                    <div class="input_fields_wrap"></div>
+                    <button  type="submit" name="action" value="member" class="valider"> Valider </button>
+                </form>
+                    </span>
+                </div>
+                </div>
+             <div class="col-md-6 col-sm-6">
+            <div class="c_membres blocks">
+                    <h4>Liste des membres</h4>
+                {#% for member in user.member_entity.all %}
+                <div class="followers">
+                    {% if member.user.avatar %}
+                    {% thumbnail member.user.avatar "50x50" crop="center" format="PNG" as im %}
+                    <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                    {% endthumbnail %}
+                    {% else %}
+                    <img class="pp" style="height:auto; width:auto; max-width:50px; max-height:50px;" src="{% static 'images/user/user.jpg' %}">
+                    {% endif %}
+
+                    {% if member.user_name %}
+                    <span class="pseudo">{{ member.user_name }} - {{ member.role }}</span>
+                    {% endif %}
+
+                </div>
+                {% endfor %#}
+            </div>
+        {% endif %}
+            <div class="notifs notifs2 blocks">
+                <h3>Autres modifications</h3>
+                    <span>
+                        Être notifié(e) par mail si quelqu'un de ma ville fait une demande
+                    </span>
+                {#% comment %}
+                <span class="l_modifs_av"><font>Changement avancés</font></span>
+                {% endcomment %#}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modifs_av container2">
+    <div class="container container3">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+
+
+                <div class="blocks ecole">
+                    <h2>Mon école</h2>
+
+                    <form action="/mAdvancedProfil" method="post" enctype="multipart/form-data" id="id_schoolForm">
+                        {#% csrf_token %#}
+                        <div class="row">
+                            <div class="col-md-3">
+                                {#% for err in updateSchoolForm.department.errors %}<br/>
+                                <span class="label label-danger">{{ err }}</span>
+                                {% endfor %}
+                                {{ updateSchoolForm.department }#}
+                            </div>
+                            <div class="col-md-3">
+                                {#% for err in updateSchoolForm.city.errors %}<br/>
+                                <span class="label label-danger">{{ err }}</span>
+                                {% endfor %}
+                                {{ updateSchoolForm.city }#}
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="ui-widget">
+                                    {#% for err in updateSchoolForm.school.errors %}<br/>
+                                    <span class="label label-danger">{{ err }}</span>
+                                    {% endfor %}
+                                    {{ updateSchoolForm.school }#}
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <button onclick="setCookie();document.getElementById('id_schoolForm').submit();" type="submit"  name="action" value="school" class="btn btn-info btn-xs">Changer</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                    <form>
+                        <div class="select-box">
+                            <label for="select-box1" class="label select-box1">
+                                <span class="label-desc">Orléans</span>
+                            </label>
+                            <select id="select-box1" class="select">
+                                <option value="Choice 1">Falkland Islands</option>
+                                <option value="Choice 2">Germany</option>
+                                <option value="Choice 3">Neverland</option>
+                            </select>
+                        </div>
+                        <input placeholder="Ta ville étudiante" type="text" class="input">
+                        <input placeholder="Ton école" type="text" class="input">
+                        <input type="submit" value="Valider" class="valider">
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="blocks identifiants">
+                    <h2>Mes identifiants</h2>
+                    <form>
+                        <input placeholder="Email" type="email" class="input">
+                        <input placeholder="Ancien Mot de passe" type="password" class="input">
+                        <input placeholder="Nouveau Mot de passe" type="password" class="input">
+                        <input placeholder="Nouveau Mot de passe" type="password" class="input">
+                        <input type="submit" value="Valider" class="valider">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>$(document).ready(function(){set_categories();});</script>
+{% endblock %}

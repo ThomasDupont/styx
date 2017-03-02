@@ -7,5 +7,10 @@
     <field name="name" type="string" column="name" length="150" nullable="false"/>
     <field name="zipCode" type="string" column="zip_code" length="5" nullable="false"/>
     <field name="activated" type="boolean" column="activated" nullable="false"/>
+    <many-to-one field="department" target-entity="coreBundle\Entity\WebsiteDepartment">
+      <join-columns>
+        <join-column name="department_id" referenced-column-name="id" nullable="false"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

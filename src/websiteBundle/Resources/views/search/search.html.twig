@@ -1,0 +1,117 @@
+{% extends 'base/__base.html.twig' %}
+{#% load styxFilters %}
+{% load thumbnail %}
+{% load staticfiles %#}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-sm-8">
+
+            <!-- Block résultats -->
+
+            <div class="c_resultats blocks">
+
+                <!-- Un resultat -->
+                {% for user in search_result %}
+                <div class="resultats">
+                    <div class="pt1">
+                        {#% if user.avatar %}
+                        {% thumbnail user.avatar "100x100" crop="center" format="PNG" as im %#}
+                        <img class="pp" src="{#{ im.url }}" width="{{ im.width }}" height="{{ im.height }#}">
+                        {#% endthumbnail %}
+                        {% else %#}
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                        {#% endif %#}
+                        <a href="/profil/{{user.identifier}}"><span class="pseudo">{{ user.firstname }} {{ user.name }}</span>
+                            <span class="ville">
+                                <img src="{{ asset('bundles/framework/images/icons/map.png') }}">
+                                {#{ user.styxuserstudent.school.zone.name }#}
+                            </span></a>
+                    </div>
+                    <div class="pt2">
+
+                        <!-- Bouton "Suivre" -->
+                        {#% if not user.followed %#}
+                        <div class="follow" id_user="{#{user.identifier}#}">
+                            <img src="{{ asset('bundles/framework/images/icons/follow.png') }}">
+                            <p>Suivre</p>
+                        </div>
+                        {#% else %#}
+                        <div class="follow deja_follow" id_user="{#{user.identifier}#}">
+                            <img src="{{ asset('bundles/framework/images/icons/check.png') }}">
+                            <p>Suivi</p>
+                        </div>
+                        {#% endif %#}
+
+                        <div class="star-rating">
+                            {#% if user.mark == 4 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            {% elif user.mark == 5 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            {% elif user.mark == 3 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user.mark == 2 %}
+                            <div class="full">★</div>
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user.mark == 1 %}
+                            <div class="full">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% elif user.mark == 0 %}
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            <div class="empty">★</div>
+                            {% endif %#}
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Block Nombre de recherches & Suggestions -->
+
+        <div class="col-md-3 col-sm-4">
+            <div class="nb_resus">{{ search_result|length }} étudiants trouvés</div>
+            <div class="c_suggestions blocks">
+                <h4>Tu connais peut-être ?</h4>
+                {#% for user in random_user %#}
+                <div class="suggestions">
+                    {#% if user.avatar %}
+                    {% thumbnail user.avatar "100x100" crop="center" format="PNG" as im %#}
+                        <img class="pp" src="{#{ im.url }}" width="{{ im.width }}" height="{{ im.height }#}">
+                    {#% endthumbnail %}
+                        {% else %#}
+                        <img class="pp" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                        {#% endif %#}
+                    <a href="/profil/{#{user.identifier}#}"><span class="pseudo">{#{ user.styxuserstudent.firstname }} {{ user.styxuserstudent.name }#}</span></a>
+                </div>
+                {#% endfor %#}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -47,4 +47,83 @@ class AuthPermission
     private $contentType;
 
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return AuthPermission
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set codename
+     *
+     * @param string $codename
+     * @return AuthPermission
+     */
+    public function setCodename($codename)
+    {
+        $this->codename = $codename;
+
+        return $this;
+    }
+
+    /**
+     * Get codename
+     *
+     * @return string 
+     */
+    public function getCodename()
+    {
+        return $this->codename;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set contentType
+     *
+     * @param \coreBundle\Entity\DjangoContentType $contentType
+     * @return AuthPermission
+     */
+    public function setContentType(\coreBundle\Entity\DjangoContentType $contentType = null)
+    {
+        $this->contentType = $contentType;
+
+        return $this;
+    }
+
+    /**
+     * Get contentType
+     *
+     * @return \coreBundle\Entity\DjangoContentType 
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
+    }
 }

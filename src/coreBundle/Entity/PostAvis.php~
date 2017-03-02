@@ -81,4 +81,175 @@ class PostAvis
     private $author;
 
 
+
+    /**
+     * Set identifier
+     *
+     * @param string $identifier
+     * @return PostAvis
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+
+        return $this;
+    }
+
+    /**
+     * Get identifier
+     *
+     * @return string 
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return PostAvis
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     * @return PostAvis
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return PostAvis
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set recipient
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $recipient
+     * @return PostAvis
+     */
+    public function setRecipient(\coreBundle\Entity\WebsiteStyxuserbase $recipient = null)
+    {
+        $this->recipient = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Get recipient
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getRecipient()
+    {
+        return $this->recipient;
+    }
+
+    /**
+     * Set conversation
+     *
+     * @param \coreBundle\Entity\PostConversation $conversation
+     * @return PostAvis
+     */
+    public function setConversation(\coreBundle\Entity\PostConversation $conversation = null)
+    {
+        $this->conversation = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Get conversation
+     *
+     * @return \coreBundle\Entity\PostConversation 
+     */
+    public function getConversation()
+    {
+        return $this->conversation;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $author
+     * @return PostAvis
+     */
+    public function setAuthor(\coreBundle\Entity\WebsiteStyxuserbase $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 }

@@ -1,0 +1,26 @@
+{#% load staticfiles %#}
+<html>
+<head>
+    <title>Styx - Profite de ce que t'as pas</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/quick_registration.css') }}" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{{ asset('bundles/framework/js/quick_registration.js') }}"></script>
+</head>
+<body>
+<form action="{{ path('quick_registration') }}" method="post">
+    <div class="top">
+        <img src="{{ asset('bundles/framework/images/logo/logo-180.png') }}">
+        {#% csrf_token %}
+        {{ form.email }}
+        {{ form.zone }#}
+        <input class="valid" type="submit" value="Valider">
+    </div>
+    <div class="bottom">
+        <input type="checkbox" checked="checked">
+        <span>J'accepte les conditions g&#233;n&#233;rales d'utilisations.</span>
+    </div>
+</form>
+</body>
+</html>

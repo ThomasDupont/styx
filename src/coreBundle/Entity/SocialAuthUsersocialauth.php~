@@ -54,4 +54,106 @@ class SocialAuthUsersocialauth
     private $user;
 
 
+
+    /**
+     * Set provider
+     *
+     * @param string $provider
+     * @return SocialAuthUsersocialauth
+     */
+    public function setProvider($provider)
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Get provider
+     *
+     * @return string 
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * Set uid
+     *
+     * @param string $uid
+     * @return SocialAuthUsersocialauth
+     */
+    public function setUid($uid)
+    {
+        $this->uid = $uid;
+
+        return $this;
+    }
+
+    /**
+     * Get uid
+     *
+     * @return string 
+     */
+    public function getUid()
+    {
+        return $this->uid;
+    }
+
+    /**
+     * Set extraData
+     *
+     * @param string $extraData
+     * @return SocialAuthUsersocialauth
+     */
+    public function setExtraData($extraData)
+    {
+        $this->extraData = $extraData;
+
+        return $this;
+    }
+
+    /**
+     * Get extraData
+     *
+     * @return string 
+     */
+    public function getExtraData()
+    {
+        return $this->extraData;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $user
+     * @return SocialAuthUsersocialauth
+     */
+    public function setUser(\coreBundle\Entity\WebsiteStyxuserbase $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

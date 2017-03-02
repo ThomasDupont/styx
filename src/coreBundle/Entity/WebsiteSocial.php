@@ -15,28 +15,28 @@ class WebsiteSocial
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=200, nullable=false)
+     * @ORM\Column(name="website", type="string", length=200, nullable=true)
      */
     private $website;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="youtube", type="string", length=200, nullable=false)
+     * @ORM\Column(name="youtube", type="string", length=200, nullable=true)
      */
     private $youtube;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="twitter", type="string", length=200, nullable=false)
+     * @ORM\Column(name="twitter", type="string", length=200, nullable=true)
      */
     private $twitter;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook", type="string", length=200, nullable=false)
+     * @ORM\Column(name="facebook", type="string", length=200, nullable=true)
      */
     private $facebook;
 
@@ -61,4 +61,137 @@ class WebsiteSocial
     private $entity;
 
 
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return WebsiteSocial
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+    
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set youtube
+     *
+     * @param string $youtube
+     * @return WebsiteSocial
+     */
+    public function setYoutube($youtube)
+    {
+        $this->youtube = $youtube;
+    
+        return $this;
+    }
+
+    /**
+     * Get youtube
+     *
+     * @return string 
+     */
+    public function getYoutube()
+    {
+        return $this->youtube;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return WebsiteSocial
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     * @return WebsiteSocial
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+    
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string 
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set entity
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $entity
+     * @return WebsiteSocial
+     */
+    public function setEntity(\coreBundle\Entity\WebsiteStyxuserbase $entity = null)
+    {
+        $this->entity = $entity;
+    
+        return $this;
+    }
+
+    /**
+     * Get entity
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getEntity()
+    {
+        return $this->entity;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 }

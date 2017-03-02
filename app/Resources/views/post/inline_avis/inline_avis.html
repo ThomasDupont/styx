@@ -1,0 +1,65 @@
+{% load styxFilters %}
+{% load thumbnail %}
+{% load staticfiles %}
+
+
+<div class="request">
+    <div class="row comment">
+        <div class="col-md-1 col-xs-2">
+            <a href="/profil/{{avis.author.identifier}}">
+                {% if avis.author.avatar %}
+                {% thumbnail avis.author.avatar "40x40" crop="center" format="PNG" as im %}
+                <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %}
+                {% else %}
+                <img style="max-width:40px; max-height:40px;" src="{% static 'images/user/user.jpg' %}">
+                {% endif %}
+            </a>
+
+        </div>
+        <div class="col-md-11 col-xs-10">
+            {{avis.note}}/5
+            <div class="rating">
+                {% if avis.note == 4 %}
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="empty">★</div>
+                {% elif avis.note == 5 %}
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="full">★</div>
+                {% elif avis.note == 3 %}
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                {% elif avis.note == 2 %}
+                <div class="full">★</div>
+                <div class="full">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                {% elif avis.note == 1 %}
+                <div class="full">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                {% elif avis.note == 0 %}
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                <div class="empty">★</div>
+                {% endif %}
+            </div>
+            <div class="request_description">"{{avis.comment}}" </div>
+        </div>
+    </div>
+
+</div>

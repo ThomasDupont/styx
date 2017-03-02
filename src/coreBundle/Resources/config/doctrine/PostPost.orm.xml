@@ -22,10 +22,20 @@
         <join-column name="owner_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="zone" target-entity="WebsiteZone">
+      <join-columns>
+        <join-column name="zone_id" referenced-column-name="id" nullable="false"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="category" target-entity="WebsiteCategory">
       <join-columns>
         <join-column name="category_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-many field="reward" target-entity="PostReward">
+      <join-columns>
+        <join-column name="reward_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

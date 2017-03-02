@@ -1,0 +1,230 @@
+{% extends 'base/__base.html.twig' %}
+ {#{% load myfilter %} #}
+{#{% load styxFilters %}#}
+{#{% load staticfiles %}#}
+{#{% load thumbnail %}#}
+{% block feedActive %} class="active"
+{% endblock %}
+
+{% block main %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-8">
+        <!--<div class="l_post_evenement local1">Poster un événement</div>-->
+        <div class="blocks local1 espace">
+
+          <!-- Localisation
+
+        <h4>Où es tu ?</h4>
+        <div class="localisation">
+        <div class="select-box2">
+        <label for="select-box1" class="label select-box1">
+
+        <option value="0" disabled selected>{#{zone.name}#}</option>
+      </label>
+
+      {#{ filter_city_form.city }#}
+
+    </div>
+  </div> -->
+
+          <!-- Datepicker encore innactif -->
+
+          <!--<div id="datepicker"></div>-->
+        </div>
+          {% if userGroup == "association" %}
+              {% include '@website/feed/new_post.html.twig' %}
+          {% endif %}
+        <div class="event">
+            <div class="blocks annee">
+                {% for date in dates %}
+                    {% if date|date('Y') != date %}
+                    <h2>Événements de {{ date|date('Y') }}</h2>
+                    {% endif %}
+
+                    {#<!-- Block un mois -->#}
+
+                    <h3>{{ date|date('F') }}</h3>
+                    {% for post in posts %}
+                        {% if post.date|date('F Y') == date|date('F Y') %}
+                            <div class="blocks annee">
+                                <div class="actus">
+                                    <div class="pt1" id="{{ post.postPtr.identifier }}">
+                                        <img src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                                        <span class="titre">{{ post.postPtr.title }}</span>
+                                        <span class="text">
+                                        {{ post.postPtr.description }}
+                                        </span>
+                                        <span class="date">{{ post.date|date('d F Y') }}</span>
+                                    </div>
+                                    <div class="pt2">
+                                        <div class="left">
+                                            <div class="coms action">
+                                                <img src="{{ asset('bundles/framework/images/icons/coms.png') }}">
+                                                <span class="cpt">24</span>
+                                            </div>
+                                            <div class="vues action">
+                                                <img src="{{ asset('bundles/framework/images/icons/vues.png') }}">
+                                                <span class="cpt">456</span>
+                                            </div>
+                                            <div class="partages action">
+                                                <img src="{{ asset('bundles/framework/images/icons/partages.png') }}">
+                                                <span class="cpt">34</span>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <img src="{{ asset('bundles/framework/images/user/user.jpg') }}" class="pp">
+                                            <span class="pseudo">{{ post.postPtr.owner.name }}</span>
+                                            <span class="date_post">Posté le {{ post.postPtr.createdAt|date('d F Y') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {#{% comment "Données d'exemple" %}#}
+          {#<div class="blocks annee">#}
+            {#<h2>Évènements de 2016</h2>#}
+
+            {#<!-- Block un mois -->#}
+
+            {#<h3>MAI</h3>#}
+
+            {#<!-- Block une actualité -->#}
+
+            {#<div class="actus">#}
+              {#<div class="pt1">#}
+                {#<img src="{{ asset('bundles/framework/images/user/user.jpg') }}">#}
+                {#<span class="titre">Color day</span>#}
+                {#<span class="text">#}
+          {#Styx est partenaire de la Color Day qui a lieu cette année le 20 Mai à l'île Charlemagne d'Orléans. La Team Styx te propose de gagner tes places pour l'évènement en jouant avec nous...#}
+        {#</span>#}
+                {#<span class="date">20 Mai</span>#}
+              {#</div>#}
+              {#<div class="pt2">#}
+                {#<div class="left">#}
+                  {#<div class="coms action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/coms.png') }}">#}
+                    {#<span class="cpt">24</span>#}
+                  {#</div>#}
+                  {#<div class="vues action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/vues.png') }}">#}
+                    {#<span class="cpt">456</span>#}
+                  {#</div>#}
+                  {#<div class="partages action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/partages.png') }}">#}
+                    {#<span class="cpt">34</span>#}
+                  {#</div>#}
+                {#</div>#}
+                {#<div class="right">#}
+                  {#<img src="{{ asset('bundles/framework/images/user/user.jpg') }}" class="pp">#}
+                  {#<span class="pseudo">Staps</span>#}
+                  {#<span class="date_post">Posté le 3 Avril</span>#}
+                {#</div>#}
+              {#</div>#}
+            {#</div>#}
+            {#<div class="actus">#}
+              {#<div class="pt1">#}
+                {#<img src="{{ asset('bundles/framework/images/user/user.jpg') }}">#}
+                {#<span class="titre">Color day</span>#}
+                {#<span class="text">#}
+          {#Styx est partenaire de la Color Day qui a lieu cette année le 20 Mai à l'île Charlemagne d'Orléans. La Team Styx te propose de gagner tes places pour l'évènement en jouant avec nous...#}
+        {#</span>#}
+                {#<span class="date">20 Mai</span>#}
+              {#</div>#}
+              {#<div class="pt2">#}
+                {#<div class="left">#}
+                  {#<div class="coms action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/coms.png') }}">#}
+                    {#<span class="cpt">24</span>#}
+                  {#</div>#}
+                  {#<div class="vues action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/vues.png') }}">#}
+                    {#<span class="cpt">456</span>#}
+                  {#</div>#}
+                  {#<div class="partages action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/partages.png') }}">#}
+                    {#<span class="cpt">34</span>#}
+                  {#</div>#}
+                {#</div>#}
+                {#<div class="right">#}
+                  {#<img src="{{ asset('bundles/framework/images/user/user.jpg') }}" class="pp">#}
+                  {#<span class="pseudo">Styx</span>#}
+                  {#<span class="date_post">Posté le 3 Avril</span>#}
+                {#</div>#}
+              {#</div>#}
+            {#</div>#}
+            {#<div class="actus" style="border:none">#}
+              {#<div class="pt1">#}
+                {#<img src="{{ asset('bundles/framework/images/user/user.jpg') }}">#}
+                {#<span class="titre">Color day</span>#}
+                {#<span class="text">#}
+          {#Styx est partenaire de la Color Day qui a lieu cette année le 20 Mai à l'île Charlemagne d'Orléans. La Team Styx te propose de gagner tes places pour l'évènement en jouant avec nous...#}
+        {#</span>#}
+                {#<span class="date">20 Mai</span>#}
+              {#</div>#}
+              {#<div class="pt2">#}
+                {#<div class="left">#}
+                  {#<div class="coms action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/coms.png') }}">#}
+                    {#<span class="cpt">24</span>#}
+                  {#</div>#}
+                  {#<div class="vues action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/vues.png') }}">#}
+                    {#<span class="cpt">456</span>#}
+                  {#</div>#}
+                  {#<div class="partages action">#}
+                    {#<img src="{{ asset('bundles/framework/images/icons/partages.png') }}">#}
+                    {#<span class="cpt">34</span>#}
+                  {#</div>#}
+                {#</div>#}
+                {#<div class="right">#}
+                  {#<img src="{{ asset('bundles/framework/images/user/user.jpg') }}" class="pp">#}
+                  {#<span class="pseudo">Staps</span>#}
+                  {#<span class="date_post">Posté le 3 Avril</span>#}
+                {#</div>#}
+              {#</div>#}
+            {#</div>#}
+          {#</div>#}
+            {#{% endcomment %}#}
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4 local2">
+        <!--<div class="l_post_evenement">Poster un événement</div>-->
+        <div class="blocks">
+
+          <!-- Localisation -->
+
+          <h4>Où es tu ?</h4>
+          <div class="localisation">
+            <div class="select-box2">
+              <label for="select-box1" class="label select-box1">
+
+              </label>
+                {{ form_widget(cityForm.name, {'attr': {'class': 'select'}, value: selected}) }}
+                {#{ filter_city_form.city }#}
+
+            </div>
+          </div>
+
+          <!-- Datepicker encore innactif -->
+
+          <!--<div id="datepicker"></div>-->
+        </div>
+      </div>
+    </div>
+      {% include 'post/post/modal_post.html.twig' %}
+  </div>
+  <script>
+      //$(document).ready(function(){
+      //get_event({#{zone.id}});
+
+{% if request.user.styxuserassociation %}
+update_categories('{{id_type}}');
+{% endif %#}
+      //});
+  </script>
+{% endblock %}

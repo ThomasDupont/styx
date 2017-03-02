@@ -1,3 +1,51 @@
 website_homepage:
     path:     /
     defaults: { _controller: websiteBundle:Homepage:index }
+
+reset_password:
+    path:     /user/password/reset
+    defaults: { _controller: websiteBundle:ResetPassword:index }
+
+agenda:
+    path:     /agenda
+    defaults: { _controller: websiteBundle:Agenda:index }
+
+feed:
+    path:     /feed
+    defaults: { _controller: websiteBundle:Feed:index }
+
+conversation:
+    path:     /conversation
+    defaults: { _controller: websiteBundle:Conversation:index }
+
+privacy_policy:
+    path:     /privacy_policy
+    defaults: { _controller: websiteBundle:Legal:index }
+
+quick_registration:
+    path:     /quick_registration
+    defaults: { _controller: websiteBundle:QuickRegistration:index }
+
+complete_registration:
+    path:     /complete_registration
+    defaults: { _controller: websiteBundle:QuickRegistrationCompleted:index }
+
+create_association:
+    path:     /create_association
+    defaults: { _controller: websiteBundle:CreateAssociation:index }
+
+jeu-concours:
+    path:     /jeu-concours
+    defaults: { _controller: websiteBundle:EventGame:index }
+
+search:
+    path:     /search
+    defaults: { _controller: websiteBundle:Search:index }
+
+profil:
+    path:     /profil
+    defaults: { _controller: websiteBundle:Profil:index }
+
+update_profil:
+    path:     /update_profil
+    defaults: { _controller: websiteBundle:UpdateProfil:index }

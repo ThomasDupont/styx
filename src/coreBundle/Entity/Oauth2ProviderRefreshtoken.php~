@@ -60,4 +60,106 @@ class Oauth2ProviderRefreshtoken
     private $accessToken;
 
 
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Oauth2ProviderRefreshtoken
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string 
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \coreBundle\Entity\WebsiteStyxuserbase $user
+     * @return Oauth2ProviderRefreshtoken
+     */
+    public function setUser(\coreBundle\Entity\WebsiteStyxuserbase $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set application
+     *
+     * @param \coreBundle\Entity\Oauth2ProviderApplication $application
+     * @return Oauth2ProviderRefreshtoken
+     */
+    public function setApplication(\coreBundle\Entity\Oauth2ProviderApplication $application = null)
+    {
+        $this->application = $application;
+
+        return $this;
+    }
+
+    /**
+     * Get application
+     *
+     * @return \coreBundle\Entity\Oauth2ProviderApplication 
+     */
+    public function getApplication()
+    {
+        return $this->application;
+    }
+
+    /**
+     * Set accessToken
+     *
+     * @param \coreBundle\Entity\Oauth2ProviderAccesstoken $accessToken
+     * @return Oauth2ProviderRefreshtoken
+     */
+    public function setAccessToken(\coreBundle\Entity\Oauth2ProviderAccesstoken $accessToken = null)
+    {
+        $this->accessToken = $accessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get accessToken
+     *
+     * @return \coreBundle\Entity\Oauth2ProviderAccesstoken 
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
 }
