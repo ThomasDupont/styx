@@ -50,7 +50,7 @@ class WebsiteStyxuserbase extends BaseUser
      *
      * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
      */
-    private $firstname = "default_firstname";
+    private $firstname;
 
     /**
      * @var \DateTime
