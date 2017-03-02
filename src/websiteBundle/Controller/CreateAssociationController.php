@@ -17,6 +17,15 @@ class CreateAssociationController extends Controller
 
         if ($createAssociationForm->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $user->setEnabled(true);
+            $query = $em->createQuery('
+            SELECT wg
+            FROM coreBundle:WebsiteGroup wg
+            WHERE wg.id = :id
+            ')
+                ->setParameter('id', 2);
+            $group = $query->getResult();
+            $user->setGroup($group[0]);
             $em->persist($user);
             $em->flush();
         }
