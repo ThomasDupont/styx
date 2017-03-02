@@ -18,6 +18,7 @@
         <div class="form" id="form1">
             <img class="pp" src="">
             <img class="modif_pp" src="{{ asset('bundles/framework/images/icons/modif_pp.png') }}" />
+            {{ form(createAssociationForm) }}
             {#% if create_association_form.email.errors %}
                 <div class="text-error">{{ create_association_form.email.errors.0}}</div>
             {% endif %}
