@@ -5,6 +5,7 @@ imports:
     - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@websiteBundle/Resources/config/services.yml" }
     - { resource: "@coreBundle/Resources/config/services.yml" }
+    - { resource: "@WebserviceBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -79,3 +80,12 @@ fos_user:
         form:
             type: app_user_registration
 #            type: fos_user_registration
+
+fos_rest:
+    routing_loader:
+        include_format: false
+    view:
+        view_response_listener: true
+    format_listener:
+        rules:
+            - { path: '^/', priorities: ['json'], fallback_format: 'json' }
