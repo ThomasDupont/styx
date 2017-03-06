@@ -53,6 +53,10 @@ class ComposerStaticInit78621c8276a8746e0e822d136af2b539
         array (
             'Psr\\Log\\' => 8,
         ),
+        'N' => 
+        array (
+            'Negotiation\\' => 12,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -60,6 +64,10 @@ class ComposerStaticInit78621c8276a8746e0e822d136af2b539
         'I' => 
         array (
             'Incenteev\\ParameterHandler\\' => 27,
+        ),
+        'F' => 
+        array (
+            'FOS\\RestBundle\\' => 15,
         ),
         'D' => 
         array (
@@ -162,6 +170,10 @@ class ComposerStaticInit78621c8276a8746e0e822d136af2b539
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Negotiation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -169,6 +181,10 @@ class ComposerStaticInit78621c8276a8746e0e822d136af2b539
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
+        ),
+        'FOS\\RestBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (
@@ -205,6 +221,13 @@ class ComposerStaticInit78621c8276a8746e0e822d136af2b539
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
+            ),
+        ),
+        'J' => 
+        array (
+            'JsonpCallbackValidator' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
             ),
         ),
         'F' => 

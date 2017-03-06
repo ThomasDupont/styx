@@ -2,13 +2,16 @@
 
 namespace WebserviceBundle\Controller;
 
+use coreBundle\Entity\PostComment;
 use coreBundle\Entity\PostPost;
+use coreBundle\Entity\WebsiteStyxuserbase;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use websiteBundle\Form\CommentType;
 
 class PostController extends FOSRestController
 {
@@ -51,6 +54,9 @@ class PostController extends FOSRestController
      */
     public function getCommentChildrenListAction(Request $request, $identifier)
     {
+        /** @var WebsiteStyxuserbase $user */
+
+        var_dump($user->getEmail());
         $comments = $this->getDoctrine()
             ->getRepository('coreBundle:PostComment')
             ->findBy(array('identifier' => $identifier ));
@@ -66,12 +72,23 @@ class PostController extends FOSRestController
      */
     public function postCommentChildrenListAction(Request $request, $identifier)
     {
-        $comments = $this->getDoctrine()
-            ->getRepository('coreBundle:PostComment')
-            ->findBy(array('identifier' => $identifier ));
-        if (empty($comments)) {
-            return new JsonResponse(['message' => 'Comments not found'], Response::HTTP_NOT_FOUND);
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $comments = new PostComment();
+        $form = $this->createForm(CommentType::class, $comments);
+
+        /** Validation des données */
+        $form->submit($request->request->all());
+
+        if($form->isValid()){
+            $comments->setUser($user);
+
+            $em = $this->getDoctrine();
+            $em->persist($comments);
+            $em->flush();
+            return $comments;
+        }else{
+            return $form;
         }
-        return $comments;
+        
     }
 }

@@ -9,6 +9,7 @@ return array(
     'Twig_Extensions_' => array($vendorDir . '/twig/extensions/lib'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'SensioLabs\\Security' => array($vendorDir . '/sensiolabs/security-checker'),
+    'JsonpCallbackValidator' => array($vendorDir . '/willdurand/jsonp-callback-validator/src'),
     'FOS\\UserBundle' => array($vendorDir . '/friendsofsymfony/user-bundle'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
