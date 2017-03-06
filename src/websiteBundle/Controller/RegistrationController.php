@@ -32,13 +32,10 @@ class RegistrationController extends RegistrationControllerBase
             $em->persist($styxuserbaseZones);
             $em->flush();
 
-            $repositoryStyxuserbase = $this->container->get('doctrine')->getRepository('coreBundle:WebsiteStyxuserbase');
-            $idUser = $this->container->getUser()->getId();
-            $user = $repositoryStyxuserbase->findById($idUser)[0];
-
-
-            //var_dump($group);
-            //exit;
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            $user->setGroup($group[0]);
+            $em->persist($user);
+            $em->flush();
         }
 
         return $response;
