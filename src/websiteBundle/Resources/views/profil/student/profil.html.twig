@@ -54,16 +54,16 @@
                                 <img class="local" src="{{ asset('bundles/framework/images/icons/local.png') }}">
                                 {{ user.city.name }}
                             </span>
-                        {#% if permissions.update_profil %#}
+                        {% if user == connectedUser %}
                             <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>
                             <a href="/update_profil"><div class="modif_profil">Modifier</div></a>
-                        {#% elif permissions.follow %}
-                        {% if not datas.is_following %}
-                            <div class="modif_profil unfollow">Suivre</div>
-                        {#% else %}
-                            <div class="modif_profil follow">Ne plus suivre</div>
                         {% endif %}
-                        {% endif %#}
+                        {#{% elif permissions.follow %}#}
+                        {#{% if not datas.is_following %}#}
+                            {#<div class="modif_profil unfollow">Suivre</div>#}
+                        {#{% else %}#}
+                            {#<div class="modif_profil follow">Ne plus suivre</div>#}
+                        {#{% endif %}#}
                         <img>
                         <div class="rating sous_titres">
                             {#% if user_mark == 4 %}

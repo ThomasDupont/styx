@@ -33,17 +33,19 @@ class ProfilController extends Controller
         $repositoryUser = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
         $user = $repositoryUser->findBy(array('identifier'=> $identifier));
 
+
+        $idUser = $this->getUser()->getId();
+        $userGroup = $this->getUser()->getGroup()->getId();
+        $connectedUser = $repositoryUser->findById($idUser)[0];
+
         if ($user == null) {
-            $idUser = $this->getUser()->getId();
-            $userGroup = $this->getUser()->getGroup()->getId();
-            $user = $repositoryUser->findById($idUser)[0];
             if ($userGroup == 1) {
                 return $this->render('@website/profil/student/profil.html.twig', array(
-                    'user' => $user,
+                    'user' => $connectedUser,
                 ));
             } else {
                 return $this->render('@website/profil/association/profil.html.twig', array(
-                    'user' => $user,
+                    'user' => $connectedUser,
                 ));
             }
         }
@@ -52,10 +54,12 @@ class ProfilController extends Controller
         if ($userGroup == 1) {
             return $this->render('@website/profil/student/profil.html.twig', array(
                 'user' => $user[0],
+                'connectedUser' => $connectedUser,
             ));
         } else {
             return $this->render('@website/profil/association/profil.html.twig', array(
                 'user' => $user[0],
+                'connectedUser' => $connectedUser,
             ));
         }
     }
