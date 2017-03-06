@@ -190,6 +190,7 @@ class FeedController extends Controller
             $em->persist($postpost);
             $em->flush();
             $postid = $postpost->getId();
+            return $this->redirect($this->generateUrl($request->get('_route'), $request->query->all()));
         }
 
         // exit;
