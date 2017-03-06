@@ -14,7 +14,8 @@ class MessageMessage extends BaseMessage
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="message_message_id_seq", allocationSize=1, initialValue=1)
      */
     protected $id;
 

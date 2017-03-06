@@ -13,7 +13,8 @@ class MessageMetadata extends BaseMessageMetadata
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="message_metadata_id_seq", allocationSize=1, initialValue=1)
      */
     protected $id;
 
