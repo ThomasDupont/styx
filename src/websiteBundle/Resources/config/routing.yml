@@ -46,6 +46,12 @@ profil:
     path:     /profil
     defaults: { _controller: websiteBundle:Profil:index }
 
+otherProfil:
+    path:     /profil/{identifier}
+    defaults: { _controller: websiteBundle:Profil:otherProfil }
+    requirements:
+        name:  "[a-zA-Z0-9]{2,32}"
+
 update_profil:
     path:     /update_profil
     defaults: { _controller: websiteBundle:UpdateProfil:index }

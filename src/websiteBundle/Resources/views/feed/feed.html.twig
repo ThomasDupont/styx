@@ -51,7 +51,7 @@
               {% endif %}
             </div>
             <div class="col-xs-12 text-center">
-                <span class="btn-view-more" aria-hidden="true" onclick="update_post('{#{{zone_id}}#}');"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                <span class="btn-view-more" aria-hidden="true" onclick="update_post('{{ zone.id }}');"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
             </div>
 
         </div>
@@ -97,7 +97,7 @@
                     <div class="select-box2">
                         <label for="select-box1" class="label select-box1">
 
-                            <option value="0" disabled selected>{#{{name_zone}}#}</option>
+                            <option value="0" disabled selected>{{ zone.name }}</option>
                         </label>
                         {{ form_widget(cityForm.name, {'attr': {'class': 'select'}, value: selected}) }}
                         {#{{ filter_city_form.city }}#}
@@ -135,11 +135,11 @@
 
                 <!-- News Styx -->
                 <h4>Bons plans</h4>
-                {#% if name_zone == "Orléans" %}
+                {% if zone.name == "Orléans" %}
                 <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfGheAts9k1dUMr1ib50THLwF6KkpVhSU2n_zbrKXcmBXeuYw/viewform" ><img class="video_youtube" src="{{asset('bundles/framework/images/advantage/orleans_advantage.png')}}"></a>
-                {% elseif name_zone == "Tours" %}
+                {% elseif zone.name == "Tours" %}
                 <a href="mailto:what.asso@gmail.com" ><img class="video_youtube" src="{{asset('bundles/framework/images/advantage/event-tour.png')}}"></a>
-                {% endif %#}
+                {% endif %}
                 <h4>Suis les news Styx</h4>
 
 

@@ -117,7 +117,6 @@ class FeedController extends Controller
         $zone = $repositoryZone->findById($zone)[0];
 
 
-
         $i = 1;
         while($repositoryPostPost->findById($i) != null) {
             $i++;
@@ -202,6 +201,7 @@ class FeedController extends Controller
             'types' => $types,
             'rewards' => $rewards,
             'users' => $users,
+            'zone' => $zone,
             'selected' => strval($zone->getId()),
         ));
     }

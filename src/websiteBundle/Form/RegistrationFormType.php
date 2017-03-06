@@ -61,7 +61,6 @@ class RegistrationFormType extends AbstractType
                 'label' => false,
             ))
             ->add('school', EntityType::class, array(
-                'mapped' => false,
                 'class' => WebsiteSchool::class,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('u')
