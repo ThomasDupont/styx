@@ -20,10 +20,7 @@ class MessageMessage extends BaseMessage
     protected $id;
 
     /**
-     * @ORM\ManyToOne(
-     *   targetEntity="coreBundle\Entity\MessageThread",
-     *   inversedBy="messages"
-     * )
+     * @ORM\ManyToOne(targetEntity="coreBundle\Entity\MessageThread", inversedBy="messages")
      * @var \FOS\MessageBundle\Model\ThreadInterface
      */
     protected $thread;
@@ -35,11 +32,7 @@ class MessageMessage extends BaseMessage
     protected $sender;
 
     /**
-     * @ORM\OneToMany(
-     *   targetEntity="coreBundle\Entity\MessageMetadata",
-     *   mappedBy="message",
-     *   cascade={"all"}
-     * )
+     * @ORM\OneToMany(targetEntity="coreBundle\Entity\MessageMessageMetadata", mappedBy="message",cascade={"all"})
      * @var MessageMetadata[]|Collection
      */
     protected $metadata;
