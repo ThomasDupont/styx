@@ -83,8 +83,10 @@
                                 {{ user.city.name }}
                             </span>
                         {#{% if permissions.update_profil %}#}
-                        <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>
-                        <a href="/update_profil"><div class="modif_profil">Modifier</div></a>
+                        {% if user == connectedUser %}
+                            <a href="/logout"><div class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></div></a>
+                            <a href="/update_profil"><div class="modif_profil">Modifier</div></a>
+                        {% endif %}
                         {#{% elif permissions.follow %}#}
                         {#{% if not datas.is_following %}#}
                         {#<div class="modif_profil unfollow">Suivre</div>#}

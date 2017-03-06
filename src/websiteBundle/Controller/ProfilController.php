@@ -17,10 +17,12 @@ class ProfilController extends Controller
         if ($userGroup == 1) {
             return $this->render('@website/profil/student/profil.html.twig', array(
                 'user' => $user,
+                'connectedUser' => $user,
             ));
         } else if ($userGroup == 2) {
             return $this->render('@website/profil/association/profil.html.twig', array(
                 'user' => $user,
+                'connectedUser' => $user,
             ));
         }
     }
