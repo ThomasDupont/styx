@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use coreBundle\Entity\WebsiteGroup;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Ramsey\Uuid\Uuid;
+use FOS\MessageBundle\Model\ParticipantInterface;
 
 /**
  * WebsiteStyxuserbase
@@ -14,7 +15,7 @@ use Ramsey\Uuid\Uuid;
  * @ORM\Table(name="website_styxuserbase", uniqueConstraints={@ORM\UniqueConstraint(name="website_styxuserbase_email_key", columns={"email"})}, indexes={@ORM\Index(name="website_styxuserbase_0e939a4f", columns={"group_id"}), @ORM\Index(name="website_styxuserbase_email_4d007222_like", columns={"email"})})
  * @ORM\Entity(repositoryClass="WebsiteStyxuserbaseRepository")
  */
-class WebsiteStyxuserbase extends BaseUser
+class WebsiteStyxuserbase extends BaseUser implements ParticipantInterface
 {
 
     /**

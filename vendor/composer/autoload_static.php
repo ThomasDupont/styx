@@ -213,6 +213,10 @@ class ComposerStaticInit78621c8276a8746e0e822d136af2b539
             array (
                 0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
             ),
+            'FOS\\MessageBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/friendsofsymfony/message-bundle',
+            ),
         ),
         'D' => 
         array (
