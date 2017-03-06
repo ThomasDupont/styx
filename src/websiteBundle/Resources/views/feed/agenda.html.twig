@@ -39,8 +39,8 @@
         <div class="event">
             <div class="blocks annee">
                 {% for date in dates %}
-                    {% if date|date('Y') != date %}
-                    <h2>Événements de {{ date|date('Y') }}</h2>
+                    {% if date|date('Y') == years[loop.index - 1]|date('Y') %}
+                    <h2>Evénements de {{ date|date('Y') }}</h2>
                     {% endif %}
 
                     {#<!-- Block un mois -->#}
