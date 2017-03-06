@@ -1,0 +1,7 @@
+webservice_homepage:
+    path:     /
+    defaults: { _controller: WebserviceBundle:Default:index }
+
+website_post:
+    type: rest
+    resource: WebserviceBundle\Controller\PostController

@@ -1,3 +1,7 @@
+webservice:
+    resource: "@WebserviceBundle/Resources/config/routing.yml"
+    prefix:   /
+
 core:
     resource: "@coreBundle/Resources/config/routing.yml"
     prefix:   /
