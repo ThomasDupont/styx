@@ -174,11 +174,11 @@ class HomepageController extends Controller
                     ->setParameter('id', 1);
                 $group = $query->getResult();
 
-//                $styxuserbaseZones = new WebsiteStyxuserbaseZones();
-//                $styxuserbaseZones->setStyxuserbase($user);
-//                $styxuserbaseZones->setZone($zone);
-//                $em->persist($styxuserbaseZones);
-//                $em->flush();
+                $styxuserbaseZones = new WebsiteStyxuserbaseZones();
+                $styxuserbaseZones->setStyxuserbase($user);
+                $styxuserbaseZones->setZone($zone);
+                $em->persist($styxuserbaseZones);
+                $em->flush();
 
                 $user->setGroup($group[0]);
                 $user->setEnabled(1);
