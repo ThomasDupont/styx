@@ -166,6 +166,7 @@ class WebsiteStyxuserbase extends BaseUser
         foreach($string as &$char)
             $char = "".dechex(ord($char));
         $this->identifier = substr(implode('',$string), 0, 32);
+        $this->username = 'username';
     }
 
     /**

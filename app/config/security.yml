@@ -43,7 +43,7 @@ security:
 #            anonymous:    true
 
     access_control:
-            - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/create_association, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -1,7 +1,6 @@
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+<form action="{{ path('homepage') }}" method="POST" class="fos_user_registration_register">
 
     {{ form_errors(form) }}
-    {{ form_widget(form._token) }}
 
   <div class="pt1">
     {#{% csrf_token %}#}
@@ -44,10 +43,10 @@
     </div>
 
     <div class="select-box">
-      <label for="select-box2" class="label select-box2">
-        <span class="label-desc">Ville</span>
-      </label>
-        {{ form_widget(form.city, {'attr': {'class': 'select', 'placeholder': 'Ville'}}) }}
+      {#<label for="select-box2" class="label select-box2">#}
+        {#<span class="label-desc">Ville</span>#}
+      {#</label>#}
+        {{ form_widget(form.city, {'attr': {'class': '', 'placeholder': 'Ville'}}) }}
     </div>
 
     <div class="select-box">
