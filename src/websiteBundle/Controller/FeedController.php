@@ -38,8 +38,7 @@ class FeedController extends Controller
 
         $types = $repositoryType->findAll();
         $rewards = $repositoryReward->findAll();
-        $users = $repositoryStyxuserbase->findAll();
-        $users = count($users);
+        $users = count($repositoryStyxuserbase->findAll());
 
         $idUser = $this->getUser()->getId();
         $user = $repositoryStyxuserbase->findById($idUser)[0];

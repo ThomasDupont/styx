@@ -2,160 +2,161 @@
 {#{% load staticfiles %}#}
 {% block main %}
 
-<div id="header"></div>
-<img id="logo" src=" {{ asset('bundles/framework/images/homepage/styx-logo.png') }} ">
-<span id="slogan">Profite de<br/>ce que t'as pas.</span>
+    <div id="header"></div>
+    <img id="logo" src=" {{ asset('bundles/framework/images/homepage/styx-logo.png') }} ">
+    <span id="slogan">Profite de<br/>ce que t'as pas.</span>
 
-<!-- Image Annimé -->
+    <!-- Image Annimé -->
 
-<div class="container_image">
-    <img id="image" src="{{ asset('bundles/framework/images/homepage/Background.jpg') }} " />
+    <div class="container_image">
+        <img id="image" src="{{ asset('bundles/framework/images/homepage/Background.jpg') }} " />
 
-    <!-- Haut de page static -->
+        <!-- Haut de page static -->
 
-    <div class="top">
-        <div class="top_fond"></div>
-    </div>
+        <div class="top">
+            <div class="top_fond"></div>
+        </div>
 
-    <div class="top2">
+        <div class="top2">
                 <span id="presentation">
                     Styx, c'est le partage géolocalisé entre étudiants qui te permet de profiter de tout ce que tu n'as pas en faisant appel à la communauté étudiante !
                 </span>
+        </div>
+
+        <!-- Boutons -->
+
+        <div class="c_buttons">
+            <div class="buttons_top l_connexion">Connexion</div>
+            <div class="buttons_top l_inscription">Inscription</div>
+        </div>
     </div>
 
-    <!-- Boutons -->
-
-    <div class="c_buttons">
-        <div class="buttons_top l_connexion">Connexion</div>
-        <div class="buttons_top l_inscription">Inscription</div>
-    </div>
-</div>
-
-<div class="processus block_explication">
-    <div class="block1 blocks">
-        <p>Profite de ce que t'as pas super rapidement !</p>
-        <div id="no_responsive">
-            <img src="{{ asset('bundles/framework/images/homepage/picto/picto_etape1.png') }}">
-                    <span>
+    <div class="processus block_explication">
+        <div class="block1 blocks">
+            <p>Profite de ce que t'as pas super rapidement !</p>
+            <div id="no_responsive">
+                <img src="{{ asset('bundles/framework/images/homepage/picto/picto_etape1.png') }}">
+                <span>
                         T'as besoin d'un service ou d'un bon plan ? N'hésite pas, fais appel aux étudiants de ta ville !
                     </span>
-        </div>
-        <div>
-            <img src="{{ asset('bundles/framework/images/homepage/picto/picto_etape2.png') }}">
-                    <span>
+            </div>
+            <div>
+                <img src="{{ asset('bundles/framework/images/homepage/picto/picto_etape2.png') }}">
+                <span>
                         Crée ton annonce super rapidement et indique ce que tu es prêt à offrir en échange du service rendu.
                     </span>
-        </div>
-        <div>
-            <img src="{{ asset('bundles/framework/images/homepage/picto/picto_etape3.png') }} ">
-                    <span>
+            </div>
+            <div>
+                <img src="{{ asset('bundles/framework/images/homepage/picto/picto_etape3.png') }} ">
+                <span>
                         Profite de tout ce que t'as pas gratuitement et fais plein de nouvelles rencontres
                     </span>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="parallax1">
-    <span class="span_para sp1">" J'ai trouvé un étudiant avec qui aller courir après les cours ! "</span>
-</div>
+    <div class="parallax1">
+        <span class="span_para sp1">" J'ai trouvé un étudiant avec qui aller courir après les cours ! "</span>
+    </div>
 
-<div class="processus block_agenda">
-    <div id="c_text_agenda">
-        <h2>Mon agenda étudiant</h2>
-                <span>
+    <div class="processus block_agenda">
+        <div id="c_text_agenda">
+            <h2>Mon agenda étudiant</h2>
+            <span>
                     Tiens toi au courant de tout ce qui se passe à proximité. Tous les événements de ta région sont sur l'agenda de Styx.
                 </span>
+        </div>
+        <img class="agenda" src="{{ asset('bundles/framework/images/homepage/agenda.png') }}">
     </div>
-    <img class="agenda" src="{{ asset('bundles/framework/images/homepage/agenda.png') }}">
-</div>
 
-<div class="parallax2">
-    <span class="span_para sp3">" Un étudiant m'a prêté un déguisement pour ma soirée d'inté ! "</span>
-</div>
+    <div class="parallax2">
+        <span class="span_para sp3">" Un étudiant m'a prêté un déguisement pour ma soirée d'inté ! "</span>
+    </div>
 
-<div class="processus  block_phone">
-    <div id="c_text_mobile">
-        <h2>Styx débarque sur mobile !</h2>
-                <span>
+    <div class="processus  block_phone">
+        <div id="c_text_mobile">
+            <h2>Styx débarque sur mobile !</h2>
+            <span>
                     Fais tes demandes où tu veux, quand tu veux.<br/>
                     L'appli Styx est maintenant dispo sur iOS et Android.
                 </span>
-    </div>
-    <img class="phone" src="{{ asset('bundles/framework/images/homepage/phone.png') }}">
-</div>
-
-<div class="parallax3">
-    <span class="span_para sp3">" J'ai fait plein de nouvelles rencontres ! "</span>
-</div>
-
-<div class="processus footer">
-    <img src="{{ asset('bundles/framework/images/homepage/logo.png') }}">
-    <div class="bouton l_inscription">Rejoins nous !</div>
-    <div id="reseaux">
-        <ul>
-            <li><a target="_blank" href="https://www.facebook.com/Styx-Profite-de-ce-que-tas-pas-732381806892927/"><img src="{{ asset('bundles/framework/images/homepage/facebook.png') }}" style="left:22%"></a></li>
-            <li><a target="_blank" href="https://twitter.com/styxstudents"><img src="{{ asset('bundles/framework/images/homepage/twitter.png') }}"></a></li>
-            <li><a target="_blank" href="https://www.instagram.com/styx_students/"><img src="{{ asset('bundles/framework/images/homepage/instagram.png') }}"></a></li>
-            <li><a target="_blank" href="https://www.youtube.com/channel/UCnIjDndc2cj8Ah5SFY7o6Lw"><img src="{{ asset('bundles/framework/images/homepage/youtube.png') }}"></a></li>
-            <li><a target="_blank" href="https://www.linkedin.com/company/styx-students"><img src="{{ asset('bundles/framework/images/homepage/linkedin.png') }}"></a></li>
-            <li><a target="_blank" href="http://fr.viadeo.com/fr/company/styx"><img src="{{ asset('bundles/framework/images/homepage/viadeo.png') }}" class="viadeo"></a></li>
-        </ul>
-    </div>
-</div>
-
-<!-- Popup connexion et inscription -->
-
-<div class="zoom_connexion_inscription">
-    <div class="effet_zoom"></div>
-    <div class="zoom_block">
-        <ul>
-            <li class="o_connexion">Connexion</li>
-            <li class="o_inscription">Inscription</li>
-        </ul>
-        <div class="connexion form">
-
-            {#{% if error %}#}
-            {#<div class="text-error">Votre adresse mail et votre mot de passe ne correspondent pas.</div>#}
-            {#{% endif %}#}
-
-            <form method="post" action="{{ path('fos_user_security_check') }}">
-                {#{% csrf_token %}#}
-                {#{{loginForm.non_field_errors }}#}
-                {#{% for hidden in loginForm.hidden_fields %}#}
-                {#{{ hidden }}#}
-                {#{% endfor %}#}
-
-                {% render url('fos_user_security_login') %}
-
-                {#<a id="facebook-login" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/connexion_with_facebook&method=login"></a>#}
-
-                <div class="facebook-login">Connexion via Facebook</div>
-
-                {#<input type="hidden" name="next" value="{{ next }}" />#}
-                <a href="{{ path('reset_password') }}"><span>Mot de passe oublié ?</span></a>
-            </form>
-
         </div>
-        <div class="inscription form">
+        <img class="phone" src="{{ asset('bundles/framework/images/homepage/phone.png') }}">
+    </div>
 
-            {#{% if signUpForm.firstname.errors %}#}
-            {#<div class="text-error">{{ signUpForm.firstname.errors.0}}</div>#}
-            {#{% elif signUpForm.name.errors %}#}
-            {#<div class="text-error">{{ signUpForm.name.errors.0}}</div>#}
-            {#{% elif signUpForm.email.errors %}#}
-            {#<div class="text-error">{{ signUpForm.email.errors.0}}</div>#}
-            {#{% elif signUpForm.password.errors %}#}
-            {#<div class="text-error">{{ signUpForm.password.errors.0}}</div>#}
-            {#{% elif signUpForm.password2.errors %}#}
-            {#<div class="text-error">{{ signUpForm.password2.errors.0}}</div>#}
-            {#{% endif %}#}
+    <div class="parallax3">
+        <span class="span_para sp3">" J'ai fait plein de nouvelles rencontres ! "</span>
+    </div>
 
-            <!-- <form action="{{ path('fos_user_registration_register') }}" method="post" name="signUp"> -->
-                {#% render url('fos_user_registration_register'), {'var': departments} %#}
+    <div class="processus footer">
+        <img src="{{ asset('bundles/framework/images/homepage/logo.png') }}">
+        <div class="bouton l_inscription">Rejoins nous !</div>
+        <div id="reseaux">
+            <ul>
+                <li><a target="_blank" href="https://www.facebook.com/Styx-Profite-de-ce-que-tas-pas-732381806892927/"><img src="{{ asset('bundles/framework/images/homepage/facebook.png') }}" style="left:22%"></a></li>
+                <li><a target="_blank" href="https://twitter.com/styxstudents"><img src="{{ asset('bundles/framework/images/homepage/twitter.png') }}"></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/styx_students/"><img src="{{ asset('bundles/framework/images/homepage/instagram.png') }}"></a></li>
+                <li><a target="_blank" href="https://www.youtube.com/channel/UCnIjDndc2cj8Ah5SFY7o6Lw"><img src="{{ asset('bundles/framework/images/homepage/youtube.png') }}"></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/styx-students"><img src="{{ asset('bundles/framework/images/homepage/linkedin.png') }}"></a></li>
+                <li><a target="_blank" href="http://fr.viadeo.com/fr/company/styx"><img src="{{ asset('bundles/framework/images/homepage/viadeo.png') }}" class="viadeo"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Popup connexion et inscription -->
+
+    <div class="zoom_connexion_inscription">
+        <div class="effet_zoom"></div>
+        <div class="zoom_block">
+            <ul>
+                <li class="o_connexion">Connexion</li>
+                <li class="o_inscription">Inscription</li>
+            </ul>
+            <div class="connexion form">
+
+                {#{% if error %}#}
+                {#<div class="text-error">Votre adresse mail et votre mot de passe ne correspondent pas.</div>#}
+                {#{% endif %}#}
+
+                <form method="post" action="{{ path('fos_user_security_check') }}">
+                    {#{% csrf_token %}#}
+                    {#{{loginForm.non_field_errors }}#}
+                    {#{% for hidden in loginForm.hidden_fields %}#}
+                    {#{{ hidden }}#}
+                    {#{% endfor %}#}
+
+                    {% render url('fos_user_security_login') %}
+
+                    {#<a id="facebook-login" type='hidden' href="{% url 'social:begin' 'facebook' %}?next=/connexion_with_facebook&method=login"></a>#}
+
+                    <div class="facebook-login">Connexion via Facebook</div>
+
+                    {#<input type="hidden" name="next" value="{{ next }}" />#}
+                    <a href="{{ path('reset_password') }}"><span>Mot de passe oublié ?</span></a>
+                </form>
+
+            </div>
+            <div class="inscription form">
+
+                {#{% if signUpForm.firstname.errors %}#}
+                {#<div class="text-error">{{ signUpForm.firstname.errors.0}}</div>#}
+                {#{% elif signUpForm.name.errors %}#}
+                {#<div class="text-error">{{ signUpForm.name.errors.0}}</div>#}
+                {#{% elif signUpForm.email.errors %}#}
+                {#<div class="text-error">{{ signUpForm.email.errors.0}}</div>#}
+                {#{% elif signUpForm.password.errors %}#}
+                {#<div class="text-error">{{ signUpForm.password.errors.0}}</div>#}
+                {#{% elif signUpForm.password2.errors %}#}
+                {#<div class="text-error">{{ signUpForm.password2.errors.0}}</div>#}
+                {#{% endif %}#}
+
+                 {#<form action="{{ path('fos_user_registration_register') }}" method="post" name="signUp">#}
+
+                    {#% render url('fos_user_registration_register'), {'var': departments} %#}
                 {% block fos_user_content %}
-                {% include "FOSUserBundle:Registration:register_content.html.twig" with {'form': formEmail} %}
+                    {% include "FOSUserBundle:Registration:register_content.html.twig" with {'form': formEmail} %}
                 {% endblock fos_user_content %}
-<!--
+                <!--
                 <div class="pt1">
                     {#{% csrf_token %}#}
                     {#{{ signUpForm.non_field_errors }}#}
@@ -201,62 +202,62 @@
                     <input class="valid" type="submit" value="M'inscrire">
                 </div> -->
 
-            <!-- </form> -->
+                {#</form>#}
 
+            </div>
         </div>
+
     </div>
+    <script type="text/javascript">
+        var cities = [];
 
-</div>
-<script type="text/javascript">
-  var cities = [];
-
-  function drawCity() {
-    var $dep  = $('[name="app_user_registration[department]"]')[0].value;
-    var citySelect = $('[name="app_user_registration[city]"]')[0];
-    while(citySelect.hasChildNodes()) {
-      var op = citySelect.firstChild;
-      $(op).remove();
-    }
-    for (var i in cities) {
-      if($(cities[i]).attr('data-dep') == $dep) {
-        citySelect.append(cities[i]);
-      }
-    }
-  }
-
-  function initCity() {
-    var citySelect = $('[name="app_user_registration[city]"]')[0];
-    for (var city in citySelect) {
-      if (citySelect.hasOwnProperty(city)) {
-        if(citySelect[city].text != undefined) {
-          var res = citySelect[city].text.split(", ");
-          var zipcodeDp = res[0].toString().substr(0,2);
-          citySelect[city].text = res[1];
-          var option = $(citySelect[city])[0];
-          $(option).attr('data-dep', zipcodeDp);
-          cities.push(option);
+        function drawCity() {
+            var dep  = $('[name="app_user_registration[department]"]')[0].value;
+            var citySelect = $('[name="app_user_registration[city]"]')[0];
+            while(citySelect.hasChildNodes()) {
+                var op = citySelect.firstChild;
+                $(op).remove();
+            }
+            for (var i in cities) {
+                if($(cities[i]).attr('data-dep') == dep) {
+                    citySelect.append(cities[i]);
+                }
+            }
         }
-      }
-    }
-  }
 
-  $(".l_inscription").on('click', function() {
-    initCity();
-    drawCity();
-  });
-  $(document).on('change', '[name="app_user_registration[department]"]', function() {
-    drawCity();
-  });
-</script>
-{#{% if show_modal %}#}
-{#<script>#}
+        function initCity() {
+            var citySelect = $('[name="app_user_registration[city]"]')[0];
+            for (var city in citySelect) {
+                if (citySelect.hasOwnProperty(city)) {
+                    if(citySelect[city].text != undefined) {
+                        var res = citySelect[city].text.split(", ");
+                        var zipcodeDp = res[0].toString().substr(0,2);
+                        citySelect[city].text = res[1];
+                        var option = $(citySelect[city])[0];
+                        $(option).attr('data-dep', zipcodeDp);
+                        cities.push(option);
+                    }
+                }
+            }
+        }
+
+        $(".l_inscription").on('click', function() {
+            initCity();
+            drawCity();
+        });
+        $(document).on('change', '[name="app_user_registration[department]"]', function() {
+            drawCity();
+        });
+    </script>
+    {#{% if show_modal %}#}
+    {#<script>#}
 
     {#$(document).ready(function () {#}
-        {#$("{{ show_modal }}").click();#}
+    {#$("{{ show_modal }}").click();#}
     {#});#}
 
-{#</script>#}
+    {#</script>#}
 
-{#{% endif %}#}
+    {#{% endif %}#}
 
 {% endblock %}
