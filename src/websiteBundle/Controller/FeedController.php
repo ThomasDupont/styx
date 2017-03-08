@@ -6,6 +6,7 @@ use coreBundle\Entity\PostPost;
 use coreBundle\Entity\PostPostZones;
 use coreBundle\Entity\WebsiteZone;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use coreBundle\Entity\WebsiteStyxuserbase;
@@ -42,9 +43,18 @@ class FeedController extends Controller
 
         $idUser = $this->getUser()->getId();
         $user = $repositoryStyxuserbase->findById($idUser)[0];
-        $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
 
-        if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'student') {
+        if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'etudiant') {
+            $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
+        } else {
+            if ($repositoryStyxuserbaseZones->findByStyxuserbase($user->getId()) == NULL) {
+                $user_zone = $repositoryStyxuserbaseZones->findById(1)[0];
+            } else {
+                $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
+            }
+        }
+
+        if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'etudiant') {
             if($user_zone->getZone() != NULL) {
                 $name_zone = $user_zone->getZone()->getName();  # Nom de la ville de l'utilisateur
             } else {

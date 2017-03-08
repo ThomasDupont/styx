@@ -42,32 +42,31 @@
                             <div class="fb">
                                 <img src="{{ asset('bundles/framework/images/icons/facebook.png') }}">
                             </div>
-                            {#% if social.facebook %}
+                            {% if social.facebook %}
                             <a href="{{social.facebook}}"><span>Page Facebook</span></a>
-                            {% else %#}
+                            {% else %}
                             <span>Non renseigné</span>
-                            {#% endif %#}
+                            {% endif %}
                         </div>
                         <div class="reseaux">
                             <div class="twitter">
                                 <img src="{{ asset('bundles/framework/images/icons/twitter.png') }}">
                             </div>
-                            {#% if social.twitter %}
+                            {% if social.twitter %}
                             <a href="{{social.twitter}}"><span>Compte Twitter</span></a>
-                            {% else %#}
+                            {% else %}
                             <span>Non renseigné</span>
-                            {#% endif %#}
+                            {% endif %}
                         </div>
                         <div class="reseaux" style="border:none">
                             <div class="youtube">
                                 <img src="{{ asset('bundles/framework/images/icons/youtube.png') }}">
                             </div>
-                            {#% if social.youtube %}
-                            <a href="{{social.youtube}}">
-                                <span>Chaîne Youtube</span></a>
-                            {% else %#}
+                            {% if social.youtube %}
+                            <a href="{{social.youtube}}"><span>Chaîne Youtube</span></a>
+                            {% else %}
                             <span>Non renseigné</span>
-                            {#% endif %#}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -76,11 +75,13 @@
                         <h2 class="pseudo">{{ user.name }}</h2>
                         <span class="date">Styxer depuis le {{ user.createdat|date('d F Y') }}</span>
                             <span class="local sous_titres">
+                                {% if user.city != null %}
                                 <img class="local" src="{{ asset('bundles/framework/images/icons/local.png') }}">
                                 {#{% for zone in user.zones.all %}#}
                                 {#{{zone.name}}#}
                                 {#{% endfor %}#}
                                 {{ user.city.name }}
+                                {% endif %}
                             </span>
                         {#{% if permissions.update_profil %}#}
                         {% if user == connectedUser %}
