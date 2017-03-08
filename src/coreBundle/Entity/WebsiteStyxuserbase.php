@@ -48,7 +48,7 @@ class WebsiteStyxuserbase extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
+     * @ORM\Column(name="firstname", type="string", length=45, nullable=true)
      */
     private $firstname;
 

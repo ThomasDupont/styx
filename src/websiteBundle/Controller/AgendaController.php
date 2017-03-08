@@ -29,22 +29,12 @@ class AgendaController extends Controller
         $repositoryStyxuserbase = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
         $repositoryStyxuserbaseZones = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbaseZones');
 
-        $idUser = $this->getUser()->getId();
-        $user = $repositoryStyxuserbase->findById($idUser)[0];
-        $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
-        // var_dump($repositoryStyxuserbaseZones->findByStyxuserbase($user->getId()));
-        // var_dump($user_zone);
-
         $repositoryType = $this->getDoctrine()->getRepository('coreBundle:WebsiteType');
-        $repositoryPostPostZones = $this->getDoctrine()->getRepository('coreBundle:PostPostZones');
 
         $types = $repositoryType->findAll();
 
         $idUser = $this->getUser()->getId();
         $user = $repositoryStyxuserbase->findById($idUser)[0];
-        $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
-        // var_dump($repositoryStyxuserbaseZones->findByStyxuserbase($user->getId()));
-        // var_dump($user_zone);
 
         if(array_key_exists('zone', $request->query->all())) {
             $zone = $repositoryZone->findById($request->query->get('zone'));
@@ -58,23 +48,23 @@ class AgendaController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
-    SELECT pe
-    FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
-    WHERE pe.postPtr = pp.id
-    AND pp.zone = :zone
-    ORDER BY pe.date
-    ')
+        SELECT pe
+        FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
+        WHERE pe.postPtr = pp.id
+        AND pp.zone = :zone
+        ORDER BY pe.date
+        ')
             ->setParameter('zone', $zone);
         $posts = $query->getResult();
 
 
         $query = $em->createQuery('
-    SELECT pe.date
-    FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
-    WHERE pe.postPtr = pp.id
-    AND pp.zone = :zone
-    ORDER BY pe.date DESC
-    ')
+        SELECT pe.date
+        FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
+        WHERE pe.postPtr = pp.id
+        AND pp.zone = :zone
+        ORDER BY pe.date DESC
+        ')
             ->setParameter('zone', $zone);
         $dateResult = $query->getResult();
         $dates = array();
@@ -88,9 +78,6 @@ class AgendaController extends Controller
                 $years[$i] = $dates[$i + 1];
             }
         }
-//        var_dump($date);
-//        var_dump($test);
-//        exit;
 
         $ville = new WebsiteZone();
         $cityForm = $this->createForm(new CityFormType(), $ville);
@@ -108,7 +95,6 @@ class AgendaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($postpost);
             $em->flush();
-            $postid = $postpost->getId();
         }
 
         if ($request->getMethod() == 'POST') {
