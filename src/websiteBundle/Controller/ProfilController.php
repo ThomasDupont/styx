@@ -14,7 +14,11 @@ class ProfilController extends Controller
         $idUser = $this->getUser()->getId();
         $userGroup = $this->getUser()->getGroup()->getId();
         $user = $repositoryUser->findById($idUser)[0];
-        $social = $repositorySocial->findByEntity($user)[0];
+        if ($user->getGroup()->getName() == "association") {
+            $social = $repositorySocial->findByEntity($user)[0];
+        } else {
+            $social = null;
+        }
 
         if ($userGroup == 1) {
             return $this->render('@website/profil/student/profil.html.twig', array(
@@ -40,8 +44,11 @@ class ProfilController extends Controller
         $repositoryUser = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
         $repositorySocial = $this->getDoctrine()->getRepository('coreBundle:WebsiteSocial');
         $user = $repositoryUser->findBy(array('identifier'=> $identifier));
-        $social = $repositorySocial->findByEntity($user)[0];
-
+        if ($user[0]->getGroup()->getName() == "association") {
+            $social = $repositorySocial->findByEntity($user)[0];
+        } else {
+            $social = null;
+        }
 
         $idUser = $this->getUser()->getId();
         $userGroup = $this->getUser()->getGroup()->getId();
