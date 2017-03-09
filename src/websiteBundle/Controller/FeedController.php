@@ -132,8 +132,6 @@ class FeedController extends Controller
             $i++;
         }
 
-        // var_dump($zone->getId());
-
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
     SELECT pp
@@ -149,8 +147,9 @@ class FeedController extends Controller
 
         $future_event = $repositoryPostEvent->findAll();
         $real_future_event = array();
+        $now = new \DateTime();
         foreach ($future_event as $event) {
-            if ($event->getPostPtr()->getZone() == $zone) {
+            if ($event->getPostPtr()->getZone() == $zone && $event->getDate() > $now) {
                 $real_future_event[] = $event;
             }
         }
@@ -178,16 +177,6 @@ class FeedController extends Controller
                 $real_future_event[] = $def_posts[$i]->getPostPtr();
             }
         }
-
-        if (!empty($real_future_event)) {
-            foreach ($real_future_event as $event) {
-                var_dump($event->getTitle());
-            }
-        }
-
-        //var_dump($futur_event);
-
-        // var_dump($posts);
 
         $ville = new WebsiteZone();
         $cityForm = $this->createForm(new CityFormType(), $ville);
@@ -228,10 +217,4 @@ class FeedController extends Controller
             'selected' => strval($zone->getId()),
         ));
     }
-
-    //     public function connected_user_count() {
-    //       $since_day = timezone.now() - timedelta(days=3);
-    //       $since_day.strftime('%m%d%y');
-    //       return len(StyxUserBase.objects.filter(last_login__gt=since_day));
-
 }

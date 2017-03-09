@@ -90,7 +90,6 @@ class AgendaController extends Controller
             }
             $lastDate = $testDate;
         }
-//        array_reverse($arrayYears);
 
         $arrayMonths = array();
         $arrayMonths[] = 1;
@@ -103,9 +102,6 @@ class AgendaController extends Controller
             }
             $lastDate = $testDate;
         }
-//        array_reverse($arrayYears);
-        var_dump($arrayMonths);
-//        exit;
 
         $ville = new WebsiteZone();
         $cityForm = $this->createForm(new CityFormType(), $ville);
