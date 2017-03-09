@@ -42,6 +42,7 @@ class CreateAssociationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($social);
             $em->flush();
+            return $this->redirect($this->generateUrl('homepage'));
         }
 
         return $this->render('websiteBundle:association:create_association.html.twig', array(

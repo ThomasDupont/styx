@@ -16,7 +16,7 @@
     <!-- <div>{{reward.name}}</div> -->
     <img class="reward" src="{{ asset('bundles/framework/images/icons/' ~ reward.image)}}">
     {% endfor %}
-    <span class="date_responsive">{{post.createdat | date("D d M Y") }}</span>
+    <span class="date_responsive">{{post.createdat|date('d F Y') }}</span>
     <span class="text">
       {{ post.description | nl2br | slice(0,200)}}
     </span>
@@ -50,7 +50,7 @@
         {% endif %}
         <span class="pseudo">{{ post.owner.firstname}} {{post.owner.name}}</span>
       </a>
-      <span class="date_post">{{post.createdat | date("D d M Y") }}</span>
+      <span class="date_post">{{post.createdat|date('d F Y') }}</span>
     </div>
   </div>
 </div>

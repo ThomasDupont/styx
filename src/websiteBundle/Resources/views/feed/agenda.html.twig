@@ -38,16 +38,18 @@
           {% endif %}
         <div class="event">
             <div class="blocks annee">
-                {% for date in dates %}
-                    {% if date|date('Y') == years[loop.index - 1]|date('Y') %}
-                    <h2>Evénements de {{ date|date('Y') }}</h2>
+                {% for post in posts %}
+                    {% if years[loop.index - 1] == 1 %}
+                    <h2>Evénements de {{ post.date|date('Y') }}</h2>
                     {% endif %}
 
                     {#<!-- Block un mois -->#}
 
-                    <h3>{{ date|date('F') }}</h3>
-                    {% for post in posts %}
-                        {% if post.date|date('F Y') == date|date('F Y') %}
+                    {% if months[loop.index - 1] == 1 %}
+                    <h3>{{ post.date|date('F') }}</h3>
+                    {% endif %}
+                    {#{% for post in posts %}#}
+                        {#{% if post.date|date('F Y') == post.date|date('F Y') %}#}
                             <div class="blocks annee">
                                 <div class="actus">
                                     <div class="pt1" id="{{ post.postPtr.identifier }}">
@@ -81,8 +83,8 @@
                                     </div>
                                 </div>
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        {#{% endif %}#}
+                    {#{% endfor %}#}
                 {% endfor %}
             </div>
             {#{% comment "Données d'exemple" %}#}
