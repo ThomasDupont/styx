@@ -30,6 +30,7 @@ class FeedController extends Controller
 
         $repositoryGroup = $this->getDoctrine()->getRepository('coreBundle:WebsiteGroup');
         $repositoryPostPost = $this->getDoctrine()->getRepository('coreBundle:PostPost');
+        $repositoryPostEvent = $this->getDoctrine()->getRepository('coreBundle:PostEvent');
         $repositoryStyxuserbase = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
         $repositoryZone = $this->getDoctrine()->getRepository('coreBundle:WebsiteZone');
         $repositoryStyxuserbaseZones = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbaseZones');
@@ -146,17 +147,22 @@ class FeedController extends Controller
             $posts[$i] = array('post' => $posts[$i]);
         }
 
-        $futur_event = $repositoryPostPostZones->findBy(array('zone'=>$zone));
+        $future_event = $repositoryPostEvent->findAll();
+        $real_future_event = array();
+        foreach ($future_event as $event) {
+            if ($event->getPostPtr()->getZone() == $zone) {
+                $real_future_event[] = $event;
+            }
+        }
         $def_posts = [];
-        for ($i=0; $i < sizeof($futur_event); $i++) {
-            $futur_event_posts[$i] = $futur_event[$i]->getPost();
-            if(!$futur_event_posts[$i]->getDeleted()) {
-                $def_posts[] = $futur_event_posts[$i];
+        for ($i=0; $i < sizeof($real_future_event); $i++) {
+            if(!$real_future_event[$i]->getPostPtr()->getDeleted()) {
+                $def_posts[] = $real_future_event[$i];
             }
         }
         usort($def_posts, function($a, $b) {
-            $a_current_date = $a->getPostponedAt() ?: $a->getCreatedAt();
-            $b_current_date = $b->getPostponedAt() ?: $b->getCreatedAt();
+            $a_current_date = $a->getDate();
+            $b_current_date = $b->getDate();
             if($a_current_date == $b_current_date) {
                 return 0;
             } else if($a_current_date > $b_current_date) {
@@ -165,10 +171,17 @@ class FeedController extends Controller
                 return -1;
             }
         });
-        $futur_event = null;
-        for ($i=0; $i < 6; $i++) {
+
+        $real_future_event = null;
+        for ($i=0; $i < 3; $i++) {
             if(!empty($def_posts[$i])) {
-                $futur_event[] = $def_posts[$i];
+                $real_future_event[] = $def_posts[$i]->getPostPtr();
+            }
+        }
+
+        if (!empty($real_future_event)) {
+            foreach ($real_future_event as $event) {
+                var_dump($event->getTitle());
             }
         }
 
@@ -207,7 +220,7 @@ class FeedController extends Controller
             'cityForm' => $cityForm->createView(),
             'postForm' => $postForm->createView(),
             'posts' => $posts,
-            'futur_event' => $futur_event,
+            'futur_event' => $real_future_event,
             'types' => $types,
             'rewards' => $rewards,
             'users' => $users,

@@ -165,8 +165,11 @@
                     {% for hidden in create_association.hidden_fields %}
                     {{ hidden }}
                     {% endfor %#}
+                    {{ form_widget(memberForm._token) }}
                     <!--{#{ update_member.management_form }#}-->
                         <div class="membre">
+                            {{ form_widget(memberForm.userName, {'attr': {'class': 'input', 'placeholder': 'Nom du membre'}}) }}
+                            {{ form_widget(memberForm.role, {'attr': {'class': 'input', 'placeholder': 'Role du membre'}}) }}
                             {#{ update_member.user_name }}
                             {{ update_member.role }#}
                         </div>
@@ -179,22 +182,22 @@
              <div class="col-md-6 col-sm-6">
             <div class="c_membres blocks">
                     <h4>Liste des membres</h4>
-                {#% for member in user.member_entity.all %}
+                {% for member in members %}
                 <div class="followers">
-                    {% if member.user.avatar %}
-                    {% thumbnail member.user.avatar "50x50" crop="center" format="PNG" as im %}
-                    <img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-                    {% endthumbnail %}
-                    {% else %}
-                    <img class="pp" style="height:auto; width:auto; max-width:50px; max-height:50px;" src="{% static 'images/user/user.jpg' %}">
-                    {% endif %}
+                    {#{% if member.user.avatar %}#}
+                    {#{% thumbnail member.user.avatar "50x50" crop="center" format="PNG" as im %}#}
+                    {#<img class="pp" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">#}
+                    {#{% endthumbnail %}#}
+                    {#{% else %}#}
+                    <img class="pp" style="height:auto; width:auto; max-width:50px; max-height:50px;" src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+                    {#{% endif %}#}
 
-                    {% if member.user_name %}
-                    <span class="pseudo">{{ member.user_name }} - {{ member.role }}</span>
+                    {% if member.userName %}
+                    <span class="pseudo">{{ member.userName }} - {{ member.role }}</span>
                     {% endif %}
 
                 </div>
-                {% endfor %#}
+                {% endfor %}
             </div>
         {% endif %}
             <div class="notifs notifs2 blocks">

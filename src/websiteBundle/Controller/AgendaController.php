@@ -52,9 +52,11 @@ class AgendaController extends Controller
         FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
         WHERE pe.postPtr = pp.id
         AND pp.zone = :zone
+        AND pe.date > :date
         ORDER BY pe.date
         ')
-            ->setParameter('zone', $zone);
+            ->setParameter('zone', $zone)
+            ->setParameter('date', new DateTime());
         $posts = $query->getResult();
 
 
@@ -63,7 +65,7 @@ class AgendaController extends Controller
         FROM coreBundle:PostEvent pe, coreBundle:PostPost pp
         WHERE pe.postPtr = pp.id
         AND pp.zone = :zone
-        ORDER BY pe.date DESC
+        ORDER BY pe.date
         ')
             ->setParameter('zone', $zone);
         $dateResult = $query->getResult();
@@ -71,13 +73,39 @@ class AgendaController extends Controller
         for ($i=0; $i < sizeof($dateResult); $i++) {
             $dates[$i] = $dateResult[$i]["date"]->format('F Y');
         }
-        $dates = array_unique($dates);
         $years = $dates;
         for ($i=0; $i < sizeof($dates); $i++) {
             if ($i + 1 < sizeof($dates)) {
                 $years[$i] = $dates[$i + 1];
             }
         }
+        $arrayYears = array();
+        $lastDate = 0;
+        for ($i=0; $i < sizeof($dates); $i++) {
+            $testDate = substr($dates[$i], -4);
+            if ($lastDate != $testDate) {
+                $arrayYears[] = 1;
+            } else {
+                $arrayYears[] = 0;
+            }
+            $lastDate = $testDate;
+        }
+//        array_reverse($arrayYears);
+
+        $arrayMonths = array();
+        $arrayMonths[] = 1;
+        for ($i=1; $i < sizeof($dates); $i++) {
+            $testDate = substr($dates[$i], 0, -5);
+            if ($lastDate != $testDate) {
+                $arrayMonths[] = 1;
+            } else {
+                $arrayMonths[] = 0;
+            }
+            $lastDate = $testDate;
+        }
+//        array_reverse($arrayYears);
+        var_dump($arrayMonths);
+//        exit;
 
         $ville = new WebsiteZone();
         $cityForm = $this->createForm(new CityFormType(), $ville);
@@ -124,7 +152,8 @@ class AgendaController extends Controller
             'userGroup' => $userGroup,
             'posts' => $posts,
             'dates' => $dates,
-            'years' => $years,
+            'years' => $arrayYears,
+            'months' => $arrayMonths,
         ));
     }
 }

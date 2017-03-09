@@ -108,27 +108,27 @@
                 <!-- Prochaines évènements dans cette ville -->
 
                 <h4>Prochains évènements</h4>
-                <div  class="c_events">
-                    {#{% for event in futur_event %}
+                <div class="c_events">
+                    {% for event in futur_event %}
 
-                    {% now "Ymd" as current_date %}
+                    {#{% now "Ymd" as current_date %}#}
 
-                        {% if event.date|date:"Ymd" < current_date %}
+                        {#{% if event.date|date:"Ymd" < current_date %}#}
 
-                        {% else %}
-                                <a href='/post/{{ event.identifier}}' class="events">
-                                    {% if event.owner.avatar %}
-                                    {% thumbnail event.owner.avatar "50x50" crop="center" format="PNG" as im %}
-                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-                                    {% endthumbnail %}
-                                    {% else %}
-                                    <img src="{{ asset('bundles/framework/images/user/user.jpg')}}">
-                                    {% endif %}
-                                    <span>{{ event.title|truncatechars:15 }}</span>
+                        {#{% else %}#}
+                                {#<a href='/post/{{ event.identifier}}' class="events">#}
+                                    {#{% if event.owner.avatar %}#}
+                                    {#{% thumbnail event.owner.avatar "50x50" crop="center" format="PNG" as im %}#}
+                                    {#<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">#}
+                                    {#{% endthumbnail %}#}
+                                    {#{% else %}#}
+                                    <img style="height:auto; width:auto; max-width:50px; max-height:50px;" src="{{ asset('bundles/framework/images/user/user.jpg')}}">
+                                    {#{% endif %}#}
+                                    <span>{{ event.title[:15] }}</span>
                                     <p>En savoir plus</p>
                                 </a>
-                        {% endif %}
-                    {% endfor %}#}
+                        {#{% endif %}#}
+                    {% endfor %}
 
                 </div>
 
