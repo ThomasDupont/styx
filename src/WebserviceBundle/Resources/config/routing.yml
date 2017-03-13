@@ -5,3 +5,7 @@ website_post:
 website_conversation:
     type: rest
     resource: WebserviceBundle\Controller\ConversationController
+
+website_users:
+    type: rest
+    resource: WebserviceBundle\Controller\UserController
