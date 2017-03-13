@@ -153,6 +153,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'coreBundle\Entity\WebsiteStyxuserbase',
+            'csrf_protection' => false,
         ));
     }
 }

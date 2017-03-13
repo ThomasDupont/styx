@@ -44,7 +44,10 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
+<<<<<<< HEAD
         # driver:   pdo_mysql
+=======
+>>>>>>> 4f10e892e0e1863db0a454aed92a05c27118be04
         driver:   pdo_pgsql
         host:     "%database_host%"
         port:     "%database_port%"

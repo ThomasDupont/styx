@@ -8,3 +8,11 @@ webservice_homepage:
 post:
     type:     rest
     resource: WebserviceBundle\Controller\PostController
+
+website_conversation:
+    type: rest
+    resource: WebserviceBundle\Controller\ConversationController
+
+website_users:
+    type: rest
+    resource: WebserviceBundle\Controller\UserController
