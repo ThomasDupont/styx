@@ -11,12 +11,13 @@
 
 namespace Symfony\Component\Templating\Tests\Helper;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Templating\Helper\CoreAssetsHelper;
 
 /**
  * @group legacy
  */
-class LegacyCoreAssetsHelperTest extends \PHPUnit_Framework_TestCase
+class LegacyCoreAssetsHelperTest extends TestCase
 {
     protected $package;
 
@@ -43,7 +44,7 @@ class LegacyCoreAssetsHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new CoreAssetsHelper($this->package);
 
-        $this->setExpectedException('\InvalidArgumentException');
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('\InvalidArgumentException');
 
         $helper->getPackage('foo');
     }

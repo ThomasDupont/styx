@@ -13,6 +13,10 @@ namespace Symfony\Bridge\PhpUnit;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
+if (!class_exists('PHPUnit_Framework_BaseTestListener')) {
+    return;
+}
+
 /**
  * Collects and replays skipped tests.
  *
@@ -62,6 +66,12 @@ class SymfonyTestsListener extends \PHPUnit_Framework_BaseTestListener
         if (0 < $this->state) {
             file_put_contents($this->skippedFile, '<?php return '.var_export($this->isSkipped, true).';');
         }
+    }
+
+    public function globalListenerDisabled()
+    {
+        self::$globallyEnabled = false;
+        $this->state = -1;
     }
 
     public function startTestSuite(\PHPUnit_Framework_TestSuite $suite)

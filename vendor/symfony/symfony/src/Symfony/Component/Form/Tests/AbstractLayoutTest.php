@@ -14,8 +14,9 @@ namespace Symfony\Component\Form\Tests;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\Extension\Csrf\CsrfExtension;
+use Symfony\Component\Form\Test\FormIntegrationTestCase;
 
-abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormIntegrationTestCase
+abstract class AbstractLayoutTest extends FormIntegrationTestCase
 {
     protected $csrfTokenManager;
     protected $testableFeatures = array();
@@ -2424,6 +2425,8 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         // compare plain HTML to check the whitespace
         try {
             $this->assertSame('<input type="text" id="text" name="text" readonly="readonly" disabled="disabled" required="required" maxlength="10" pattern="\d+" class="foobar" data-foo="bar" value="value" />', $html);
+        } catch (\PHPUnit\Framework\AssertionFailedError $e) {
+            $this->assertSame('<input type="text" id="text" name="text" disabled="disabled" required="required" readonly="readonly" maxlength="10" pattern="\d+" class="foobar" data-foo="bar" value="value" />', $html);
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             $this->assertSame('<input type="text" id="text" name="text" disabled="disabled" required="required" readonly="readonly" maxlength="10" pattern="\d+" class="foobar" data-foo="bar" value="value" />', $html);
         }

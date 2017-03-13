@@ -81,7 +81,7 @@ class PostController extends FOSRestController
     /** Validation des données */
     $form->submit($request->request->all());
 
-    if($form->isValid()){
+    if($form->isValid()) {
 //      $comments->setUser($user);
 //      
 //            $em = $this->getDoctrine();
@@ -91,23 +91,14 @@ class PostController extends FOSRestController
 //        }else{
 //            return $form;
 //        }
-        
-        $comments = $this->getDoctrine()
-            ->getRepository('coreBundle:PostComment')
-            ->findBy(array('identifier' => $identifier ));
-        if (empty($comments)) {
-            return new JsonResponse(['message' => 'Comments not found'], Response::HTTP_NOT_FOUND);
-        }
-        return $comments;
 
-      $em = $this->getDoctrine();
-      $em->persist($comments);
-      $em->flush();
+      $comments = $this->getDoctrine()
+          ->getRepository('coreBundle:PostComment')
+          ->findBy(array('identifier' => $identifier));
+      if (empty($comments)) {
+        return new JsonResponse(['message' => 'Comments not found'], Response::HTTP_NOT_FOUND);
+      }
       return $comments;
-    }else{
-      return $form;
-
     }
-
   }
 }

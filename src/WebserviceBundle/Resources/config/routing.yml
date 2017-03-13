@@ -1,11 +1,8 @@
-website_post:
-    type: rest
-
 webservice_homepage:
     path:     /api
     defaults: { _controller: WebserviceBundle:Post:PostZoneList }
 
-post:
+website_post:
     type:     rest
     resource: WebserviceBundle\Controller\PostController
 
