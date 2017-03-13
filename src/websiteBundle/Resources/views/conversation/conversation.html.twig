@@ -1,60 +1,131 @@
-{% extends ':base:__base.html.twig' %}
+{% extends 'base/__base.html.twig' %}
 {# {% load myfilter %} #}
 {#% load styxFilters %#}
 {#% load staticfiles %#}
 {#% load thumbnail %#}
 {#% block feedActive %} class="active" {% endblock %#}
-
 {% block main %}
-
-<div class="container">
-
-    <div class="wrapper">
-        <div class="container-message">
-            <div class="left">
-                <div class="top">
-                    <span class="name">Messages</span>
-                </div>
-                <ul class="posts">
-                    {#% for conv in conversations %}
-                    <li class="post" id_conversation="{{conv.identifier}}">
-                        {% if conv.post.category.image %}
-                        {% thumbnail conv.post.category.image "40x40" crop="center" format="PNG" as im %}
-                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-                        {% endthumbnail %}
-                        {% else %}
-                        <img src="{{ asset('bundles/framework/images/user/user.jpg') }}">
-                        {% endif %}
-
-                        <span class="name">{{ conv.post.title }}</span>
-                        <span class="time">{{ conv.last_message_date | date:"d M"}}</span>
-                        <span class="preview">{{ conv.last_message_text }}</span>
-                    </li>
-                    {% endfor %#}
-
-                </ul>
-            </div>
-            <div class="right">
-                <div class="top">
-
-
-                </div>
-
-                <div class="chat">
-
-                </div>
-
-                <div class="write">
-                    <input type="text" />
-                    <a href="#" class="write-link send"></a>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- <div class="container">
+<div class="wrapper">
+<div class="container-message">
+<div class="left">
+<div class="top">
+<span class="name">Messages</span>
+</div>
+<ul class="posts">
+{#% for conv in conversations %}
+<li class="post" id_conversation="{{conv.identifier}}">
+{% if conv.post.category.image %}
+{% thumbnail conv.post.category.image "40x40" crop="center" format="PNG" as im %}
+<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+{% endthumbnail %}
+{% else %}
+<img src="{{ asset('bundles/framework/images/user/user.jpg') }}">
+{% endif %}
+<span class="name">{{ conv.post.title }}</span>
+<span class="time">{{ conv.last_message_date | date:"d M"}}</span>
+<span class="preview">{{ conv.last_message_text }}</span>
+</li>
+{% endfor %#}
+</ul>
+</div>
+<div class="right">
+<div class="top">
+</div>
+<div class="chat">
+</div>
+<div class="write">
+<input type="text" />
+<a href="#" class="write-link send"></a>
+</div>
+</div>
+</div>
+</div>
 </div>
 <script>
 {#% if identifier %}
-    $(document).ready(function(){  show_conversation("{{identifier}}"); });
+$(document).ready(function(){  show_conversation("{{identifier}}"); });
 {% endif %#}
-</script>
+</script> -->
+
+<!-- Messagerie -->
+<div id="container_messagerie">
+
+  <!-- Contact -->
+  <div class="section c_contact">
+    <div class="top_section">
+      <div id="search_contact">
+        <input placeholder="Rechercher..." type="search"/>
+      </div>
+      <img id="edit" src="{{ asset('bundles/framework/images/messagerie/icons/edit.png') }}"/>
+    </div>
+    <div id="content_contact">
+      {% for thread in threads %}
+
+      <div class="contact">
+        <img src=""/>
+        <div class="info_contact">
+          <h4>
+            {% for participant in thread.participants %}
+            {% if participant != user %}
+            {{ participant.firstname }} {{ participant.name }}
+            {% endif %}
+            {% endfor %}
+          </h4>
+          <span class="date_contact">{{ thread.messages|reverse[0].createdAt|date('d/m/y') }}</span>
+          <span class="text_contact">{{ thread.messages|reverse[0].body }}</span>
+        </div>
+
+        <!-- Afficher seulement quand la conversation est activée -->
+        <div class="active_contact_bar active_contact"></div>
+
+        <!-- Afficher seulement quand il y a un nouveau message -->
+        {% if thread.isRead == false %}
+        <span class="notif_contact">!</span>
+        {% endif %}
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Conversation -->
+  <div class="section c_convers">
+    <div class="top_section">
+      <!-- <form>
+        <label>À :</label>
+        <input type="text" value="" placeholder="Saisissez le nom d'une personne"/>
+      </form>
+      <img id="pp_contact_active" src=""/>
+      <h4>Damien Beauvais</h4> -->
+    </div>
+    <!-- <div id="content_convers">
+      <div class="c_un_message message_right">
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</span>
+        <font>17/02</font>
+      </div>
+      <div class="c_un_message message_left">
+        <img src=""/>
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</span>
+        <font>17/02</font>
+      </div>
+      <div class="c_un_message message_right">
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</span>
+        <font>17/02</font>
+      </div>
+      <div class="c_un_message message_left">
+        <img src=""/>
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</span>
+        <font>17/02</font>
+      </div>
+    </div>
+    <div id="c_new_message">
+      <form>
+        <textarea id="new_message" type="text" placeholder="Écris un message..."></textarea>
+        <input value="ENVOYER" type="submit" id="valid_message"/>
+      </form>
+    </div> -->
+  </div>
+</div>
+
 {% endblock %}
