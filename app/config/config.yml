@@ -85,6 +85,7 @@ fos_message:
     db_driver: orm
     thread_class: coreBundle\Entity\MessageThread
     message_class: coreBundle\Entity\MessageMessage
+
 fos_rest:
     routing_loader:
         include_format: false
@@ -94,3 +95,4 @@ fos_rest:
         rules:
             - { path: '^/api', priorities: ['json'], fallback_format: 'json' }
             - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: ~, prefer_extension: true }
+
