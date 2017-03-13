@@ -18,7 +18,7 @@
     <!--<field name="email" type="string" column="email" length="255" nullable="false"/>-->
     <field name="birthday" type="date" column="birthday" nullable="true"/>
     <field name="emailNotification" type="boolean" column="email_notification" nullable="false"/>
-    <field name="firstname" type="string" column="firstname" length="45" nullable="false"/>
+    <field name="firstname" type="string" column="firstname" length="45" nullable="true"/>
     <field name="mobile" type="string" column="mobile" length="12" nullable="true"/>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="zipCode" type="string" column="zip_code" length="5" nullable="true"/>

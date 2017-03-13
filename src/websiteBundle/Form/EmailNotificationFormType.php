@@ -18,8 +18,14 @@ class EmailNotificationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', HiddenType::class,array('label'=>'Email'))
-            ->add('name', HiddenType::class,array('label'=>'Nom'))
+            ->add('email', HiddenType::class)
+            ->add('name', HiddenType::class)
+//            ->add('city', HiddenType::class)
+//            ->add('birthday', HiddenType::class)
+            ->add('mobile', HiddenType::class)
+            ->add('zipCode', HiddenType::class)
+            ->add('address', HiddenType::class)
+            ->add('avatar', HiddenType::class)
             ->add('emailNotification', CheckboxType::class);
 
     }

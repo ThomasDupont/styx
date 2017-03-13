@@ -3,9 +3,12 @@
 namespace websiteBundle\Controller;
 
 use coreBundle\Entity\WebsiteStyxuserbase;
+use coreBundle\Entity\WebsiteStyxuserbaseZones;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use websiteBundle\Form\ConnexionFormType;
 use websiteBundle\Form\RegistrationFormType;
 
@@ -156,6 +159,32 @@ class HomepageController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+        }
+
+        if ($request->getMethod() == 'POST') {
+            if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
+                $user = $registrationForm->getData();
+                $zone = $user->getCity();
+                $em = $this->container->get('doctrine')->getManager();
+                $query = $em->createQuery('
+                SELECT wg
+                FROM coreBundle:WebsiteGroup wg
+                WHERE wg.id = :id
+                ')
+                    ->setParameter('id', 1);
+                $group = $query->getResult();
+
+                $styxuserbaseZones = new WebsiteStyxuserbaseZones();
+                $styxuserbaseZones->setStyxuserbase($user);
+                $styxuserbaseZones->setZone($zone);
+                $em->persist($styxuserbaseZones);
+                $em->flush();
+
+                $user->setGroup($group[0]);
+                $user->setEnabled(1);
+                $em->persist($user);
+                $em->flush();
+            }
         }
 
         return $this->render('websiteBundle:homepage:homepage.html.twig', array(

@@ -6,6 +6,7 @@ use coreBundle\Entity\PostPost;
 use coreBundle\Entity\PostPostZones;
 use coreBundle\Entity\WebsiteZone;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use coreBundle\Entity\WebsiteStyxuserbase;
@@ -29,6 +30,7 @@ class FeedController extends Controller
 
         $repositoryGroup = $this->getDoctrine()->getRepository('coreBundle:WebsiteGroup');
         $repositoryPostPost = $this->getDoctrine()->getRepository('coreBundle:PostPost');
+        $repositoryPostEvent = $this->getDoctrine()->getRepository('coreBundle:PostEvent');
         $repositoryStyxuserbase = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbase');
         $repositoryZone = $this->getDoctrine()->getRepository('coreBundle:WebsiteZone');
         $repositoryStyxuserbaseZones = $this->getDoctrine()->getRepository('coreBundle:WebsiteStyxuserbaseZones');
@@ -38,14 +40,22 @@ class FeedController extends Controller
 
         $types = $repositoryType->findAll();
         $rewards = $repositoryReward->findAll();
-        $users = $repositoryStyxuserbase->findAll();
-        $users = count($users);
+        $users = count($repositoryStyxuserbase->findAll());
 
         $idUser = $this->getUser()->getId();
         $user = $repositoryStyxuserbase->findById($idUser)[0];
-        $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
 
-        if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'student') {
+        if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'etudiant') {
+            $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
+        } else {
+            if ($repositoryStyxuserbaseZones->findByStyxuserbase($user->getId()) == NULL) {
+                $user_zone = $repositoryStyxuserbaseZones->findById(1)[0];
+            } else {
+                $user_zone = $repositoryStyxuserbaseZones->findByStyxuserbase($user->getId())[0];
+            }
+        }
+
+        if ($repositoryGroup->findById($user->getGroup()->getId())[0]->getName() == 'etudiant') {
             if($user_zone->getZone() != NULL) {
                 $name_zone = $user_zone->getZone()->getName();  # Nom de la ville de l'utilisateur
             } else {
@@ -122,8 +132,6 @@ class FeedController extends Controller
             $i++;
         }
 
-        // var_dump($zone->getId());
-
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
     SELECT pp
@@ -137,17 +145,23 @@ class FeedController extends Controller
             $posts[$i] = array('post' => $posts[$i]);
         }
 
-        $futur_event = $repositoryPostPostZones->findBy(array('zone'=>$zone));
+        $future_event = $repositoryPostEvent->findAll();
+        $real_future_event = array();
+        $now = new \DateTime();
+        foreach ($future_event as $event) {
+            if ($event->getPostPtr()->getZone() == $zone && $event->getDate() > $now) {
+                $real_future_event[] = $event;
+            }
+        }
         $def_posts = [];
-        for ($i=0; $i < sizeof($futur_event); $i++) {
-            $futur_event_posts[$i] = $futur_event[$i]->getPost();
-            if(!$futur_event_posts[$i]->getDeleted()) {
-                $def_posts[] = $futur_event_posts[$i];
+        for ($i=0; $i < sizeof($real_future_event); $i++) {
+            if(!$real_future_event[$i]->getPostPtr()->getDeleted()) {
+                $def_posts[] = $real_future_event[$i];
             }
         }
         usort($def_posts, function($a, $b) {
-            $a_current_date = $a->getPostponedAt() ?: $a->getCreatedAt();
-            $b_current_date = $b->getPostponedAt() ?: $b->getCreatedAt();
+            $a_current_date = $a->getDate();
+            $b_current_date = $b->getDate();
             if($a_current_date == $b_current_date) {
                 return 0;
             } else if($a_current_date > $b_current_date) {
@@ -156,16 +170,13 @@ class FeedController extends Controller
                 return -1;
             }
         });
-        $futur_event = null;
-        for ($i=0; $i < 6; $i++) {
+
+        $real_future_event = null;
+        for ($i=0; $i < 3; $i++) {
             if(!empty($def_posts[$i])) {
-                $futur_event[] = $def_posts[$i];
+                $real_future_event[] = $def_posts[$i]->getPostPtr();
             }
         }
-
-        //var_dump($futur_event);
-
-        // var_dump($posts);
 
         $ville = new WebsiteZone();
         $cityForm = $this->createForm(new CityFormType(), $ville);
@@ -190,6 +201,7 @@ class FeedController extends Controller
             $em->persist($postpost);
             $em->flush();
             $postid = $postpost->getId();
+            return $this->redirect($this->generateUrl($request->get('_route'), $request->query->all()));
         }
 
         // exit;
@@ -197,7 +209,7 @@ class FeedController extends Controller
             'cityForm' => $cityForm->createView(),
             'postForm' => $postForm->createView(),
             'posts' => $posts,
-            'futur_event' => $futur_event,
+            'futur_event' => $real_future_event,
             'types' => $types,
             'rewards' => $rewards,
             'users' => $users,
@@ -205,10 +217,4 @@ class FeedController extends Controller
             'selected' => strval($zone->getId()),
         ));
     }
-
-    //     public function connected_user_count() {
-    //       $since_day = timezone.now() - timedelta(days=3);
-    //       $since_day.strftime('%m%d%y');
-    //       return len(StyxUserBase.objects.filter(last_login__gt=since_day));
-
 }

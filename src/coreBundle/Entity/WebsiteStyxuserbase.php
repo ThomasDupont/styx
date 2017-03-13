@@ -49,7 +49,7 @@ class WebsiteStyxuserbase extends BaseUser implements ParticipantInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
+     * @ORM\Column(name="firstname", type="string", length=45, nullable=true)
      */
     private $firstname;
 
@@ -167,6 +167,7 @@ class WebsiteStyxuserbase extends BaseUser implements ParticipantInterface
         foreach($string as &$char)
             $char = "".dechex(ord($char));
         $this->identifier = substr(implode('',$string), 0, 32);
+        $this->username = 'username';
     }
 
     /**
