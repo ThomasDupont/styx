@@ -28,8 +28,7 @@ class MessageThread extends BaseThread
     /**
      * @ORM\OneToMany(
      *   targetEntity="coreBundle\Entity\MessageMessage",
-     *   mappedBy="thread",
-     *   cascade={"all"}
+     *   mappedBy="thread"
      * )
      * @var Message[]|Collection
      */

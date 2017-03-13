@@ -5,11 +5,7 @@
       <generator strategy="SEQUENCE"/>
     </id>
     <many-to-one field="createdBy" target-entity="WebsiteStyxuserbase"></many-to-one>
-    <one-to-many field="messages" target-entity="MessageMessage" mapped-by="thread">
-      <cascade>
-        <cascade-all/>
-      </cascade>
-    </one-to-many>
+    <one-to-many field="messages" target-entity="MessageMessage" mapped-by="thread"></one-to-many>
     <one-to-many field="metadata" target-entity="MessageThreadMetadata" mapped-by="thread">
       <cascade>
         <cascade-all/>
