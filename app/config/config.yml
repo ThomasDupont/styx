@@ -44,10 +44,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-<<<<<<< HEAD
         # driver:   pdo_mysql
-=======
->>>>>>> 4f10e892e0e1863db0a454aed92a05c27118be04
         driver:   pdo_pgsql
         host:     "%database_host%"
         port:     "%database_port%"
@@ -85,13 +82,11 @@ fos_user:
             type: app_user_registration
 #            type: fos_user_registration
 
-<<<<<<< HEAD
-=======
 fos_message:
     db_driver: orm
     thread_class: coreBundle\Entity\MessageThread
     message_class: coreBundle\Entity\MessageMessage
->>>>>>> origin/messagerie
+
 fos_rest:
     routing_loader:
         include_format: false
@@ -99,9 +94,6 @@ fos_rest:
         view_response_listener: true
     format_listener:
         rules:
-<<<<<<< HEAD
             - { path: '^/api', priorities: ['json'], fallback_format: 'json' }
             - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: ~, prefer_extension: true }
-=======
             - { path: '^/', priorities: ['json'], fallback_format: 'json' }
->>>>>>> origin/messagerie
