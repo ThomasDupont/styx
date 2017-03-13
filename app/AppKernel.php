@@ -21,6 +21,11 @@ class AppKernel extends Kernel
             new websiteBundle\websiteBundle(),
             new coreBundle\coreBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+<<<<<<< HEAD
+=======
+            new FOS\MessageBundle\FOSMessageBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+>>>>>>> origin/messagerie
             new WebserviceBundle\WebserviceBundle(),
         );
 

@@ -2,6 +2,7 @@
 
 namespace WebserviceBundle\Controller;
 
+
 use coreBundle\Entity\PostComment;
 use coreBundle\Entity\PostPost;
 use coreBundle\Entity\WebsiteStyxuserbase;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
+
 use websiteBundle\Form\CommentType;
 
 class PostController extends FOSRestController
@@ -90,5 +92,12 @@ class PostController extends FOSRestController
             return $form;
         }
         
+        $comments = $this->getDoctrine()
+            ->getRepository('coreBundle:PostComment')
+            ->findBy(array('identifier' => $identifier ));
+        if (empty($comments)) {
+            return new JsonResponse(['message' => 'Comments not found'], Response::HTTP_NOT_FOUND);
+        }
+        return $comments;
     }
 }

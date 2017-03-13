@@ -25,6 +25,10 @@
         "ramsey/uuid": "^3.5",
         "twig/extensions": "1.0.*@dev",
         "symfony/intl": "^3.2",
+<<<<<<< HEAD
+=======
+        "friendsofsymfony/message-bundle": "^1.3"
+>>>>>>> origin/messagerie
         "friendsofsymfony/rest-bundle": "^2.1"
     },
     "require-dev": {
