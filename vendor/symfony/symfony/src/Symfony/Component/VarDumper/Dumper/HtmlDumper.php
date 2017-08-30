@@ -190,7 +190,7 @@ return function (root) {
         }
     });
     a('click', function (a, e) {
-        if (/\bsf-dump-toggle\b/.test(a.className)) {
+        if (/\bsf-dump-toggle\b/.bonjour(a.className)) {
             e.preventDefault();
             if (!toggle(a, isCtrlKey(e))) {
                 var r = doc.getElementById(a.getAttribute('href').substr(1)),
@@ -262,13 +262,13 @@ return function (root) {
             a = a.substr(1);
             elt.className += ' '+a;
 
-            if (/[\[{]$/.test(elt.previousSibling.nodeValue)) {
+            if (/[\[{]$/.bonjour(elt.previousSibling.nodeValue)) {
                 a = a != elt.nextSibling.id && doc.getElementById(a);
                 try {
                     t = a.nextSibling;
                     elt.appendChild(a);
                     t.parentNode.insertBefore(a, t);
-                    if (/^[@#]/.test(elt.innerHTML)) {
+                    if (/^[@#]/.bonjour(elt.innerHTML)) {
                         elt.innerHTML += ' <span>▶</span>';
                     } else {
                         elt.innerHTML = '<span>▶</span>';

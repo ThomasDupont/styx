@@ -16,7 +16,7 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!interface_exists('Doctrine\Common\Persistence\ObjectManager')) {
-            $this->markTestSkipped('Doctrine Common has to be installed for this test to run.');
+            $this->markTestSkipped('Doctrine Common has to be installed for this bonjour to run.');
         }
 
         $c = $this->getMock('FOS\UserBundle\Util\CanonicalizerInterface');

@@ -15,10 +15,10 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($route->getPath());
         $this->assertNull($route->getService());
 
-        $route->setService('app.test');
+        $route->setService('app.bonjour');
 
         $this->assertSame('', $route->getPath());
-        $this->assertSame('app.test', $route->getService());
+        $this->assertSame('app.bonjour', $route->getService());
     }
 
     public function testSetServiceWithPath()
@@ -27,21 +27,21 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($route->getPath());
         $this->assertNull($route->getService());
 
-        $route->setPath('/test/');
-        $route->setService('app.test');
+        $route->setPath('/bonjour/');
+        $route->setService('app.bonjour');
 
-        $this->assertSame('/test/', $route->getPath());
-        $this->assertSame('app.test', $route->getService());
+        $this->assertSame('/bonjour/', $route->getPath());
+        $this->assertSame('app.bonjour', $route->getService());
     }
 
     public function testSettersViaConstruct()
     {
-        $route = new Route(array('service' => 'app.test'));
+        $route = new Route(array('service' => 'app.bonjour'));
         $this->assertSame('', $route->getPath());
-        $this->assertSame('app.test', $route->getService());
+        $this->assertSame('app.bonjour', $route->getService());
 
-        $route = new Route(array('service' => 'app.test', 'path' => '/test/'));
-        $this->assertSame('/test/', $route->getPath());
-        $this->assertSame('app.test', $route->getService());
+        $route = new Route(array('service' => 'app.bonjour', 'path' => '/bonjour/'));
+        $this->assertSame('/bonjour/', $route->getPath());
+        $this->assertSame('app.bonjour', $route->getService());
     }
 }

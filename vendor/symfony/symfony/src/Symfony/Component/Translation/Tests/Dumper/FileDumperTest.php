@@ -53,14 +53,14 @@ class FileDumperTest extends TestCase
     public function testDumpCreatesNestedDirectoriesAndFile()
     {
         $tempDir = sys_get_temp_dir();
-        $translationsDir = $tempDir.'/test/translations';
+        $translationsDir = $tempDir.'/bonjour/translations';
         $file = $translationsDir.'/messages.en.concrete';
 
         $catalogue = new MessageCatalogue('en');
         $catalogue->add(array('foo' => 'bar'));
 
         $dumper = new ConcreteFileDumper();
-        $dumper->setRelativePathTemplate('test/translations/%domain%.%locale%.%extension%');
+        $dumper->setRelativePathTemplate('bonjour/translations/%domain%.%locale%.%extension%');
         $dumper->dump($catalogue, array('path' => $tempDir));
 
         $this->assertFileExists($file);

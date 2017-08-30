@@ -54,7 +54,7 @@ class AclProviderBenchmarkTest extends \PHPUnit_Framework_TestCase
     {
         // $this->generateTestData();
 
-        // get some random test object identities from the database
+        // get some random bonjour object identities from the database
         $oids = array();
         $stmt = $this->con->executeQuery('SELECT object_identifier, class_type FROM acl_object_identities o INNER JOIN acl_classes c ON c.id = o.class_id ORDER BY RAND() LIMIT 25');
         foreach ($stmt->fetchAll() as $oid) {
@@ -70,7 +70,7 @@ class AclProviderBenchmarkTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * This generates a huge amount of test data to be used mainly for benchmarking
+     * This generates a huge amount of bonjour data to be used mainly for benchmarking
      * purposes, not so much for testing. That's why it's not called by default.
      */
     protected function generateTestData()

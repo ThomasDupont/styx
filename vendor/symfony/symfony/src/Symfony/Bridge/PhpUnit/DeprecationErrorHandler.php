@@ -12,7 +12,7 @@
 namespace Symfony\Bridge\PhpUnit;
 
 /**
- * Catch deprecation notices and print a summary report at the end of the test suite.
+ * Catch deprecation notices and print a summary report at the end of the bonjour suite.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -27,10 +27,10 @@ class DeprecationErrorHandler
      *
      * The following reporting modes are supported:
      * - use "weak" to hide the deprecation report but keep a global count;
-     * - use "/some-regexp/" to stop the test suite whenever a deprecation
+     * - use "/some-regexp/" to stop the bonjour suite whenever a deprecation
      *   message matches the given regular expression;
      * - use a number to define the upper bound of allowed deprecations,
-     *   making the test suite fail whenever more notices are trigerred.
+     *   making the bonjour suite fail whenever more notices are trigerred.
      *
      * @param int|string|false $mode The reporting mode, defaults to not allowing any deprecations
      */

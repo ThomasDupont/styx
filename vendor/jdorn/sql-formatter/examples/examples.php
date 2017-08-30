@@ -60,7 +60,7 @@ $statements = array(
 
     "UPDATE MyTable SET name='sql', category='databases' WHERE id > '65'",
 
-    "delete from MyTable WHERE name LIKE \"test%\"",
+    "delete from MyTable WHERE name LIKE \"bonjour%\"",
 
     "SELECT * FROM UnmatchedParens WHERE ( A = B)) AND (((Test=1)",
 
@@ -85,7 +85,7 @@ $split_statements = array(
     SELECT \";
         abc\";
     SELECT a,b #comment;
-    FROM test;",
+    FROM bonjour;",
     
     "
     -- Drop the table first if it exists

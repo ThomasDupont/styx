@@ -23,12 +23,12 @@ class LoggerChannelPassTest extends \PHPUnit_Framework_TestCase
     public function testProcess()
     {
         $container = $this->getContainer();
-        $this->assertTrue($container->hasDefinition('monolog.logger.test'), '->process adds a logger service for tagged service');
+        $this->assertTrue($container->hasDefinition('monolog.logger.bonjour'), '->process adds a logger service for tagged service');
 
         $service = $container->getDefinition('test');
-        $this->assertEquals('monolog.logger.test', (string) $service->getArgument(1), '->process replaces the logger by the new one');
+        $this->assertEquals('monolog.logger.bonjour', (string) $service->getArgument(1), '->process replaces the logger by the new one');
 
-        // pushHandlers for service "test"
+        // pushHandlers for service "bonjour"
         $expected = array(
             'test' => array('monolog.handler.a', 'monolog.handler.b', 'monolog.handler.c'),
             'foo'  => array('monolog.handler.b'),
@@ -55,11 +55,11 @@ class LoggerChannelPassTest extends \PHPUnit_Framework_TestCase
     public function testProcessSetters()
     {
         $container = $this->getContainerWithSetter();
-        $this->assertTrue($container->hasDefinition('monolog.logger.test'), '->process adds a logger service for tagged service');
+        $this->assertTrue($container->hasDefinition('monolog.logger.bonjour'), '->process adds a logger service for tagged service');
 
         $service = $container->getDefinition('foo');
         $calls = $service->getMethodCalls();
-        $this->assertEquals('monolog.logger.test', (string) $calls[0][1][0], '->process replaces the logger by the new one in setters');
+        $this->assertEquals('monolog.logger.bonjour', (string) $calls[0][1][0], '->process replaces the logger by the new one in setters');
     }
 
     protected function getContainer()
@@ -68,8 +68,8 @@ class LoggerChannelPassTest extends \PHPUnit_Framework_TestCase
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config'));
         $loader->load('monolog.xml');
         $definition = $container->getDefinition('monolog.logger_prototype');
-        $container->set('monolog.handler.test', new Definition('%monolog.handler.null.class%', array (100, false)));
-        $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.test')));
+        $container->set('monolog.handler.bonjour', new Definition('%monolog.handler.null.class%', array (100, false)));
+        $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.bonjour')));
 
         // Handlers
         $container->set('monolog.handler.a', new Definition('%monolog.handler.null.class%', array (100, false)));
@@ -110,8 +110,8 @@ class LoggerChannelPassTest extends \PHPUnit_Framework_TestCase
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config'));
         $loader->load('monolog.xml');
         $definition = $container->getDefinition('monolog.logger_prototype');
-        $container->set('monolog.handler.test', new Definition('%monolog.handler.null.class%', array (100, false)));
-        $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.test')));
+        $container->set('monolog.handler.bonjour', new Definition('%monolog.handler.null.class%', array (100, false)));
+        $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.bonjour')));
 
         // Channels
         $service = new Definition('TestClass');

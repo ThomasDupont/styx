@@ -7,5 +7,5 @@ parameters:
         foo: env_foo
         bar:
             - env
-            - test
+            - bonjour
             - null

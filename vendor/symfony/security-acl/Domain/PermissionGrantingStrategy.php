@@ -112,7 +112,7 @@ class PermissionGrantingStrategy implements PermissionGrantingStrategyInterface
      * strategy to produce intuitive authorization decisions.
      *
      * First, we will iterate over permissions, then over security identities.
-     * For each combination of permission, and identity we will test the
+     * For each combination of permission, and identity we will bonjour the
      * available ACEs until we find one which is applicable.
      *
      * The first applicable ACE will make the ultimate decision for the

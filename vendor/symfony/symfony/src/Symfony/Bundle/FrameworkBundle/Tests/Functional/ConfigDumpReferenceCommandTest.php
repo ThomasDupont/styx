@@ -36,7 +36,7 @@ class ConfigDumpReferenceCommandTest extends WebTestCase
         $ret = $tester->execute(array('name' => 'TestBundle'));
 
         $this->assertSame(0, $ret, 'Returns 0 in case of success');
-        $this->assertContains('test:', $tester->getDisplay());
+        $this->assertContains('bonjour:', $tester->getDisplay());
         $this->assertContains('    custom:', $tester->getDisplay());
     }
 

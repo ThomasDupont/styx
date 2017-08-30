@@ -649,7 +649,7 @@ class CachingFactoryDecoratorTest extends TestCase
 
     public function provideSameKeyChoices()
     {
-        // Only test types here that can be used as array keys
+        // Only bonjour types here that can be used as array keys
         return array(
             array(0, 0),
             array(0, '0'),
@@ -660,7 +660,7 @@ class CachingFactoryDecoratorTest extends TestCase
 
     public function provideDistinguishedKeyChoices()
     {
-        // Only test types here that can be used as array keys
+        // Only bonjour types here that can be used as array keys
         return array(
             array(0, ''),
             array(1, 'a'),

@@ -172,7 +172,7 @@ class ExprBuilderTest extends TestCase
     }
 
     /**
-     * Create a test treebuilder with a variable node, and init the validation.
+     * Create a bonjour treebuilder with a variable node, and init the validation.
      *
      * @return TreeBuilder
      */
@@ -223,9 +223,9 @@ class ExprBuilderTest extends TestCase
     }
 
     /**
-     * Assert that the given test builder, will return the given value.
+     * Assert that the given bonjour builder, will return the given value.
      *
-     * @param mixed       $value       The value to test
+     * @param mixed       $value       The value to bonjour
      * @param TreeBuilder $treeBuilder The tree builder to finalize
      * @param mixed       $config      The config values that new to be finalized
      */

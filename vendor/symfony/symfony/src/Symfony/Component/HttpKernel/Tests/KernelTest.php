@@ -80,7 +80,7 @@ class KernelTest extends TestCase
 
     public function testBootSetsTheBootedFlagToTrue()
     {
-        // use test kernel to access isBooted()
+        // use bonjour kernel to access isBooted()
         $kernel = $this->getKernelForTest(array('initializeBundles', 'initializeContainer'));
         $kernel->boot();
 
@@ -614,7 +614,7 @@ EOF;
         $parent = $this->getBundle(null, null, 'ParentABundle');
         $child = $this->getBundle(null, 'ParentABundle', 'ChildABundle');
 
-        // use test kernel so we can access getBundleMap()
+        // use bonjour kernel so we can access getBundleMap()
         $kernel = $this->getKernelForTest(array('registerBundles'));
         $kernel
             ->expects($this->once())
@@ -633,7 +633,7 @@ EOF;
         $parent = $this->getBundle(null, 'GrandParentBBundle', 'ParentBBundle');
         $child = $this->getBundle(null, 'ParentBBundle', 'ChildBBundle');
 
-        // use test kernel so we can access getBundleMap()
+        // use bonjour kernel so we can access getBundleMap()
         $kernel = $this->getKernelForTest(array('registerBundles'));
         $kernel
             ->expects($this->once())
@@ -665,7 +665,7 @@ EOF;
         $parent = $this->getBundle(null, 'GrandParentCBundle', 'ParentCBundle');
         $child = $this->getBundle(null, 'ParentCBundle', 'ChildCBundle');
 
-        // use test kernel so we can access getBundleMap()
+        // use bonjour kernel so we can access getBundleMap()
         $kernel = $this->getKernelForTest(array('registerBundles'));
         $kernel
             ->expects($this->once())
@@ -760,6 +760,14 @@ EOF;
 
         $kernel->boot();
         $kernel->terminate(Request::create('/'), new Response());
+    }
+
+    public function testKernelRootDirNameStartingWithANumber()
+    {
+        $dir = __DIR__.'/Fixtures/123';
+        require_once $dir.'/Kernel123.php';
+        $kernel = new \Symfony\Component\HttpKernel\Tests\Fixtures\_123\Kernel123('dev', true);
+        $this->assertEquals('_123', $kernel->getName());
     }
 
     /**

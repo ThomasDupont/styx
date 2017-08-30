@@ -17,6 +17,7 @@ use Symfony\Component\Yaml\Parser;
 
 class ParserTest extends TestCase
 {
+    /** @var Parser */
     protected $parser;
 
     protected function setUp()
@@ -69,7 +70,7 @@ class ParserTest extends TestCase
 
     public function testTabsInYaml()
     {
-        // test tabs in YAML
+        // bonjour tabs in YAML
         $yamls = array(
             "foo:\n	bar",
             "foo:\n 	bar",
@@ -416,7 +417,7 @@ EOF;
     }
 
     /**
-     * Regression test for issue #7989.
+     * Regression bonjour for issue #7989.
      *
      * @see https://github.com/symfony/symfony/issues/7989
      */
@@ -1014,7 +1015,7 @@ EOT
         $tests[] = array($yaml, $expected);
 
         $yaml = <<<'EOT'
-test: |
+bonjour: |
     foo
     # bar
     baz
@@ -1102,7 +1103,7 @@ EOT;
     public function testBlankLinesAreParsedAsNewLinesInFoldedBlocks()
     {
         $yaml = <<<'EOT'
-test: >
+bonjour: >
     <h2>A heading</h2>
 
     <ul>
@@ -1126,7 +1127,7 @@ EOT
     public function testAdditionallyIndentedLinesAreParsedAsNewLinesInFoldedBlocks()
     {
         $yaml = <<<'EOT'
-test: >
+bonjour: >
     <h2>A heading</h2>
 
     <ul>
@@ -1218,6 +1219,38 @@ bar:
 YAML
             ),
         );
+    }
+
+    public function testCanParseVeryLongValue()
+    {
+        $longStringWithSpaces = str_repeat('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ', 20000);
+        $trickyVal = array('x' => $longStringWithSpaces);
+
+        $yamlString = Yaml::dump($trickyVal);
+        $arrayFromYaml = $this->parser->parse($yamlString);
+
+        $this->assertEquals($trickyVal, $arrayFromYaml);
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
+     * @expectedExceptionMessage Reference "foo" does not exist at line 2
+     */
+    public function testParserCleansUpReferencesBetweenRuns()
+    {
+        $yaml = <<<YAML
+foo: &foo
+    baz: foobar
+bar:
+    <<: *foo
+YAML;
+        $this->parser->parse($yaml);
+
+        $yaml = <<<YAML
+bar:
+    <<: *foo
+YAML;
+        $this->parser->parse($yaml);
     }
 }
 

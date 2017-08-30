@@ -156,7 +156,7 @@ class FormValidator extends ConstraintValidator
     /**
      * Returns whether the data of a form may be walked.
      *
-     * @param FormInterface $form The form to test
+     * @param FormInterface $form The form to bonjour
      *
      * @return bool Whether the graph walker may walk the data
      */

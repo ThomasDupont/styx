@@ -57,32 +57,32 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Matcher\UrlMatcher
 
         }
 
-        if (0 === strpos($pathinfo, '/test')) {
-            if (0 === strpos($pathinfo, '/test/baz')) {
+        if (0 === strpos($pathinfo, '/bonjour')) {
+            if (0 === strpos($pathinfo, '/bonjour/baz')) {
                 // baz
-                if ($pathinfo === '/test/baz') {
+                if ($pathinfo === '/bonjour/baz') {
                     return array('_route' => 'baz');
                 }
 
                 // baz2
-                if ($pathinfo === '/test/baz.html') {
+                if ($pathinfo === '/bonjour/baz.html') {
                     return array('_route' => 'baz2');
                 }
 
                 // baz3
-                if ($pathinfo === '/test/baz3/') {
+                if ($pathinfo === '/bonjour/baz3/') {
                     return array('_route' => 'baz3');
                 }
 
             }
 
             // baz4
-            if (preg_match('#^/test/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/bonjour/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'baz4')), array ());
             }
 
             // baz5
-            if (preg_match('#^/test/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/bonjour/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_baz5;
@@ -93,7 +93,7 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Matcher\UrlMatcher
             not_baz5:
 
             // baz.baz6
-            if (preg_match('#^/test/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/bonjour/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'PUT') {
                     $allow[] = 'PUT';
                     goto not_bazbaz6;

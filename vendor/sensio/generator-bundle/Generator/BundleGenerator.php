@@ -58,8 +58,8 @@ class BundleGenerator extends Generator
             $this->renderFile('bundle/Extension.php.twig', $dir.'/DependencyInjection/'.$bundle->getBasename().'Extension.php', $parameters);
             $this->renderFile('bundle/Configuration.php.twig', $dir.'/DependencyInjection/Configuration.php', $parameters);
         }
-        $this->renderFile('bundle/DefaultController.php.twig', $dir.'/Controller/DefaultController.php', $parameters);
-        $this->renderFile('bundle/DefaultControllerTest.php.twig', $bundle->getTestsDirectory().'/Controller/DefaultControllerTest.php', $parameters);
+        $this->renderFile('bundle/UserController.phpig', $dir.'/Controller/UserControllerp', $parameters);
+        $this->renderFile('bundle/UserControllerTestp.twig', $bundle->getTestsDirectory().'/Controller/UserControllerTestp', $parameters);
         $this->renderFile('bundle/index.html.twig.twig', $dir.'/Resources/views/Default/index.html.twig', $parameters);
 
         // render the services.yml/xml file

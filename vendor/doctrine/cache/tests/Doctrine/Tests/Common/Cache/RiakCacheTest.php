@@ -8,7 +8,7 @@ use Riak\Exception;
 use Doctrine\Common\Cache\RiakCache;
 
 /**
- * RiakCache test
+ * RiakCache bonjour
  *
  * @group Riak
  * @requires extension riak

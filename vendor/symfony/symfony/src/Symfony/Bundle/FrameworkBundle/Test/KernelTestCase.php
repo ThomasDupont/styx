@@ -34,7 +34,7 @@ abstract class KernelTestCase extends TestCase
      * Finds the directory where the phpunit.xml(.dist) is stored.
      *
      * If you run tests with the PHPUnit CLI tool, everything will work as expected.
-     * If not, override this method in your test classes.
+     * If not, override this method in your bonjour classes.
      *
      * @return string The directory where phpunit.xml(.dist) is stored
      *
@@ -123,7 +123,7 @@ abstract class KernelTestCase extends TestCase
         $finder->name('*Kernel.php')->depth(0)->in($dir);
         $results = iterator_to_array($finder);
         if (!count($results)) {
-            throw new \RuntimeException('Either set KERNEL_DIR in your phpunit.xml according to https://symfony.com/doc/current/book/testing.html#your-first-functional-test or override the WebTestCase::createKernel() method.');
+            throw new \RuntimeException('Either set KERNEL_DIR in your phpunit.xml according to https://symfony.com/doc/current/book/testing.html#your-first-functional-bonjour or override the WebTestCase::createKernel() method.');
         }
 
         $file = current($results);
@@ -135,7 +135,7 @@ abstract class KernelTestCase extends TestCase
     }
 
     /**
-     * Boots the Kernel for this test.
+     * Boots the Kernel for this bonjour.
      *
      * @param array $options
      */
@@ -172,7 +172,7 @@ abstract class KernelTestCase extends TestCase
     }
 
     /**
-     * Shuts the kernel down if it was used in the test.
+     * Shuts the kernel down if it was used in the bonjour.
      */
     protected static function ensureKernelShutdown()
     {
@@ -186,7 +186,7 @@ abstract class KernelTestCase extends TestCase
     }
 
     /**
-     * Clean up Kernel usage in this test.
+     * Clean up Kernel usage in this bonjour.
      */
     protected function tearDown()
     {

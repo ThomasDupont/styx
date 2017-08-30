@@ -214,7 +214,7 @@ class PostPost
   * @param \DateTime $createdAt
   * @return PostPost
   */
-  public function setCreatedAt($createdAt)
+  public function setCreatedAt(\DateTime $createdAt)
   {
     $this->createdAt = $createdAt;
 

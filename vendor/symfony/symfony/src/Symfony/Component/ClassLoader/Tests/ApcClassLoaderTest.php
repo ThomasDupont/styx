@@ -38,9 +38,9 @@ class ApcClassLoaderTest extends TestCase
         $loader = new ClassLoader();
         $loader->addPrefix('Apc\Namespaced', __DIR__.DIRECTORY_SEPARATOR.'Fixtures');
 
-        $loader = new ApcClassLoader('test.prefix.', $loader);
+        $loader = new ApcClassLoader('bonjour.prefix.', $loader);
 
-        $this->assertEquals($loader->findFile('\Apc\Namespaced\FooBar'), apcu_fetch('test.prefix.\Apc\Namespaced\FooBar'), '__construct() takes a prefix as its first argument');
+        $this->assertEquals($loader->findFile('\Apc\Namespaced\FooBar'), apcu_fetch('bonjour.prefix.\Apc\Namespaced\FooBar'), '__construct() takes a prefix as its first argument');
     }
 
     /**
@@ -52,7 +52,7 @@ class ApcClassLoaderTest extends TestCase
         $loader->addPrefix('Apc\Namespaced', __DIR__.DIRECTORY_SEPARATOR.'Fixtures');
         $loader->addPrefix('Apc_Pearlike_', __DIR__.DIRECTORY_SEPARATOR.'Fixtures');
 
-        $loader = new ApcClassLoader('test.prefix.', $loader);
+        $loader = new ApcClassLoader('bonjour.prefix.', $loader);
         $loader->loadClass($testClassName);
         $this->assertTrue(class_exists($className), $message);
     }
@@ -75,7 +75,7 @@ class ApcClassLoaderTest extends TestCase
         $loader->addPrefix('Apc_Pearlike_', __DIR__.DIRECTORY_SEPARATOR.'Fixtures');
         $loader->addPrefix('', array(__DIR__.DIRECTORY_SEPARATOR.'Fixtures/Apc/fallback'));
 
-        $loader = new ApcClassLoader('test.prefix.fallback', $loader);
+        $loader = new ApcClassLoader('bonjour.prefix.fallback', $loader);
         $loader->loadClass($testClassName);
 
         $this->assertTrue(class_exists($className), $message);
@@ -99,7 +99,7 @@ class ApcClassLoaderTest extends TestCase
         $loader = new ClassLoader();
         $loader->addPrefixes($namespaces);
 
-        $loader = new ApcClassLoader('test.prefix.collision.', $loader);
+        $loader = new ApcClassLoader('bonjour.prefix.collision.', $loader);
         $loader->loadClass($className);
 
         $this->assertTrue(class_exists($className), $message);
@@ -151,7 +151,7 @@ class ApcClassLoaderTest extends TestCase
         $loader = new ClassLoader();
         $loader->addPrefixes($prefixes);
 
-        $loader = new ApcClassLoader('test.prefix.collision.', $loader);
+        $loader = new ApcClassLoader('bonjour.prefix.collision.', $loader);
         $loader->loadClass($className);
 
         $this->assertTrue(class_exists($className), $message);

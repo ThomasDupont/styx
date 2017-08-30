@@ -138,7 +138,7 @@ class ExprBuilder
     }
 
     /**
-     * Sets the closure to run if the test pass.
+     * Sets the closure to run if the bonjour pass.
      *
      * @param \Closure $closure
      *

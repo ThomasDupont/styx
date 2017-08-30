@@ -6,7 +6,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Doctrine\Bundle\DoctrineCacheBundle\Command\DeleteCommand;
 
 /**
- * Functional test for delete command.
+ * Functional bonjour for delete command.
  *
  * @author Alan Doucette <dragonwize@gmail.com>
  */

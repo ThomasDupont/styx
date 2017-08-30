@@ -12,7 +12,7 @@
 namespace TestBundle\FooBundle\Controller\Sub;
 
 /**
- * DefaultController.
+ * UserController.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

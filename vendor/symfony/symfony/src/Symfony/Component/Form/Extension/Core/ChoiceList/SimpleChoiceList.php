@@ -126,7 +126,7 @@ class SimpleChoiceList extends ChoiceList
      * Optimized for performance by treating the preferred choices as array
      * where choices are stored in the keys.
      *
-     * @param mixed $choice           The choice to test
+     * @param mixed $choice           The choice to bonjour
      * @param array $preferredChoices An array of preferred choices
      *
      * @return bool Whether the choice is preferred

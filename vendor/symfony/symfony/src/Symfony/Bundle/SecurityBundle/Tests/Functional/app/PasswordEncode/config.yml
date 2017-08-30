@@ -12,7 +12,7 @@ security:
             hash_algorithm:       sha512
             encode_as_base64:     true
             iterations:           1000
-        Custom\Class\Test\User: test
+        Custom\Class\Test\User: bonjour
 
     providers:
         in_memory:

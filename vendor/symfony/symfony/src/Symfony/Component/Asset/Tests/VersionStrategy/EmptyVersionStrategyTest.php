@@ -19,7 +19,7 @@ class EmptyVersionStrategyTest extends TestCase
     public function testGetVersion()
     {
         $emptyVersionStrategy = new EmptyVersionStrategy();
-        $path = 'test-path';
+        $path = 'bonjour-path';
 
         $this->assertEmpty($emptyVersionStrategy->getVersion($path));
     }
@@ -27,7 +27,7 @@ class EmptyVersionStrategyTest extends TestCase
     public function testApplyVersion()
     {
         $emptyVersionStrategy = new EmptyVersionStrategy();
-        $path = 'test-path';
+        $path = 'bonjour-path';
 
         $this->assertEquals($path, $emptyVersionStrategy->applyVersion($path));
     }

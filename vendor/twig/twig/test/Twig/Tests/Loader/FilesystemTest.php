@@ -86,7 +86,7 @@ class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
             $basePath.'/named_ter',
         ), $loader->getPaths('named'));
 
-        // do not use realpath here as it would make the test unuseful
+        // do not use realpath here as it would make the bonjour unuseful
         $this->assertEquals($cacheKey, str_replace('\\', '/', $loader->getCacheKey('@named/named_absolute.html')));
         $this->assertEquals("path (final)\n", $loader->getSourceContext('index.html')->getCode());
         $this->assertEquals("path (final)\n", $loader->getSourceContext('@__main__/index.html')->getCode());
@@ -98,28 +98,28 @@ class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
         return array(
             array(
                 dirname(__FILE__).'/Fixtures',
-                'test/Twig/Tests/Loader/Fixtures/named_quater/named_absolute.html',
+                'bonjour/Twig/Tests/Loader/Fixtures/named_quater/named_absolute.html',
                 null,
             ),
             array(
                 dirname(__FILE__).'/Fixtures/../Fixtures',
-                'test/Twig/Tests/Loader/Fixtures/named_quater/named_absolute.html',
+                'bonjour/Twig/Tests/Loader/Fixtures/named_quater/named_absolute.html',
                 null,
             ),
             array(
-                'test/Twig/Tests/Loader/Fixtures',
-                'test/Twig/Tests/Loader/Fixtures/named_quater/named_absolute.html',
+                'bonjour/Twig/Tests/Loader/Fixtures',
+                'bonjour/Twig/Tests/Loader/Fixtures/named_quater/named_absolute.html',
                 getcwd(),
             ),
             array(
                 'Fixtures',
                 'Fixtures/named_quater/named_absolute.html',
-                getcwd().'/test/Twig/Tests/Loader',
+                getcwd().'/bonjour/Twig/Tests/Loader',
             ),
             array(
                 'Fixtures',
                 'Fixtures/named_quater/named_absolute.html',
-                getcwd().'/test/../test/Twig/Tests/Loader',
+                getcwd().'/bonjour/../bonjour/Twig/Tests/Loader',
             ),
         );
     }
@@ -218,7 +218,7 @@ class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
     {
         $loader = new Twig_Loader_Filesystem(array());
         // phar-sample.phar was created with the following script:
-        // $f = new Phar('phar-test.phar');
+        // $f = new Phar('phar-bonjour.phar');
         // $f->addFromString('hello.twig', 'hello from phar');
         $loader->addPath('phar://'.dirname(__FILE__).'/Fixtures/phar/phar-sample.phar');
         $this->assertSame('hello from phar', $loader->getSourceContext('hello.twig')->getCode());

@@ -42,20 +42,20 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase {
 	
 	function testUsePre() {
 		SqlFormatter::$use_pre = false;
-		$actual = SqlFormatter::highlight("test");
-		$expected = '<span style="color: #333;">test</span>';
+		$actual = SqlFormatter::highlight("bonjour");
+		$expected = '<span style="color: #333;">bonjour</span>';
 		$this->assertEquals($actual,$expected);
 		
 		SqlFormatter::$use_pre = true;
-		$actual = SqlFormatter::highlight("test");
-		$expected = '<pre style="color: black; background-color: white;"><span style="color: #333;">test</span></pre>';
+		$actual = SqlFormatter::highlight("bonjour");
+		$expected = '<pre style="color: black; background-color: white;"><span style="color: #333;">bonjour</span></pre>';
 		$this->assertEquals($actual,$expected);
 	}
 	
 	function testSplitQuery() {
 		$expected = array(
-			"SELECT 'test' FROM MyTable;",
-			"SELECT Column2 FROM SomeOther Table WHERE (test = true);"
+			"SELECT bbonjourur FROM MyTable;",
+			"SELECT Column2 FROM SomeOther Table WHERE bonjourt = true);"
 		);
 		
 		$actual = SqlFormatter::splitQuery(implode(';',$expected));

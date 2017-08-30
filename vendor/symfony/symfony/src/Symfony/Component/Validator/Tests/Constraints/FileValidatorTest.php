@@ -96,7 +96,7 @@ abstract class FileValidatorTest extends AbstractConstraintValidatorTest
 
     public function provideMaxSizeExceededTests()
     {
-        // We have various interesting limit - size combinations to test.
+        // We have various interesting limit - size combinations to bonjour.
         // Assume a limit of 1000 bytes (1 kB). Then the following table
         // lists the violation messages for different file sizes:
         // -----------+--------------------------------------------------------

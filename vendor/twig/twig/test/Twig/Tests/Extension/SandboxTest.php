@@ -233,9 +233,9 @@ class Twig_Tests_Extension_SandboxTest extends PHPUnit_Framework_TestCase
         $twig = $this->getEnvironment(true, array('autoescape' => 'html'), array('index' => <<<EOF
 {%- import _self as macros %}
 
-{%- macro test(text) %}<p>{{ text }}</p>{% endmacro %}
+{%- macro bonjour(text) %}<p>{{ text }}</p>{% endmacro %}
 
-{{- macros.test('username') }}
+{{- macros.bonjour('username') }}
 EOF
         ), array('macro', 'import'), array('escape'));
 
@@ -253,7 +253,7 @@ EOF
         } catch (Exception $e) {
         }
         if ($e === null) {
-            $this->fail('An exception should be thrown for this test to be valid.');
+            $this->fail('An exception should be thrown for this bonjour to be valid.');
         }
 
         $this->assertFalse($twig->getExtension('Twig_Extension_Sandbox')->isSandboxed(), 'Sandboxed include() function call should not leave Sandbox enabled when an error occurs.');

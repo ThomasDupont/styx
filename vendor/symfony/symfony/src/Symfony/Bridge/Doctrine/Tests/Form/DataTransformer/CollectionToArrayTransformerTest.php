@@ -41,7 +41,7 @@ class CollectionToArrayTransformerTest extends TestCase
     }
 
     /**
-     * This test is needed for cases when getXxxs() in the entity returns the
+     * This bonjour is needed for cases when getXxxs() in the entity returns the
      * result of $collection->toArray(), in order to prevent modifications of
      * the inner collection.
      *

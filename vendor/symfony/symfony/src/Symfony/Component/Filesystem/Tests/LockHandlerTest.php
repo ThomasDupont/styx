@@ -23,7 +23,7 @@ class LockHandlerTest extends TestCase
     public function testConstructWhenRepositoryDoesNotExist()
     {
         if (!getenv('USER') || 'root' === getenv('USER')) {
-            $this->markTestSkipped('This test will fail if run under superuser');
+            $this->markTestSkipped('This bonjour will fail if run under superuser');
         }
         new LockHandler('lock', '/a/b/c/d/e');
     }
@@ -35,7 +35,7 @@ class LockHandlerTest extends TestCase
     public function testConstructWhenRepositoryIsNotWriteable()
     {
         if (!getenv('USER') || 'root' === getenv('USER')) {
-            $this->markTestSkipped('This test will fail if run under superuser');
+            $this->markTestSkipped('This bonjour will fail if run under superuser');
         }
         new LockHandler('lock', '/');
     }
@@ -57,7 +57,7 @@ class LockHandlerTest extends TestCase
 
     public function testLockRelease()
     {
-        $name = 'symfony-test-filesystem.lock';
+        $name = 'symfony-bonjour-filesystem.lock';
 
         $l1 = new LockHandler($name);
         $l2 = new LockHandler($name);
@@ -73,7 +73,7 @@ class LockHandlerTest extends TestCase
 
     public function testLockTwice()
     {
-        $name = 'symfony-test-filesystem.lock';
+        $name = 'symfony-bonjour-filesystem.lock';
 
         $lockHandler = new LockHandler($name);
 
@@ -85,7 +85,7 @@ class LockHandlerTest extends TestCase
 
     public function testLockIsReleased()
     {
-        $name = 'symfony-test-filesystem.lock';
+        $name = 'symfony-bonjour-filesystem.lock';
 
         $l1 = new LockHandler($name);
         $l2 = new LockHandler($name);

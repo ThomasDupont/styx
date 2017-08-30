@@ -8,7 +8,7 @@ requested_params:
         input: 'true'
     nested:
         default: nested
-        input: '{foo: bar, bar: [foo, test, null]}'
+        input: '{foo: bar, bar: [foo, bonjour, null]}'
     another:
-        default: test
+        default: bonjour
         input: 'null'

@@ -14,9 +14,18 @@ use FOS\MessageBundle\Model\ParticipantInterface;
  *
  * @ORM\Table(name="website_styxuserbase", uniqueConstraints={@ORM\UniqueConstraint(name="website_styxuserbase_email_key", columns={"email"})}, indexes={@ORM\Index(name="website_styxuserbase_0e939a4f", columns={"group_id"}), @ORM\Index(name="website_styxuserbase_email_4d007222_like", columns={"email"})})
  * @ORM\Entity(repositoryClass="WebsiteStyxuserbaseRepository")
+ * @ORM\AttributeOverrides({
+ *     @ORM\AttributeOverride(name="salt", column=@ORM\Column(nullable=true))
+ * })
  */
 class WebsiteStyxuserbase extends BaseUser implements ParticipantInterface
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="varchar", length=255, nullable=true)
+     */
+    protected $salt;
 
     /**
      * @var string
@@ -272,7 +281,7 @@ class WebsiteStyxuserbase extends BaseUser implements ParticipantInterface
     {
         // $email = is_null($email) ? '' : $email;
         // parent::setEmail($email);
-        $this->setUsername($email);
+        //$this->setUsername($email);
         $this->email = $email;
 
         return $this;
@@ -575,6 +584,29 @@ class WebsiteStyxuserbase extends BaseUser implements ParticipantInterface
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $city
+     * @return WebsiteStyxuserbase
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
     }
 
 }

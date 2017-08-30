@@ -26,11 +26,13 @@
         "twig/extensions": "1.0.*@dev",
         "symfony/intl": "^3.2",
         "friendsofsymfony/message-bundle": "^1.3",
-        "friendsofsymfony/rest-bundle": "^2.1"
+        "friendsofsymfony/rest-bundle": "^2.1",
+        "facebook/graph-sdk": "^5.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
-        "symfony/phpunit-bridge": "~2.7"
+        "symfony/phpunit-bridge": "~2.7",
+        "phpunit/phpunit": "^6.1"
     },
     "scripts": {
         "symfony-scripts": [

@@ -81,7 +81,7 @@ class Oauth2ProviderAccesstoken
     /**
      * Get token
      *
-     * @return string 
+     * @return string
      */
     public function getToken()
     {
@@ -104,7 +104,7 @@ class Oauth2ProviderAccesstoken
     /**
      * Get expires
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpires()
     {
@@ -127,7 +127,7 @@ class Oauth2ProviderAccesstoken
     /**
      * Get scope
      *
-     * @return string 
+     * @return string
      */
     public function getScope()
     {
@@ -137,7 +137,7 @@ class Oauth2ProviderAccesstoken
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -160,7 +160,7 @@ class Oauth2ProviderAccesstoken
     /**
      * Get user
      *
-     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     * @return \coreBundle\Entity\WebsiteStyxuserbase
      */
     public function getUser()
     {
@@ -183,7 +183,7 @@ class Oauth2ProviderAccesstoken
     /**
      * Get application
      *
-     * @return \coreBundle\Entity\Oauth2ProviderApplication 
+     * @return \coreBundle\Entity\Oauth2ProviderApplication
      */
     public function getApplication()
     {

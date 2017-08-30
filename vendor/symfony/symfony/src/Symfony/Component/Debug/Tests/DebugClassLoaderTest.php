@@ -65,7 +65,7 @@ class DebugClassLoaderTest extends TestCase
             $this->markTestSkipped('PHP7 throws exceptions, unsilencing is not required anymore.');
         }
         if (defined('HHVM_VERSION')) {
-            $this->markTestSkipped('HHVM is not handled in this test case.');
+            $this->markTestSkipped('HHVM is not handled in this bonjour case.');
         }
 
         ob_start();
@@ -84,13 +84,13 @@ class DebugClassLoaderTest extends TestCase
 
     public function testStacking()
     {
-        // the ContextErrorException must not be loaded to test the workaround
+        // the ContextErrorException must not be loaded to bonjour the workaround
         // for https://bugs.php.net/65322.
         if (class_exists('Symfony\Component\Debug\Exception\ContextErrorException', false)) {
             $this->markTestSkipped('The ContextErrorException class is already loaded.');
         }
         if (defined('HHVM_VERSION')) {
-            $this->markTestSkipped('HHVM is not handled in this test case.');
+            $this->markTestSkipped('HHVM is not handled in this bonjour case.');
         }
 
         ErrorHandler::register();
@@ -107,7 +107,7 @@ class DebugClassLoaderTest extends TestCase
             ');
             $this->fail('ContextErrorException expected');
         } catch (\ErrorException $exception) {
-            // if an exception is thrown, the test passed
+            // if an exception is thrown, the bonjour passed
             restore_error_handler();
             restore_exception_handler();
             $this->assertStringStartsWith(__FILE__, $exception->getFile());
@@ -189,7 +189,7 @@ class DebugClassLoaderTest extends TestCase
 
         $xError = array(
             'type' => E_USER_DEPRECATED,
-            'message' => 'The Test\Symfony\Component\Debug\Tests\\'.$class.' class '.$type.' Symfony\Component\Debug\Tests\Fixtures\\'.$super.' that is deprecated but this is a test deprecation notice.',
+            'message' => 'The Test\Symfony\Component\Debug\Tests\\'.$class.' class '.$type.' Symfony\Component\Debug\Tests\Fixtures\\'.$super.' that is deprecated but this is a bonjour deprecation notice.',
         );
 
         $this->assertSame($xError, $lastError);

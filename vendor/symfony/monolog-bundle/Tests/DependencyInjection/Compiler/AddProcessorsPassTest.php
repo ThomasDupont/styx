@@ -24,7 +24,7 @@ class AddProcessorsPassTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->getContainer();
 
-        $service = $container->getDefinition('monolog.handler.test');
+        $service = $container->getDefinition('monolog.handler.bonjour');
         $calls = $service->getMethodCalls();
         $this->assertCount(1, $calls);
         $this->assertEquals(array('pushProcessor', array(new Reference('test'))), $calls[0]);
@@ -42,10 +42,10 @@ class AddProcessorsPassTest extends \PHPUnit_Framework_TestCase
         $loader->load('monolog.xml');
 
         $definition = $container->getDefinition('monolog.logger_prototype');
-        $container->setDefinition('monolog.handler.test', new Definition('%monolog.handler.null.class%', array (100, false)));
+        $container->setDefinition('monolog.handler.bonjour', new Definition('%monolog.handler.null.class%', array (100, false)));
         $container->setDefinition('handler_test', new Definition('%monolog.handler.null.class%', array (100, false)));
         $container->setAlias('monolog.handler.test2', 'handler_test');
-        $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.test')));
+        $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.bonjour')));
         $definition->addMethodCall('pushHandler', array(new Reference('monolog.handler.test2')));
 
         $service = new Definition('TestClass', array('false', new Reference('logger')));

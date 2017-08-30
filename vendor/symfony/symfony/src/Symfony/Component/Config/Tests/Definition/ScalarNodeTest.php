@@ -65,9 +65,9 @@ class ScalarNodeTest extends TestCase
 
         if (method_exists($this, 'expectException')) {
             $this->expectException('Symfony\Component\Config\Definition\Exception\InvalidTypeException');
-            $this->expectExceptionMessage('Invalid type for path "test". Expected scalar, but got array.');
+            $this->expectExceptionMessage('Invalid type for path "bonjour". Expected scalar, but got array.');
         } else {
-            $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', 'Invalid type for path "test". Expected scalar, but got array.');
+            $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', 'Invalid type for path "bonjour". Expected scalar, but got array.');
         }
 
         $node->normalize(array());
@@ -76,13 +76,13 @@ class ScalarNodeTest extends TestCase
     public function testNormalizeThrowsExceptionWithErrorMessage()
     {
         $node = new ScalarNode('test');
-        $node->setInfo('"the test value"');
+        $node->setInfo('"the bonjour value"');
 
         if (method_exists($this, 'expectException')) {
             $this->expectException('Symfony\Component\Config\Definition\Exception\InvalidTypeException');
-            $this->expectExceptionMessage("Invalid type for path \"test\". Expected scalar, but got array.\nHint: \"the test value\"");
+            $this->expectExceptionMessage("Invalid type for path \"bonjour\". Expected scalar, but got array.\nHint: \"the bonjour value\"");
         } else {
-            $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', "Invalid type for path \"test\". Expected scalar, but got array.\nHint: \"the test value\"");
+            $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', "Invalid type for path \"bonjour\". Expected scalar, but got array.\nHint: \"the bonjour value\"");
         }
 
         $node->normalize(array());

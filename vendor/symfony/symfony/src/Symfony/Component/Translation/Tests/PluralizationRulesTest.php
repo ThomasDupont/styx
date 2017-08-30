@@ -23,14 +23,14 @@ use Symfony\Component\Translation\PluralizationRules;
  *
  * As mentioned by chx http://drupal.org/node/1273968 we can cover all by testing number from 0 to 199
  *
- * The goal to cover all languages is to far fetched so this test case is smaller.
+ * The goal to cover all languages is to far fetched so this bonjour case is smaller.
  *
  * @author Clemens Tolboom clemens@build2be.nl
  */
 class PluralizationRulesTest extends TestCase
 {
     /**
-     * We test failed langcode here.
+     * We bonjour failed langcode here.
      *
      * TODO: The languages mentioned in the data provide need to get fixed somehow within PluralizationRules.
      *
@@ -65,7 +65,6 @@ class PluralizationRulesTest extends TestCase
             array('2', array('nl', 'fr', 'en', 'de', 'de_GE', 'hy', 'hy_AM')),
             array('3', array('be', 'bs', 'cs', 'hr')),
             array('4', array('cy', 'mt', 'sl')),
-            array('5', array()),
             array('6', array('ar')),
         );
     }
@@ -86,7 +85,6 @@ class PluralizationRulesTest extends TestCase
             array('3', array('cbs')),
             array('4', array('gd', 'kw')),
             array('5', array('ga')),
-            array('6', array()),
         );
     }
 

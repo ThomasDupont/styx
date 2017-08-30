@@ -57,20 +57,20 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Tests\Fixtures\Redirec
 
         }
 
-        if (0 === strpos($pathinfo, '/test')) {
-            if (0 === strpos($pathinfo, '/test/baz')) {
+        if (0 === strpos($pathinfo, '/bonjour')) {
+            if (0 === strpos($pathinfo, '/bonjour/baz')) {
                 // baz
-                if ($pathinfo === '/test/baz') {
+                if ($pathinfo === '/bonjour/baz') {
                     return array('_route' => 'baz');
                 }
 
                 // baz2
-                if ($pathinfo === '/test/baz.html') {
+                if ($pathinfo === '/bonjour/baz.html') {
                     return array('_route' => 'baz2');
                 }
 
                 // baz3
-                if (rtrim($pathinfo, '/') === '/test/baz3') {
+                if (rtrim($pathinfo, '/') === '/bonjour/baz3') {
                     if (substr($pathinfo, -1) !== '/') {
                         return $this->redirect($pathinfo.'/', 'baz3');
                     }
@@ -81,7 +81,7 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Tests\Fixtures\Redirec
             }
 
             // baz4
-            if (preg_match('#^/test/(?P<foo>[^/]++)/?$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/bonjour/(?P<foo>[^/]++)/?$#s', $pathinfo, $matches)) {
                 if (substr($pathinfo, -1) !== '/') {
                     return $this->redirect($pathinfo.'/', 'baz4');
                 }
@@ -90,7 +90,7 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Tests\Fixtures\Redirec
             }
 
             // baz5
-            if (preg_match('#^/test/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/bonjour/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_baz5;
@@ -101,7 +101,7 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Tests\Fixtures\Redirec
             not_baz5:
 
             // baz.baz6
-            if (preg_match('#^/test/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/bonjour/(?P<foo>[^/]++)/$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'PUT') {
                     $allow[] = 'PUT';
                     goto not_bazbaz6;

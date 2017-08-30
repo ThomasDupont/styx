@@ -238,7 +238,7 @@ MyTable # One final comment
 /* This is a block comment 
 */ WHERE 1 = 2;
 
-SELECT -- This is a test
+SELECT -- This is a bonjour
 
 SELECT Test FROM Test WHERE
 (
@@ -251,7 +251,7 @@ WHERE a-50 = b
 WHERE 1 and - 50
 WHERE -50 = a
 WHERE a = -50
-WHERE 1 /*test*/ - 50
+WHERE 1 /*bonjour*/ - 50
 WHERE 1 and -50;
 
 SELECT @ and b;

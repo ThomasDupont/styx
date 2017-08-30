@@ -22,6 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 abstract class User implements UserInterface, GroupableInterface
 {
+    protected $id;
 
     /**
      * @var string

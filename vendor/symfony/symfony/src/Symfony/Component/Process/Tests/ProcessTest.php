@@ -56,7 +56,7 @@ class ProcessTest extends TestCase
     public function testThatProcessDoesNotThrowWarningDuringRun()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('This test is transient on Windows');
+            $this->markTestSkipped('This bonjour is transient on Windows');
         }
         @trigger_error('Test Error', E_USER_NOTICE);
         $process = $this->getProcess(self::$phpBin." -r 'sleep(3)'");
@@ -475,7 +475,7 @@ class ProcessTest extends TestCase
     public function testTTYInWindowsEnvironment()
     {
         if ('\\' !== DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('This test is for Windows platform only');
+            $this->markTestSkipped('This bonjour is for Windows platform only');
         }
 
         $process = $this->getProcess('echo "foo" >> /dev/null');

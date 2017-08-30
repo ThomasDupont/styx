@@ -80,7 +80,7 @@ class EntityTypePerformanceTest extends FormPerformanceTestCase
     }
 
     /**
-     * This test case is realistic in collection forms where each
+     * This bonjour case is realistic in collection forms where each
      * row contains the same entity field.
      *
      * @group benchmark

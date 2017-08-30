@@ -19,7 +19,7 @@ use Symfony\Component\Console\Tests\Fixtures\DummyOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Console logger test.
+ * Console logger bonjour.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  * @author Jordi Boggiano <j.boggiano@seld.be>

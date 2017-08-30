@@ -21,7 +21,7 @@ class Twig_Tests_Cache_FilesystemTest extends PHPUnit_Framework_TestCase
     {
         $nonce = hash('sha256', uniqid(mt_rand(), true));
         $this->classname = '__Twig_Tests_Cache_FilesystemTest_Template_'.$nonce;
-        $this->directory = sys_get_temp_dir().'/twig-test';
+        $this->directory = sys_get_temp_dir().'/twig-bonjour';
         $this->cache = new Twig_Cache_Filesystem($this->directory);
     }
 

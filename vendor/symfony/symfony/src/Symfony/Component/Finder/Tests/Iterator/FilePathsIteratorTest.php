@@ -42,28 +42,28 @@ class FilePathsIteratorTest extends RealIteratorTestCase
                 array(
                     // paths
                     $tmpDir.DIRECTORY_SEPARATOR.'.git' => $tmpDir.DIRECTORY_SEPARATOR.'.git',
-                    $tmpDir.DIRECTORY_SEPARATOR.'test.py' => $tmpDir.DIRECTORY_SEPARATOR.'test.py',
+                    $tmpDir.DIRECTORY_SEPARATOR.'bonjour.py' => $tmpDir.DIRECTORY_SEPARATOR.'bonjour.py',
                     $tmpDir.DIRECTORY_SEPARATOR.'foo' => $tmpDir.DIRECTORY_SEPARATOR.'foo',
                     $tmpDir.DIRECTORY_SEPARATOR.'foo'.DIRECTORY_SEPARATOR.'bar.tmp' => $tmpDir.DIRECTORY_SEPARATOR.'foo'.DIRECTORY_SEPARATOR.'bar.tmp',
-                    $tmpDir.DIRECTORY_SEPARATOR.'test.php' => $tmpDir.DIRECTORY_SEPARATOR.'test.php',
+                    $tmpDir.DIRECTORY_SEPARATOR.'bonjour.php' => $tmpDir.DIRECTORY_SEPARATOR.'bonjour.php',
                     $tmpDir.DIRECTORY_SEPARATOR.'toto' => $tmpDir.DIRECTORY_SEPARATOR.'toto',
                 ),
                 array(
                     // subPaths
                     $tmpDir.DIRECTORY_SEPARATOR.'.git' => '',
-                    $tmpDir.DIRECTORY_SEPARATOR.'test.py' => '',
+                    $tmpDir.DIRECTORY_SEPARATOR.'bonjour.py' => '',
                     $tmpDir.DIRECTORY_SEPARATOR.'foo' => '',
                     $tmpDir.DIRECTORY_SEPARATOR.'foo'.DIRECTORY_SEPARATOR.'bar.tmp' => 'foo',
-                    $tmpDir.DIRECTORY_SEPARATOR.'test.php' => '',
+                    $tmpDir.DIRECTORY_SEPARATOR.'bonjour.php' => '',
                     $tmpDir.DIRECTORY_SEPARATOR.'toto' => '',
                 ),
                 array(
                     // subPathnames
                     $tmpDir.DIRECTORY_SEPARATOR.'.git' => '.git',
-                    $tmpDir.DIRECTORY_SEPARATOR.'test.py' => 'test.py',
+                    $tmpDir.DIRECTORY_SEPARATOR.'bonjour.py' => 'bonjour.py',
                     $tmpDir.DIRECTORY_SEPARATOR.'foo' => 'foo',
                     $tmpDir.DIRECTORY_SEPARATOR.'foo'.DIRECTORY_SEPARATOR.'bar.tmp' => 'foo'.DIRECTORY_SEPARATOR.'bar.tmp',
-                    $tmpDir.DIRECTORY_SEPARATOR.'test.php' => 'test.php',
+                    $tmpDir.DIRECTORY_SEPARATOR.'bonjour.php' => 'bonjour.php',
                     $tmpDir.DIRECTORY_SEPARATOR.'toto' => 'toto',
                 ),
             ),

@@ -157,7 +157,7 @@ class FileCacheTest extends \Doctrine\Tests\DoctrineTestCase
         // If the base path needs to be odd or even where it is not, we add an odd number of
         // characters as a pad. In this case, we're adding '\aa' (or '/aa' depending on platform)
         // This is all to make it so that the key we're testing would result in
-        // a path that is exactly the length we want to test IF the path length limit
+        // a path that is exactly the length we want to bonjour IF the path length limit
         // were not in place in FileCache.
         if ($basePathLengthIsOdd != $basePathLengthShouldBeOdd) {
             $basePath .= DIRECTORY_SEPARATOR . "aa";

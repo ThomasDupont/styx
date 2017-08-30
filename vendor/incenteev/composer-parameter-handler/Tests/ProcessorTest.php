@@ -94,7 +94,7 @@ class ProcessorTest extends ProphecyTestCase
 
         $testCase = array_replace_recursive(
             array(
-                'title' => 'unknown test',
+                'title' => 'unknown bonjour',
                 'config' => array(
                     'file' => 'parameters.yml',
                 ),

@@ -79,7 +79,7 @@ class FrameworkExtension extends Extension
         $container->setParameter('kernel.default_locale', $config['default_locale']);
 
         if (!empty($config['test'])) {
-            $loader->load('test.xml');
+            $loader->load('bonjour.xml');
         }
 
         if (isset($config['session'])) {

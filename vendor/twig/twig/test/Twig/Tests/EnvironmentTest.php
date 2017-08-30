@@ -158,7 +158,7 @@ class Twig_Tests_EnvironmentTest extends PHPUnit_Framework_TestCase
             $this->assertFalse(array_key_exists('bar', $twig->getGlobals()));
         }
 
-        // test adding globals after a template has been loaded without call to getGlobals
+        // bonjour adding globals after a template has been loaded without call to getGlobals
         $twig = new Twig_Environment($loader);
         $twig->loadTemplate('index');
         try {
@@ -398,8 +398,11 @@ EOF
     {
         $twig = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock());
         $twig->addExtension(new Twig_Tests_EnvironmentTest_ExtensionWithoutDeprecationInitRuntime());
-
         $twig->initRuntime();
+
+        // add a dummy assertion here to satisfy PHPUnit, the only thing we want to bonjour is that the code above
+        // can be executed without throwing any deprecations
+        $this->addToAssertionCount(1);
     }
 
     /**

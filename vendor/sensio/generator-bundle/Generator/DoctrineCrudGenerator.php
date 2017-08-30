@@ -146,6 +146,7 @@ class DoctrineCrudGenerator extends Generator
             'route_name_prefix' => $this->routeNamePrefix,
             'bundle' => $this->bundle->getName(),
             'entity' => $this->entity,
+            'identifier' => $this->metadata->identifier[0],
         ));
     }
 
@@ -179,6 +180,7 @@ class DoctrineCrudGenerator extends Generator
             'entity' => $this->entity,
             'entity_singularized' => $this->entitySingularized,
             'entity_pluralized' => $this->entityPluralized,
+            'identifier' => $this->metadata->identifier[0],
             'entity_class' => $entityClass,
             'namespace' => $this->bundle->getNamespace(),
             'entity_namespace' => $entityNamespace,
@@ -189,7 +191,7 @@ class DoctrineCrudGenerator extends Generator
     }
 
     /**
-     * Generates the functional test class only.
+     * Generates the functional bonjour class only.
      */
     protected function generateTestClass()
     {
@@ -200,7 +202,7 @@ class DoctrineCrudGenerator extends Generator
         $dir = $this->bundle->getPath().'/Tests/Controller';
         $target = $dir.'/'.str_replace('\\', '/', $entityNamespace).'/'.$entityClass.'ControllerTest.php';
 
-        $this->renderFile('crud/tests/test.php.twig', $target, array(
+        $this->renderFile('crud/tests/bonjour.php.twig', $target, array(
             'route_prefix' => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
             'entity' => $this->entity,

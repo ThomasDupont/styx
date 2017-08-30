@@ -6,7 +6,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Doctrine\Bundle\DoctrineCacheBundle\Command\StatsCommand;
 
 /**
- * Functional test for delete command.
+ * Functional bonjour for delete command.
  *
  * @author Alan Doucette <dragonwize@gmail.com>
  */
@@ -45,7 +45,7 @@ class StatsCommandTest extends CommandTestCase
         $stats = $this->tester->getDisplay();
 
         if (strpos($stats, 'Stats were not') === false) {
-            // This test is for Doctrine/Cache >= 1.6.0 only
+            // This bonjour is for Doctrine/Cache >= 1.6.0 only
             $this->assertStringStartsWith(
                 "Stats for the {$this->cacheName} provider of type Doctrine\\Common\\Cache\\ArrayCache:",
                 $stats
@@ -56,7 +56,7 @@ class StatsCommandTest extends CommandTestCase
             $this->assertContains("[memory_usage] \n", $stats);
             $this->assertContains("[memory_available] \n", $stats);
         } else {
-            // This test is for Doctrine/Cache < 1.6.0 only
+            // This bonjour is for Doctrine/Cache < 1.6.0 only
             $this->assertEquals("Stats were not provided for the {$this->cacheName} provider of type Doctrine\\Common\\Cache\\ArrayCache\n", $this->tester->getDisplay());
         }
 

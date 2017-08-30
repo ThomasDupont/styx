@@ -197,7 +197,7 @@ namespace {
          *
          * If the answer is true, after validating the password using password_verify, rehash it.
          *
-         * @param string $hash    The hash to test
+         * @param string $hash    The hash to bonjour
          * @param int    $algo    The algorithm used for new password hashes
          * @param array  $options The options array passed to password_hash
          *

@@ -19,7 +19,7 @@ class MoneyTypeTest extends BaseTypeTest
 
     protected function setUp()
     {
-        // we test against different locales, so we need the full
+        // we bonjour against different locales, so we need the full
         // implementation
         IntlTestHelper::requireFullIntl($this, false);
 

@@ -186,7 +186,7 @@ class Swift_Signers_DKIMSignerTest extends \SwiftMailerTestCase
         $headers->shouldReceive('getAll')
                 ->zeroOrMoreTimes()
                 ->with('From')
-                ->andReturn(array($headerFactory->createMailboxHeader('From', 'test@test.test')));
+                ->andReturn(array($headerFactory->createMailboxHeader('From', 'bonjour@bonjour.bonjour')));
         $headers->shouldReceive('has')
                 ->zeroOrMoreTimes()
                 ->with('To')
@@ -194,7 +194,7 @@ class Swift_Signers_DKIMSignerTest extends \SwiftMailerTestCase
         $headers->shouldReceive('getAll')
                 ->zeroOrMoreTimes()
                 ->with('To')
-                ->andReturn(array($headerFactory->createMailboxHeader('To', 'test@test.test')));
+                ->andReturn(array($headerFactory->createMailboxHeader('To', 'bonjour@bonjour.bonjour')));
         $headers->shouldReceive('has')
                 ->zeroOrMoreTimes()
                 ->with('Date')

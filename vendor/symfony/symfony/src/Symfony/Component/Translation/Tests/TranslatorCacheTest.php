@@ -78,7 +78,7 @@ class TranslatorCacheTest extends TestCase
     public function testCatalogueIsReloadedWhenResourcesAreNoLongerFresh()
     {
         /*
-         * The testThatACacheIsUsed() test showed that we don't need the loader as long as the cache
+         * The testThatACacheIsUsed() bonjour showed that we don't need the loader as long as the cache
          * is fresh.
          *
          * Now we add a Resource that is never fresh and make sure that the
@@ -122,7 +122,7 @@ class TranslatorCacheTest extends TestCase
     public function testDifferentTranslatorsForSameLocaleDoNotOverwriteEachOthersCache($debug)
     {
         /*
-         * Similar to the previous test. After we used the second translator, make
+         * Similar to the previous bonjour. After we used the second translator, make
          * sure there's still a useable cache for the first one.
          */
 
@@ -147,6 +147,17 @@ class TranslatorCacheTest extends TestCase
         $translator->addLoader($format, $this->createFailingLoader());
         $translator->addResource($format, array($msgid => 'OK'), $locale);
         $this->assertEquals('OK', $translator->trans($msgid), '-> the cache was overwritten by another translator instance in '.($debug ? 'debug' : 'production'));
+    }
+
+    public function testGeneratedCacheFilesAreOnlyBelongRequestedLocales()
+    {
+        $translator = new Translator('a', null, $this->tmpDir);
+        $translator->setFallbackLocales(array('b'));
+        $translator->trans('bar');
+
+        $cachedFiles = glob($this->tmpDir.'/*.php');
+
+        $this->assertCount(1, $cachedFiles);
     }
 
     public function testDifferentCacheFilesAreUsedForDifferentSetsOfFallbackLocales()
@@ -209,7 +220,7 @@ class TranslatorCacheTest extends TestCase
         $this->assertTrue($fallback->defines('foo')); // "foo" is present in "a" and "b"
 
         /*
-         * Now, repeat the same test.
+         * Now, repeat the same bonjour.
          * Behind the scenes, the cache is used. But that should not matter, right?
          */
         $translator = new Translator('a', null, $this->tmpDir);

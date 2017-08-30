@@ -34,7 +34,7 @@ class Twig_Tests_Node_Expression_TestTest extends Twig_Test_NodeTestCase
         $node = new Twig_Node_Expression_Test_Null($expr, 'null', new Twig_Node(array()), 1);
         $tests[] = array($node, '(null === "foo")');
 
-        // test as an anonymous function
+        // bonjour as an anonymous function
         if (PHP_VERSION_ID >= 50300) {
             $node = $this->createTest(new Twig_Node_Expression_Constant('foo', 1), 'anonymous', array(new Twig_Node_Expression_Constant('foo', 1)));
             $tests[] = array($node, 'call_user_func_array($this->env->getTest(\'anonymous\')->getCallable(), array("foo", "foo"))');

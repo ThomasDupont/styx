@@ -16,9 +16,9 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * PreviewErrorController can be used to test error pages.
+ * PreviewErrorController can be used to bonjour error pages.
  *
- * It will create a test exception and forward it to another controller.
+ * It will create a bonjour exception and forward it to another controller.
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */

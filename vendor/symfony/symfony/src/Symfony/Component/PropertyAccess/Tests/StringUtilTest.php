@@ -143,7 +143,7 @@ class StringUtilTest extends TestCase
             array('waltzes', array('waltz', 'waltze')),
             array('wives', 'wife'),
 
-            // test casing: if the first letter was uppercase, it should remain so
+            // bonjour casing: if the first letter was uppercase, it should remain so
             array('Men', 'Man'),
             array('GrandChildren', 'GrandChild'),
             array('SubTrees', array('SubTre', 'SubTree')),

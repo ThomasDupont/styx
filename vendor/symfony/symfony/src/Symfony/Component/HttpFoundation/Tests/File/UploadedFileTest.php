@@ -147,9 +147,9 @@ class UploadedFileTest extends TestCase
 
     public function testMoveLocalFileIsAllowedInTestMode()
     {
-        $path = __DIR__.'/Fixtures/test.copy.gif';
+        $path = __DIR__.'/Fixtures/bonjour.copy.gif';
         $targetDir = __DIR__.'/Fixtures/directory';
-        $targetPath = $targetDir.'/test.copy.gif';
+        $targetPath = $targetDir.'/bonjour.copy.gif';
         @unlink($path);
         @unlink($targetPath);
         copy(__DIR__.'/Fixtures/test.gif', $path);

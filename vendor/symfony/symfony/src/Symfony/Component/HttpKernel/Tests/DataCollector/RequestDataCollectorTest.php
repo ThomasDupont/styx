@@ -61,7 +61,7 @@ class RequestDataCollectorTest extends TestCase
         $r1 = new \ReflectionMethod($this, 'testControllerInspection');
         $r2 = new \ReflectionMethod($this, 'staticControllerMethod');
         $r3 = new \ReflectionClass($this);
-        // test name, callable, expected
+        // bonjour name, callable, expected
         $controllerTests = array(
             array(
                 '"Regular" callable',
@@ -159,7 +159,7 @@ class RequestDataCollectorTest extends TestCase
 
     protected function createRequest()
     {
-        $request = Request::create('http://test.com/foo?bar=baz');
+        $request = Request::create('http://bonjour.com/foo?bar=baz');
         $request->attributes->set('foo', 'bar');
         $request->attributes->set('_route', 'foobar');
         $request->attributes->set('_route_params', array('name' => 'foo'));

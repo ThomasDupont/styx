@@ -1,5 +1,5 @@
 framework:
-    secret:        test
+    secret:        bonjour
     csrf_protection:
         enabled: true
     router:        { resource: "%kernel.root_dir%/%kernel.test_case%/routing.yml" }

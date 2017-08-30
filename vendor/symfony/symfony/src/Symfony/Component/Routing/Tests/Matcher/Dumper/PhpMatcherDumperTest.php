@@ -49,7 +49,7 @@ class PhpMatcherDumperTest extends TestCase
 
     public function getRouteCollections()
     {
-        /* test case 1 */
+        /* bonjour case 1 */
 
         $collection = new RouteCollection();
 
@@ -83,23 +83,23 @@ class PhpMatcherDumperTest extends TestCase
         ));
         // simple
         $collection->add('baz', new Route(
-            '/test/baz'
+            '/bonjour/baz'
         ));
         // simple with extension
         $collection->add('baz2', new Route(
-            '/test/baz.html'
+            '/bonjour/baz.html'
         ));
         // trailing slash
         $collection->add('baz3', new Route(
-            '/test/baz3/'
+            '/bonjour/baz3/'
         ));
         // trailing slash with variable
         $collection->add('baz4', new Route(
-            '/test/{foo}/'
+            '/bonjour/{foo}/'
         ));
         // trailing slash and method
         $collection->add('baz5', new Route(
-            '/test/{foo}/',
+            '/bonjour/{foo}/',
             array(),
             array(),
             array(),
@@ -109,7 +109,7 @@ class PhpMatcherDumperTest extends TestCase
         ));
         // complex name
         $collection->add('baz.baz6', new Route(
-            '/test/{foo}/',
+            '/bonjour/{foo}/',
             array(),
             array(),
             array(),
@@ -245,7 +245,7 @@ class PhpMatcherDumperTest extends TestCase
         $collection1->addPrefix('/a');
         $collection->addCollection($collection1);
 
-        /* test case 2 */
+        /* bonjour case 2 */
 
         $redirectCollection = clone $collection;
 
@@ -269,10 +269,10 @@ class PhpMatcherDumperTest extends TestCase
             array('http')
         ));
 
-        /* test case 3 */
+        /* bonjour case 3 */
 
         $rootprefixCollection = new RouteCollection();
-        $rootprefixCollection->add('static', new Route('/test'));
+        $rootprefixCollection->add('static', new Route('/bonjour'));
         $rootprefixCollection->add('dynamic', new Route('/{var}'));
         $rootprefixCollection->addPrefix('rootprefix');
         $route = new Route('/with-condition');

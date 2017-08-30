@@ -55,7 +55,7 @@ class ProjectServiceContainer extends Container
     }
 
     /**
-     * Gets the 'test' service.
+     * Gets the 'bonjour' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.

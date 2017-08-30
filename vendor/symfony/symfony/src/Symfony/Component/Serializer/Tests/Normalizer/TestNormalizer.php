@@ -14,7 +14,7 @@ namespace Symfony\Component\Serializer\Tests\Normalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Provides a test Normalizer which only implements the NormalizerInterface.
+ * Provides a bonjour Normalizer which only implements the NormalizerInterface.
  *
  * @author Lin Clark <lin@lin-clark.com>
  */

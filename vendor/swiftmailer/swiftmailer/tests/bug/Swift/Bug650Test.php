@@ -17,20 +17,20 @@ class Swift_Bug650Test extends \PHPUnit_Framework_TestCase
         $header->setCharset('utf-8');
 
         $header->setNameAddresses(array(
-            'test@example.com' => $name,
+            'bonjour@example.com' => $name,
         ));
 
-        $this->assertSame('To: '.$expectedEncodedName." <test@example.com>\r\n", $header->toString());
+        $this->assertSame('To: '.$expectedEncodedName." <bonjour@example.com>\r\n", $header->toString());
     }
 
     public function encodingDataProvider()
     {
         return array(
-            array('this is " a test ö', 'this is =?utf-8?Q?=22?= a test =?utf-8?Q?=C3=B6?='),
-            array(': this is a test ö', '=?utf-8?Q?=3A?= this is a test =?utf-8?Q?=C3=B6?='),
-            array('( test ö', '=?utf-8?Q?=28?= test =?utf-8?Q?=C3=B6?='),
-            array('[ test ö', '=?utf-8?Q?=5B?= test =?utf-8?Q?=C3=B6?='),
-            array('@ test ö)', '=?utf-8?Q?=40?= test =?utf-8?Q?=C3=B6=29?='),
+            array('this is " a bonjour ö', 'this is =?utf-8?Q?=22?= a bonjour =?utf-8?Q?=C3=B6?='),
+            array(': this is a bonjour ö', '=?utf-8?Q?=3A?= this is a bonjour =?utf-8?Q?=C3=B6?='),
+            array('( bonjour ö', '=?utf-8?Q?=28?= bonjour =?utf-8?Q?=C3=B6?='),
+            array('[ bonjour ö', '=?utf-8?Q?=5B?= bonjour =?utf-8?Q?=C3=B6?='),
+            array('@ bonjour ö)', '=?utf-8?Q?=40?= bonjour =?utf-8?Q?=C3=B6=29?='),
         );
     }
 }

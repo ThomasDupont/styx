@@ -46,7 +46,7 @@ class AclCacheTest extends \PHPUnit_Framework_TestCase
     public function testEvictFromCacheById($expected, $primaryKey)
     {
         $this->cacheProvider->save('bar', 'foo_1');
-        $this->cacheProvider->save('foo_1', 's:4:test;');
+        $this->cacheProvider->save('foo_1', 's:4:bonjour;');
 
         $this->aclCache->evictFromCacheById($primaryKey);
 
@@ -67,7 +67,7 @@ class AclCacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testEvictFromCacheByIdentity($expected, $identity)
     {
-        $this->cacheProvider->save('foo_1', 's:4:test;');
+        $this->cacheProvider->save('foo_1', 's:4:bonjour;');
 
         $this->aclCache->evictFromCacheByIdentity($identity);
 

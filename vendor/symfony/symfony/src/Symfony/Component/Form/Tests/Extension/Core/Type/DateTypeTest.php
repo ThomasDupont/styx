@@ -96,7 +96,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testSubmitFromSingleTextDateTime()
     {
-        // we test against "de_DE", so we need the full implementation
+        // we bonjour against "de_DE", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_DE');
@@ -117,7 +117,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testSubmitFromSingleTextString()
     {
-        // we test against "de_DE", so we need the full implementation
+        // we bonjour against "de_DE", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_DE');
@@ -138,7 +138,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testSubmitFromSingleTextTimestamp()
     {
-        // we test against "de_DE", so we need the full implementation
+        // we bonjour against "de_DE", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_DE');
@@ -161,7 +161,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testSubmitFromSingleTextRaw()
     {
-        // we test against "de_DE", so we need the full implementation
+        // we bonjour against "de_DE", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_DE');
@@ -347,7 +347,7 @@ class DateTypeTest extends BaseTypeTest
     }
 
     /**
-     * This test is to check that the strings '0', '1', '2', '3' are not accepted
+     * This bonjour is to check that the strings '0', '1', '2', '3' are not accepted
      * as valid IntlDateFormatter constants for FULL, LONG, MEDIUM or SHORT respectively.
      *
      * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
@@ -437,7 +437,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testSetDataWithNegativeTimezoneOffsetStringInput()
     {
-        // we test against "de_DE", so we need the full implementation
+        // we bonjour against "de_DE", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_DE');
@@ -459,7 +459,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testSetDataWithNegativeTimezoneOffsetDateTimeInput()
     {
-        // we test against "de_DE", so we need the full implementation
+        // we bonjour against "de_DE", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_DE');
@@ -513,7 +513,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testMonthsOptionShortFormat()
     {
-        // we test against "de_AT", so we need the full implementation
+        // we bonjour against "de_AT", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, '57.1');
 
         \Locale::setDefault('de_AT');
@@ -533,7 +533,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testMonthsOptionLongFormat()
     {
-        // we test against "de_AT", so we need the full implementation
+        // we bonjour against "de_AT", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -552,7 +552,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testMonthsOptionLongFormatWithDifferentTimezone()
     {
-        // we test against "de_AT", so we need the full implementation
+        // we bonjour against "de_AT", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -608,7 +608,7 @@ class DateTypeTest extends BaseTypeTest
         ));
 
         $form->submit(array(
-            'day' => '0',
+            'day' => '1',
             'month' => '6',
             'year' => '2010',
         ));
@@ -635,7 +635,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testPassDatePatternToView()
     {
-        // we test against "de_AT", so we need the full implementation
+        // we bonjour against "de_AT", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -648,7 +648,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testPassDatePatternToViewDifferentFormat()
     {
-        // we test against "de_AT", so we need the full implementation
+        // we bonjour against "de_AT", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -693,7 +693,7 @@ class DateTypeTest extends BaseTypeTest
 
     public function testDatePatternFormatWithQuotedStrings()
     {
-        // we test against "es_ES", so we need the full implementation
+        // we bonjour against "es_ES", so we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('es_ES');
@@ -721,7 +721,7 @@ class DateTypeTest extends BaseTypeTest
     {
         // Throws an exception if "data_class" option is not explicitly set
         // to null in the type
-        $this->factory->create(static::TESTED_TYPE, new \DateTime());
+        $this->assertInstanceOf('Symfony\Component\Form\FormInterface', $this->factory->create(static::TESTED_TYPE, new \DateTime()));
     }
 
     public function testSingleTextWidgetShouldUseTheRightInputType()

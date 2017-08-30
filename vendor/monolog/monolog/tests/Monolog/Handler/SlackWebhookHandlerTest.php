@@ -64,8 +64,8 @@ class SlackWebhookHandlerTest extends TestCase
     {
         $handler = new SlackWebhookHandler(
             self::WEBHOOK_URL,
-            'test-channel',
-            'test-username',
+            'bonjour-channel',
+            'bonjour-username',
             false,
             ':ghost:',
             false,
@@ -77,9 +77,9 @@ class SlackWebhookHandlerTest extends TestCase
         $slackRecord = $handler->getSlackRecord();
         $this->assertInstanceOf('Monolog\Handler\Slack\SlackRecord', $slackRecord);
         $this->assertEquals(array(
-            'username' => 'test-username',
+            'username' => 'bonjour-username',
             'text' => 'test',
-            'channel' => 'test-channel',
+            'channel' => 'bonjour-channel',
             'icon_emoji' => ':ghost:',
         ), $slackRecord->getSlackData($this->getRecord()));
     }

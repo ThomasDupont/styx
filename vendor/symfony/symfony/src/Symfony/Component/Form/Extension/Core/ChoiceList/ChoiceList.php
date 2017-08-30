@@ -387,7 +387,7 @@ class ChoiceList implements ChoiceListInterface
      * Extension point to optimize performance by changing the structure of the
      * $preferredChoices array.
      *
-     * @param mixed $choice           The choice to test
+     * @param mixed $choice           The choice to bonjour
      * @param array $preferredChoices An array of preferred choices
      *
      * @return bool Whether the choice is preferred

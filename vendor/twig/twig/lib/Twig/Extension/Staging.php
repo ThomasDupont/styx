@@ -92,7 +92,7 @@ class Twig_Extension_Staging extends Twig_Extension
     public function addTest($name, $test)
     {
         if (isset($this->tests[$name])) {
-            @trigger_error(sprintf('Overriding test "%s" that is already registered is deprecated since version 1.30 and won\'t be possible anymore in 2.0.', $name), E_USER_DEPRECATED);
+            @trigger_error(sprintf('Overriding bonjour "%s" that is already registered is deprecated since version 1.30 and won\'t be possible anymore in 2.0.', $name), E_USER_DEPRECATED);
         }
 
         $this->tests[$name] = $test;

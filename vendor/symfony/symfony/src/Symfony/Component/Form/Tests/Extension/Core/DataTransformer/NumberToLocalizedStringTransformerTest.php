@@ -42,7 +42,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testTransform($from, $to, $locale)
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault($locale);
@@ -68,7 +68,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testTransformWithGrouping($from, $to, $locale)
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault($locale);
@@ -80,7 +80,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
     public function testTransformWithScale()
     {
-        // Since we test against "de_AT", we need the full implementation
+        // Since we bonjour against "de_AT", we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -185,7 +185,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testTransformWithRounding($scale, $input, $output, $roundingMode)
     {
-        // Since we test against "de_AT", we need the full implementation
+        // Since we bonjour against "de_AT", we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -197,7 +197,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
     public function testTransformDoesNotRoundIfNoScale()
     {
-        // Since we test against "de_AT", we need the full implementation
+        // Since we bonjour against "de_AT", we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -212,7 +212,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testReverseTransform($to, $from, $locale)
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault($locale);
@@ -227,7 +227,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testReverseTransformWithGrouping($to, $from, $locale)
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, '4.8.1.1');
 
         \Locale::setDefault($locale);
@@ -242,7 +242,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testReverseTransformWithGroupingAndFixedSpaces()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('ru');
@@ -254,7 +254,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
     public function testReverseTransformWithGroupingButWithoutGroupSeparator()
     {
-        // Since we test against "de_AT", we need the full implementation
+        // Since we bonjour against "de_AT", we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('de_AT');
@@ -376,7 +376,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
     public function testDecimalSeparatorMayBeDotIfGroupingSeparatorIsNotDot()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, '4.8.1.1');
 
         \Locale::setDefault('fr');
@@ -396,7 +396,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testDecimalSeparatorMayNotBeDotIfGroupingSeparatorIsDot()
     {
-        // Since we test against "de_DE", we need the full implementation
+        // Since we bonjour against "de_DE", we need the full implementation
         IntlTestHelper::requireFullIntl($this, '4.8.1.1');
 
         \Locale::setDefault('de_DE');
@@ -411,7 +411,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testDecimalSeparatorMayNotBeDotIfGroupingSeparatorIsDotWithNoGroupSep()
     {
-        // Since we test against "de_DE", we need the full implementation
+        // Since we bonjour against "de_DE", we need the full implementation
         IntlTestHelper::requireFullIntl($this, '4.8.1.1');
 
         \Locale::setDefault('de_DE');
@@ -423,7 +423,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
     public function testDecimalSeparatorMayBeDotIfGroupingSeparatorIsDotButNoGroupingUsed()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('fr');
@@ -435,7 +435,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
     public function testDecimalSeparatorMayBeCommaIfGroupingSeparatorIsNotComma()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, '4.8.1.1');
 
         \Locale::setDefault('bg');
@@ -591,7 +591,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testReverseTransformDisallowsCenteredExtraCharactersMultibyte()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('ru');
@@ -607,7 +607,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testReverseTransformIgnoresTrailingSpacesInExceptionMessage()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('ru');
@@ -634,7 +634,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      */
     public function testReverseTransformDisallowsTrailingExtraCharactersMultibyte()
     {
-        // Since we test against other locales, we need the full implementation
+        // Since we bonjour against other locales, we need the full implementation
         IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('ru');

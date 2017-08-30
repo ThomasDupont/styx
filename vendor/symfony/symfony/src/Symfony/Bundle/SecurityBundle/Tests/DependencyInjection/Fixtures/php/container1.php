@@ -75,7 +75,7 @@ $container->loadFromExtension('security', array(
             'user_checker' => null,
         ),
         'host' => array(
-            'pattern' => '/test',
+            'pattern' => '/bonjour',
             'host' => 'foo\\.example\\.org',
             'methods' => array('GET', 'POST'),
             'anonymous' => true,

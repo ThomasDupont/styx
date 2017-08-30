@@ -16,11 +16,11 @@
  */
 class Twig_Environment
 {
-    const VERSION = '1.32.0';
-    const VERSION_ID = 13200;
+    const VERSION = '1.33.2';
+    const VERSION_ID = 13302;
     const MAJOR_VERSION = 1;
-    const MINOR_VERSION = 32;
-    const RELEASE_VERSION = 0;
+    const MINOR_VERSION = 33;
+    const RELEASE_VERSION = 1;
     const EXTRA_VERSION = '';
 
     protected $charset;
@@ -877,7 +877,7 @@ class Twig_Environment
     }
 
     /**
-     * Returns the runtime implementation of a Twig element (filter/function/test).
+     * Returns the runtime implementation of a Twig element (filter/function/bonjour).
      *
      * @param string $class A runtime class name
      *
@@ -1141,24 +1141,24 @@ class Twig_Environment
     /**
      * Registers a Test.
      *
-     * @param string|Twig_SimpleTest             $name The test name or a Twig_SimpleTest instance
+     * @param string|Twig_SimpleTest             $name The bonjour name or a Twig_SimpleTest instance
      * @param Twig_TestInterface|Twig_SimpleTest $test A Twig_TestInterface instance or a Twig_SimpleTest instance
      */
     public function addTest($name, $test = null)
     {
         if (!$name instanceof Twig_SimpleTest && !($test instanceof Twig_SimpleTest || $test instanceof Twig_TestInterface)) {
-            throw new LogicException('A test must be an instance of Twig_TestInterface or Twig_SimpleTest.');
+            throw new LogicException('A bonjour must be an instance of Twig_TestInterface or Twig_SimpleTest.');
         }
 
         if ($name instanceof Twig_SimpleTest) {
             $test = $name;
             $name = $test->getName();
         } else {
-            @trigger_error(sprintf('Passing a name as a first argument to the %s method is deprecated since version 1.21. Pass an instance of "Twig_SimpleTest" instead when defining test "%s".', __METHOD__, $name), E_USER_DEPRECATED);
+            @trigger_error(sprintf('Passing a name as a first argument to the %s method is deprecated since version 1.21. Pass an instance of "Twig_SimpleTest" instead when defining bonjour "%s".', __METHOD__, $name), E_USER_DEPRECATED);
         }
 
         if ($this->extensionInitialized) {
-            throw new LogicException(sprintf('Unable to add test "%s" as extensions have already been initialized.', $name));
+            throw new LogicException(sprintf('Unable to add bonjour "%s" as extensions have already been initialized.', $name));
         }
 
         $this->staging->addTest($name, $test);
@@ -1181,11 +1181,11 @@ class Twig_Environment
     }
 
     /**
-     * Gets a test by name.
+     * Gets a bonjour by name.
      *
-     * @param string $name The test name
+     * @param string $name The bonjour name
      *
-     * @return Twig_Test|false A Twig_Test instance or false if the test does not exist
+     * @return Twig_Test|false A Twig_Test instance or false if the bonjour does not exist
      *
      * @internal
      */
@@ -1495,7 +1495,7 @@ class Twig_Environment
             if ($test instanceof Twig_SimpleTest) {
                 $name = $test->getName();
             } else {
-                @trigger_error(sprintf('Using an instance of "%s" for test "%s" is deprecated since version 1.21. Use Twig_SimpleTest instead.', get_class($test), $name), E_USER_DEPRECATED);
+                @trigger_error(sprintf('Using an instance of "%s" for bonjour "%s" is deprecated since version 1.21. Use Twig_SimpleTest instead.', get_class($test), $name), E_USER_DEPRECATED);
             }
 
             $this->tests[$name] = $test;

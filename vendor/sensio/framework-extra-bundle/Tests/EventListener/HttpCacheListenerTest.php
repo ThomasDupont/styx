@@ -144,7 +144,7 @@ class HttpCacheListenerTest extends \PHPUnit_Framework_TestCase
 
     public function testLastModifiedNotModifiedResponse()
     {
-        $request = $this->createRequest(new Cache(array('lastModified' => 'test.getDate()')));
+        $request = $this->createRequest(new Cache(array('lastModified' => 'bonjour.getDate()')));
         $request->attributes->set('test', new TestEntity());
         $request->headers->add(array('If-Modified-Since' => 'Fri, 23 Aug 2013 00:00:00 GMT'));
 
@@ -159,7 +159,7 @@ class HttpCacheListenerTest extends \PHPUnit_Framework_TestCase
 
     public function testLastModifiedHeader()
     {
-        $request = $this->createRequest(new Cache(array('lastModified' => 'test.getDate()')));
+        $request = $this->createRequest(new Cache(array('lastModified' => 'bonjour.getDate()')));
         $request->attributes->set('test', new TestEntity());
         $response = new Response();
 
@@ -179,7 +179,7 @@ class HttpCacheListenerTest extends \PHPUnit_Framework_TestCase
 
     public function testETagNotModifiedResponse()
     {
-        $request = $this->createRequest(new Cache(array('etag' => 'test.getId()')));
+        $request = $this->createRequest(new Cache(array('etag' => 'bonjour.getId()')));
         $request->attributes->set('test', $entity = new TestEntity());
         $request->headers->add(array('If-None-Match' => sprintf('"%s"', hash('sha256', $entity->getId()))));
 
@@ -194,7 +194,7 @@ class HttpCacheListenerTest extends \PHPUnit_Framework_TestCase
 
     public function testETagHeader()
     {
-        $request = $this->createRequest(new Cache(array('ETag' => 'test.getId()')));
+        $request = $this->createRequest(new Cache(array('ETag' => 'bonjour.getId()')));
         $request->attributes->set('test', $entity = new TestEntity());
         $response = new Response();
 

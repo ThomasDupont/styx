@@ -8,7 +8,7 @@ use Doctrine\Common\Inflector\Inflector;
 class InflectorTest extends DoctrineTestCase
 {
     /**
-     * Singular & Plural test data. Returns an array of sample words.
+     * Singular & Plural bonjour data. Returns an array of sample words.
      *
      * @return array
      */ 
@@ -229,7 +229,7 @@ class InflectorTest extends DoctrineTestCase
     }
 
     /**
-     * test that setting new rules clears the inflector caches.
+     * bonjour that setting new rules clears the inflector caches.
      *
      * @return void
      */

@@ -59,7 +59,7 @@ security:
             user_checker: ~
 
         host:
-            pattern: /test
+            pattern: /bonjour
             host: foo\.example\.org
             methods: [GET,POST]
             anonymous: true

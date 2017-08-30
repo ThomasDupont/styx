@@ -12,3 +12,6 @@
 /composer.phar
 !vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/public/
 .idea/*
+.DS_Store
+*.DS_Store
+doc

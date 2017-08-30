@@ -63,7 +63,7 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
             array('{{ attribute(array, -10) }}', 'Key "-10" for array with keys "foo" does not exist in "%s" at line 1.'),
             array('{{ array_access.a }}', 'Neither the property "a" nor one of the methods "a()", "geta()"/"isa()" or "__call()" exist and have public access in class "Twig_TemplateArrayAccessObject" in "%s" at line 1.'),
             array('{% from _self import foo %}{% macro foo(obj) %}{{ obj.missing_method() }}{% endmacro %}{{ foo(array_access) }}', 'Neither the property "missing_method" nor one of the methods "missing_method()", "getmissing_method()"/"ismissing_method()" or "__call()" exist and have public access in class "Twig_TemplateArrayAccessObject" in "%s" at line 1.'),
-            array('{{ magic_exception.test }}', 'An exception has been thrown during the rendering of a template ("Hey! Don\'t try to isset me!") in "%s" at line 1.'),
+            array('{{ magic_exception.bonjour }}', 'An exception has been thrown during the rendering of a template ("Hey! Don\'t try to isset me!") in "%s" at line 1.'),
             array('{{ object["a"] }}', 'Impossible to access a key "a" on an object of class "stdClass" that does not implement ArrayAccess interface in "%s" at line 1.'),
         );
     }
@@ -83,10 +83,14 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
 
             if (!$allowed) {
                 $this->fail();
+            } else {
+                $this->addToAssertionCount(1);
             }
         } catch (Twig_Sandbox_SecurityError $e) {
             if ($allowed) {
                 $this->fail();
+            } else {
+                $this->addToAssertionCount(1);
             }
 
             $this->assertContains('is not allowed', $e->getMessage());
@@ -198,8 +202,8 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group legacy
-     * @expectedDeprecation Silent display of undefined block "unknown" in template "index.twig" is deprecated since version 1.29 and will throw an exception in 2.0. Use the "block('unknown') is defined" expression to test for block existence.
-     * @expectedDeprecation Silent display of undefined block "unknown" in template "index.twig" is deprecated since version 1.29 and will throw an exception in 2.0. Use the "block('unknown') is defined" expression to test for block existence.
+     * @expectedDeprecation Silent display of undefined block "unknown" in template "index.twig" is deprecated since version 1.29 and will throw an exception in 2.0. Use the "block('unknown') is defined" expression to bonjour for block existence.
+     * @expectedDeprecation Silent display of undefined block "unknown" in template "index.twig" is deprecated since version 1.29 and will throw an exception in 2.0. Use the "block('unknown') is defined" expression to bonjour for block existence.
      */
     public function testRenderBlockWithUndefinedBlock()
     {
@@ -255,15 +259,15 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
         if ($defined) {
             $this->assertEquals($value, $template->getAttribute($object, $item, $arguments, $type));
         } else {
-            try {
-                $this->assertEquals($value, $template->getAttribute($object, $item, $arguments, $type));
-
-                throw new Exception('Expected Twig_Error_Runtime exception.');
-            } catch (Twig_Error_Runtime $e) {
+            if (method_exists($this, 'expectException')) {
+                $this->expectException('Twig_Error_Runtime');
                 if (null !== $exceptionMessage) {
-                    $this->assertSame($exceptionMessage, $e->getMessage());
+                    $this->expectExceptionMessage($exceptionMessage);
                 }
+            } else {
+                $this->setExpectedException('Twig_Error_Runtime', $exceptionMessage);
             }
+            $this->assertEquals($value, $template->getAttribute($object, $item, $arguments, $type));
         }
     }
 
@@ -419,6 +423,19 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
         ));
 
         return $tests;
+    }
+
+    /**
+     * @expectedException Twig_Error_Runtime
+     */
+    public function testGetIsMethods()
+    {
+        $getIsObject = new Twig_TemplateGetIsMethods();
+        $template = new Twig_TemplateTest(new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock(), array('strict_variables' => true)));
+        // first time should not create a cache for "get"
+        $this->assertNull($template->getAttribute($getIsObject, 'get'));
+        // 0 should be in the method cache now, so this should fail
+        $this->assertNull($template->getAttribute($getIsObject, 0));
     }
 }
 
@@ -576,7 +593,13 @@ class Twig_TemplatePropertyObjectAndIterator extends Twig_TemplatePropertyObject
 
 class Twig_TemplatePropertyObjectAndArrayAccess extends Twig_TemplatePropertyObject implements ArrayAccess
 {
-    private $data = array();
+    private $data = array(
+        'defined' => 'defined',
+        'zero' => 0,
+        'null' => null,
+        'bar' => true,
+        'baz' => 'baz',
+    );
 
     public function offsetExists($offset)
     {
@@ -656,6 +679,17 @@ class Twig_TemplateMethodObject
     public static function getStatic()
     {
         return 'static';
+    }
+}
+
+class Twig_TemplateGetIsMethods
+{
+    public function get()
+    {
+    }
+
+    public function is()
+    {
     }
 }
 

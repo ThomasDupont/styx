@@ -28,7 +28,7 @@ class ConversationController extends Controller
       //   ->setSender($user)
       //   ->addRecipient($receiver)
       //   ->setSubject('Hi there')
-      //   ->setBody('This is a test message')
+      //   ->setBody('This is a bonjour message')
       //   ->getMessage();
       // var_dump($message);
 
@@ -37,7 +37,7 @@ class ConversationController extends Controller
 
       // $message = $composer->reply($thread)
       //   ->setSender($receiver)
-      //   ->setBody('This is the answer to the test message')
+      //   ->setBody('This is the answer to the bonjour message')
       //   ->getMessage();
 
       // var_dump($thread->getSubject());

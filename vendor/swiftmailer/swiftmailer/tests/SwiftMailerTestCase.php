@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A base test case with some custom expectations.
+ * A base bonjour case with some custom expectations.
  *
  * @author Rouven Weßling
  */

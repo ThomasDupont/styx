@@ -2,6 +2,6 @@
 parameters:
     new: old_value
     new2: foo
-    new3: test
+    new3: bonjour
     new4: old4
     new5: old4

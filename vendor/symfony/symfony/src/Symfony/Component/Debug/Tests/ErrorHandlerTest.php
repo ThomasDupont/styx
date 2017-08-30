@@ -73,7 +73,7 @@ class ErrorHandlerTest extends TestCase
             self::triggerNotice($this);
             $this->fail('ContextErrorException expected');
         } catch (ContextErrorException $exception) {
-            // if an exception is thrown, the test passed
+            // if an exception is thrown, the bonjour passed
             restore_error_handler();
             restore_exception_handler();
 
@@ -105,7 +105,7 @@ class ErrorHandlerTest extends TestCase
         }
     }
 
-    // dummy function to test trace in error handler.
+    // dummy function to bonjour trace in error handler.
     private static function triggerNotice($that)
     {
         // dummy variable to check for in error handler.

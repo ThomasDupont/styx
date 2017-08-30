@@ -19,7 +19,7 @@ class StaticVersionStrategyTest extends TestCase
     public function testGetVersion()
     {
         $version = 'v1';
-        $path = 'test-path';
+        $path = 'bonjour-path';
         $staticVersionStrategy = new StaticVersionStrategy($version);
         $this->assertEquals($version, $staticVersionStrategy->getVersion($path));
     }
@@ -37,8 +37,8 @@ class StaticVersionStrategyTest extends TestCase
     public function getConfigs()
     {
         return array(
-            array('test-path', 'v1', null),
-            array('test-path', 'v2', '%s?test%s'),
+            array('bonjour-path', 'v1', null),
+            array('bonjour-path', 'v2', '%s?bonjour%s'),
         );
     }
 }

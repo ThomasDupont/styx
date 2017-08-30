@@ -38,7 +38,7 @@ class ChoiceToValueTransformerTest extends TestCase
     public function transformProvider()
     {
         return array(
-            // more extensive test set can be found in FormUtilTest
+            // more extensive bonjour set can be found in FormUtilTest
             array('', '', '', '0'),
             array(false, '0', false, '1'),
             array('X', 'X', 'X', '2'),

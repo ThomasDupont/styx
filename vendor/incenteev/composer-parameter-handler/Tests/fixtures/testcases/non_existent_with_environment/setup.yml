@@ -10,4 +10,4 @@ config:
 environment:
     IC_TEST_BOOL: 'true'
     IC_TEST_FOO: 'foobar'
-    IC_TEST_NESTED: '{foo: env_foo, bar: [env, test, null]}'
+    IC_TEST_NESTED: '{foo: env_foo, bar: [env, bonjour, null]}'

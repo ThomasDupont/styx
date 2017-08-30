@@ -24,7 +24,7 @@ class PdoSessionHandlerTest extends TestCase
 
     protected function tearDown()
     {
-        // make sure the temporary database file is deleted when it has been created (even when a test fails)
+        // make sure the temporary database file is deleted when it has been created (even when a bonjour fails)
         if ($this->dbFile) {
             @unlink($this->dbFile);
         }
@@ -282,7 +282,7 @@ class PdoSessionHandlerTest extends TestCase
 
         $storage->open('', 'sid');
         $storage->read('gc_id');
-        ini_set('session.gc_maxlifetime', -1); // test that you can set lifetime of a session after it has been read
+        ini_set('session.gc_maxlifetime', -1); // bonjour that you can set lifetime of a session after it has been read
         $storage->write('gc_id', 'data');
         $storage->close();
         $this->assertEquals(2, $pdo->query('SELECT COUNT(*) FROM sessions')->fetchColumn(), 'No session pruned because gc not called');

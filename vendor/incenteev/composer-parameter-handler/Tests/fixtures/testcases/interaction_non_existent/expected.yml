@@ -6,5 +6,5 @@ parameters:
         foo: bar
         bar:
             - foo
-            - test
+            - bonjour
             - null

@@ -98,7 +98,7 @@ class ParamConverterManagerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException        \RuntimeException
-     * @expectedExceptionMessage Converter 'test' does not support conversion of parameter 'param'.
+     * @expectedExceptionMessage Converter 'bonjour' does not support conversion of parameter 'param'.
      */
     public function testApplyNamedConverterNotSupportsParameter()
     {
@@ -125,7 +125,7 @@ class ParamConverterManagerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException        \RuntimeException
-     * @expectedExceptionMessage No converter named 'test' found for conversion of parameter 'param'.
+     * @expectedExceptionMessage No converter named 'bonjour' found for conversion of parameter 'param'.
      */
     public function testApplyNamedConverterNoConverter()
     {

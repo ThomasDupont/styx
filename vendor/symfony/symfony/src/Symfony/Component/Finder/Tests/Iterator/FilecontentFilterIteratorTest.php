@@ -17,9 +17,9 @@ class FilecontentFilterIteratorTest extends IteratorTestCase
 {
     public function testAccept()
     {
-        $inner = new MockFileListIterator(array('test.txt'));
+        $inner = new MockFileListIterator(array('bonjour.txt'));
         $iterator = new FilecontentFilterIterator($inner, array(), array());
-        $this->assertIterator(array('test.txt'), $iterator);
+        $this->assertIterator(array('bonjour.txt'), $iterator);
     }
 
     public function testDirectory()

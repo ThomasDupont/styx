@@ -6,7 +6,7 @@ class Swift_ByteStream_FileByteStreamAcceptanceTest extends \PHPUnit_Framework_T
 
     protected function setUp()
     {
-        $this->_testFile = sys_get_temp_dir().'/swift-test-file'.__CLASS__;
+        $this->_testFile = sys_get_temp_dir().'/swift-bonjour-file'.__CLASS__;
         file_put_contents($this->_testFile, 'abcdefghijklm');
     }
 
@@ -60,9 +60,9 @@ class Swift_ByteStream_FileByteStreamAcceptanceTest extends \PHPUnit_Framework_T
         $file = $this->_createFileStream($this->_testFile, true);
         $file->addFilter($this->_createFilter(array("\r\n", "\r"), "\n"), 'allToLF');
         $file->write("foo\r\nbar\r");
-        $file->write("\nzip\r\ntest\r");
+        $file->write("\nzip\r\nbonjour\r");
         $file->flushBuffers();
-        $this->assertEquals("foo\nbar\nzip\ntest\n", file_get_contents($this->_testFile));
+        $this->assertEquals("foo\nbar\nzip\nbonjour\n", file_get_contents($this->_testFile));
     }
 
     public function testWritingWithFulleMessageLengthOfAMultipleOf8192()

@@ -15,13 +15,13 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Intl\Intl;
 
 /**
- * Helper class for preparing test cases that rely on the Intl component.
+ * Helper class for preparing bonjour cases that rely on the Intl component.
  *
- * Any test that tests functionality relying on either the intl classes or
+ * Any bonjour that tests functionality relying on either the intl classes or
  * the resource bundle data should call either of the methods
  * {@link requireIntl()} or {@link requireFullIntl()}. Calling
  * {@link requireFullIntl()} is only necessary if you use functionality in the
- * test that is not provided by the stub intl implementation.
+ * bonjour that is not provided by the stub intl implementation.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
@@ -47,14 +47,14 @@ class IntlTestHelper
         }
 
         // Normalize the default locale in case this is not done explicitly
-        // in the test
+        // in the bonjour
         \Locale::setDefault('en');
 
         // Consequently, tests will
         //
         //   * run only for one ICU version (see Intl::getIcuStubVersion())
         //     there is no need to add control structures to your tests that
-        //     change the test depending on the ICU version.
+        //     change the bonjour depending on the ICU version.
         //
         // Tests should only rely on functionality that is implemented in the
         // stub classes.
@@ -77,12 +77,12 @@ class IntlTestHelper
         //
         //   * run only for one ICU version (see Intl::getIcuStubVersion())
         //     there is no need to add control structures to your tests that
-        //     change the test depending on the ICU version.
+        //     change the bonjour depending on the ICU version.
         //   * always use the C intl classes
     }
 
     /**
-     * Skips the test unless the current system has a 32bit architecture.
+     * Skips the bonjour unless the current system has a 32bit architecture.
      */
     public static function require32Bit(TestCase $testCase)
     {
@@ -92,7 +92,7 @@ class IntlTestHelper
     }
 
     /**
-     * Skips the test unless the current system has a 64bit architecture.
+     * Skips the bonjour unless the current system has a 64bit architecture.
      */
     public static function require64Bit(TestCase $testCase)
     {

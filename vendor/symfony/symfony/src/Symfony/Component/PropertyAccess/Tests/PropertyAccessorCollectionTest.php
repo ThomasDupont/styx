@@ -20,7 +20,7 @@ class PropertyAccessorCollectionTest_Car
         $this->axes = $axes;
     }
 
-    // In the test, use a name that StringUtil can't uniquely singularify
+    // In the bonjour, use a name that StringUtil can't uniquely singularify
     public function addAxis($axis)
     {
         $this->axes[] = $axis;
@@ -107,7 +107,7 @@ abstract class PropertyAccessorCollectionTest extends PropertyAccessorArrayAcces
         $axesAfter = $this->getContainer(array(1 => 'second', 5 => 'first', 6 => 'third'));
         $axesMergedCopy = is_object($axesMerged) ? clone $axesMerged : $axesMerged;
 
-        // Don't use a mock in order to test whether the collections are
+        // Don't use a mock in order to bonjour whether the collections are
         // modified while iterating them
         $car = new PropertyAccessorCollectionTest_Car($axesBefore);
 

@@ -155,7 +155,7 @@ class AclProviderTest extends \PHPUnit_Framework_TestCase
             $this->con->exec($sql);
         }
 
-        // populate the schema with some test data
+        // populate the schema with some bonjour data
         $this->insertClassStmt = $this->con->prepare('INSERT INTO acl_classes (id, class_type) VALUES (?, ?)');
         foreach ($this->getClassData() as $data) {
             $this->insertClassStmt->execute($data);

@@ -186,12 +186,13 @@ class HomepageController extends Controller
                 $em->flush();
             }
         }
-
-        return $this->render('websiteBundle:homepage:homepage.html.twig', array(
-            'connexionForm' => $connexionForm->createView(),
-            'formEmail' => $registrationForm->createView(),
-            'departments' => $departments,
-        ));
+        return $this->render('websiteBundle:homepage:homepage.html.twig',
+            array(
+                'connexionForm' => $connexionForm->createView(),
+                'formEmail' => $registrationForm->createView(),
+                'departments' => $departments
+            )
+        );
     }
     /*public function resetPasswordAction()
     {

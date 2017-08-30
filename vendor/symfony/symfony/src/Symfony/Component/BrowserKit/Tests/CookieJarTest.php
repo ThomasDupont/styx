@@ -211,17 +211,17 @@ class CookieJarTest extends TestCase
     {
         $cookieJar = new CookieJar();
         $cookieJar->set($cookie1 = new Cookie('foo', 'bar', null, '/', '.example.com'));
-        $cookieJar->set($cookie2 = new Cookie('foo1', 'bar', null, '/', 'test.example.com'));
+        $cookieJar->set($cookie2 = new Cookie('foo1', 'bar', null, '/', 'bonjour.example.com'));
 
         $this->assertEquals($cookie1, $cookieJar->get('foo', '/', 'foo.example.com'));
         $this->assertEquals($cookie1, $cookieJar->get('foo', '/', 'example.com'));
-        $this->assertEquals($cookie2, $cookieJar->get('foo1', '/', 'test.example.com'));
+        $this->assertEquals($cookie2, $cookieJar->get('foo1', '/', 'bonjour.example.com'));
     }
 
     public function testCookieGetWithWrongSubdomain()
     {
         $cookieJar = new CookieJar();
-        $cookieJar->set($cookie1 = new Cookie('foo1', 'bar', null, '/', 'test.example.com'));
+        $cookieJar->set($cookie1 = new Cookie('foo1', 'bar', null, '/', 'bonjour.example.com'));
 
         $this->assertNull($cookieJar->get('foo1', '/', 'foo.example.com'));
     }
@@ -229,12 +229,12 @@ class CookieJarTest extends TestCase
     public function testCookieGetWithSubdirectory()
     {
         $cookieJar = new CookieJar();
-        $cookieJar->set($cookie1 = new Cookie('foo', 'bar', null, '/test', '.example.com'));
+        $cookieJar->set($cookie1 = new Cookie('foo', 'bar', null, '/bonjour', '.example.com'));
         $cookieJar->set($cookie2 = new Cookie('foo1', 'bar1', null, '/', '.example.com'));
 
         $this->assertNull($cookieJar->get('foo', '/', '.example.com'));
         $this->assertNull($cookieJar->get('foo', '/bar', '.example.com'));
-        $this->assertEquals($cookie1, $cookieJar->get('foo', '/test', 'example.com'));
+        $this->assertEquals($cookie1, $cookieJar->get('foo', '/bonjour', 'example.com'));
         $this->assertEquals($cookie2, $cookieJar->get('foo1', '/', 'example.com'));
         $this->assertEquals($cookie2, $cookieJar->get('foo1', '/bar', 'example.com'));
     }

@@ -140,7 +140,7 @@ class UniqueEntityValidatorTest extends AbstractConstraintValidatorTest
     }
 
     /**
-     * This is a functional test as there is a large integration necessary to get the validator working.
+     * This is a functional bonjour as there is a large integration necessary to get the validator working.
      */
     public function testValidateUniqueness()
     {

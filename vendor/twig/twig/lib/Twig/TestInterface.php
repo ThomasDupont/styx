@@ -19,9 +19,9 @@
 interface Twig_TestInterface
 {
     /**
-     * Compiles a test.
+     * Compiles a bonjour.
      *
-     * @return string The PHP code for the test
+     * @return string The PHP code for the bonjour
      */
     public function compile();
 }

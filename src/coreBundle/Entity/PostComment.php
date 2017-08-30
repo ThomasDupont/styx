@@ -101,7 +101,27 @@ class PostComment
      */
     private $father;
 
+    public function __construct()
+    {
+        //$string = str_split(Uuid::uuid4()->toString());
+        $string = uniqid();
+        /*foreach($string as &$char)
+            $char = "".dechex(ord($char));
 
+        $this->identifier = substr(implode('',$string), 0, 32);
+        */
+       $this->identifier = $string;
+        $this->createdAt = $this->editedAt = new \Datetime();
+        $this->deleted = false;
+        $this->moderated = false;
+        $this->quickAnswer = false;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * Set identifier
@@ -119,7 +139,7 @@ class PostComment
     /**
      * Get identifier
      *
-     * @return string 
+     * @return string
      */
     public function getIdentifier()
     {
@@ -142,7 +162,7 @@ class PostComment
     /**
      * Get comment
      *
-     * @return string 
+     * @return string
      */
     public function getComment()
     {
@@ -165,7 +185,7 @@ class PostComment
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -188,7 +208,7 @@ class PostComment
     /**
      * Get editedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEditedAt()
     {
@@ -211,7 +231,7 @@ class PostComment
     /**
      * Get deleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDeleted()
     {
@@ -234,7 +254,7 @@ class PostComment
     /**
      * Get moderated
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getModerated()
     {
@@ -257,7 +277,7 @@ class PostComment
     /**
      * Get quickAnswer
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getQuickAnswer()
     {
@@ -267,7 +287,7 @@ class PostComment
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -290,7 +310,7 @@ class PostComment
     /**
      * Get user
      *
-     * @return \coreBundle\Entity\WebsiteStyxuserbase 
+     * @return \coreBundle\Entity\WebsiteStyxuserbase
      */
     public function getUser()
     {
@@ -313,7 +333,7 @@ class PostComment
     /**
      * Get post
      *
-     * @return \coreBundle\Entity\PostPost 
+     * @return \coreBundle\Entity\PostPost
      */
     public function getPost()
     {
@@ -336,7 +356,7 @@ class PostComment
     /**
      * Get father
      *
-     * @return \coreBundle\Entity\PostComment 
+     * @return \coreBundle\Entity\PostComment
      */
     public function getFather()
     {

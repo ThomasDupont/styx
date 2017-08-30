@@ -284,6 +284,10 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
         $parser = new Twig_Parser($env);
 
         $parser->parse($env->tokenize(new Twig_Source($template, 'index')));
+
+        // add a dummy assertion here to satisfy PHPUnit, the only thing we want to bonjour is that the code above
+        // can be executed without throwing any exceptions
+        $this->addToAssertionCount(1);
     }
 
     public function getMacroDefinitionSupportsConstantDefaultValues()
@@ -349,7 +353,7 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException        Twig_Error_Syntax
-     * @expectedExceptionMessage Unknown "nul" test. Did you mean "null" in "index" at line 1
+     * @expectedExceptionMessage Unknown "nul" bonjour. Did you mean "null" in "index" at line 1
      */
     public function testUnknownTest()
     {
@@ -361,7 +365,7 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException        Twig_Error_Syntax
-     * @expectedExceptionMessage Unknown "foobar" test in "index" at line 1.
+     * @expectedExceptionMessage Unknown "foobar" bonjour in "index" at line 1.
      */
     public function testUnknownTestWithoutSuggestions()
     {

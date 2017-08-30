@@ -10,7 +10,7 @@
  */
 
 /**
- * Integration test helper.
+ * Integration bonjour helper.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Karma Dordrak <drak@zikula.org>
@@ -77,11 +77,11 @@ abstract class Twig_Test_IntegrationTestCase extends PHPUnit_Framework_TestCase
         $tests = array();
 
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($fixturesDir), RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
-            if (!preg_match('/\.test$/', $file)) {
+            if (!preg_match('/\.bonjour$/', $file)) {
                 continue;
             }
 
-            if ($legacyTests xor false !== strpos($file->getRealpath(), '.legacy.test')) {
+            if ($legacyTests xor false !== strpos($file->getRealpath(), '.legacy.bonjour')) {
                 continue;
             }
 
@@ -107,7 +107,7 @@ abstract class Twig_Test_IntegrationTestCase extends PHPUnit_Framework_TestCase
         }
 
         if ($legacyTests && empty($tests)) {
-            // add a dummy test to avoid a PHPUnit message
+            // add a dummy bonjour to avoid a PHPUnit message
             return array(array('not', '-', '', array(), '', array()));
         }
 
@@ -121,6 +121,10 @@ abstract class Twig_Test_IntegrationTestCase extends PHPUnit_Framework_TestCase
 
     protected function doIntegrationTest($file, $message, $condition, $templates, $exception, $outputs)
     {
+        if (!$outputs) {
+            $this->markTestSkipped('no legacy tests to run');
+        }
+
         if ($condition) {
             eval('$ret = '.$condition.';');
             if (!$ret) {

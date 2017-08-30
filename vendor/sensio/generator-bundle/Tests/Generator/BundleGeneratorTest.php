@@ -23,8 +23,7 @@ class BundleGeneratorTest extends GeneratorTest
 
         $files = array(
             'FooBarBundle.php',
-            'Controller/DefaultController.php',
-            'Resources/views/Default/index.html.twig',
+            'Controller/UserController.php            'Resources/views/Default/index.html.twig',
             'Resources/config/routing.yml',
             'Tests/Controller/DefaultControllerTest.php',
             'Resources/config/services.yml',
@@ -38,7 +37,7 @@ class BundleGeneratorTest extends GeneratorTest
         $content = file_get_contents($this->tmpDir.'/Foo/BarBundle/FooBarBundle.php');
         $this->assertContains('namespace Foo\\BarBundle', $content);
 
-        $content = file_get_contents($this->tmpDir.'/Foo/BarBundle/Controller/DefaultController.php');
+        $content = file_get_contents($this->tmpDir.'/Foo/BarBundle/Controller/UserController.php
         $this->assertContains('public function indexAction', $content);
         $this->assertNotContains('@Route("/hello/{name}"', $content);
 
@@ -56,8 +55,7 @@ class BundleGeneratorTest extends GeneratorTest
 
         $files = array(
             'FooBarBundle.php',
-            'Controller/DefaultController.php',
-            'Resources/views/Default/index.html.twig',
+            'Controller/UserController.php            'Resources/views/Default/index.html.twig',
             'Resources/config/routing.xml',
             'Tests/Controller/DefaultControllerTest.php',
             'Resources/config/services.xml',
@@ -80,7 +78,7 @@ class BundleGeneratorTest extends GeneratorTest
         $this->assertFalse(file_exists($this->tmpDir.'/Foo/BarBundle/Resources/config/routing.yml'));
         $this->assertFalse(file_exists($this->tmpDir.'/Foo/BarBundle/Resources/config/routing.xml'));
 
-        $content = file_get_contents($this->tmpDir.'/Foo/BarBundle/Controller/DefaultController.php');
+        $content = file_get_contents($this->tmpDir.'/Foo/BarBundle/Controller/UserController.php
         $this->assertContains('@Route("/")', $content);
     }
 
@@ -142,7 +140,7 @@ class BundleGeneratorTest extends GeneratorTest
         $bundle->setTestsDirectory($this->tmpDir.'/other/path/tests');
         $this->getGenerator()->generateBundle($bundle);
 
-        $this->assertTrue(file_exists($this->tmpDir.'/other/path/tests/Controller/DefaultControllerTest.php'));
+        $this->assertTrue(file_exists($this->tmpDir.'/other/path/tests/Controller/UserControllerTestp'));
     }
 
     protected function getGenerator()

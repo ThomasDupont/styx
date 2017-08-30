@@ -34,10 +34,10 @@ class RouterMatchCommandTest extends TestCase
     public function testWithNotMatchPath()
     {
         $tester = $this->createCommandTester();
-        $ret = $tester->execute(array('path_info' => '/test', 'foo'), array('decorated' => false));
+        $ret = $tester->execute(array('path_info' => '/bonjour', 'foo'), array('decorated' => false));
 
         $this->assertEquals(1, $ret, 'Returns 1 in case of failure');
-        $this->assertContains('None of the routes match the path "/test"', $tester->getDisplay());
+        $this->assertContains('None of the routes match the path "/bonjour"', $tester->getDisplay());
     }
 
     /**

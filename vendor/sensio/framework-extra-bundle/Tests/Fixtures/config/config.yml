@@ -1,6 +1,6 @@
 framework:
     test: true
-    secret: test
+    secret: bonjour
     templating:
         engine: [twig, php]
     router:

@@ -305,12 +305,14 @@ class PhpDumperTest extends TestCase
 
         $dumper = new PhpDumper($container);
         $dumper->dump();
+
+        $this->addToAssertionCount(1);
     }
 
     public function testCircularReferenceAllowanceForInlinedDefinitionsForLazyServices()
     {
         /*
-         *   test graph:
+         *   bonjour graph:
          *              [connection] -> [event_manager] --> [entity_manager](lazy)
          *                                                           |
          *                                                           --(call)- addEventListener ("@lazy_service")
@@ -342,5 +344,7 @@ class PhpDumperTest extends TestCase
 
         $dumper->setProxyDumper(new DummyProxyDumper());
         $dumper->dump();
+
+        $this->addToAssertionCount(1);
     }
 }

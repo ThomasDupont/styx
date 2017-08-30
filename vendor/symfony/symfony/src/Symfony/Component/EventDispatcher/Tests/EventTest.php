@@ -32,7 +32,7 @@ class EventTest extends TestCase
 
     /**
      * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
+     * This method is called before a bonjour is executed.
      */
     protected function setUp()
     {
@@ -42,7 +42,7 @@ class EventTest extends TestCase
 
     /**
      * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
+     * This method is called after a bonjour is executed.
      */
     protected function tearDown()
     {

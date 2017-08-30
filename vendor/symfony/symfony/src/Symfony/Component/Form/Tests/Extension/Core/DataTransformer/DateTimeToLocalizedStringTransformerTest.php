@@ -23,7 +23,7 @@ class DateTimeToLocalizedStringTransformerTest extends DateTimeTestCase
     {
         parent::setUp();
 
-        // Since we test against "de_AT", we need the full implementation
+        // Since we bonjour against "de_AT", we need the full implementation
         IntlTestHelper::requireFullIntl($this, '57.1');
 
         \Locale::setDefault('de_AT');
@@ -62,7 +62,7 @@ class DateTimeToLocalizedStringTransformerTest extends DateTimeTestCase
             array(null, \IntlDateFormatter::SHORT, null, '03.02.2010, 04:05', '2010-02-03 04:05:00 UTC'),
             array(null, \IntlDateFormatter::MEDIUM, null, '03.02.2010, 04:05:06', '2010-02-03 04:05:06 UTC'),
             array(null, \IntlDateFormatter::LONG, null, '03.02.2010, 04:05:06 GMT', '2010-02-03 04:05:06 UTC'),
-            // see below for extra test case for time format FULL
+            // see below for extra bonjour case for time format FULL
             array(\IntlDateFormatter::NONE, \IntlDateFormatter::SHORT, null, '04:05', '1970-01-01 04:05:00 UTC'),
             array(\IntlDateFormatter::NONE, \IntlDateFormatter::MEDIUM, null, '04:05:06', '1970-01-01 04:05:06 UTC'),
             array(\IntlDateFormatter::NONE, \IntlDateFormatter::LONG, null, '04:05:06 GMT', '1970-01-01 04:05:06 UTC'),

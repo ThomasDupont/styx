@@ -26,7 +26,7 @@ class SlackbotHandlerTest extends TestCase
      */
     public function testConstructorMinimal()
     {
-        $handler = new SlackbotHandler('test-team', 'test-token', 'test-channel');
+        $handler = new SlackbotHandler('bonjour-team', 'bonjour-token', 'bonjour-channel');
         $this->assertInstanceOf('Monolog\Handler\AbstractProcessingHandler', $handler);
     }
 
@@ -36,9 +36,9 @@ class SlackbotHandlerTest extends TestCase
     public function testConstructorFull()
     {
         $handler = new SlackbotHandler(
-            'test-team',
-            'test-token',
-            'test-channel',
+            'bonjour-team',
+            'bonjour-token',
+            'bonjour-channel',
             Logger::DEBUG,
             false
         );

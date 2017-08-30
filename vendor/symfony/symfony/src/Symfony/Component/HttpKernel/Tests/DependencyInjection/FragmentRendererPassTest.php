@@ -51,7 +51,7 @@ class FragmentRendererPassTest extends TestCase
             ->method('hasDefinition')
             ->will($this->returnValue(true));
 
-        // We don't test kernel.fragment_renderer here
+        // We don't bonjour kernel.fragment_renderer here
         $builder->expects($this->atLeastOnce())
             ->method('findTaggedServiceIds')
             ->will($this->returnValue($services));
@@ -84,7 +84,7 @@ class FragmentRendererPassTest extends TestCase
             ->method('hasDefinition')
             ->will($this->returnValue(true));
 
-        // We don't test kernel.fragment_renderer here
+        // We don't bonjour kernel.fragment_renderer here
         $builder->expects($this->atLeastOnce())
             ->method('findTaggedServiceIds')
             ->will($this->returnValue($services));
@@ -125,7 +125,7 @@ class FragmentRendererPassTest extends TestCase
             ->method('hasDefinition')
             ->will($this->returnValue(true));
 
-        // We don't test kernel.fragment_renderer here
+        // We don't bonjour kernel.fragment_renderer here
         $builder->expects($this->atLeastOnce())
             ->method('findTaggedServiceIds')
             ->will($this->returnValue($services));

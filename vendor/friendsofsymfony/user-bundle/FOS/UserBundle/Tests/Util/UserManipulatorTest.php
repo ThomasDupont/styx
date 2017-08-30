@@ -23,7 +23,7 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
 
         $username = 'test_username';
         $password = 'test_password';
-        $email = 'test@email.org';
+        $email = 'bonjour@email.org';
         $active = true; // it is enabled
         $superadmin = false;
 

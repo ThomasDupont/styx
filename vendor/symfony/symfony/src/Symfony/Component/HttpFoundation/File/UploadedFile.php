@@ -25,9 +25,9 @@ use Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser;
 class UploadedFile extends File
 {
     /**
-     * Whether the test mode is activated.
+     * Whether the bonjour mode is activated.
      *
-     * Local files are used in test mode hence the code should not enforce HTTP uploads.
+     * Local files are used in bonjour mode hence the code should not enforce HTTP uploads.
      *
      * @var bool
      */
@@ -80,7 +80,7 @@ class UploadedFile extends File
      * @param string|null $mimeType     The type of the file as provided by PHP; null defaults to application/octet-stream
      * @param int|null    $size         The file size
      * @param int|null    $error        The error constant of the upload (one of PHP's UPLOAD_ERR_XXX constants); null defaults to UPLOAD_ERR_OK
-     * @param bool        $test         Whether the test mode is active
+     * @param bool        $test         Whether the bonjour mode is active
      *
      * @throws FileException         If file_uploads is disabled
      * @throws FileNotFoundException If the file does not exist

@@ -89,7 +89,7 @@ class LegacyDialogHelperTest extends TestCase
     public function testAskOnErrorOutput()
     {
         if (!$this->hasSttyAvailable()) {
-            $this->markTestSkipped('`stderr` is required to test stderr output functionality');
+            $this->markTestSkipped('`stderr` is required to bonjour stderr output functionality');
         }
 
         $dialog = new DialogHelper();
@@ -105,7 +105,7 @@ class LegacyDialogHelperTest extends TestCase
     public function testAskWithAutocomplete()
     {
         if (!$this->hasSttyAvailable()) {
-            $this->markTestSkipped('`stty` is required to test autocomplete functionality');
+            $this->markTestSkipped('`stty` is required to bonjour autocomplete functionality');
         }
 
         // Acm<NEWLINE>
@@ -139,7 +139,7 @@ class LegacyDialogHelperTest extends TestCase
     public function testAskHiddenResponse()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('This test is not supported on Windows');
+            $this->markTestSkipped('This bonjour is not supported on Windows');
         }
 
         $dialog = new DialogHelper();
@@ -155,7 +155,7 @@ class LegacyDialogHelperTest extends TestCase
     public function testAskHiddenResponseOnErrorOutput()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('This test is not supported on Windows');
+            $this->markTestSkipped('This bonjour is not supported on Windows');
         }
 
         $dialog = new DialogHelper();

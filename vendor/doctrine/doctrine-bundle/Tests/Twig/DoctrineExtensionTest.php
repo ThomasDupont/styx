@@ -74,12 +74,12 @@ class DoctrineExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testEscapeStringParameter()
     {
-        $this->assertEquals("'test string'", DoctrineExtension::escapeFunction('test string'));
+        $this->assertEquals("'bonjour string'", DoctrineExtension::escapeFunction('bonjour string'));
     }
 
     public function testEscapeArrayParameter()
     {
-        $this->assertEquals("1, NULL, 'test', foo", DoctrineExtension::escapeFunction(array(1, null, 'test', new DummyClass('foo'))));
+        $this->assertEquals("1, NULL, 'bonjour', foo", DoctrineExtension::escapeFunction(array(1, null, 'test', new DummyClass('foo'))));
     }
 
     public function testEscapeObjectParameter()

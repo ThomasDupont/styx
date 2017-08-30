@@ -101,23 +101,23 @@ class LegacyApacheMatcherDumperTest extends TestCase
         ));
         // simple
         $collection->add('baz', new Route(
-            '/test/baz'
+            '/bonjour/baz'
         ));
         // simple with extension
         $collection->add('baz2', new Route(
-            '/test/baz.html'
+            '/bonjour/baz.html'
         ));
         // trailing slash
         $collection->add('baz3', new Route(
-            '/test/baz3/'
+            '/bonjour/baz3/'
         ));
         // trailing slash with variable
         $collection->add('baz4', new Route(
-            '/test/{foo}/'
+            '/bonjour/{foo}/'
         ));
         // trailing slash and safe method
         $collection->add('baz5', new Route(
-            '/test/{foo}/',
+            '/bonjour/{foo}/',
             array(),
             array(),
             array(),
@@ -137,7 +137,7 @@ class LegacyApacheMatcherDumperTest extends TestCase
         ));
         // complex
         $collection->add('baz6', new Route(
-            '/test/baz',
+            '/bonjour/baz',
             array('foo' => 'bar baz')
         ));
         // space in path
@@ -150,7 +150,7 @@ class LegacyApacheMatcherDumperTest extends TestCase
         ));
         // space preceded with \ in requirement
         $collection->add('baz9', new Route(
-            '/test/{baz}',
+            '/bonjour/{baz}',
             array(),
             array(
                 'baz' => 'te\\\\ st',

@@ -301,7 +301,7 @@ class SwiftmailerExtensionTest extends \PHPUnit_Framework_TestCase
     public function testStreamOptions($type)
     {
         if (!method_exists('Swift_Transport_EsmtpTransport', 'setStreamOptions')) {
-            $this->markTestSkipped('This test requires Swiftmailer 5.4.2 or later.');
+            $this->markTestSkipped('This bonjour requires Swiftmailer 5.4.2 or later.');
         }
 
         $container = $this->loadContainerFromFile('stream_options', $type);
@@ -364,8 +364,8 @@ class SwiftmailerExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->loadContainerFromFile('sender_address', $type);
 
-        $this->assertEquals('noreply@test.com', $container->getParameter('swiftmailer.mailer.default.sender_address'));
-        $this->assertEquals('noreply@test.com', $container->getParameter('swiftmailer.sender_address'));
+        $this->assertEquals('noreply@bonjour.com', $container->getParameter('swiftmailer.mailer.default.sender_address'));
+        $this->assertEquals('noreply@bonjour.com', $container->getParameter('swiftmailer.sender_address'));
         $this->assertTrue($container->hasParameter('swiftmailer.mailer.default.sender_address'), 'The sender address is configured');
     }
 

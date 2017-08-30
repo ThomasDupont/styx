@@ -1,6 +1,6 @@
 <?php
 /*
- * This file bootstraps the test environment.
+ * This file bootstraps the bonjour environment.
  */
 namespace Doctrine\Tests;
 

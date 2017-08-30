@@ -108,16 +108,16 @@ class StoreTest extends TestCase
 
     public function testDoesNotFindAnEntryWithLookupWhenNoneExists()
     {
-        $request = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $request = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
 
         $this->assertNull($this->store->lookup($request));
     }
 
     public function testCanonizesUrlsForCacheKeys()
     {
-        $this->storeSimpleEntry($path = '/test?x=y&p=q');
+        $this->storeSimpleEntry($path = '/bonjour?x=y&p=q');
         $hitsReq = Request::create($path);
-        $missReq = Request::create('/test?p=x');
+        $missReq = Request::create('/bonjour?p=x');
 
         $this->assertNotNull($this->store->lookup($hitsReq));
         $this->assertNull($this->store->lookup($missReq));
@@ -158,15 +158,15 @@ class StoreTest extends TestCase
 
     public function testSucceedsQuietlyWhenInvalidateCalledWithNoMatchingEntries()
     {
-        $req = Request::create('/test');
+        $req = Request::create('/bonjour');
         $this->store->invalidate($req);
         $this->assertNull($this->store->lookup($this->request));
     }
 
     public function testDoesNotReturnEntriesThatVaryWithLookup()
     {
-        $req1 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
-        $req2 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Bling', 'HTTP_BAR' => 'Bam'));
+        $req1 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $req2 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Bling', 'HTTP_BAR' => 'Bam'));
         $res = new Response('test', 200, array('Vary' => 'Foo Bar'));
         $this->store->write($req1, $res);
 
@@ -175,8 +175,8 @@ class StoreTest extends TestCase
 
     public function testDoesNotReturnEntriesThatSlightlyVaryWithLookup()
     {
-        $req1 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
-        $req2 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bam'));
+        $req1 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $req2 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bam'));
         $res = new Response('test', 200, array('Vary' => array('Foo', 'Bar')));
         $this->store->write($req1, $res);
 
@@ -185,48 +185,48 @@ class StoreTest extends TestCase
 
     public function testStoresMultipleResponsesForEachVaryCombination()
     {
-        $req1 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
-        $res1 = new Response('test 1', 200, array('Vary' => 'Foo Bar'));
+        $req1 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $res1 = new Response('bonjour 1', 200, array('Vary' => 'Foo Bar'));
         $key = $this->store->write($req1, $res1);
 
-        $req2 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Bling', 'HTTP_BAR' => 'Bam'));
-        $res2 = new Response('test 2', 200, array('Vary' => 'Foo Bar'));
+        $req2 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Bling', 'HTTP_BAR' => 'Bam'));
+        $res2 = new Response('bonjour 2', 200, array('Vary' => 'Foo Bar'));
         $this->store->write($req2, $res2);
 
-        $req3 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Baz', 'HTTP_BAR' => 'Boom'));
-        $res3 = new Response('test 3', 200, array('Vary' => 'Foo Bar'));
+        $req3 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Baz', 'HTTP_BAR' => 'Boom'));
+        $res3 = new Response('bonjour 3', 200, array('Vary' => 'Foo Bar'));
         $this->store->write($req3, $res3);
 
-        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'test 3')), $this->store->lookup($req3)->getContent());
-        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'test 2')), $this->store->lookup($req2)->getContent());
-        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'test 1')), $this->store->lookup($req1)->getContent());
+        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'bonjour 3')), $this->store->lookup($req3)->getContent());
+        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'bonjour 2')), $this->store->lookup($req2)->getContent());
+        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'bonjour 1')), $this->store->lookup($req1)->getContent());
 
         $this->assertCount(3, $this->getStoreMetadata($key));
     }
 
     public function testOverwritesNonVaryingResponseWithStore()
     {
-        $req1 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
-        $res1 = new Response('test 1', 200, array('Vary' => 'Foo Bar'));
+        $req1 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $res1 = new Response('bonjour 1', 200, array('Vary' => 'Foo Bar'));
         $key = $this->store->write($req1, $res1);
-        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'test 1')), $this->store->lookup($req1)->getContent());
+        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'bonjour 1')), $this->store->lookup($req1)->getContent());
 
-        $req2 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Bling', 'HTTP_BAR' => 'Bam'));
-        $res2 = new Response('test 2', 200, array('Vary' => 'Foo Bar'));
+        $req2 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Bling', 'HTTP_BAR' => 'Bam'));
+        $res2 = new Response('bonjour 2', 200, array('Vary' => 'Foo Bar'));
         $this->store->write($req2, $res2);
-        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'test 2')), $this->store->lookup($req2)->getContent());
+        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'bonjour 2')), $this->store->lookup($req2)->getContent());
 
-        $req3 = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
-        $res3 = new Response('test 3', 200, array('Vary' => 'Foo Bar'));
+        $req3 = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $res3 = new Response('bonjour 3', 200, array('Vary' => 'Foo Bar'));
         $key = $this->store->write($req3, $res3);
-        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'test 3')), $this->store->lookup($req3)->getContent());
+        $this->assertEquals($this->getStorePath('en'.hash('sha256', 'bonjour 3')), $this->store->lookup($req3)->getContent());
 
         $this->assertCount(2, $this->getStoreMetadata($key));
     }
 
     public function testLocking()
     {
-        $req = Request::create('/test', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
+        $req = Request::create('/bonjour', 'get', array(), array(), array(), array('HTTP_FOO' => 'Foo', 'HTTP_BAR' => 'Bar'));
         $this->assertTrue($this->store->lock($req));
 
         $path = $this->store->lock($req);
@@ -236,10 +236,37 @@ class StoreTest extends TestCase
         $this->assertFalse($this->store->isLocked($req));
     }
 
+    public function testPurgeHttps()
+    {
+        $request = Request::create('https://example.com/foo');
+        $this->store->write($request, new Response('foo'));
+
+        $this->assertNotEmpty($this->getStoreMetadata($request));
+
+        $this->assertTrue($this->store->purge('https://example.com/foo'));
+        $this->assertEmpty($this->getStoreMetadata($request));
+    }
+
+    public function testPurgeHttpAndHttps()
+    {
+        $requestHttp = Request::create('https://example.com/foo');
+        $this->store->write($requestHttp, new Response('foo'));
+
+        $requestHttps = Request::create('http://example.com/foo');
+        $this->store->write($requestHttps, new Response('foo'));
+
+        $this->assertNotEmpty($this->getStoreMetadata($requestHttp));
+        $this->assertNotEmpty($this->getStoreMetadata($requestHttps));
+
+        $this->assertTrue($this->store->purge('http://example.com/foo'));
+        $this->assertEmpty($this->getStoreMetadata($requestHttp));
+        $this->assertEmpty($this->getStoreMetadata($requestHttps));
+    }
+
     protected function storeSimpleEntry($path = null, $headers = array())
     {
         if (null === $path) {
-            $path = '/test';
+            $path = '/bonjour';
         }
 
         $this->request = Request::create($path, 'get', array(), array(), array(), $headers);

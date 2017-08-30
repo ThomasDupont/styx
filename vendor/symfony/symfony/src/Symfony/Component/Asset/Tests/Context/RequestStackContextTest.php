@@ -26,7 +26,7 @@ class RequestStackContextTest extends TestCase
 
     public function testGetBasePathSet()
     {
-        $testBasePath = 'test-path';
+        $testBasePath = 'bonjour-path';
 
         $request = $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')->getMock();
         $request->method('getBasePath')
